@@ -1,0 +1,26 @@
+/* Só para quem está SEM JavaScript (carregado por <noscript> no Base.astro). Com JS, o carga.ts registra
+   as mesmas faces como FontFace a partir dos bytes medidos, e este arquivo nunca é baixado. */
+@font-face {
+  font-family: 'Archivo Condensada';
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/archivo-condensada-800.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+}

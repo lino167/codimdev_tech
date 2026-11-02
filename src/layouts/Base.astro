@@ -1,0 +1,34 @@
+---
+// Base de todas as páginas: <head>, o canvas do mundo e o script de inicialização (src/lib/movimento).
+// Sem @font-face e sem preload de fonte: quem carrega é o carga.ts. Só sem JavaScript o <noscript> traz as fontes.
+import '../styles/global.css';
+import '../styles/hero.css';
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+---
+
+<html lang={t.meta.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.titulo}</title>
+    <meta name="description" content={t.meta.descricao} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <noscript><link rel="stylesheet" href="/fonts/fontes.css" /></noscript>
+  </head>
+  <body>
+    <canvas class="mundo" aria-hidden="true"></canvas>
+    <main id="topo">
+      <slot />
+    </main>
+    <script>
+      import { iniciar } from '../lib/movimento';
+      iniciar();
+    </script>
+  </body>
+</html>

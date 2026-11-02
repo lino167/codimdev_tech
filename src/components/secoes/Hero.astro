@@ -1,0 +1,40 @@
+---
+// Hero: "Tudo ⊂⊃ conectado." com o símbolo no lugar de uma letra (desenhado pelo mundo, em pontilhado),
+// a promessa como h1 e os dois botões. Os textos vêm do i18n.
+import type { Textos } from '../../i18n/pt';
+import { PARTES, SIMBOLO_W, SIMBOLO_H } from '../../lib/mundo/simbolo';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const h = t.hero;
+---
+
+<section class="hero" id="inicio">
+  <p class="hero__titulo" data-title>
+    <span class="w w1">{h.titulo1}</span>
+    <span class="hero__simbolo" data-obj="simbolo" aria-hidden="true">
+      <svg viewBox={`0 0 ${SIMBOLO_W} ${SIMBOLO_H}`} aria-hidden="true">
+        {PARTES.c.map(([d, x, y]) => <path d={d} transform={`translate(${x} ${y})`} fill="#0A0A0B" />)}
+        {PARTES.elos.map(([d, x, y]) => <path d={d} transform={`translate(${x} ${y})`} fill="#E8132E" />)}
+      </svg>
+    </span>
+    <span class="w w2">{h.titulo2}</span>
+  </p>
+  <div class="hero__rodape">
+    <div>
+      <h1 class="hero__promessa">{h.promessa}</h1>
+      <p class="hero__apoio">{h.apoio}</p>
+    </div>
+    <div class="hero__botoes">
+      <a class="btn btn--principal" href="#diagnostico">
+        <svg class="btn__ico" viewBox="0 0 16 16" aria-hidden="true"
+          ><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"></path></svg
+        >
+        {h.botaoPrincipal}
+      </a>
+      <a class="btn btn--contorno" href="#exemplo">{h.botaoSecundario}</a>
+    </div>
+  </div>
+</section>
