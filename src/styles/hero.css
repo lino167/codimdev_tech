@@ -94,7 +94,8 @@
     display: grid;
     justify-content: stretch;
     gap: 0.1em;
-    font-size: min(24vw, 13vh);
+    /* "conectado." mede ~4,32 em: em 390 px (354 px úteis) a fonte precisa ficar abaixo de 21vw */
+    font-size: min(20vw, 12vh);
     line-height: 0.9;
   }
   .hero__titulo .w2 {

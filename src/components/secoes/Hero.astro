@@ -16,8 +16,12 @@ const h = t.hero;
     <span class="w w1">{h.titulo1}</span>
     <span class="hero__simbolo" data-obj="simbolo" aria-hidden="true">
       <svg viewBox={`0 0 ${SIMBOLO_W} ${SIMBOLO_H}`} aria-hidden="true">
-        {PARTES.c.map(([d, x, y]) => <path d={d} transform={`translate(${x} ${y})`} fill="#0A0A0B" />)}
-        {PARTES.elos.map(([d, x, y]) => <path d={d} transform={`translate(${x} ${y})`} fill="#E8132E" />)}
+        {PARTES.c.map(([d, x, y]) => (
+          <path d={d} transform={`translate(${x} ${y})`} fill="#0A0A0B" />
+        ))}
+        {PARTES.elos.map(([d, x, y]) => (
+          <path d={d} transform={`translate(${x} ${y})`} fill="#E8132E" />
+        ))}
       </svg>
     </span>
     <span class="w w2">{h.titulo2}</span>
@@ -29,12 +33,14 @@ const h = t.hero;
     </div>
     <div class="hero__botoes">
       <a class="btn btn--principal" href="#diagnostico">
-        <svg class="btn__ico" viewBox="0 0 16 16" aria-hidden="true"
-          ><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"></path></svg
-        >
+        <svg class="btn__ico" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
         {h.botaoPrincipal}
       </a>
-      <a class="btn btn--contorno" href="#exemplo">{h.botaoSecundario}</a>
+      <a class="btn btn--contorno" href="#exemplo">
+        {h.botaoSecundario}
+      </a>
     </div>
   </div>
 </section>

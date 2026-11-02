@@ -83,7 +83,7 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
   let ch = 0;
   let simbolo: Retangulo = { x: 0, y: 0, w: 0, h: 0 };
 
-  function medir() {
+  const medir = () => {
     vw = document.documentElement.clientWidth;
     vh = window.innerHeight;
     const celular = vw < 760;
@@ -96,17 +96,17 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
       canvas.height = ch;
     }
     simbolo = retanguloNoDocumento(elSimbolo);
-  }
+  };
 
-  function nucleo() {
+  const nucleo = () => {
     return {
       x: simbolo.x + NUCLEO.u * simbolo.w,
       y: simbolo.y + NUCLEO.v * simbolo.h,
       r: (56 / SIMBOLO_W) * simbolo.w,
     };
-  }
+  };
 
-  function quadro() {
+  const quadro = () => {
     const s = window.scrollY;
     gl.viewport(0, 0, cw, ch);
     gl.clearColor(1, 1, 1, 1);
@@ -156,7 +156,7 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
         .f('u_vermelho', ...VERMELHO);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
-  }
+  };
 
   medir();
   let raf = 0;
