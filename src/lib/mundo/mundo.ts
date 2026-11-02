@@ -17,7 +17,7 @@ const FAMILIA_TITULO = 'Archivo Condensada';
 export interface EstadoMundo {
   /** 0..1: condensação dos C do símbolo */
   forma: number;
-  /** 0..1: quanto os dois C estão afastados (1 = longe, 0 = encostados) */
+  /** 0..1: quanto os dois C estão afastados (1 = cada um fora da tela pelo seu lado, 0 = encostados) */
   abre: number;
   /** 0..1: os elos acesos */
   elos: number;
@@ -109,11 +109,12 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
   const texSimbolo = textura(gl, texturaSimbolo());
   const semente = Math.random() * 100;
 
-  // A entrada (movimento/entrada.ts) parte de tudo apagado e com os C afastados; com movimento reduzido, já formado.
+  // Montagem limpa: os C já nascem sólidos (forma e solidez em 1), fora da tela (abre = 1); a entrada e o loader
+  // os trazem até encostar. Com movimento reduzido, tudo já formado.
   const estado: EstadoMundo = reduzido
     ? { forma: 1, abre: 0, elos: 1, brilho: 0, alcance: 0, voo: 99, solido: 1, final: 1, solidez: 1, pulso: 0, onda: 0 }
     : {
-        forma: 0,
+        forma: 1,
         abre: 1,
         elos: 0,
         brilho: 0,
@@ -121,7 +122,7 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
         voo: -1,
         solido: 0,
         final: 0,
-        solidez: 0,
+        solidez: 1,
         pulso: 0,
         onda: 0,
       };
@@ -275,25 +276,31 @@ export function criarMundo({ reduzido = false }: { reduzido?: boolean } = {}): M
       gl.drawArrays(gl.POINTS, 0, QTD_RAJADA);
     }
 
-    // símbolo (o quad é mais largo para caber os C afastados na entrada)
+    // símbolo: enquanto os C entram (abre > 0), o quad ocupa a largura toda da faixa, porque cada C vem de fora
+    // da tela pelo próprio lado
     gl.bindVertexArray(quadVao);
     const sy = simbolo.y - s + my;
     if (sy < vh && sy + simbolo.h > 0) {
       const sx = Math.round((simbolo.x + mx) * dpr);
       const syd = Math.round(sy * dpr);
       const sw = simbolo.w * dpr;
-      const folga = estado.abre * 0.36 * sw;
+      // distância até fora da tela: o C da esquerda some além da borda esquerda, o da direita além da direita
+      const fora = 24;
+      const distE = (simbolo.x + simbolo.w * (176 / SIMBOLO_W) + fora) * dpr;
+      const distD = (vw - simbolo.x - simbolo.w * (292 / SIMBOLO_W) + fora) * dpr;
+      const entrando = estado.abre > 0.0005;
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, texSimbolo);
       pSimbolo
         .usar()
         .f('u_res', cw, ch)
-        .f('u_rect', sx - folga, syd, sw + folga * 2, simbolo.h * dpr)
+        .f('u_rect', entrando ? 0 : sx, syd, entrando ? cw : sw, simbolo.h * dpr)
         .f('u_sym', sx, syd, sw, simbolo.h * dpr)
         .f('u_cell', celula)
         .i('u_tex', 0)
         .f('u_form', estado.forma)
-        .f('u_abre', estado.abre)
+        .f('u_deslE', estado.abre * distE)
+        .f('u_deslD', estado.abre * distD)
         .f('u_elos', estado.elos)
         .f('u_mouse', mouse.x * dpr, mouse.y * dpr)
         .f('u_mr', lenteR)

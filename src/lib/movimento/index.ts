@@ -1,18 +1,20 @@
 // Ordem de inicialização do site (chamado pelo Base.astro). Único ponto de entrada da animação.
-// Hoje: fontes pela carga (FontFace a partir dos bytes), o mundo no ticker do GSAP e a entrada do hero.
-// O loader com o contador (T4), os reveals, o Lenis e a nav (T7) entram aqui, nesta ordem, nas próximas fatias.
+// 1. A carga começa antes de tudo (fontes; no ?hd, também as imagens). 2. O mundo nasce e desenha no ticker.
+// 3. Com as fontes aplicadas, o título é rasterizado de novo, ainda durante o loader. 4. O loader acompanha os
+// bytes e, no fim, a entrada continua de onde ele parou. Os reveals, o Lenis e a nav (T7) entram depois do loader.
 import { gsap } from 'gsap';
 import { criarMundo, type Mundo } from '../mundo/mundo';
 import { carga, ARQUIVOS_FONTES } from './carga';
+import { loader } from './loader';
 import { entrada } from './entrada';
 
-/** Até o loader existir (T4), a entrada espera as fontes no máximo este tempo. */
-const ESPERA_FONTES_MS = 2500;
-
-export function iniciar() {
+export async function iniciar() {
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hd = new URLSearchParams(location.search).has('hd');
 
+  // (no ?hd entram também as imagens do mundo, quando existirem: fatia T5)
   const c = carga(ARQUIVOS_FONTES);
 
   let mundo: Mundo | null = null;
@@ -30,13 +32,11 @@ export function iniciar() {
     raiz.classList.add('sem-gl');
   }
 
-  // a entrada começa com as fontes aplicadas (sem troca de fonte no meio do movimento) ou no limite
-  const limite = new Promise<void>((ok) => setTimeout(ok, ESPERA_FONTES_MS));
-  void Promise.race([c.pronta, limite]).then(() => {
-    // o título é rasterizado de novo com a Archivo já aplicada, antes de os pontos voarem
-    mundo?.medir(true);
-    entrada({ mundo, reduzido });
-  });
+  // com as fontes aplicadas, o título é rasterizado de novo (ainda durante o loader, não no quadro da passagem)
+  void c.pronta.then(() => mundo?.medir(true));
+
+  await loader({ mundo, carga: c, hd, reduzido });
+  entrada({ mundo, reduzido });
 
   // só no `astro dev`: reprisar a entrada em câmera lenta para conferir quadro a quadro (fora do build)
   if (import.meta.env.DEV) {
@@ -50,7 +50,7 @@ export function iniciar() {
           if (m) gsap.killTweensOf(m.estado);
           if (m)
             Object.assign(m.estado, {
-              forma: 0,
+              forma: 1,
               abre: 1,
               elos: 0,
               brilho: 0,
@@ -58,7 +58,7 @@ export function iniciar() {
               voo: -1,
               solido: 0,
               final: 0,
-              solidez: 0,
+              solidez: 1,
             });
           raiz.classList.add('is-loading');
           gsap.globalTimeline.timeScale(velocidade);

@@ -22,12 +22,12 @@ void main(){
 }`;
 
 // Símbolo: textura RG. R = tinta dos dois C (com degradê, para o dither ter textura), G = cobertura dos elos.
-// A assinatura da marca: os dois C chegam de lados opostos (u_abre, em larguras do símbolo) e se condensam dos
-// pontos (u_form), cada um vindo do próprio lado; depois os elos vermelhos fecham a ligação (u_elos).
-// Cada C calcula a grade de células nas PRÓPRIAS coordenadas: o pontilhado viaja junto com a forma, sem "nadar".
-// O quad (u_rect) é mais largo que o símbolo (u_sym) para caber os C afastados.
-// Depois da entrada o símbolo fica SÓLIDO (u_solidez → 1, borda nítida por pixel, canal B); só em volta do
-// cursor ele volta a ser pontilhado. A troca é por célula, com sorteio: a fronteira se dissolve, não corta.
+// A assinatura da marca, montagem limpa (decisão de 02/11): os dois C, JÁ SÓLIDOS, entram de fora da tela por
+// lados opostos (u_deslE / u_deslD, em px) até encostar; depois os elos vermelhos saem do C da esquerda e
+// deslizam pela diagonal de 45° até travar no lugar (u_elos). Pontos, só na faísca do clique (RAJADA_VS).
+// Cada C calcula a grade de células nas PRÓPRIAS coordenadas: o pontilhado da lente viaja junto, sem "nadar".
+// O símbolo é sólido (u_solidez = 1, borda antisserrilhada, canal B); só em volta do cursor ele volta a ser
+// pontilhado. A troca é por célula, com sorteio: a fronteira se dissolve, não corta.
 export const SIMBOLO_FS = /* glsl */ `#version 300 es
 precision highp float;
 ${COMUM}
@@ -36,9 +36,10 @@ uniform vec4 u_rect;       // o quad desenhado (px de dispositivo)
 uniform vec4 u_sym;        // o símbolo no lugar final (px de dispositivo)
 uniform float u_cell;
 uniform sampler2D u_tex;
-uniform float u_form;      // 0..1: condensação dos C
-uniform float u_abre;      // 0..1: quanto os C estão afastados (1 = longe)
-uniform float u_elos;      // 0..1: os elos acesos
+uniform float u_form;      // 0..1: condensação das células pontilhadas (lente)
+uniform float u_deslE;     // px de dispositivo que o C da esquerda ainda está afastado (para a esquerda)
+uniform float u_deslD;     // px de dispositivo que o C da direita ainda está afastado (para a direita)
+uniform float u_elos;      // 0..1: os elos deslizando pela diagonal até travar
 uniform vec2 u_mouse;      // px de dispositivo
 uniform float u_mr;        // raio da lente do cursor (0 = sem)
 uniform float u_solidez;   // 0..1: o símbolo sólido (fim da entrada)
@@ -87,18 +88,19 @@ float tintaC(vec2 local, vec2 tela, float lado, float solidoPx){
 void main(){
   vec2 p = vec2(gl_FragCoord.x, u_res.y - gl_FragCoord.y);
   vec2 local = p - u_sym.xy;
-  float desl = u_abre * 0.34 * u_sym.z;
-  vec2 locE = local + vec2(desl, 0.0);
-  vec2 locD = local - vec2(desl, 0.0);
+  vec2 locE = local + vec2(u_deslE, 0.0);
+  vec2 locD = local - vec2(u_deslD, 0.0);
   // tudo o que usa derivada, antes de qualquer desvio
   vec2 uvPx = local / u_sym.zw;
-  bool noSimbolo = uvPx.x > 0.0 && uvPx.y > 0.0 && uvPx.x < 1.0 && uvPx.y < 1.0;
-  float elo = borda(texture(u_tex, clamp(uvPx, 0.0, 1.0)).g, noSimbolo ? 1.0 : 0.0);
+  // elos: saem de trás da linha onde começam (x = 192 no viewBox) e deslizam pela diagonal (84, 84) até travar
+  vec2 uvElo = uvPx + (1.0 - u_elos) * vec2(84.0 / 468.0, 84.0 / 288.0);
+  bool eloVisivel = u_elos > 0.0 && uvPx.x >= 192.0 / 468.0 && uvElo.x < 1.0 && uvElo.y > 0.0 && uvElo.y < 1.0;
+  float elo = borda(texture(u_tex, clamp(uvElo, 0.0, 1.0)).g, eloVisivel ? 1.0 : 0.0);
   float solE = cobertura(locE, -1.0);
   float solD = cobertura(locD, 1.0);
 
-  // elos: no centro, sólidos com borda suave; acendem em pontilhado (u_elos) até fechar
-  if (u_elos > 0.0 && elo > 0.0 && hash(floor(local / u_cell) + 7.0) <= u_elos) {
+  // elos: sólidos, com borda suave
+  if (elo > 0.0) {
     o = vec4(u_vermelho * elo, elo);
     if (elo >= 1.0) return;
     // borda do elo: o C pode estar por baixo; mistura pré-multiplicada

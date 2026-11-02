@@ -15,6 +15,8 @@ const h = t.hero;
   <p class="hero__titulo" data-title>
     <span class="w w1">{h.titulo1}</span>
     <span class="hero__simbolo" data-obj="simbolo" aria-hidden="true">
+      <!-- antes do JS (rede lenta): o elo pisca no lugar do símbolo; com cache nem aparece (loader.ts o remove) -->
+      <i class="loader__boot"></i>
       <svg viewBox={`0 0 ${SIMBOLO_W} ${SIMBOLO_H}`} aria-hidden="true">
         {PARTES.c.map(([d, x, y]) => (
           <path d={d} transform={`translate(${x} ${y})`} fill="#0A0A0B" />
@@ -31,16 +33,19 @@ const h = t.hero;
       <h1 class="hero__promessa">{h.promessa}</h1>
       <p class="hero__apoio">{h.apoio}</p>
     </div>
-    <div class="hero__botoes">
-      <a class="btn btn--principal" href="#diagnostico">
-        <svg class="btn__ico" viewBox="0 0 16 16" aria-hidden="true">
-          <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"></path>
-        </svg>
-        {h.botaoPrincipal}
-      </a>
-      <a class="btn btn--contorno" href="#exemplo">
-        {h.botaoSecundario}
-      </a>
+    <div class="hero__acao">
+      <div class="hero__botoes">
+        <a class="btn btn--principal" href="#diagnostico">
+          {h.botaoPrincipal}
+          <svg class="btn__ico" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </a>
+        <a class="btn btn--contorno" href="#projetos">
+          {h.botaoSecundario}
+        </a>
+      </div>
+      <p class="hero__nota">{h.nota}</p>
     </div>
   </div>
 </section>
