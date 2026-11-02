@@ -50,6 +50,12 @@
 .tem-gl .hero__simbolo svg {
   visibility: hidden;
 }
+/* antes da entrada (movimento/entrada.ts): nada pronto aparece de estalo */
+.is-loading .hero__titulo .w,
+.is-loading .hero__simbolo svg,
+.is-loading .hero__rodape {
+  opacity: 0;
+}
 
 .hero__rodape {
   position: absolute;

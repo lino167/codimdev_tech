@@ -19,6 +19,14 @@ const { t } = Astro.props;
     <meta name="description" content={t.meta.descricao} />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Com JS, o hero começa escondido para a entrada (o is-loading sai em movimento/entrada.ts).
+         Sem JS, a classe nunca existe e tudo aparece. Se algo falhar, a página se mostra sozinha em 5 s. -->
+    <script is:inline>
+      document.documentElement.classList.add('is-loading');
+      setTimeout(function () {
+        document.documentElement.classList.remove('is-loading');
+      }, 5000);
+    </script>
     <noscript>
       <link rel="stylesheet" href="/fonts/fontes.css" />
     </noscript>
