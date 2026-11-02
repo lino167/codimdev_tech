@@ -50,6 +50,11 @@
 .tem-gl .hero__simbolo svg {
   visibility: hidden;
 }
+/* com o título desenhado pelos pontos (mundo/titulo.ts), o HTML fica transparente: continua na página para
+   leitores de tela, para o SEO e para a seleção de texto */
+.hero__titulo.is-gl .w {
+  color: transparent;
+}
 /* antes da entrada (movimento/entrada.ts): nada pronto aparece de estalo */
 .is-loading .hero__titulo .w,
 .is-loading .hero__simbolo svg,

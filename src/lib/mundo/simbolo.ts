@@ -1,5 +1,6 @@
 // O símbolo da CodimDev para o mundo: os caminhos do SVG oficial (02_Logos/Simbolo/simbolo-positivo.svg,
-// viewBox 468 × 288) rasterizados numa textura RG. R = tinta dos dois C, G = cobertura dos elos vermelhos.
+// viewBox 468 × 288) rasterizados numa textura RGB. R = tinta dos dois C (com degradê, para o pontilhado),
+// G = cobertura dos elos vermelhos, B = cobertura pura dos C (para o símbolo sólido).
 
 export const SIMBOLO_W = 468;
 export const SIMBOLO_H = 288;
@@ -77,7 +78,7 @@ export function texturaSimbolo(escala = 3): HTMLCanvasElement {
       tinta *= 0.42 + 0.58 * Math.min(1, d * d);
       img.data[i] = Math.round(cobre * Math.min(1, tinta) * 255);
       img.data[i + 1] = elos[i + 3];
-      img.data[i + 2] = 0;
+      img.data[i + 2] = c[i + 3]; // B: cobertura pura dos C, para o símbolo sólido de borda nítida
       img.data[i + 3] = 255;
     }
   }

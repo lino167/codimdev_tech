@@ -33,7 +33,8 @@ export function iniciar() {
   // a entrada começa com as fontes aplicadas (sem troca de fonte no meio do movimento) ou no limite
   const limite = new Promise<void>((ok) => setTimeout(ok, ESPERA_FONTES_MS));
   void Promise.race([c.pronta, limite]).then(() => {
-    mundo?.medir();
+    // o título é rasterizado de novo com a Archivo já aplicada, antes de os pontos voarem
+    mundo?.medir(true);
     entrada({ mundo, reduzido });
   });
 
@@ -44,7 +45,21 @@ export function iniciar() {
       __codimdev: {
         mundo: m,
         reprisar(velocidade = 1) {
-          if (m) Object.assign(m.estado, { forma: 0, abre: 1, elos: 0, brilho: 0 });
+          // mata a entrada anterior (se ainda estiver rodando) para as duas não brigarem pelo mesmo estado
+          gsap.globalTimeline.getChildren(false, true, true).forEach((t) => t.kill());
+          if (m) gsap.killTweensOf(m.estado);
+          if (m)
+            Object.assign(m.estado, {
+              forma: 0,
+              abre: 1,
+              elos: 0,
+              brilho: 0,
+              alcance: 0,
+              voo: -1,
+              solido: 0,
+              final: 0,
+              solidez: 0,
+            });
           raiz.classList.add('is-loading');
           gsap.globalTimeline.timeScale(velocidade);
           return entrada({ mundo: m, reduzido });
