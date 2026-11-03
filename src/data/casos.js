@@ -1,6 +1,7 @@
 // Os quatro cases do túnel. `parede` é o lugar do plano antes de ser puxado (ângulo em radianos, raio).
 // A profundidade de cada um fica em PROF_DESTAQUES (src/motion/cena.js), na mesma ordem.
 // `ano` e `onde` ficam null enquanto não forem confirmados: a linha do case mostra só o que existe.
+// `tom: 'escuro'` vira o texto do case para branco quando a foto é escura.
 // Fotos provisórias (pranchas com a tela ou a logo real) até as fotos de 03_imagens/portfolio chegarem.
 export const casos = [
   {
@@ -42,6 +43,7 @@ export const casos = [
     onde: 'Blumenau',
     resumo: 'A minha própria marca. Dois C ligados por um elo vermelho: tudo conectado.',
     parede: { ang: 1.4, raio: 4.5 },
+    tom: 'escuro', // foto escura: texto branco sobre névoa de tinta
   },
 ];
 

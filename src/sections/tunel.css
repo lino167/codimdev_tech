@@ -99,20 +99,53 @@
   opacity: 0;
 }
 
+/* névoa por baixo do texto: quase lisa até a linha de cima do case e some antes do meio da foto */
 .caso__nevoa {
+  --nevoa: var(--fundo);
   position: absolute;
   inset: auto 0 0 0;
-  height: 42%;
+  height: 62%;
   background: linear-gradient(
     to top,
-    color-mix(in srgb, var(--fundo) 92%, transparent),
-    color-mix(in srgb, var(--fundo) 0%, transparent)
+    color-mix(in srgb, var(--nevoa) 94%, transparent) 0%,
+    color-mix(in srgb, var(--nevoa) 86%, transparent) 42%,
+    color-mix(in srgb, var(--nevoa) 55%, transparent) 66%,
+    color-mix(in srgb, var(--nevoa) 0%, transparent) 100%
   );
 }
 
+/* o contador ganha a mesma pílula do "Role para entrar": lê sobre qualquer foto */
 .caso__num {
   position: relative;
+  align-self: flex-start;
   font-size: var(--t-micro);
+}
+.caso__num span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fundo) 82%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* foto escura (tom: 'escuro'): texto branco, névoa e pílulas de tinta */
+.caso--escuro {
+  color: var(--fundo);
+}
+.caso--escuro .caso__nevoa {
+  --nevoa: var(--tinta);
+}
+.caso--escuro .caso__num span {
+  background: color-mix(in srgb, var(--tinta) 72%, transparent);
+}
+.caso--escuro .caso__abrir {
+  background: var(--fundo);
+  color: var(--tinta);
+}
+.caso--escuro .caso__abrir:hover {
+  background: var(--vermelho);
+  color: #fff;
 }
 
 .caso__base {
@@ -192,6 +225,17 @@
 
   .caso__nevoa {
     display: none;
+  }
+  /* aqui o texto fica abaixo da foto, sobre o fundo claro: volta à tinta */
+  .caso--escuro {
+    color: var(--tinta);
+  }
+  .caso--escuro .caso__abrir {
+    background: var(--tinta);
+    color: var(--fundo);
+  }
+  .caso--escuro .caso__num span {
+    background: color-mix(in srgb, var(--fundo) 82%, transparent);
   }
   .caso__base {
     position: absolute;

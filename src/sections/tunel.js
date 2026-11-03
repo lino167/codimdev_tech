@@ -7,9 +7,9 @@ const doisDigitos = (n) => String(n).padStart(2, '0');
 const POR_EXTENSO = ['Zero', 'Um', 'Dois', 'Três', 'Quatro', 'Cinco', 'Seis'];
 
 const caso = (c, i, total) => `
-<article class="caso" data-caso="${i}" aria-label="${c.cliente}">
+<article class="caso${c.tom === 'escuro' ? ' caso--escuro' : ''}" data-caso="${i}" aria-label="${c.cliente}">
   <div class="caso__nevoa caso__item" aria-hidden="true"></div>
-  <span class="caso__num numero caso__item">${doisDigitos(i + 1)} / ${doisDigitos(total)}</span>
+  <span class="caso__num numero caso__item"><span>${doisDigitos(i + 1)} / ${doisDigitos(total)}</span></span>
   <div class="caso__base">
     <div class="caso__texto">
       <p class="caso__meta caso__item">${metaDoCaso(c)}</p>
