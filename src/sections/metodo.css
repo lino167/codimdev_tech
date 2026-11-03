@@ -1,0 +1,141 @@
+.metodo__palco {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(20px, 3.5vh, 40px);
+  padding: calc(var(--margem) + 44px) 0 var(--margem);
+  overflow: hidden;
+}
+
+.metodo__titulo {
+  padding: 0 var(--margem);
+  font-size: clamp(40px, 4.4vw, 76px);
+  line-height: 1;
+}
+
+.metodo__janela {
+  --quadro-h: min(56svh, 72vw);
+  height: var(--quadro-h);
+}
+.metodo__tira {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  padding: 0 var(--margem);
+  will-change: transform;
+}
+.quadro {
+  flex: none;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--superficie);
+  opacity: 0.72;
+  transition: opacity 0.4s var(--ease);
+}
+.quadro.is-ativo {
+  opacity: 1;
+}
+.quadro__simbolo {
+  background: #f3efe8; /* o creme da Tenua, nas faixas acima e abaixo do símbolo quadrado */
+}
+.quadro img,
+.quadro svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* régua */
+.regua {
+  position: relative;
+  margin: 0 var(--margem);
+}
+.regua__fio {
+  height: 1px;
+  background: var(--fio);
+}
+.regua__cheio {
+  display: block;
+  height: 100%;
+  background: var(--tinta);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.regua__etapas {
+  position: relative;
+  height: 64px;
+}
+.etapa {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--t-ui);
+  color: var(--tinta-2);
+  transition: color 0.3s var(--ease);
+}
+.etapa:nth-child(1) {
+  left: 0;
+}
+.etapa:nth-child(2) {
+  left: 33.333%;
+}
+.etapa:nth-child(3) {
+  left: 66.666%;
+}
+.etapa:nth-child(4) {
+  right: 0;
+  align-items: flex-end;
+  text-align: right;
+}
+.etapa__marca {
+  width: 1px;
+  height: 8px;
+  margin-top: -4px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease);
+}
+.etapa__nome {
+  margin-top: 6px;
+  font-weight: 600;
+}
+.etapa__frase {
+  max-width: 26ch;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.etapa.is-ativa {
+  color: var(--tinta);
+}
+.etapa.is-ativa .etapa__marca {
+  transform: scaleY(2);
+}
+.etapa.is-ativa .etapa__frase {
+  opacity: 1;
+}
+
+.regua__frase {
+  display: none;
+}
+
+/* celular: as frases das etapas não cabem lado a lado; uma frase só, embaixo da régua */
+@media (max-width: 760px) {
+  .regua__etapas {
+    height: 40px;
+  }
+  .etapa__nome {
+    font-size: var(--t-micro);
+  }
+  .etapa__frase {
+    display: none;
+  }
+  .regua__frase {
+    display: block;
+    min-height: 2.9em;
+    font-size: var(--t-ui);
+  }
+}

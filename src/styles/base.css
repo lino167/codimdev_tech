@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--fonte);
+  font-size: var(--t-corpo);
+  font-weight: 400;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul,
+figure,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--vermelho);
+  outline-offset: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rotulo {
+  font-size: var(--t-ui);
+  color: var(--tinta-2);
+}
+
+/* pílulas */
+.pilula {
+  display: inline-flex;
+  align-items: center;
+  height: var(--pilula-h);
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pilula);
+  color: var(--tinta);
+  font-size: var(--t-ui);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.pilula:hover {
+  background: var(--tinta);
+  color: var(--fundo);
+}
+.pilula--tinta {
+  background: var(--tinta);
+  color: var(--fundo);
+}
+.pilula--tinta:hover {
+  background: var(--vermelho);
+}
+/* ação principal: vermelho chapado (Livro da Marca) */
+.pilula--vermelho {
+  background: var(--vermelho);
+  color: #fff;
+}
+.pilula--vermelho:hover {
+  background: var(--vermelho-hover);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

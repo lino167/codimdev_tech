@@ -1,0 +1,130 @@
+.estudio {
+  position: relative;
+  padding: clamp(96px, 16vh, 180px) var(--margem) clamp(80px, 12vh, 140px);
+}
+
+.estudio__pagina {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 27%;
+  margin-top: 28px;
+}
+
+.estudio__texto {
+  padding-right: clamp(24px, 4vw, 72px);
+  font-size: clamp(40px, 5.6vw, 96px);
+  line-height: 1;
+}
+
+.estudio__texto .p {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.foto-linha {
+  position: relative;
+  width: 2.5em;
+  height: 0.82em;
+  vertical-align: -0.08em;
+  border-radius: 0.12em;
+  overflow: hidden;
+  background: var(--fio);
+}
+.foto-linha img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* a margem: fio vertical de 1 px e as notas */
+.estudio__margem {
+  position: relative;
+  border-left: 1px solid var(--tinta);
+}
+.nota {
+  position: absolute;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: translateY(-50%);
+}
+.nota__ponto {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vermelho);
+}
+
+.estudio__fios {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.estudio__fios path {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 1;
+}
+
+/* avatar redondo com o nome ao lado */
+.assinatura {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(48px, 7vh, 88px);
+}
+.assinatura__foto {
+  flex: none;
+  width: clamp(88px, 8vw, 120px);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.assinatura figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--t-ui);
+  color: var(--tinta-2);
+}
+.assinatura strong {
+  font-size: clamp(32px, 3vw, 48px);
+  line-height: 1;
+  color: var(--tinta);
+}
+
+/* celular: a margem vira lista abaixo do texto, sem fios */
+@media (max-width: 760px) {
+  .estudio__pagina {
+    grid-template-columns: 1fr;
+  }
+  .estudio__texto {
+    padding-right: 0;
+  }
+  .estudio__margem {
+    border-left: 0;
+    border-top: 1px solid var(--tinta);
+    margin-top: 28px;
+    padding-top: 16px;
+  }
+  .estudio__margem ul {
+    display: grid;
+    gap: 10px;
+  }
+  .nota {
+    position: static;
+    left: auto;
+    transform: none;
+  }
+  .estudio__fios {
+    display: none;
+  }
+}

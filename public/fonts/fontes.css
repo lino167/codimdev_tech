@@ -1,5 +1,4 @@
-/* Só para quem está SEM JavaScript (carregado por <noscript> no Base.astro). Com JS, o carga.ts registra
-   as mesmas faces como FontFace a partir dos bytes medidos, e este arquivo nunca é baixado. */
+/* Fontes da marca. O site carrega as mesmas faces por src/styles/tokens.css. */
 @font-face {
   font-family: 'Archivo Condensada';
   font-weight: 800;

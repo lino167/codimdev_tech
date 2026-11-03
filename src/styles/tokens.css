@@ -1,0 +1,80 @@
+/* Tokens da CodimDev (Livro da Marca): três tintas, Archivo condensada nos títulos, Inter no texto. */
+@font-face {
+  font-family: 'Archivo Condensada';
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/archivo-condensada-800.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+}
+
+:root {
+  /* cores */
+  --fundo: #ffffff;
+  --tinta: #0a0a0b;
+  --tinta-2: #6b6b70;
+  --fio: #e4e4e7;
+  --pilula: #f5f5f6;
+  --superficie: #f5f5f6;
+  --vermelho: #e8132e;
+  --vermelho-hover: #c90f27;
+
+  /* tipo */
+  --fonte: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --fonte-titulo: 'Archivo Condensada', 'Arial Narrow', sans-serif;
+  --fonte-numero: 'JetBrains Mono', ui-monospace, monospace;
+  --t-micro: 12px;
+  --t-ui: 13px;
+  --t-corpo: 16px;
+  --t-hero: clamp(30px, 4vw, 72px);
+  --t-secao: clamp(48px, 6.4vw, 112px);
+  --t-cliente: clamp(64px, 10vw, 172px);
+  --tracking-titulo: -0.01em;
+
+  /* espaço */
+  --margem: clamp(16px, 2.6vw, 40px);
+  --pilula-h: 34px;
+
+  /* movimento */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* letreiro CODIMDEV: altura / largura (792 × 96) */
+  --marca-prop: 0.1212;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --margem: 16px;
+    --pilula-h: 32px;
+  }
+}
+
+/* títulos: Archivo condensada 800 */
+.titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  letter-spacing: var(--tracking-titulo);
+}
+/* números de etapa: JetBrains Mono em maiúsculas */
+.numero {
+  font-family: var(--fonte-numero);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

@@ -1,22 +1,14 @@
 ## Development
 
-When starting the dev server, use background mode:
+Site-portfólio da CodimDev em **Vite sem framework** (HTML, CSS e JS puros), com Three.js (túnel de trabalhos), GSAP + ScrollTrigger e Lenis. Estrutura vinda da template Margem (`../margem-arquivos/`, só referência).
 
 ```
-astro dev --background
+npm run dev      # servidor de desenvolvimento
+npm run build    # gera dist/
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
-
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+- Seções em `src/sections/` (HTML + CSS de cada uma), motion em `src/motion/`, dados em `src/data/`, tokens em `src/styles/tokens.css`.
+- Imagens provisórias reais: `python scripts/preparar-reais.py <pasta-raster>` grava `public/trabalhos/real/` e `src/data/pecas.json`.
+- Prompts das fotos e do motion definitivos: `../03_imagens/portfolio/` (a IA faz só a cena; o trabalho aplicado é sempre real).
+- O que ainda não foi informado aparece como `[preencher]` (classe `.pendente`) e não pode ir ao ar.
+- Nenhum commit sem a análise do Zacarias.

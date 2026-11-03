@@ -1,0 +1,129 @@
+.contato {
+  position: relative;
+  min-height: 130svh;
+  display: grid;
+  place-items: center;
+  padding: 0 var(--margem);
+  overflow: hidden;
+}
+
+.ceu {
+  position: absolute;
+  inset: 0;
+}
+.ceu__foto {
+  position: absolute;
+  width: calc(var(--w) * 1vw);
+  height: auto;
+  will-change: transform;
+}
+
+.depoimento {
+  position: relative;
+  z-index: 20;
+  max-width: 24em;
+  font-size: clamp(34px, 3.6vw, 64px);
+  line-height: 1.02;
+  text-align: center;
+  isolation: isolate;
+}
+.depoimento::before {
+  content: '';
+  position: absolute;
+  inset: -2.2em -3em;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--fundo) 55%, color-mix(in srgb, var(--fundo) 0%, transparent));
+}
+.depoimento em {
+  font-style: normal;
+  color: var(--vermelho);
+}
+.depoimento figcaption {
+  margin-top: 22px;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  color: var(--tinta-2);
+}
+
+/* rodapé */
+.rodape {
+  position: relative;
+  padding: clamp(64px, 10vh, 120px) var(--margem) 0;
+  overflow: hidden;
+}
+.rodape__colunas {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: clamp(48px, 8vh, 96px);
+}
+.rodape__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.rodape__chamada {
+  font-size: clamp(32px, 3vw, 52px);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.pilula--grande {
+  height: 48px;
+  padding: 0 22px;
+  font-size: var(--t-corpo);
+}
+.rodape__redes {
+  align-items: flex-end;
+}
+
+.sublinha {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat;
+  transition: background-size 0.35s var(--ease);
+}
+.sublinha:hover,
+.sublinha:focus-visible {
+  background-size: 100% 1px;
+}
+
+.rodape__linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--fio);
+  font-size: var(--t-ui);
+  color: var(--tinta-2);
+}
+
+/* o que ainda não foi informado aparece marcado, para não ir ao ar sem querer */
+.pendente {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px dashed var(--vermelho);
+  color: var(--vermelho);
+  font-size: var(--t-ui);
+}
+
+/* letreiro de borda a borda (largura da página menos as margens) */
+.rodape__marca {
+  overflow: hidden;
+  padding-bottom: var(--margem);
+}
+.rodape__marca svg {
+  width: 100%;
+  height: auto;
+  color: var(--tinta);
+}
+
+@media (max-width: 760px) {
+  .rodape__colunas {
+    grid-template-columns: 1fr;
+  }
+  .rodape__redes {
+    align-items: flex-start;
+  }
+  .ceu__foto {
+    width: calc(var(--w) * 2vw);
+  }
+}

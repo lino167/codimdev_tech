@@ -1,0 +1,210 @@
+.tunel {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--fundo);
+}
+
+.tunel__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- hero por cima do túnel ---------- */
+.tunel__hero {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tunel__frase {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: -1em;
+  font-size: var(--t-hero);
+  line-height: 1;
+  text-align: center;
+  isolation: isolate;
+}
+.tunel__frase em {
+  font-style: normal;
+  color: var(--vermelho);
+}
+/* halo na cor do fundo: as fotos distantes não brigam com o texto */
+.tunel__frase::before {
+  content: '';
+  position: absolute;
+  inset: -1.6em 18%;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--fundo) 45%, color-mix(in srgb, var(--fundo) 0%, transparent));
+}
+
+.tunel__marca {
+  position: absolute;
+  left: var(--margem);
+  bottom: var(--margem);
+  width: 49vw;
+  color: var(--tinta);
+}
+.tunel__marca svg {
+  width: 100%;
+  height: auto;
+}
+
+/* rótulos na altura da base do letreiro (ele não tem descendente) */
+.tunel__dica,
+.tunel__local {
+  position: absolute;
+  bottom: var(--margem);
+  font-size: var(--t-ui);
+}
+.tunel__dica {
+  left: 53vw;
+}
+.tunel__local {
+  right: var(--margem);
+}
+.tunel__dica span,
+.tunel__local span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fundo) 82%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- abertura dos cases ---------- */
+.tunel__casos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.caso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--margem) + 44px) var(--margem) var(--margem);
+}
+
+.caso__item {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.caso__nevoa {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--fundo) 92%, transparent),
+    color-mix(in srgb, var(--fundo) 0%, transparent)
+  );
+}
+
+.caso__num {
+  position: relative;
+  font-size: var(--t-micro);
+}
+
+.caso__base {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.caso__meta {
+  font-size: var(--t-ui);
+}
+.caso__nome {
+  margin: 10px 0 16px;
+  font-size: var(--t-cliente);
+  line-height: 0.88;
+}
+.caso__resumo {
+  max-width: 36ch;
+}
+.caso__abrir {
+  pointer-events: auto;
+}
+
+/* ---------- fim do túnel ---------- */
+.tunel__fim {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  visibility: hidden;
+  opacity: 0;
+}
+.tunel__fim-texto {
+  font-size: clamp(40px, 4.4vw, 76px);
+  line-height: 1;
+}
+
+.tunel__progresso {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+}
+.tunel__progresso span {
+  display: block;
+  height: 100%;
+  background: var(--tinta);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ---------- retrato (aspecto < 0,8): a foto do case fica inteira na largura e o texto vem logo abaixo ---------- */
+@media (max-aspect-ratio: 4/5) {
+  .tunel__marca {
+    width: calc(100vw - 2 * var(--margem));
+  }
+  /* o rótulo longo fica numa linha acima do letreiro e o "Role para entrar" acima dele */
+  .tunel__dica,
+  .tunel__local {
+    left: var(--margem);
+    right: var(--margem);
+    bottom: calc(var(--margem) + (100vw - 2 * var(--margem)) * var(--marca-prop) + 14px);
+  }
+  .tunel__dica {
+    bottom: calc(var(--margem) + (100vw - 2 * var(--margem)) * var(--marca-prop) + 62px);
+  }
+  .tunel__local span {
+    white-space: normal;
+  }
+  .tunel__frase::before {
+    inset: -1.4em 0;
+  }
+
+  .caso__nevoa {
+    display: none;
+  }
+  .caso__base {
+    position: absolute;
+    /* foto: 90vw de largura em 3:2 = 60vw de altura, centrada */
+    top: calc(50% + 30vw + 18px);
+    left: var(--margem);
+    right: var(--margem);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .caso__nome {
+    font-size: clamp(52px, 16vw, 88px);
+    margin: 6px 0 10px;
+  }
+}
