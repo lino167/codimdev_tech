@@ -4,10 +4,13 @@ Enquanto as fotos geradas (03_imagens/portfolio/) não chegam, os cases, as pare
 o Método e o céu do rodapé usam pranchas limpas: a tela ou a logo real sobre um fundo claro.
 
 Uso, de dentro de codimdev-site/:
-  python scripts/preparar-reais.py <pasta-raster>
+  python scripts/preparar-reais.py <pasta-raster> [--forcar]
 <pasta-raster> tem os SVGs oficiais já rasterizados em PNG (tenua-*.png, val-logo.png, codimdev-*.png)
 e os quadros dos vídeos (vinheta-4.jpg, bastidores-12.jpg, bastidores-18.jpg).
 Grava em public/trabalhos/real/*.webp e regrava src/data/pecas.json.
+
+As imagens de DEFINITIVAS já são fotos finais (originais em 03_imagens/portfolio/fotos/prontas/)
+e nunca são regravadas com a prancha provisória. `--forcar` regrava tudo, inclusive elas.
 """
 
 import json
@@ -26,6 +29,19 @@ SAIDA = RAIZ / "public" / "trabalhos" / "real"
 SUPERFICIE = (245, 245, 246)
 BRANCO = (255, 255, 255)
 CREME = (243, 239, 232)  # fundo das peças da Tenua
+
+# Fotos finais já no site: o script não as sobrescreve. Ao aprovar uma foto nova, acrescente o nome aqui.
+DEFINITIVAS = {
+    "destaque-tenua",  # sacola e caixa com o selo oficial (prontas/tenua-embalagem.png)
+    "i-tenua-marca",
+    "destaque-val",  # picape com a plotagem (prontas/val-carro-plotagem.png)
+    "i-val",
+    "destaque-marca",  # setup com o painel do Kraflo no monitor (prontas/codimdev-destaque-setup.png)
+    "i-marca",  # papelaria (prontas/codimdev-destaque.png)
+    "i-bot",  # celular com a tela do bot (prontas/destaque-bot.png)
+}
+FORCAR = False
+pulados = []
 
 
 def abrir(p):
@@ -73,6 +89,11 @@ def aparar(im, folga=0.06):
 
 
 def gravar(im, nome, lado_max=None, q=82):
+    destino = SAIDA / f"{nome}.webp"
+    if nome in DEFINITIVAS and destino.exists() and not FORCAR:
+        pulados.append(nome)
+        with Image.open(destino) as atual:
+            return atual.size
     im = im.convert("RGB")
     if lado_max and max(im.size) > lado_max:
         im.thumbnail((lado_max, lado_max), Image.Resampling.LANCZOS)
@@ -177,7 +198,11 @@ def main(raster):
     gravar(retrato.crop((170, 0, 1010, 840)), "avatar-lino", 320, q=86)
 
     print(len(lista), "peças +", len(indice), "fotos do índice em", SAIDA)
+    if pulados:
+        print("mantidas (fotos definitivas):", ", ".join(pulados))
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    args = [a for a in sys.argv[1:] if a != "--forcar"]
+    FORCAR = "--forcar" in sys.argv[1:]
+    main(args[0])
