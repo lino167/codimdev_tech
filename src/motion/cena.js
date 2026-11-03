@@ -231,7 +231,10 @@ export function criarCena(canvas, { reduzido }) {
   }
 
   redimensionar();
-  window.addEventListener('resize', redimensionar);
+  // Observa a caixa do próprio canvas, não a janela: ao entrar em tela cheia o pin do ScrollTrigger
+  // só corrige a altura da seção depois do evento resize, e o canvas ficava com a proporção antiga
+  // (fotos achatadas ou esticadas).
+  new ResizeObserver(redimensionar).observe(canvas);
 
   return { estado, quadro, pedir, distanciaCobrir, redimensionar };
 }
