@@ -39,6 +39,8 @@ DEFINITIVAS = {
     "destaque-marca",  # setup com o painel do Kraflo no monitor (prontas/codimdev-destaque-setup.png)
     "i-marca",  # papelaria (prontas/codimdev-destaque.png)
     "i-bot",  # celular com a tela do bot (prontas/destaque-bot.png)
+    "destaque-kraflo",  # oficina com o painel real no monitor (prontas/kraflo-destaque.png)
+    "i-kraflo",
 }
 FORCAR = False
 pulados = []
