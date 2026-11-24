@@ -14,6 +14,8 @@ A codimdev é o estúdio de desenvolvimento web do Zacarias: landing pages de co
 
 **Grafia:** sempre **codimdev**, tudo junto e em minúsculas, igual à logo. Vale também no começo de frase e em títulos. Nunca "Codim Dev", "CodimDev" ou "CODIMDEV".
 
+**Contato:** domínio **codimdev.com.br** e e-mail **contato@codimdev.com.br**, ambos na Hostinger. O domínio está registrado até 03/12/2027. O e-mail é um plano Premium Business Email com uma caixa, válido até 01/12/2026.
+
 **Fora do escopo por enquanto:** vídeo, motion e identidade visual. Podem entrar no catálogo depois; até lá, a marca não fala deles.
 
 ## Propósito, missão, visão e valores
@@ -232,7 +234,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 Faltam cinco decisões para a plataforma ficar completa.
 
-- [ ] Escolher o domínio e o e-mail da marca.
+- [ ] Renovar o plano de e-mail da Hostinger, que vence em 01/12/2026, ou confirmar que a renovação automática está ligada.
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
