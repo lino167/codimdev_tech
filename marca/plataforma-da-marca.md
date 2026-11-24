@@ -64,14 +64,25 @@ Todo projeto passa por três frentes, da descoberta ao código. O que entra em c
 
 ## Como trabalho
 
-Um projeto típico de landing page leva cerca de 2 semanas e segue seis etapas, com aprovação do cliente ao fim de cada uma.
+Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do cliente ao fim de cada etapa. O que muda de um serviço para outro é o tamanho de cada etapa e o ponto de partida.
 
-1. **Conversa inicial (WhatsApp ou vídeo):** entendo o negócio, o que vende, para quem e onde o cliente compra hoje.
+1. **Conversa inicial (WhatsApp ou vídeo):** entendo o negócio, o que vende, para quem e como o cliente chega hoje.
 2. **Proposta por escrito:** escopo, prazo, preço e o que não está incluso. Nada começa sem aceite.
 3. **Entrada de 50%:** por Pix ou link de pagamento. A data de início só é reservada com a entrada.
-4. **Protótipo navegável:** o cliente vê e clica nas telas antes de qualquer código. Inclui 2 rodadas de ajuste.
-5. **Desenvolvimento e testes:** código, versão de celular, velocidade e formulários testados.
-6. **Entrega e 50% restante:** site no ar, guia curto de uso e um prazo de [N] dias para pequenos ajustes.
+4. **Descoberta e UX:** briefing estruturado, mapa de páginas e fluxos e wireframes. Em projetos maiores, pesquisa com usuários e testes de usabilidade.
+5. **UI e protótipo navegável:** identidade do cliente aplicada à interface, guia de estilos e protótipo em alta fidelidade. O cliente vê e clica nas telas antes de qualquer código. Inclui 2 rodadas de ajuste.
+6. **Desenvolvimento e testes:** código responsivo, integrações, SEO técnico básico, velocidade (Core Web Vitals) e formulários testados.
+7. **Entrega e 50% restante:** projeto no ar, guia curto de uso e um prazo de [N] dias para pequenos ajustes.
+
+**O que muda em cada serviço:**
+
+| Serviço | Ponto de partida | O que pesa mais | Prazo típico |
+| --- | --- | --- | --- |
+| Landing pages focadas em conversão | Briefing curto e a oferta da campanha | Página rápida e feita para medir leads e vendas; descoberta enxuta | Cerca de 2 semanas |
+| Sites institucionais | Mapa de páginas e o que o cliente pesquisa | Arquitetura da informação, SEO básico e captação por WhatsApp e formulário | [PRAZO] |
+| Redesign e CRO/UX | Diagnóstico do que está custando venda, com o site ou sistema atual | Mexer só no que importa: velocidade, celular, checkout e formulário | [PRAZO] |
+| Sistemas web, dashboards e MVPs | Fluxos e protótipo navegável, antes de qualquer código | Validar com usuário e entregar em fases, começando pelo essencial | [PRAZO] |
+| Design system e componentização | Levantamento das telas e dos componentes que o time já usa | Componentes no Figma e em código, documentados para o time continuar | [PRAZO] |
 
 **Regras do processo:**
 
@@ -79,6 +90,7 @@ Um projeto típico de landing page leva cerca de 2 semanas e segue seis etapas, 
 - Pedido fora do escopo vira um orçamento novo, nunca um "só mais isso".
 - Um projeto por vez. A capacidade hoje é de cerca de 10 horas por semana, enquanto a CLT continua.
 - Domínio, hospedagem e contas ficam no nome do cliente.
+- Projetos maiores (sistemas, MVPs e design systems) podem ser entregues em fases, cada uma com escopo, prazo e preço por escrito.
 
 ## Público e personas
 
@@ -200,7 +212,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam nove decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
 - [ ] Fechar os preços de cada serviço e do plano mensal.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
@@ -209,4 +221,5 @@ Faltam oito decisões para a plataforma ficar completa. Os preços marcados como
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
+- [ ] Definir o prazo típico de cada serviço e se os projetos maiores (sistemas, MVPs, design systems) são pagos em 50% e 50% ou por fases.
 - [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.
