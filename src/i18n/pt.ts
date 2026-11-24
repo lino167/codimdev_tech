@@ -75,7 +75,10 @@ export const pt = {
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
     nota: 'Orçamento pelo WhatsApp · resposta em até 24 horas úteis',
+    foto: 'Zacarias, de braços cruzados, de frente para você',
   },
+  // os dois cursores que montam a página (motor/cursores.ts)
+  motor: { design: 'design', codigo: 'código' },
   // cena 02: a barrinha risca a parte que falha em cada frase
   escapa: {
     frases: [

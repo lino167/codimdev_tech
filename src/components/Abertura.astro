@@ -1,7 +1,9 @@
 ---
-// Cena 01: a barra de quatro colunas, o título (que a barrinha-cursor escreve, movimento/abertura.ts), os botões e,
-// ao lado, uma janela de navegador esboçada em traços tracejados, esperando. Sem JS o título é o texto comum.
+// Cena 01, o hero: o título (que o cursor `código` escreve, movimento/abertura.ts), o apoio e os botões; atrás, a logo
+// oficial gigante de ponta a ponta (o `design` risca o contorno, o `código` preenche) e, na frente dela, o Zacarias
+// recortado. Sem JS: tudo aparece pronto (logo cheia, texto comum).
 import type { Textos } from '../i18n/pt';
+import { LOGO } from '../lib/marca/logo';
 import Barra from './Barra.astro';
 
 interface Props {
@@ -11,9 +13,38 @@ const { t } = Astro.props;
 const a = t.abertura;
 ---
 
-<section class="abertura pagina" id="inicio">
-  <Barra t={t} />
-  <div class="abertura__grade">
+<section class="abertura" id="inicio" data-rotulos={JSON.stringify(t.motor)}>
+  <div class="pagina abertura__barra">
+    <Barra t={t} />
+  </div>
+  <div class="abertura__palco" aria-hidden="true">
+    <svg class="abertura__logo" viewBox={LOGO.viewBox} focusable="false" data-logo>
+      <g data-preenche>
+        <path d={LOGO.cinza} fill="currentColor" fill-rule="evenodd"></path>
+        <path d={LOGO.carmim} fill="var(--color-carmim)" fill-rule="evenodd"></path>
+      </g>
+      <path
+        class="abertura__contorno"
+        d={LOGO.cinza}
+        fill="none"
+        fill-rule="evenodd"
+        pathLength="1"
+        data-contorno
+      ></path>
+    </svg>
+    <img
+      class="abertura__foto"
+      src="/img/zacarias.webp"
+      srcset="/img/zacarias-m.webp 420w, /img/zacarias.webp 840w"
+      sizes="(max-width: 700px) 56vw, 36vw"
+      width="840"
+      height="1050"
+      alt=""
+      data-foto
+      fetchpriority="high"
+    />
+  </div>
+  <div class="pagina abertura__topo">
     <div class="abertura__corpo">
       <h1 class="abertura__titulo" data-digita>
         {a.titulo.antes}
@@ -31,20 +62,6 @@ const a = t.abertura;
       </div>
       <p class="abertura__nota mono">{a.nota}</p>
     </div>
-    <svg class="abertura__esboco" viewBox="0 0 600 380" aria-hidden="true" focusable="false" data-esboco>
-      <rect class="e" x="2" y="2" width="596" height="376" rx="4"></rect>
-      <line class="e" x1="2" y1="40" x2="598" y2="40"></line>
-      <rect class="e" x="60" y="10" width="380" height="20" rx="4"></rect>
-      <rect class="e" x="24" y="60" width="552" height="130" rx="4"></rect>
-      <line class="e" x1="330" y1="76" x2="560" y2="174"></line>
-      <line class="e" x1="560" y1="76" x2="330" y2="174"></line>
-      <rect class="e" x="44" y="84" width="200" height="12" rx="2"></rect>
-      <rect class="e" x="44" y="108" width="160" height="12" rx="2"></rect>
-      <rect class="e" x="44" y="144" width="86" height="28" rx="4"></rect>
-      <rect class="e" x="24" y="214" width="172" height="116" rx="4"></rect>
-      <rect class="e" x="214" y="214" width="172" height="116" rx="4"></rect>
-      <rect class="e" x="404" y="214" width="172" height="116" rx="4"></rect>
-      <rect class="e" x="24" y="346" width="552" height="24" rx="4"></rect>
-    </svg>
   </div>
+  <p class="so-leitor">{a.foto}</p>
 </section>
