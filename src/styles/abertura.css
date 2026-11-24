@@ -1,23 +1,50 @@
-/* ABERTURA da página inicial (cena 01): a barra de quatro colunas, o título e os botões. A escrita do título pela
-   barrinha e a janela esboçada em traços entram na Parte 2. */
+/* ABERTURA (cena 01): a barra de quatro colunas, o título que a barrinha-cursor escreve, os botões e, ao lado,
+   uma janela de navegador esboçada em traços tracejados, esperando. */
 .abertura {
   min-height: 100svh;
   padding-top: 96px;
   padding-bottom: 64px;
   display: grid;
   align-content: start;
+  gap: 32px;
+}
+.abertura__grade {
+  display: grid;
   gap: 48px;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .abertura__grade {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    min-height: calc(100svh - 240px);
+  }
 }
 .abertura__corpo {
   display: grid;
   gap: 24px;
-  max-width: 880px;
-  padding-top: clamp(24px, 8vh, 96px);
 }
 .abertura__titulo {
+  position: relative;
   font-size: var(--t-titulo);
   line-height: 1.06;
   letter-spacing: -0.025em;
+}
+/* enquanto a barrinha escreve, as letras esperam (o texto completo fica para leitores de tela) */
+.digitando .letra {
+  opacity: 0;
+}
+.abertura__cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  animation: abertura-pisca 1s steps(1) infinite;
+}
+@keyframes abertura-pisca {
+  50% {
+    visibility: hidden;
+  }
 }
 .abertura__apoio {
   max-width: 56ch;
@@ -32,6 +59,23 @@
 }
 .abertura__nota {
   max-width: 60ch;
+}
+.abertura__esboco {
+  width: 100%;
+  height: auto;
+  color: var(--color-grafite);
+  opacity: 0.4;
+}
+.abertura__esboco .e {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+}
+@media (max-width: 959px) {
+  .abertura__esboco {
+    max-width: 520px;
+  }
 }
 @media (max-width: 520px) {
   .abertura__botoes .btn {

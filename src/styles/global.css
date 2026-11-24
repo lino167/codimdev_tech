@@ -12,6 +12,7 @@
   --color-grafite: #18191d; /* texto principal e a cena escura */
   --color-grafite-suave: #5c5d63; /* legendas e etiquetas */
   --color-carmim: #c42a1f; /* a cor da marca */
+  --color-carmim-claro: #ec5a4d; /* carmim do tema escuro: só sobre grafite, em texto grande */
   --color-no-carmim: #ffffff; /* texto sobre carmim */
   --color-floresta: #2f6e54; /* confirmação, só em telas de produto desenhadas */
   --color-erro: #8e1b12; /* erro, sempre com texto e ícone */

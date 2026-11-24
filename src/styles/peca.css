@@ -1,0 +1,293 @@
+/* PEÇA PRINCIPAL (cena 03): uma janela de navegador riscada em SVG, presa por 5 telas, com o texto de cada etapa
+   embaixo e a barra de etapa que anda com a rolagem. Sem JS ou com movimento reduzido: a janela aparece pronta e as
+   cinco etapas viram uma lista (.peca__lista). Com JS, a classe .peca--animada liga o palco. */
+.peca {
+  position: relative;
+  padding-top: clamp(64px, 10vh, 120px);
+}
+.peca__topo {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+.peca__titulo {
+  max-width: 1000px;
+  font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.peca__palco {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  min-height: 100svh;
+  padding: 88px var(--gutter) 28px;
+  color: var(--color-grafite);
+  overflow: clip;
+}
+.peca__cena {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  perspective: 1600px;
+}
+.peca__janela {
+  width: min(100%, calc((100svh - 330px) * 1.6667), 1040px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.peca__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--color-grafite);
+}
+
+/* o texto da etapa e a barra de etapa */
+.peca__texto {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  max-width: 880px;
+  margin: 20px auto 0;
+  min-height: 150px;
+  align-content: start;
+}
+.peca__rotulo {
+  color: inherit;
+  opacity: 0.7;
+}
+.peca__frase {
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  font-size: var(--t-secao);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+.peca__frase .pal {
+  display: inline-block;
+}
+.peca__fato {
+  max-width: 62ch;
+  color: inherit;
+  opacity: 0.85;
+}
+.peca__trilha {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  height: 12px;
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  --p: 0;
+}
+.peca__trilha::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 2px;
+  margin-top: -1px;
+  background: currentColor;
+  opacity: 0.25;
+}
+.peca__trilha i {
+  position: relative;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+  opacity: 0.4;
+}
+.peca__trilha .barrinha {
+  position: absolute;
+  top: 0;
+  left: calc(var(--p) * (100% - var(--barra-w)));
+}
+
+/* modo estático: sem JS ou com movimento reduzido */
+.peca:not(.peca--animada) .peca__palco {
+  min-height: 0;
+  padding-bottom: 0;
+}
+.peca:not(.peca--animada) .peca__texto,
+.peca:not(.peca--animada) .peca__trilha {
+  display: none;
+}
+.peca__lista {
+  max-width: 880px;
+  margin: 24px auto 0;
+  padding: 0 var(--gutter);
+  list-style: none;
+  display: grid;
+  gap: 24px;
+}
+.peca__lista li {
+  display: grid;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-linha);
+}
+.peca__lista-frase {
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  font-size: var(--t-secao);
+  line-height: 1.16;
+}
+.peca--animada .peca__lista {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* a janela: traço fino, superfícies planas, a única sombra do site na janela do produto */
+.peca__svg .moldura {
+  fill: var(--color-algodao);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.peca__svg .traco {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.peca__svg .traco.fino {
+  stroke-width: 1.5;
+}
+.peca__svg .risco {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.peca__svg .bloco {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  transition:
+    fill 0.4s,
+    stroke-dasharray 0.4s;
+}
+.peca__svg[data-fase='solido'] .bloco,
+.peca__svg .bloco.cheio {
+  fill: var(--color-trama);
+  stroke-dasharray: none;
+}
+.peca__svg .barra-esb {
+  fill: currentColor;
+  opacity: 0.3;
+}
+.peca__svg .barra-txt {
+  fill: currentColor;
+  opacity: 0.22;
+}
+.peca__svg .esb,
+.peca__svg .txt {
+  transition: opacity 0.4s;
+}
+.peca__svg[data-fase='solido'] .esb {
+  opacity: 0;
+}
+.peca__svg .txt {
+  opacity: 0;
+}
+.peca__svg[data-fase='solido'] .txt {
+  opacity: 1;
+}
+/* o botão da página de exemplo é o único ponto carmim da janela */
+.peca__svg[data-fase='solido'] .botao-mock {
+  fill: var(--color-carmim);
+  stroke: none;
+}
+.peca__svg .balao {
+  fill: var(--color-algodao);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.peca__svg .folha {
+  fill: var(--color-trama);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.peca__svg .painel {
+  fill: var(--color-algodao);
+  stroke: currentColor;
+  stroke-width: 2;
+  filter: drop-shadow(0 8px 24px rgb(24 25 29 / 0.08));
+}
+.peca__svg .aba {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.peca__svg .barrinha-svg {
+  fill: var(--color-carmim);
+}
+.peca__svg .mono-svg {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  fill: currentColor;
+}
+.peca__svg .mono-svg.centro {
+  text-anchor: middle;
+}
+.peca__svg .mono-svg.sub {
+  fill: var(--color-grafite-suave);
+}
+.peca__svg .codigo-linha {
+  font-size: 18px;
+  letter-spacing: 0;
+  white-space: pre;
+}
+.peca__svg .svg-titulo {
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  fill: currentColor;
+}
+.peca__svg .svg-botao {
+  font-family: var(--font-texto);
+  font-weight: 500;
+  font-size: 17px;
+  fill: var(--color-no-carmim);
+}
+.peca__svg .svg-lista {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  fill: currentColor;
+}
+
+/* estado de repouso (sem JS, ou antes de o movimento começar): a janela pronta, no ar */
+.peca__svg [data-g='telaB'],
+.peca__svg [data-g='telaC'],
+.peca__svg [data-g='tabs'],
+.peca__svg [data-g='codigo'],
+.peca__svg [data-g='e1'],
+.peca__svg [data-g='celular'],
+.peca__svg [data-g='check'],
+.peca__svg [data-g='cursor'] {
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
+  .peca__palco {
+    padding-top: 72px;
+    grid-template-rows: auto auto auto;
+    align-content: center;
+  }
+  /* no celular a janela vai de borda a borda: é o que dá tamanho ao desenho */
+  .peca__janela {
+    width: calc(100% + var(--gutter) * 2);
+    margin-inline: calc(var(--gutter) * -1);
+  }
+  .peca__texto {
+    min-height: 168px;
+  }
+}

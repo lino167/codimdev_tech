@@ -9,6 +9,9 @@ import { loader } from './loader';
 import { suave } from './suave';
 import { revelar } from './revelar';
 import { prepararNav } from './nav';
+import { prepararAbertura } from './abertura';
+import { escapa } from './escapa';
+import { peca } from './peca';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,13 +24,19 @@ export async function iniciar() {
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hd = new URLSearchParams(location.search).has('hd');
   const nav = prepararNav();
+  // as letras do título esperam escondidas atrás do carregador; a barrinha começa a escrever quando a tela se abre
+  const abertura = prepararAbertura(reduzido);
 
   const c = carga(ARQUIVOS_FONTES);
   await loader({ carga: c, hd, reduzido });
 
   const rolagem = suave({ reduzido });
   nav.ligar(rolagem);
+  // ordem: a peça (que prende o palco) vem primeiro, para os gatilhos de baixo contarem com o espaço do pin
+  peca({ reduzido });
   revelar({ reduzido });
+  escapa(reduzido);
+  abertura?.entrar();
   if (reduzido) nav.mostrar();
   else gsap.delayedCall(CABECALHO_APARECE, () => nav.mostrar());
 

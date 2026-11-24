@@ -1,0 +1,25 @@
+/* NO AR (cena 04): a única cena escura. A peça principal já escureceu o palco; aqui o texto da virada. */
+.noar {
+  background: var(--color-grafite);
+  color: var(--color-algodao);
+  padding-block: clamp(96px, 20vh, 200px);
+}
+.noar__corpo {
+  display: grid;
+  gap: 24px;
+  max-width: 960px;
+}
+.noar__titulo {
+  font-size: var(--t-titulo);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+.noar [data-destaque] {
+  color: var(--color-carmim-claro);
+}
+.noar__apoio {
+  max-width: 56ch;
+  font-size: var(--t-sub);
+  line-height: 1.4;
+  color: #a3a4aa;
+}
