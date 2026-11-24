@@ -90,7 +90,7 @@ Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do c
 6. **Desenvolvimento e testes:** código responsivo, integrações, SEO técnico básico, velocidade (Core Web Vitals) e formulários testados.
 7. **Entrega e 50% restante:** projeto no ar, guia curto de uso e um prazo de [N] dias para pequenos ajustes.
 
-**O que muda em cada serviço** (prazos calculados com 10 horas por semana):
+**O que muda em cada serviço** (prazos confirmados em 24/11/2026, calculados com 10 horas por semana):
 
 | Serviço | Ponto de partida | O que pesa mais | Prazo típico |
 | --- | --- | --- | --- |
@@ -228,7 +228,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam sete decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
 - [ ] Confirmar os preços sugeridos de cada serviço e do plano mensal, a partir da hora de R$ 60.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
@@ -237,5 +237,4 @@ Faltam oito decisões para a plataforma ficar completa. Os preços marcados como
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
-- [ ] Confirmar os prazos calculados.
 - [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.
