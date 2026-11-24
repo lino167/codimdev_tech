@@ -47,3 +47,11 @@ Depoimento, cliente pagante, número de resultado, prêmio, preço. Depoimento s
 
 Logo (SVG, versões horizontal, empilhada e só símbolo, para fundo claro e escuro), 23 ícones próprios, tokens de cor e tipografia, recorte da foto do Zacarias (moletom bege, fundo transparente, 840 × 1050), modelos de Instagram, prévias de projetos autorais (VARN, Bio Bichos, R.S. Soluções).
 Os arquivos de fonte do site novo **ainda não existem** (IBM Plex Sans, Inter e IBM Plex Mono; todas no Google Fonts).
+
+## Quem é o Zacarias (para a página Sobre)
+
+- **Origem:** de Guadalupe, no Piauí; mora em Blumenau, SC. Fala com sotaque nordestino, e a marca quer isso **sutil** (regras em `historia.md`, seção "O sotaque do Piauí").
+- **Trajetória que pode ser contada:** mais de dez anos de obra e fábrica desde 2011 (siderúrgica, refinaria, papel e celulose, indústria têxtil), em Curitiba (PR), Ipojuca (PE), Pecém (CE), Guarulhos (SP), Pomerode (SC) e Ribas do Rio Pardo (MS). Técnico em Mecânica. Engenharia de Software (Unicesumar, EAD), em andamento. Cursos de desenvolvimento web.
+- **Projetos autorais com GitHub:** Kraflo CMMS (sistema de manutenção industrial), Kraflo OS Bot (bot de ordens de serviço) e Tenua (site de portfólio para um ateliê fictício).
+- **Ferramentas (só em linha pequena, para quem pergunta):** React, Next.js, TypeScript, Tailwind, Supabase, Python, Figma.
+- **Não entra no site:** o emprego atual (empresa, cargo, "CLT", horas disponíveis), o nome "Lino Estúdio", telefone, e-mail pessoal e endereço do currículo.

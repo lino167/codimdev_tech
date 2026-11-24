@@ -35,8 +35,8 @@
 
 ### 0 — Carregador · ato 1
 
-- **Gesto:** o símbolo da logo é desenhado em traço fino de grafite conforme os bytes chegam (progresso real, nunca timer). Em 100% a barrinha carmim risca o símbolo e trava no lugar, como um clique. O contador fica em mono: "CARREGANDO 64%".
-- **Texto:** só o contador.
+- **Gesto:** o símbolo da logo é desenhado em traço fino de grafite conforme os bytes chegam (progresso real, nunca timer). Em 100% a barrinha carmim risca o símbolo e trava no lugar, como um clique. O contador fica em mono: "JÁ JÁ · 64%" (o leitor de tela anuncia "Carregando a página").
+- **Texto:** só o contador. _Sotaque: "já já"._
 - **Passagem:** o traço do símbolo vira o cursor que vai escrever o título.
 
 ### 1 — Abertura · ato 1
@@ -63,7 +63,7 @@
 ### 4 — No ar · ato 3
 
 - **Gesto:** a única cena em grafite. A luz de status carmim pulsa uma vez e a janela, já site, recua de escala. O fundo volta a algodão ao rolar.
-- **Texto:** título "Agora o site trabalha para você." · apoio "Cada tela existe para vender, informar ou poupar tempo." · sem botão.
+- **Texto:** título "Pronto. Agora o site trabalha para você." _(sotaque: "pronto" como fecho)_ · apoio "Cada tela existe para vender, informar ou poupar tempo." · sem botão.
 - **Números:** nenhum.
 - **Passagem:** a janela encolhe e vira o ícone do primeiro cartão de serviço.
 
@@ -91,28 +91,112 @@
 ### 8 — Quem faz · ato 4
 
 - **Gesto:** o recorte do Zacarias sobre algodão, cercado de cotas de desenho técnico em traço fino: "design" de um lado, "código" do outro, a barrinha no meio. Sem filtro, sombra ou gradiente na foto.
-- **Texto:** título "Design e código pela mesma pessoa." · apoio "Não tem agência no meio. Você fala comigo do primeiro contato até o site no ar." · legenda "Zacarias, desenvolvedor e designer · Blumenau, SC".
+- **Texto:** título "Design e código pela mesma pessoa." · apoio "Não tem agência no meio. Você fala comigo do primeiro contato até o site no ar." · legenda "Zacarias, desenvolvedor e designer · de Guadalupe, PI, em Blumenau, SC" · link "Conheça a minha história" leva a `/sobre`.
 - **Números:** nenhum.
 - **Passagem:** a faixa grafite sobe por baixo da foto.
 
 ### 9 — Convite final · ato 4
 
 - **Gesto:** faixa grafite com o botão carmim (uma vez na página). Ao entrar, a luz de status acende. Um formulário curto de três campos: nome, WhatsApp (erro "confira o número com DDD") e o que você precisa.
-- **Texto:** título "Vamos ver o que um site resolve no seu caso?" · apoio "Escopo, prazo e preço por escrito antes de começar." · botão "Chamar no WhatsApp" · alternativa "contato@codimdev.com.br".
+- **Texto:** título "Vamos ver o que um site resolve no seu caso?" · apoio "Escopo, prazo e preço por escrito antes de começar. Pode chamar sem se avexar." · botão "Chamar no WhatsApp" · alternativa "contato@codimdev.com.br".
 - **Números:** 24 horas úteis.
 - **Passagem:** a linha carmim com a barrinha corre até o rodapé.
 
 ### 10 — Rodapé · ato 4
 
 - **Gesto:** a logo horizontal em escala grande e proporcional, sobre algodão; a linha carmim com a barrinha fecha a página, como nos modelos de Instagram. "Voltar ao topo" leva a barrinha de volta ao cursor da cena 1.
-- **Texto:** links (Serviços, Projetos, O combinado), Instagram `[preencher]`, "codimdev · desenvolvimento web · Blumenau, SC · 2026".
+- **Texto:** links (Serviços, Projetos, O combinado), Instagram `[preencher]`, "codimdev · desenvolvimento web · feito por um piauiense em Blumenau, SC · 2026" e links para todas as páginas (Serviços, Projetos, Como funciona, Sobre, Orçamento, Privacidade).
 
 ### 404 — extra
 
 - **Gesto:** a janela em traços, com um pedaço faltando. Ao clicar ou apertar uma tecla, a barrinha fecha o traço.
-- **Texto:** "Essa página não está no ar." · botão "Voltar ao início".
+- **Texto:** "Eita. Essa página não está no ar." · botão "Voltar ao início".
 
 **Teste dos títulos em ordem:** Seu site deveria vender. Não só existir. → Seu anúncio paga o clique. Sua página perde o lead. → Uma conversa vira protótipo, vira código e vai ao ar. → Agora o site trabalha para você. → Cinco serviços. Uma pessoa só. → Projetos autorais, chamados de autorais. → O combinado fica por escrito. → Design e código pela mesma pessoa. → Vamos ver o que um site resolve no seu caso?
+
+## O site tem várias páginas
+
+A página inicial é o **trailer**: conta a história e leva a cada página. Cada página tem a sua própria função, o mesmo traço e a mesma barra de quatro colunas em mono no topo.
+
+| Página           | Rota                                                                                                                 | Para quê                                                                                                                | Versão          |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------- |
+| Início           | `/`                                                                                                                  | Contar a história (as cenas acima) e levar ao orçamento                                                                 | 1               |
+| Serviços         | `/servicos`                                                                                                          | Os cinco serviços, cada um com a sua miniatura em traço                                                                 | 1               |
+| Cada serviço (5) | `/servicos/landing-page`, `/site-institucional`, `/redesign-e-conversao`, `/interfaces-e-sistemas`, `/design-system` | O problema, o que eu entrego, para quem é, perguntas comuns, pedido de orçamento. Cada uma responde uma busca no Google | 1               |
+| Projetos         | `/projetos`                                                                                                          | Índice numerado e cartões, todos com a etiqueta "Autoral"                                                               | 1               |
+| Cada projeto     | `/projetos/[nome]`                                                                                                   | O problema, o que eu fiz, as ferramentas e o link                                                                       | 1 (3 primeiros) |
+| Como funciona    | `/como-funciona`                                                                                                     | As seis etapas completas, o combinado e as perguntas de pagamento, revisão e domínio                                    | 1               |
+| Sobre            | `/sobre`                                                                                                             | Quem faz e de onde veio (seção abaixo)                                                                                  | 1               |
+| Orçamento        | `/orcamento`                                                                                                         | Formulário curto, WhatsApp e e-mail, e o que acontece depois                                                            | 1               |
+| Privacidade      | `/privacidade`                                                                                                       | O que eu faço com os dados do formulário (LGPD)                                                                         | 1               |
+| 404              | (qualquer rota errada)                                                                                               | "Eita. Essa página não está no ar."                                                                                     | 1               |
+| Notas            | `/notas`                                                                                                             | Artigos que ensinam, o mesmo pilar "ensinar" do Instagram                                                               | 2               |
+
+- **Menu:** `[ Serviços ]  [ Projetos ]  [ Como funciona ]  [ Sobre ]` e o botão "Pedir orçamento" (limite de quatro links do Design System).
+- **Gesto de cada página:** Serviços e cada serviço, a miniatura se desenha em traço ao entrar. Projetos, a prévia acende no índice. Como funciona, as etapas se riscam em sequência. Sobre, a trajetória vira uma linha com cotas. Orçamento, o formulário "fecha o traço" ao enviar. Entre páginas, a barrinha cruza a tela como transição curta.
+
+## A página Sobre
+
+**Eixo:** a trajetória como obra, do chão de fábrica ao código. A frase: "Da obra… à fábrica… ao código… ao seu site."
+
+- **O que entra:** a origem (Guadalupe, no Piauí), mais de dez anos de obra e fábrica em vários estados, a formação, os projetos autorais e as ferramentas.
+- **O que fica de fora, de propósito:** o emprego atual (empresa, cargo, "CLT"), as horas livres, o nome "Lino Estúdio" e os contatos pessoais do currículo (telefone, e-mail, endereço).
+
+### S1 — Abertura
+
+- **Gesto:** o recorte do Zacarias sobre algodão; a barrinha-cursor escreve o título.
+- **Texto:** título "Eu sou o Zacarias. Desenho e programo a mesma peça." · apoio "Sou de Guadalupe, no Piauí, e moro em Blumenau, Santa Catarina." · legenda "Zacarias, desenvolvedor e designer".
+- **Passagem:** a barrinha desce e vira o primeiro ponto da linha do tempo.
+
+### S2 — De onde eu vim
+
+- **Gesto:** linha do tempo desenhada como planta, com cotas em mono. Cada parada acende ao entrar: Guadalupe, PI → Curitiba, PR → Ipojuca, PE → Pecém, CE → Guarulhos, SP → Pomerode, SC → Ribas do Rio Pardo, MS.
+- **Texto:** título "Do Piauí para a obra." · apoio "Passei mais de dez anos montando e consertando máquina em siderúrgica, refinaria, fábrica de papel e de tecido, do Nordeste ao Sul." (de 2011 em diante, só cidades, sem empresas)
+- **Números:** "mais de dez anos" (do currículo).
+- **Passagem:** a linha chega ao ponto "2023" e a barrinha vira cursor.
+
+### S3 — O que a fábrica me ensinou
+
+- **Gesto:** três frases, cada uma marcada por uma barrinha. `[confirmar o tom, está na sua voz]`
+- **Texto:** título "Fábrica ensina o que site também precisa." · "Máquina parada custa dinheiro. Eu começo pelo que está custando venda." · "Quem usa a tela está de pé e com pressa. Eu desenho para esse dono." · "Combinado é combinado. Escopo, prazo e preço por escrito."
+- **Passagem:** a barrinha atravessa para a formação.
+
+### S4 — Como eu virei dev
+
+- **Gesto:** três cartões em trama que se firmam, em ordem: formação, estudo, projetos.
+- **Texto:** título "Comecei pela peleja que eu conhecia." · "Técnico em Mecânica." · "Engenharia de Software, em andamento, na Unicesumar." · "Projetos autorais: um sistema de manutenção para equipes de fábrica (Kraflo CMMS), um bot de ordens de serviço (Kraflo OS Bot) e um site de portfólio (Tenua), com links para o GitHub."
+- **Números:** nenhum além dos nomes. "Autoral" em todos.
+- **Passagem:** os cartões descem até a linha de ferramentas.
+
+### S5 — Como eu trabalho
+
+- **Gesto:** a janela em traços da peça principal, pequena, repete as cinco etapas em uma linha; abaixo, uma linha em mono com as ferramentas (só aqui, para quem é de tecnologia): React, Next.js, TypeScript, Tailwind, Supabase, Python, Figma.
+- **Texto:** título "Protótipo antes do código." · apoio "Você vê e clica nas telas antes de pagar a segunda parte." · link "Ver como funciona" leva a `/como-funciona`.
+- **Passagem:** a linha de ferramentas vira o fio da faixa final.
+
+### S6 — Convite
+
+- **Gesto:** faixa grafite com o botão carmim, igual à da página inicial.
+- **Texto:** título "Vamos conversar sobre o seu projeto?" · apoio "Se ficou alguma dúvida, me chama que a gente se entende, visse?" · botão "Chamar no WhatsApp".
+- **Passagem:** rodapé.
+
+## O sotaque do Piauí
+
+**Princípio:** sotaque de ritmo e de vocabulário, nunca de ortografia. Nada de "mermão", "num sei" ou frase escrita como se fala. Ele aparece nas margens, **no máximo um por cena**, e some onde há dinheiro, prazo ou lei: serviços, proposta, combinado, formulário, mensagem de erro e privacidade. A voz continua a do artesão, calma e sem exclamação; o sotaque é a pessoa por trás dela, não uma fantasia. **Você é a régua: eu sugiro, você corta o que não soar como o seu falar de Guadalupe.**
+
+| Onde                      | Texto                                                         | Palavra                      |
+| ------------------------- | ------------------------------------------------------------- | ---------------------------- |
+| Carregador                | "Já já · 64%"                                                 | já já                        |
+| Virada (cena 4)           | "Pronto. Agora o site trabalha para você."                    | pronto, como fecho           |
+| Convite final (cena 9)    | "…antes de começar. Pode chamar sem se avexar."               | sem se avexar                |
+| Quem faz (cena 8), rodapé | "de Guadalupe, PI" · "feito por um piauiense em Blumenau, SC" | a origem, sem palavra        |
+| Sobre, S4                 | "Comecei pela peleja que eu conhecia."                        | peleja                       |
+| Sobre, S6                 | "…me chama que a gente se entende, visse?"                    | visse (uma vez no site todo) |
+| 404                       | "Eita. Essa página não está no ar."                           | eita                         |
+
+- **Banco de palavras (dose baixa):** já já, pronto, peleja, sem se avexar, eita, visse, oxente (só no 404, se preferir no lugar de "eita").
+- **Evitar:** "arretado" e "pense num…" (soam forçados para quem contrata empresa), "égua" (não é do Piauí), "vixe", "cabra da peste", escrita fonética e qualquer estereótipo (seca, jegue, cangaço).
+- **Fora do site:** o mesmo vale para legendas do Instagram e respostas do WhatsApp, só no tom, nunca no fechamento de proposta.
 
 ## Direção visual
 
@@ -140,3 +224,7 @@
 - Prazo de ajustes depois da entrega (15 dias aparece nas mensagens, mas a Plataforma ainda o deixava em aberto).
 - Para cada projeto autoral: o problema e o que mudou, em uma frase real.
 - Depoimento: nenhum por enquanto, a seção não entra.
+- Número do WhatsApp da codimdev (o currículo tem um número com DDD 47: confirmar se é este) e o e-mail de contato do site.
+- Quais projetos autorais entram nas três primeiras páginas de projeto (Kraflo CMMS, Kraflo OS Bot e Tenua têm GitHub; VARN, Bio Bichos e R.S. Soluções têm prévia) e as capturas de tela de cada um.
+- Para o Sobre: uma ou duas coisas pessoais verdadeiras, se você quiser (um prato do Piauí, um time, o que fazia em Guadalupe), porque eu não invento.
+- Nome exato do curso técnico em mecânica, se for citado.
