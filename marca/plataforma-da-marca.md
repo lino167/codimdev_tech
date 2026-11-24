@@ -106,7 +106,7 @@ Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do c
 - Pedido fora do escopo vira um orçamento novo, nunca um "só mais isso".
 - Um projeto por vez. A capacidade hoje é de cerca de 10 horas por semana, enquanto a CLT continua.
 - Domínio, hospedagem e contas ficam no nome do cliente.
-- Projetos maiores (sistemas, MVPs e design systems) podem ser entregues em fases, cada uma com escopo, prazo e preço por escrito.
+- O pagamento é sempre 50% na entrada e 50% na entrega, em todos os serviços. Projetos maiores (sistemas, MVPs e design systems) podem ser divididos em fases; cada fase tem escopo, prazo e preço por escrito e é paga em 50% e 50% por si só.
 
 ## Público e personas
 
@@ -228,7 +228,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam nove decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
 - [ ] Confirmar os preços sugeridos de cada serviço e do plano mensal, a partir da hora de R$ 60.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
@@ -237,5 +237,5 @@ Faltam nove decisões para a plataforma ficar completa. Os preços marcados como
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
-- [ ] Confirmar os prazos calculados e definir se os projetos maiores (sistemas, MVPs, design systems) são pagos em 50% e 50% ou por fases.
+- [ ] Confirmar os prazos calculados.
 - [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.
