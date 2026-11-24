@@ -4,7 +4,6 @@
 // recortado. Sem JS: tudo aparece pronto (logo cheia, texto comum).
 import type { Textos } from '../i18n/pt';
 import { LOGO } from '../lib/marca/logo';
-import Barra from './Barra.astro';
 
 interface Props {
   t: Textos;
@@ -14,9 +13,6 @@ const a = t.abertura;
 ---
 
 <section class="abertura" id="inicio" data-rotulos={JSON.stringify(t.motor)}>
-  <div class="pagina abertura__barra">
-    <Barra t={t} />
-  </div>
   <div class="abertura__palco" aria-hidden="true">
     <svg class="abertura__logo" viewBox={LOGO.viewBox} focusable="false" data-logo>
       <g data-preenche>

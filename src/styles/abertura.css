@@ -3,7 +3,7 @@
 .abertura {
   position: relative;
   min-height: 100svh;
-  padding-top: 96px;
+  padding-top: 88px;
   overflow: clip;
   display: grid;
   align-content: start;
@@ -18,11 +18,7 @@
   display: grid;
   gap: 24px;
   max-width: min(640px, calc(100% - 36vw));
-  padding: 32px 0 48px;
-}
-.abertura__barra {
-  position: relative;
-  z-index: 2;
+  padding: 40px 0 48px;
 }
 .abertura__titulo {
   position: relative;

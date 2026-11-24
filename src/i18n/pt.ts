@@ -30,7 +30,6 @@ export const pt = {
     fechar: 'Fechar',
   },
   // a barra de quatro colunas em mono, no topo de cada página
-  barra: ['codimdev', 'Desenvolvimento web', 'Blumenau, SC', '2026'],
   rodape: {
     aria: 'Rodapé',
     colunas: [
