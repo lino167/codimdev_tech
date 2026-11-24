@@ -1,118 +1,125 @@
-# codimdev — a história do site
+# codimdev — a história do site (versão 2: cinematográfica)
+
+> **Esta versão substitui a primeira**, que tinha uma peça em desenho de linha plano, sem material e sem o cursor reagindo. A nova direção vem do estudo de 31 Sites of the Day da Awwwards (24/10 a 24/11/2026) e dos modelos da Profitize (Kairo, Traço, Margem, Sopro, Blip, Linno, Bilda e outros). A marca, a voz, as páginas, o Sobre e o sotaque continuam como estavam.
 
 ## A ideia
 
-- **Em uma frase:** uma prancheta de projeto em que um site é riscado em traço fino de grafite, etapa por etapa, e a barrinha carmim da codimdev o acende no fim. O que o visitante rola é o que eu faço por ele.
-- **A régua:** cada seção tem um gesto; seção parada ainda não está pronta.
-- **Eixo:** o processo (do bruto ao pronto).
-- **A frase da peça:** "Uma conversa… vira protótipo… vira código… passa nos testes… e vai ao ar."
-- **Por que funciona:** o site de quem faz sites não explica o processo, ele **é** o processo. Quem rola vê um traço virar interface e sai querendo que o próprio site seja feito assim.
+- **Em uma frase:** a página **se constrói na frente de quem a visita**, feita por **dois cursores, "design" e "código"**, que no fim se fundem em uma barrinha carmim só: uma pessoa só. O site de quem faz sites não conta o processo: ele acontece na tela.
+- **A régua:** cada seção tem um gesto; seção parada ainda não está pronta. E o cursor é parte da cena: o mouse do visitante também reage.
+- **Eixo:** o processo (do bruto ao pronto). **A frase da peça:** "Uma conversa… vira protótipo… vira código… passa nos testes… e vai ao ar."
+- **Os quatro atos:** o antes (a página vazia que dois cursores começam a desenhar) → o processo (a peça de camadas em 3D) → a virada (a luz acende, os cursores se fundem, o palco escurece) → o depois (serviços, projetos, combinado, o rosto, o convite).
+- **De onde vem cada coisa:** o motor dos dois cursores vem do **Kairo** (o site que se monta com um enxame de cursores); a pilha de camadas em 3D, do **Bilda**; a roda de projetos, do **Works Wheel** e do **Margem**; o nome gigante que se desenha e enche, do **Traço**; o HUD com dados reais, do **Carter Ogunsola**; o rosto na frente do nome, do **Linno**. Nada é copiado: é a mecânica, escrita para a marca da codimdev.
 
 ## Os quatro atos
 
-1. **O antes:** uma prancheta clara com grade fina. A barrinha carmim, que é o cursor, escreve "Seu site deveria vender. Não só existir." e uma janela de navegador fica esboçada em traços, esperando. Depois, três frases que o dono já pensou ("Seu anúncio paga o clique. Sua página perde o lead.") são riscadas.
-2. **O processo:** a peça principal. A janela esboçada vira conversa, protótipo, código, teste e site no ar, presa por cinco telas.
-3. **A virada:** o instante em que a luz de status acende e a janela firma. É o único momento em que a página escurece.
-4. **O depois:** os cinco serviços, os projetos autorais (chamados de autorais), o combinado por escrito, o rosto de quem faz e o convite para o WhatsApp.
+1. **O antes:** prancheta clara com grade; o símbolo no centro. O carregador termina e os dois cursores entram pelas bordas. "design" desenha o contorno do nome gigante e a caixa de cada bloco; "código" enche o nome de baixo para cima, escreve o título e faz o Zacarias subir de um desfoque na frente do nome.
+2. **O processo:** a peça principal. Cinco **placas** (camadas) de uma janela de navegador se empilham em 3D, uma por etapa, e a rolagem passeia a câmera por elas.
+3. **A virada:** as placas se achatam numa janela só, os dois cursores se fundem em uma barrinha carmim ("uma pessoa só") e o palco escurece. É o único momento escuro.
+4. **O depois:** serviços, projetos numa roda 3D, o combinado, o rosto e o convite. Tudo isso também é construído pelos cursores quando chega à tela.
 
-## A peça principal
+## O motor: dois cursores
 
-- **Linguagem:** construção em traços. Mesma ideia da "obra em traços 3D" do kit, trocando a loja de 12 × 8 m por uma **janela de navegador** (`kit/pecas/obra-tracos.ts` como motor). Em SVG e CSS 3D leve, sem WebGL: a marca é plana, de traço fino, sem brilho.
+- **Quem são:** dois cursores de editor multiplayer, com etiqueta em mono. `design` em grafite suave, `código` em grafite. Nada de cores extras: o carmim fica para a linha-guia e para a fusão final.
+- **O que cada um faz:**
+  - `design` desenha: a **caixa de seleção** (fio grafite de 1 px com quatro alças e a medida ao vivo, "420 × 24") e depois o **esboço** do bloco (tracejado cinza).
+  - `código` preenche: **digita** o texto, **acende** o título letra a letra, **revela** a foto (de preto e branco para a cor) e liga as interações.
+  - Os dois se encontram em um bloco: primeiro `design`, depois `código`. Quem termina vai para o próximo.
+- **Duplicar:** nas listas (cartões de serviço, regras do combinado, projetos), só o primeiro item nasce do zero; os outros saem de uma **cópia que `código` arrasta**, com o cursor de copiar, até a vaga, e o conteúdo é trocado.
+- **Ajustar:** alguns blocos nascem deslocados e `design` os arrasta até encaixar, com a **linha-guia em carmim** (o único carmim do motor, fino e curto).
+- **Quando:** cada seção começa a ser construída quando o topo dela passa de 62% da tela. Quem rola rápido vê tudo fechar na hora; nenhum cursor volta para cima atrás do que ninguém vê.
+- **O fim:** com o convite na tela, os dois cursores caminham até o centro e **se fundem numa barrinha carmim**, cuja etiqueta troca para "uma pessoa só". Em computador, essa barrinha passa a seguir o mouse do visitante, discreta, como cursor da página.
+- **Segurança:** `?pronto` na URL, movimento reduzido ou sem JavaScript abrem a página **já montada**. O conteúdo é HTML de verdade desde o começo (SEO, leitor de tela).
+
+## O HUD, o Tour e os extras
+
+- **HUD no pé da página (dados reais, nunca inventados):** `carregou em 0,9 s` (LCP medido na hora) · `60 fps` (média dos últimos 2 s) · `JS 38 KB` (soma do que veio) · `2 cursores · 1 pessoa` · `37/37 camadas` com uma barra de progresso. À direita: **Tour** (rola sozinho, parando em cada seção até ela ser construída), `1×` `2×`, **montar de novo**. É a prova do argumento de venda: site rápido, medido ali. Se o navegador não mede algo, mostra "—".
+- **Seleção ao passar o mouse:** todo clicável ganha a seleção do editor (fio grafite com as quatro alças) no hover e no foco: é a linguagem da página.
+- **Tema claro e escuro:** um botão no cabeçalho troca os tokens (os escuros já existem na marca) com um círculo que se abre do ponto do clique.
+- **Paleta de comandos (⌘K ou Ctrl K):** "Ir para…" com as páginas e as ações (mudar tema, fazer o tour, montar de novo, chamar no WhatsApp).
+- **Transição entre páginas:** uma máscara que corta a tela (200 ms).
+- **404 desenhado:** a janela em traços com um pedaço faltando.
+
+## A peça principal: a pilha de camadas
+
+- **Linguagem:** **placas em 3D** (CSS 3D, sem WebGL): cinco placas de uma janela de navegador, empilhadas ao longo do eixo Z em vista isométrica, uma por etapa. A câmera (a perspectiva do conjunto) gira e sobe com a rolagem. Cada placa é o desenho em SVG que já existe (conversa, protótipo, código, testes, no ar), agora com profundidade.
+- **Presa por 5 telas** (4 no celular). Abertura (6%): a primeira placa se firma. Respiro final (4%): as placas se achatam.
 - **Etapas:**
 
-| Etapa | Rótulo              | Parte da frase       | O que se vê                                                                                        | Fato real                                                           |
-| ----- | ------------------- | -------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 1     | Etapa 1 · Conversa  | "Uma conversa…"      | Balões em traço e uma folha "proposta" sendo escrita: escopo, prazo, preço                         | Proposta por escrito antes de começar; nada começa sem aceite.      |
-| 2     | Etapa 2 · Protótipo | "…vira protótipo…"   | A janela em traços ganha a grade; um cursor clica e troca entre três telas                         | Você clica nas telas antes de qualquer código. 2 rodadas de ajuste. |
-| 3     | Etapa 3 · Código    | "…vira código…"      | Os traços ganham preenchimento (trama) e texto real; ao lado, linhas de código em mono se escrevem | Design e código pela mesma pessoa, sem ruído entre etapas.          |
-| 4     | Etapa 4 · Testes    | "…passa nos testes…" | A janela encolhe até virar celular; três marcas em mono: celular, velocidade, formulário           | Versão de celular, velocidade e formulários testados.               |
-| 5     | Etapa 5 · No ar     | "…e vai ao ar."      | A barra de endereço escreve um domínio ilustrativo; a luz de status carmim acende                  | Guia curto de uso e 15 dias para ajustes `[confirmar]`.             |
+| Etapa | Rótulo         | Parte da frase       | O que se vê                                                                                                   | Fato real                                                           |
+| ----- | -------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| 1     | 01 · Conversa  | "Uma conversa…"      | A primeira placa entra: balões em traço e a folha de proposta; `código` escreve "Escopo", "Prazo", "Preço".   | Proposta por escrito antes de começar; nada começa sem aceite.      |
+| 2     | 02 · Protótipo | "…vira protótipo…"   | A segunda placa sobe e se encaixa por cima: o wireframe tracejado; `design` clica nas abas e as telas trocam. | Você clica nas telas antes de qualquer código. 2 rodadas de ajuste. |
+| 3     | 03 · Código    | "…vira código…"      | A terceira placa: a página ganha corpo e o painel de código se escreve (`código` digita).                     | Design e código pela mesma pessoa, sem ruído entre etapas.          |
+| 4     | 04 · Testes    | "…passa nos testes…" | A quarta placa vira celular; três testes passam, um de cada vez.                                              | Versão de celular, velocidade e formulários testados.               |
+| 5     | 05 · No ar     | "…e vai ao ar."      | A quinta placa: a barra de endereço escreve o domínio e a luz de status pulsa.                                | Guia curto de uso e 15 dias para pequenos ajustes `[confirmar]`.    |
 
-- **Material:** nenhum. Tudo em código (SVG, GSAP, CSS). A janela leva o canto "Ilustração" porque o domínio e as telas são exemplo.
-- **Barra flutuante:** durante a peça, no pé: "ETAPA 3 · CÓDIGO" em mono, com a barrinha andando.
+- **A virada:** nos últimos 4%, as cinco placas descem e se achatam numa janela só; a câmera fica de frente; o palco escurece; os dois cursores se fundem.
+- **Material:** nenhum (SVG e CSS 3D). A etiqueta "Ilustração" fica no canto.
 
 ## O roteiro cena a cena
 
 ### 0 — Carregador · ato 1
 
-- **Gesto:** o símbolo da logo é desenhado em traço fino de grafite conforme os bytes chegam (progresso real, nunca timer). Em 100% a barrinha carmim risca o símbolo e trava no lugar, como um clique. O contador fica em mono: "JÁ JÁ · 64%" (o leitor de tela anuncia "Carregando a página").
-- **Texto:** só o contador. _Sotaque: "já já"._
-- **Passagem:** o traço do símbolo vira o cursor que vai escrever o título.
+- **Gesto:** o símbolo da logo é desenhado em traço fino conforme os bytes chegam (progresso real); em 100% a barrinha carmim risca o símbolo e trava; a tela sobe. Contador em mono: "JÁ JÁ · 64%". _Sotaque: "já já"._
+- **Passagem:** os dois cursores entram pelas bordas, rodeiam o símbolo e se espalham.
 
-### 1 — Abertura · ato 1
+### 1 — Abertura · ato 1 (o hero)
 
-- **Gesto:** barra de quatro colunas em mono no topo ("codimdev · Desenvolvimento web · Blumenau, SC · 2026") e grade fina ao fundo, como nos modelos de Instagram. A barrinha-cursor escreve o título; a janela em traços fica esboçada à direita.
-- **Texto:** título "Seu site deveria vender. Não só existir." (**vender** em carmim) · apoio "Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar." · botões "Pedir orçamento" (carmim) e "Ver projetos" (secundário) · nota em mono "Orçamento pelo WhatsApp · resposta em até 24 horas úteis".
-- **Números:** 24 horas úteis.
-- **Passagem:** a barrinha desce riscando a grade até a primeira frase da cena seguinte.
+- **Gesto:** o **nome gigante** (a logo horizontal oficial, de borda a borda no pé do hero) é desenhado em **contorno** por `design` e **enche de baixo para cima** por `código`. O **Zacarias recortado** sobe de um desfoque na frente do nome, grande (cerca de 78% da altura da tela), e reage ao mouse: leve profundidade, a foto se desloca poucos pixels e o nome atrás, um pouco menos. O título é **escrito** por `código`.
+- **Texto:** título "Seu site deveria vender. Não só existir." (**vender** em carmim) · apoio "Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar." · botões "Pedir orçamento" e "Ver projetos" · nota "Orçamento pelo WhatsApp · resposta em até 24 horas úteis" · legenda da foto "Zacarias, desenvolvedor e designer".
+- **Passagem:** os cursores descem com a rolagem para a próxima frase.
 
 ### 2 — O que escapa · ato 1
 
-- **Gesto:** três frases do dono em grafite suave, uma por vez; a barrinha carmim risca, na diagonal, a parte que falha ("perde o lead", "espantando cliente", "não é sistema de gestão").
+- **Gesto:** três frases do dono; `design` **risca** a parte que falha com o traço carmim, e `código` escurece a frase. (Mesmo gesto de antes, agora feito pelos cursores.)
 - **Texto:** "Seu anúncio paga o clique. Sua página perde o lead." · "Seu formulário está espantando cliente." · "Planilha não é sistema de gestão." · apoio "Eu começo pelo que está custando venda, não pelo que é bonito."
-- **Números:** nenhum.
-- **Passagem:** a última barrinha vira cursor e desce até a janela em traços, que sobe ao centro.
 
 ### 3 — Do briefing ao site no ar · ato 2 (a peça principal)
 
-- **Gesto:** seção presa por cinco telas; a rolagem avança as cinco etapas da tabela acima. O texto de cada etapa entra por tempo; só a janela e a barra de etapa andam com a rolagem.
-- **Texto:** título "Uma conversa vira protótipo, vira código e vai ao ar." (**ar** em carmim) · cada etapa: rótulo, parte da frase e o fato real da tabela.
-- **Números:** 2 rodadas; 15 dias `[confirmar]`.
-- **Passagem:** a janela firma, a luz acende e a página escurece (cena 4).
+- Como descrito em "A peça principal": cinco placas em 3D, presa por 5 telas. Título "Uma conversa vira protótipo, vira código e vai ao ar." (**ar** em carmim).
+- **Celular:** a pilha vira vertical, em 4 telas; o texto da etapa fica logo abaixo, legível.
 
 ### 4 — No ar · ato 3
 
-- **Gesto:** a única cena em grafite. A luz de status carmim pulsa uma vez e a janela, já site, recua de escala. O fundo volta a algodão ao rolar.
-- **Texto:** título "Pronto. Agora o site trabalha para você." _(sotaque: "pronto" como fecho)_ · apoio "Cada tela existe para vender, informar ou poupar tempo." · sem botão.
-- **Números:** nenhum.
-- **Passagem:** a janela encolhe e vira o ícone do primeiro cartão de serviço.
+- **Gesto:** as placas se achatam, o palco escurece (a única cena escura) e **os dois cursores se fundem** numa barrinha carmim. A etiqueta vira "uma pessoa só".
+- **Texto:** título "Pronto. Agora o site trabalha para você." _(sotaque: pronto)_ · apoio "Cada tela existe para vender, informar ou poupar tempo."
 
 ### 5 — Serviços · ato 4
 
-- **Gesto:** cinco cartões em trama com o ícone de serviço (detalhe carmim). Ao entrar, cada cartão desenha em traço uma miniatura do que entrega (funil e botão, árvore de páginas, antes e depois, painel, componentes) e firma.
-- **Texto:** eyebrow "Serviços" · título "Cinco serviços. Uma pessoa só." (**só** em carmim) · apoio "Escopo, prazo e preço por escrito antes de começar." Cartões: "Landing pages focadas em conversão", "Sites institucionais", "Redesign e otimização de conversão", "Interfaces, dashboards e MVPs", "Design system" (frases do Livro da marca).
-- **Números:** 5 serviços. Sem preço.
-- **Passagem:** o último traço vira a linha do índice de projetos.
+- **Gesto:** cinco cartões construídos pelos cursores (caixa → esboço → conteúdo); cada um desenha em traço a miniatura do que entrega. Hover: a seleção do editor.
+- **Texto:** como antes ("Cinco serviços. Uma pessoa só.", os cinco cartões e "Escopo, prazo e preço por escrito antes de começar.").
 
 ### 6 — Projetos · ato 4
 
-- **Gesto:** índice numerado em mono; passar o mouse num nome acende a prévia (imagem em preto e branco que ganha cor). No celular, cartões. Etiqueta "Autoral" em todos.
-- **Texto:** título "Projetos autorais, chamados de autorais." · apoio "Fiz estes projetos para mostrar como eu trabalho. O primeiro cliente entra aqui." `[confirmar o tom]` · cartões: VARN, Bio Bichos, R.S. Soluções, com o problema e o que fiz `[preencher]`.
-- **Números:** nenhum.
-- **Passagem:** a prévia some e a barrinha vira marcador da lista de regras.
+- **Gesto:** os três projetos autorais numa **roda 3D** (um tambor de cartões que gira com a rolagem; cada giro traz o próximo para a frente). Passar o mouse num cartão mostra o nome; clicar abre a página do projeto. Cada cartão é uma tela do projeto em modo escuro, com a etiqueta "Autoral".
+- **Texto:** título "Projetos autorais, chamados de autorais." · apoio "Fiz estes projetos para mostrar como eu trabalho. O primeiro cliente entra aqui." `[confirmar o tom]`.
+- **Material:** prints do Kraflo CMMS, do Kraflo OS Bot e do Tenua (veja "Material").
 
 ### 7 — O combinado · ato 4
 
-- **Gesto:** cinco regras, cada uma marcada por uma barrinha que cai no lugar; no fim, a barrinha "assina" a última linha.
-- **Texto:** título "O combinado fica por escrito." · regras: "Proposta com escopo, prazo, preço e o que não está incluso. Nada começa sem aceite." · "50% para começar, 50% na entrega, por Pix ou link." · "2 rodadas de revisão por etapa. Pedido fora do escopo vira orçamento novo." · "Domínio, hospedagem e contas ficam no seu nome." · "Um projeto por vez, para cumprir o prazo."
-- **Números:** 50%, 2 rodadas.
-- **Passagem:** a assinatura desliza até a margem do retrato.
+- **Gesto:** as cinco regras são duplicadas por `código` (cada uma sai de uma cópia arrastada) e `design` as marca com a barrinha; no fim, "assina" a última linha.
+- **Texto:** "O combinado fica por escrito." e as cinco regras de sempre.
 
 ### 8 — Quem faz · ato 4
 
-- **Gesto:** o recorte do Zacarias sobre algodão, cercado de cotas de desenho técnico em traço fino: "design" de um lado, "código" do outro, a barrinha no meio. Sem filtro, sombra ou gradiente na foto.
-- **Texto:** título "Design e código pela mesma pessoa." · apoio "Não tem agência no meio. Você fala comigo do primeiro contato até o site no ar." · legenda "Zacarias, desenvolvedor e designer · de Guadalupe, PI, em Blumenau, SC" · link "Conheça a minha história" leva a `/sobre`.
-- **Números:** nenhum.
-- **Passagem:** a faixa grafite sobe por baixo da foto.
+- **Gesto:** o recorte do Zacarias com cotas de desenho técnico em traço ("design" de um lado, "código" do outro, a barrinha no meio). Os dois cursores aparecem uma última vez, um de cada lado das cotas.
+- **Texto:** "Design e código pela mesma pessoa." · apoio "Não tem agência no meio. Você fala comigo do primeiro contato até o site no ar." · legenda "Zacarias, desenvolvedor e designer · de Guadalupe, PI, em Blumenau, SC".
 
-### 9 — Convite final · ato 4
+### 9 — Convite final · ato 4 (faixa grafite)
 
-- **Gesto:** faixa grafite com o botão carmim (uma vez na página). Ao entrar, a luz de status acende. Um formulário curto de três campos: nome, WhatsApp (erro "confira o número com DDD") e o que você precisa.
-- **Texto:** título "Vamos ver o que um site resolve no seu caso?" · apoio "Escopo, prazo e preço por escrito antes de começar. Pode chamar sem se avexar." · botão "Chamar no WhatsApp" · alternativa "contato@codimdev.com.br".
-- **Números:** 24 horas úteis.
-- **Passagem:** a linha carmim com a barrinha corre até o rodapé.
+- **Gesto:** a faixa grafite com o botão carmim; a barrinha carmim (já fundida) acende a luz de status. Formulário curto de três campos.
+- **Texto:** "Vamos ver o que um site resolve no seu caso?" · "Escopo, prazo e preço por escrito antes de começar. Pode chamar sem se avexar." · "Chamar no WhatsApp".
 
 ### 10 — Rodapé · ato 4
 
-- **Gesto:** a logo horizontal em escala grande e proporcional, sobre algodão; a linha carmim com a barrinha fecha a página, como nos modelos de Instagram. "Voltar ao topo" leva a barrinha de volta ao cursor da cena 1.
-- **Texto:** links (Serviços, Projetos, O combinado), Instagram `[preencher]`, "codimdev · desenvolvimento web · 2026" e, sozinha numa linha abaixo, "feito por um piauiense" (nada mais) e links para todas as páginas (Serviços, Projetos, Como funciona, Sobre, Orçamento, Privacidade).
+- **Gesto:** o **nome gigante** de borda a borda, que se **desenha em contorno e enche de baixo para cima ligado à rolagem** (fecha o que o hero abriu). Embaixo, as colunas de links, o contato e, sozinha, "feito por um piauiense". A linha carmim com a barrinha fecha a página.
 
 ### 404 — extra
 
-- **Gesto:** a janela em traços, com um pedaço faltando. Ao clicar ou apertar uma tecla, a barrinha fecha o traço.
+- **Gesto:** a janela em traços com um pedaço faltando; o cursor `código` chega e fecha o traço.
 - **Texto:** "Eita. Essa página não está no ar." · botão "Voltar ao início".
 
-**Teste dos títulos em ordem:** Seu site deveria vender. Não só existir. → Seu anúncio paga o clique. Sua página perde o lead. → Uma conversa vira protótipo, vira código e vai ao ar. → Agora o site trabalha para você. → Cinco serviços. Uma pessoa só. → Projetos autorais, chamados de autorais. → O combinado fica por escrito. → Design e código pela mesma pessoa. → Vamos ver o que um site resolve no seu caso?
+**Teste dos títulos em ordem:** Seu site deveria vender. Não só existir. → Seu anúncio paga o clique. Sua página perde o lead. → Uma conversa vira protótipo, vira código e vai ao ar. → Pronto. Agora o site trabalha para você. → Cinco serviços. Uma pessoa só. → Projetos autorais, chamados de autorais. → O combinado fica por escrito. → Design e código pela mesma pessoa. → Vamos ver o que um site resolve no seu caso?
 
 ## O site tem várias páginas
 
@@ -205,40 +212,41 @@ A página inicial é o **trailer**: conta a história e leva a cada página. Cad
 
 ## Direção visual
 
-- **Paleta** (tokens do Design System; tema claro no site): algodão `#F5F4EF` (fundo da página) · trama `#E9E7E0` (cartões e janelas) · cru `#DEDCD4` (hover e selos) · linha `#D6D4CC` (fios e grade) · grafite `#18191D` (texto e a cena escura) · grafite suave `#5C5D63` (legendas) · carmim `#C42A1F` (botão principal, link, uma palavra por título, o traço do símbolo e o pingo do "i"). Floresta `#2F6E54` e erro `#8E1B12` só em campo e confirmação. Nada de branco puro nem preto puro nos fundos.
-- **Fontes** (arquivo local, sem `@font-face` solto): IBM Plex Sans 600 e 400 nos títulos e subtítulos · Inter 400 e 500 no texto e nos botões · IBM Plex Mono 400 em etiquetas, contadores e rótulos.
-- **Tom:** o artesão. Frase-exemplo: "Seu site deveria vender. Não só existir." Proibidas: inovador, disruptivo, solução completa, alavancar, "transforme seu negócio", "presença digital"; exclamação, caixa alta e emoji; "CodimDev", "Codim Dev", "CODIMDEV".
-- **Textura:** grade fina de 24 px em `linha`, barra de quatro colunas em mono, cantos de 4 px, sombra suave só na janela do produto, transições de cor de 150 ms. Sem gradiente, brilho ou pílula. Carmim nunca como fundo de seção.
-- **Movimento:** traço que se desenha (stroke), cursor-barrinha, entradas por tempo (`expo.out`), uma suavização só (Lenis). Sem WebGL.
+- **Paleta** (tokens do Design System; tema claro por padrão e **tema escuro disponível** pelo botão): algodão `#F5F4EF` (fundo) · trama `#E9E7E0` (cartões, janelas, placas) · cru `#DEDCD4` · linha `#D6D4CC` (fios e grade) · grafite `#18191D` (texto, cursores, a cena escura) · grafite suave `#5C5D63` (legendas, cursor `design`) · carmim `#C42A1F` (botão principal, uma palavra por título, linha-guia, a barrinha fundida). Escuro: `#141518` / `#1E1F23` / `#F2F1EC` / carmim `#EC5A4D`. Nada de branco puro nem de preto puro nos fundos.
+- **Fontes** (arquivo local): IBM Plex Sans 600 e 400 · Inter 400 e 500 · IBM Plex Mono 400.
+- **Tipografia como imagem:** o nome gigante (a logo oficial, de borda a borda), títulos de seção de 36 a 64 px, e rótulos em mono. A logo **não é redesenhada**: só aumentada, proporcional.
+- **Tom e sotaque:** como antes (o artesão; sotaque sutil e raro).
+- **Textura:** grade fina de 24 px, barra de quatro colunas em mono, cantos de 4 px, a única sombra na janela do produto e nas placas. Sem gradiente, brilho ou pílula. Carmim nunca como fundo de seção.
+- **Movimento:** cursores com curva suave; traço que se desenha; letras que acendem; **CSS 3D** nas placas e na roda (sem WebGL na primeira versão; um efeito de lente na foto do hero pode vir depois); entradas por tempo (`expo.out`); uma suavização só (Lenis).
 
 ## Material
 
-| Item                                       | Para qual cena     | Caminho                                | Legenda "imagem ilustrativa"?        |
-| ------------------------------------------ | ------------------ | -------------------------------------- | ------------------------------------ |
-| Logo e símbolo (SVG)                       | 0, rodapé, favicon | já existe no Design System             | não                                  |
-| 23 ícones próprios                         | 5 e interface      | já existem no Design System            | não                                  |
-| Recorte do Zacarias (840 × 1050)           | 8                  | já existe no Livro da marca            | não                                  |
-| Janela em traços, miniaturas de serviço    | 1, 3, 4, 5, 404    | código                                 | a janela da cena 3 leva "Ilustração" |
-| Prévias de VARN, Bio Bichos, R.S. Soluções | 6                  | capturas das prévias existentes        | não, são autorais e levam a etiqueta |
-| Arquivos de fonte                          | todas              | gerar com `scripts/fontes.py` adaptado | não                                  |
+| Item                                                                | Para qual cena                            | Caminho                                     | Observação                                                                 |
+| ------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------- |
+| Logo e símbolo (SVG)                                                | carregador, nome gigante, rodapé, favicon | já existe (`src/lib/marca/logo.ts`)         | não redesenhar                                                             |
+| Recorte do Zacarias (840 × 1050, fundo transparente)                | hero, quem faz, Sobre                     | já existe (`public/img/zacarias.webp`)      | **sem filtro, sombra ou gradiente**                                        |
+| Outras 4 fotos do Zacarias                                          | Sobre, quem faz                           | `imagens/zacarias/` do repositório da marca | `[enviar]`; sem elas, usa-se o mesmo recorte                               |
+| Prints do Kraflo CMMS, Kraflo OS Bot e Tenua, em modo escuro, 16:10 | roda de projetos e páginas de projeto     | `[enviar]`                                  | sem eles, cada cartão mostra a miniatura em traço do produto (já prevista) |
+| Placas em 3D, cursores, HUD, ⌘K, tema                               | peça e página inteira                     | código                                      | nenhum material                                                            |
+| Arquivos de fonte                                                   | todas                                     | `npm run fontes`                            | já existem                                                                 |
 
 ## [preencher]
 
-- Número do WhatsApp e o link do Instagram.
-- Domínio e e-mail (codimdev.com.br está no Design System, falta confirmar o registro).
-- Prazo de ajustes depois da entrega (15 dias aparece nas mensagens, mas a Plataforma ainda o deixava em aberto).
-- Para cada projeto autoral: o problema e o que mudou, em uma frase real.
-- Depoimento: nenhum por enquanto, a seção não entra.
-- Número do WhatsApp da codimdev (o currículo tem um número com DDD 47: confirmar se é este) e o e-mail de contato do site.
-- Quais projetos autorais entram nas três primeiras páginas de projeto (Kraflo CMMS, Kraflo OS Bot e Tenua têm GitHub; VARN, Bio Bichos e R.S. Soluções têm prévia) e as capturas de tela de cada um.
-- Para o Sobre: uma ou duas coisas pessoais verdadeiras, se você quiser (um prato do Piauí, um time, o que fazia em Guadalupe), porque eu não invento.
-- Nome exato do curso técnico em mecânica, se for citado.
+- Os **15 dias** de ajuste depois da entrega: confirmar.
+- **Prints** dos três projetos e as **fotos** extras do Zacarias (acima).
+- **Medição de visitas:** decidir se entra (e então atualizar `/privacidade`). O HUD mede só no navegador do visitante e não envia nada.
+- **CNPJ ou MEI** na página de privacidade, quando existir.
+- O que está incluso em "SEO básico" e "pronta para medir" (páginas de serviço).
+- Depoimento: nenhum por enquanto; a seção não entra.
 
 ## Decisões confirmadas
 
 - Todas as páginas do mapa entram na primeira versão, exceto Notas (versão 2).
-- WhatsApp: o número do currículo; e-mail `contato@codimdev.com.br`; Instagram `@codimdev`.
-- Projetos: Kraflo CMMS, Kraflo OS Bot e Tenua.
-- Sobre: com "corinthiano e nordestino com orgulho".
-- "Ainda sem clientes pagantes" pode ir ao ar. Segue o Astro.
-- Rodapé: só "feito por um piauiense".
+- WhatsApp `5547996496281`; e-mail `contato@codimdev.com.br`; Instagram `@codimdev`. Domínio `codimdev.com.br` (já na Hostinger).
+- Projetos: Kraflo CMMS, Kraflo OS Bot e Tenua. Sobre com "corinthiano e nordestino com orgulho". "Ainda sem clientes pagantes" pode ir ao ar.
+- Rodapé: só "feito por um piauiense" na linha final.
+- **Direção 2 (esta versão):** dois cursores que constroem a página, hero com o nome gigante e o Zacarias na frente, HUD com dados reais, placas em 3D, roda de projetos, tema, ⌘K.
+
+## Decisões em aberto
+
+- **O motor dos cursores:** escrito do zero (recomendado: 2 cursores, repositório pode ficar público) ou o motor do Kairo adaptado (exige repositório **privado** e chave SSH na Hostinger, pela licença do modelo).

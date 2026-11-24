@@ -127,28 +127,6 @@ main {
   letter-spacing: 0.02em;
 }
 
-/* a barra de quatro colunas em mono, no topo de cada página (modelos de Instagram da marca) */
-.barra {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
-  padding: 12px 0 0;
-  border-top: 2px solid var(--color-grafite);
-  list-style: none;
-}
-.barra li:last-child {
-  text-align: right;
-}
-@media (max-width: 600px) {
-  .barra {
-    grid-template-columns: 1fr 1fr;
-  }
-  .barra li:nth-child(2n) {
-    text-align: right;
-  }
-}
-
 /* botões: principal em carmim e secundário com contorno de 1 px. 44 px no mínimo. Hover só com mouse. */
 .btn {
   display: inline-flex;

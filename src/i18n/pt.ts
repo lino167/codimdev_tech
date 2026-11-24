@@ -30,7 +30,6 @@ export const pt = {
     fechar: 'Fechar',
   },
   // a barra de quatro colunas em mono, no topo de cada página
-  barra: ['codimdev', 'Desenvolvimento web', 'Blumenau, SC', '2026'],
   rodape: {
     aria: 'Rodapé',
     colunas: [
@@ -75,7 +74,10 @@ export const pt = {
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
     nota: 'Orçamento pelo WhatsApp · resposta em até 24 horas úteis',
+    foto: 'Zacarias, de braços cruzados, de frente para você',
   },
+  // os dois cursores que montam a página (motor/cursores.ts)
+  motor: { design: 'design', codigo: 'código' },
   // cena 02: a barrinha risca a parte que falha em cada frase
   escapa: {
     frases: [
