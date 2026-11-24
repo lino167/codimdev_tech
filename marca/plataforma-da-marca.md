@@ -228,7 +228,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam sete decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
 - [ ] Confirmar os preços sugeridos de cada serviço e do plano mensal, a partir da hora de R$ 60.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
