@@ -15,7 +15,7 @@ A direção está em `briefing.md` (fatos), `historia.md` (a história e as pág
 ### O que importa
 
 - **Grafia:** `codimdev`, tudo junto e minúsculo, em qualquer lugar (também em título e começo de frase). Nunca "CodimDev", "Codim Dev" ou "CODIMDEV" (cuidado com `text-transform: uppercase`: use `.mono--livre`).
-- **A ideia:** uma prancheta de projeto em que um site é riscado em traço fino e a barrinha carmim o põe no ar. Tudo é desenhado em código (SVG, CSS, GSAP). **Sem WebGL, sem foto de banco de imagem.** Exceção, a peça principal (cena 03): cinco clipes de vídeo gerados no Higgsfield a partir de quadros reais desenhados em código (`public/video/`, `public/img/peca/`); o site do vídeo é fictício e leva a etiqueta "Ilustração".
+- **A ideia (v3):** o portfólio como filme. Um enxame de partículas escreve `codimdev` e vira o retrato do Zacarias; ao rolar o retrato recua e os projetos passam como cenas, cada uma com a paleta do próprio projeto. **WebGL liberado só no hero** (`ogl`); o resto é HTML, CSS e GSAP. Sem foto de banco. A direção está em `historia.md` e a especificação em `prompt-site.md`; as versões anteriores estão em `arquivo/`.
 - **Serviços (os cinco):** landing pages de conversão, sites institucionais, redesign/CRO, interfaces/dashboards/MVPs, design system. **Não se fala** de vídeo, motion, identidade visual, redes sociais, tráfego pago, app nativo nem de **automação**. **Sem preço** no site.
 - **O logo é o do Livro da marca** (`src/lib/marca/logo.ts`): não redesenhe, não recolora, não estique.
 
@@ -54,7 +54,7 @@ O artesão: direto, calmo, cumpre o que combinou. Primeira pessoa ("eu desenho")
 - **Fatos reais ou `[preencher]`.** Nunca invente preço, número, cliente ou depoimento. Os projetos são **autorais** e o site diz isso.
 - **Fora do site:** o emprego atual, "CLT", "Lino Estúdio" e telefone/e-mail/endereço pessoais do currículo.
 - Rodapé: só "feito por um piauiense" na linha final (sem cidade).
-- O scroll dirige só a peça principal; o texto entra por tempo. Movimento reduzido: tudo já formado.
+- O scroll dirige só a câmera do hero e a troca de salas; o texto entra por tempo. Movimento reduzido: tudo já formado.
 - Celular conferido em 390 px; nenhuma letra cortada; `npm run check:fast` passa antes de cada commit.
 
 ## Documentation
