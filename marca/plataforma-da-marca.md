@@ -34,19 +34,21 @@ O propósito da codimdev é fazer a internet trabalhar a favor do pequeno negóc
 
 ## Serviços
 
-O catálogo tem cinco serviços de desenvolvimento web e UI/UX. Todo site e sistema passa por um protótipo navegável aprovado antes do código.
+O catálogo tem cinco serviços de desenvolvimento web e UI/UX (lista atualizada em 24/11/2026). Todo site e sistema passa por um protótipo navegável aprovado antes do código.
 
 | Serviço | O que entrega | Para quem | Preço de entrada |
 | --- | --- | --- | --- |
-| Landing page | Uma página de venda com catálogo, preços e pedido no WhatsApp; protótipo incluso | Quem vende pelo direct e quer uma vitrine | R$ 900 a 1.500 (sugestão) |
-| Site institucional | Várias páginas, rápido no celular e preparado para o Google | Negócio que precisa ser encontrado e passar confiança | [PREÇO] |
-| Sistema web | Interface e código de painéis: pedidos, clientes, financeiro | Quem controla tudo em planilha ou caderno | A partir de R$ 2.000 (sugestão) |
-| Auditoria de UX | Relatório dos problemas do site, por prioridade, e como corrigir | Quem já tem site e ele não gera contato | R$ 300 a 600 (sugestão) |
-| Protótipo navegável | Wireframe e protótipo clicável, vendido à parte quando o cliente só quer validar a ideia | Quem tem ideia de sistema ou app | R$ 600 a 1.200 (sugestão) |
+| Landing pages focadas em conversão | Páginas rápidas para campanhas de tráfego pago (Google Ads e Meta Ads), onde o cliente mede o retorno direto em leads e vendas | Quem anuncia e precisa que cada clique vire contato ou venda | [PREÇO] |
+| Sites institucionais para PMEs e prestadores de serviço | Posicionamento profissional, SEO básico e captação por WhatsApp e formulário | Clínicas, escritórios, indústrias e empresas B2B | [PREÇO] |
+| Redesign e otimização de conversão (CRO/UX) | Reformulação de sites ou sistemas antigos que estão lentos, ruins no celular ou perdendo vendas no checkout ou no formulário | Quem já tem site ou sistema e ele não rende | [PREÇO] |
+| Interfaces de sistemas web, dashboards e MVPs | Área de membros, portais de clientes, painéis administrativos sob medida e produtos digitais para validar | Startups e empresas que precisam validar um produto digital | [PREÇO] |
+| Design system e componentização | Padronização de telas e componentes para acelerar entregas | Empresas que já têm time de tecnologia | [PREÇO] |
+
+Os preços "sugestão" da lista anterior (landing page R$ 900 a 1.500, sistema web a partir de R$ 2.000, auditoria de UX R$ 300 a 600, protótipo R$ 600 a 1.200) ficaram de fora porque os serviços mudaram. Estão no histórico do git.
 
 **Depois da entrega:** plano mensal de evolução e manutenção, com pequenos ajustes e melhorias. Valor a definir.
 
-**Fora do catálogo (por enquanto):** vídeo, motion, identidade visual, gestão de redes sociais, tráfego pago e aplicativo nativo para loja de apps.
+**Fora do catálogo (por enquanto):** vídeo, motion, identidade visual, gestão de redes sociais, gestão de campanhas de tráfego pago (a landing page é feita para elas, mas a campanha não) e aplicativo nativo para loja de apps.
 
 ## Como trabalho
 
