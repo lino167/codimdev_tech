@@ -88,7 +88,7 @@ Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do c
 4. **Descoberta e UX:** briefing estruturado, mapa de páginas e fluxos e wireframes. Em projetos maiores, pesquisa com usuários e testes de usabilidade.
 5. **UI e protótipo navegável:** identidade do cliente aplicada à interface, guia de estilos e protótipo em alta fidelidade. O cliente vê e clica nas telas antes de qualquer código. Inclui 2 rodadas de ajuste.
 6. **Desenvolvimento e testes:** código responsivo, integrações, SEO técnico básico, velocidade (Core Web Vitals) e formulários testados.
-7. **Entrega e 50% restante:** projeto no ar, guia curto de uso e um prazo de [N] dias para pequenos ajustes.
+7. **Entrega e 50% restante:** projeto no ar, guia curto de uso e 15 dias corridos para pequenos ajustes dentro do escopo.
 
 **O que muda em cada serviço** (prazos confirmados em 24/11/2026, calculados com 10 horas por semana):
 
@@ -105,6 +105,8 @@ Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do c
 - 2 rodadas de revisão inclusas por etapa; a partir da terceira, cobradas à parte.
 - Pedido fora do escopo vira um orçamento novo, nunca um "só mais isso".
 - Um projeto por vez. A capacidade hoje é de cerca de 10 horas por semana, enquanto a CLT continua.
+- Depois da entrega, o cliente tem 15 dias corridos para pedir pequenos ajustes dentro do escopo. Pedido fora do escopo ou depois desse prazo vira orçamento novo ou plano mensal.
+- No WhatsApp, a resposta vem em até 24 horas úteis.
 - Domínio, hospedagem e contas ficam no nome do cliente.
 - O pagamento é sempre 50% na entrada e 50% na entrega, em todos os serviços. Projetos maiores (sistemas, MVPs e design systems) podem ser divididos em fases; cada fase tem escopo, prazo e preço por escrito e é paga em 50% e 50% por si só.
 
@@ -198,7 +200,7 @@ O Instagram é o canal principal de captação, e o WhatsApp é onde a venda fec
 | --- | --- | --- |
 | Instagram (feed) | Atrair e educar quem decide na empresa | 3 posts por semana |
 | Instagram (stories) | Bastidores, agenda e perguntas | 3 a 5 por semana |
-| WhatsApp | Atendimento, proposta e fechamento | Resposta em até [N] horas |
+| WhatsApp | Atendimento, proposta e fechamento | Resposta em até 24 horas úteis |
 | Site da codimdev | Vitrine, projetos e formulário de orçamento | Atualizado a cada projeto |
 
 **Pilares de conteúdo:**
@@ -228,10 +230,8 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam sete decisões para a plataforma ficar completa.
+Faltam cinco decisões para a plataforma ficar completa.
 
-- [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
-- [ ] Definir o prazo de resposta no WhatsApp.
 - [ ] Escolher o domínio e o e-mail da marca.
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.

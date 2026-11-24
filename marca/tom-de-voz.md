@@ -65,7 +65,7 @@ Respostas-padrão. Troque o que está entre colchetes. Uma mensagem curta por ve
 > Oi, [nome]. Passando para lembrar da parcela de [VALOR], com vencimento em [DATA]. Segue o link: [link]. Obrigado.
 
 **Entrega**
-> [Nome], seu [site/sistema] está no ar: [link]. Junto vai um guia curto de como usar. Você tem [N] dias para pedir ajustes. Se gostou do resultado, um depoimento de duas linhas me ajuda muito.
+> [Nome], seu [site/sistema] está no ar: [link]. Junto vai um guia curto de como usar. Você tem 15 dias para pedir ajustes. Se gostou do resultado, um depoimento de duas linhas me ajuda muito.
 
 **Quando não dá para aceitar**
 > [Nome], obrigado por pensar em mim. Neste momento não consigo pegar esse projeto com a qualidade que ele merece. Se puder esperar até [DATA], eu te chamo.
