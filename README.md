@@ -13,6 +13,7 @@ Este repositório reúne tudo o que existe sobre a marca nos artefatos do claude
 | [`instagram/`](instagram) | Modelos de Instagram: post, carrossel, Reels, story, destaques e post de auditoria de UX | "codimdev — Modelos de Instagram" |
 | [`identidade-exploracao/`](identidade-exploracao) | Comparação entre a identidade antiga e a proposta (carmim, IBM Plex) e quatro opções de fonte | "codimdev — Paleta e fonte próprias" |
 | [`guia-codimdev-sites/`](guia-codimdev-sites) | Guia de uso do plugin codimdev-sites | "Como usar o codimdev-sites" |
+| [`imagens/zacarias/`](imagens/zacarias) | Cinco fotos do Zacarias em WebP com fundo transparente, para o site | Enviadas por ele em 24/11/2026 |
 | [`legado/`](legado) | Landing page e painel da fase anterior, com o símbolo e a paleta antigos. Guardados só como referência | "CodimDev Landing Page" e "Codim Painel" |
 
 ## Marca em uma linha
