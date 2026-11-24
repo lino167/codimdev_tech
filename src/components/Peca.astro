@@ -1,24 +1,19 @@
 ---
-// Cena 03, a peça principal: cinco PLACAS de uma janela de navegador empilhadas em 3D (CSS: perspective + preserve-3d).
-// O palco fica preso por 5 telas e a rolagem dirige só a câmera (a rotação e a distância entre as placas); cada etapa
-// traz uma placa nova, que desce e se encaixa por cima das anteriores (movimento/peca.ts). Na virada as placas descem
-// e se achatam numa janela só. Sem JS ou com movimento reduzido: só a última placa, achatada, e a lista de etapas.
-// Todo texto vem de pt.ts; o JS lê as etapas, o código e o resto pelos atributos data-*.
+// Cena 03, a peça principal: cinco PLACAS empilhadas em 3D (CSS: perspective + preserve-3d). Cada placa mostra um
+// pedaço real, ainda que fictício, do trabalho: a conversa e a proposta, o protótipo de um site de exemplo, o código
+// sendo escrito, o site no celular com os testes e o site no ar. O palco fica preso por 5 telas e a rolagem dirige só a
+// câmera (movimento/peca.ts). Na virada as placas descem e se achatam numa janela só. Sem JS ou com movimento
+// reduzido: só a última placa, achatada, e a lista de etapas. Todo texto vem de pt.ts.
 import type { Textos } from '../i18n/pt';
-import PlacaJanela from './PlacaJanela.astro';
+import Mare from './Mare.astro';
+import Navegador from './Navegador.astro';
 
 interface Props {
   t: Textos;
 }
 const { t } = Astro.props;
 const p = t.peca;
-const dados = {
-  etapas: p.etapas,
-  codigo: p.codigo,
-  proposta: p.proposta,
-  endereco: p.endereco,
-  checklist: p.checklist,
-};
+const dados = { etapas: p.etapas, codigo: p.codigo, endereco: p.endereco };
 ---
 
 <section class="peca" id="como-funciona" data-peca data-dados={JSON.stringify(dados)} aria-labelledby="peca-titulo">
@@ -34,106 +29,104 @@ const dados = {
   <div class="peca__palco" data-palco data-tema="claro">
     <div class="peca__cena" data-cena aria-hidden="true">
       <div class="peca__conjunto" data-conjunto>
-        <!-- placa 1 · conversa -->
+        <!-- placa 1 · conversa e proposta -->
         <div class="placa" data-placa="0">
           <span class="placa__aba mono mono--livre">{p.abas[0]}</span>
-          <svg class="placa__svg" viewBox="0 0 1200 720" data-fase="solido" focusable="false">
-            <g data-g="e1">
-              {[
-                { x: 110, y: 150, w: 420, h: 124 },
-                { x: 190, y: 304, w: 420, h: 100 },
-                { x: 110, y: 434, w: 300, h: 84 },
-              ].map((b) => (
-                <g>
-                  <rect class="balao" x={b.x} y={b.y} width={b.w} height={b.h} rx="4" />
-                  <line
-                    class="traco risco"
-                    x1={b.x + 24}
-                    y1={b.y + 34}
-                    x2={b.x + b.w - 40}
-                    y2={b.y + 34}
-                    pathLength="1"
-                  />
-                  <line
-                    class="traco risco"
-                    x1={b.x + 24}
-                    y1={b.y + 60}
-                    x2={b.x + b.w - 90}
-                    y2={b.y + 60}
-                    pathLength="1"
-                  />
-                  {b.h > 100 && (
-                    <line
-                      class="traco risco"
-                      x1={b.x + 24}
-                      y1={b.y + 86}
-                      x2={b.x + b.w - 150}
-                      y2={b.y + 86}
-                      pathLength="1"
-                    />
-                  )}
-                </g>
+          <div class="placa__tela placa__tela--conversa">
+            <div class="chat">
+              {p.conversa.map((m) => (
+                <p class:list={['chat__msg', m.de === 'eu' && 'chat__msg--eu']} data-b>
+                  {m.texto}
+                </p>
               ))}
-              <rect class="folha" x="690" y="116" width="368" height="520" rx="4"></rect>
-              <text class="mono-svg" x="724" y="166" data-proposta-titulo>
-                {p.proposta.titulo}
-              </text>
-              {p.proposta.linhas.map((_, i) => (
-                <g>
-                  <text class="mono-svg" x="724" y={246 + i * 100} data-proposta-linha={i} />
-                  <line class="traco risco" x1="724" y1={272 + i * 100} x2="1022" y2={272 + i * 100} pathLength="1" />
-                  <line class="traco risco" x1="724" y1={294 + i * 100} x2="940" y2={294 + i * 100} pathLength="1" />
-                </g>
+            </div>
+            <div class="folha" data-b>
+              <b class="folha__titulo">{p.proposta.titulo}</b>
+              {p.proposta.itens.map(([rotulo, texto]) => (
+                <div class="folha__item" data-b>
+                  <span class="folha__rotulo">{rotulo}</span>
+                  <span>{texto}</span>
+                </div>
               ))}
-            </g>
-          </svg>
+            </div>
+          </div>
           <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
         </div>
-        <!-- placa 2 · protótipo -->
+
+        <!-- placa 2 · protótipo: o cursor clica nas três telas -->
         <div class="placa" data-placa="1">
           <span class="placa__aba mono mono--livre">{p.abas[1]}</span>
-          <PlacaJanela t={t} variante="prototipo" />
+          <div class="placa__tela" data-fase="proto">
+            <Navegador endereco={p.endereco}>
+              <div slot="barra" class="jan__abas">
+                {[0, 1, 2].map((i) => (
+                  <span class="jan__aba" data-aba={i}>
+                    {i + 1}
+                  </span>
+                ))}
+              </div>
+              <Mare t={t} tela="inicio" />
+              <Mare t={t} tela="cardapio" />
+              <Mare t={t} tela="contato" />
+            </Navegador>
+            <i class="barrinha placa__cursor" data-cursor></i>
+          </div>
           <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
         </div>
-        <!-- placa 3 · código -->
+
+        <!-- placa 3 · código: a página ao lado do código que a constrói -->
         <div class="placa" data-placa="2">
           <span class="placa__aba mono mono--livre">{p.abas[2]}</span>
-          <PlacaJanela t={t} variante="codigo" />
+          <div class="placa__tela" data-fase="solido">
+            <Navegador endereco={p.endereco} class="jan--estreita">
+              <Mare t={t} tela="inicio" />
+            </Navegador>
+            <div class="editor">
+              <div class="editor__nome mono-placa">index.html</div>
+              {p.codigo.map((_, i) => (
+                <div class="editor__linha">
+                  <i>{i + 1}</i>
+                  <span data-linha={i}></span>
+                </div>
+              ))}
+            </div>
+          </div>
           <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
         </div>
+
         <!-- placa 4 · testes: o mesmo site, num celular, e a lista de testes -->
         <div class="placa" data-placa="3">
           <span class="placa__aba mono mono--livre">{p.abas[3]}</span>
-          <svg class="placa__svg" viewBox="0 0 1200 720" data-fase="solido" focusable="false">
-            <!-- etapa 4: o mesmo site, agora num celular, e a lista de testes -->
-            <g data-g="celular">
-              <rect class="moldura risco" x="260" y="60" width="300" height="620" rx="4" pathLength="1"></rect>
-              <rect class="bloco cheio" x="280" y="100" width="260" height="170" rx="4"></rect>
-              <rect class="barra-esb" x="296" y="124" width="150" height="16" rx="2"></rect>
-              <rect class="barra-esb" x="296" y="150" width="120" height="16" rx="2"></rect>
-              <rect class="bloco cheio" x="296" y="214" width="110" height="36" rx="4"></rect>
-              <rect class="bloco cheio" x="280" y="290" width="260" height="120" rx="4"></rect>
-              <rect class="bloco cheio" x="280" y="430" width="260" height="120" rx="4"></rect>
-              <rect class="bloco cheio" x="280" y="590" width="260" height="60" rx="4"></rect>
-            </g>
-            <g data-g="check">
-              {p.checklist.map((rotulo, i) => (
-                <g transform={`translate(660 ${236 + i * 76})`} data-check={i}>
-                  <rect class="traco" x="0" y="0" width="36" height="36" rx="4" />
-                  <path class="traco risco" d="M 9 19 L 16 26 L 28 10" pathLength="1" />
-                  <text class="svg-lista" x="60" y="26">
-                    {rotulo}
-                  </text>
-                </g>
+          <div class="placa__tela placa__tela--testes" data-fase="solido">
+            <div class="celular" data-celular>
+              <div class="celular__tela">
+                <Mare t={t} tela="inicio" />
+              </div>
+            </div>
+            <ul class="testes">
+              {p.checklist.map((rotulo) => (
+                <li data-check>
+                  <i class="barrinha"></i>
+                  <span>{rotulo}</span>
+                </li>
               ))}
-            </g>
-          </svg>
+            </ul>
+          </div>
           <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
         </div>
+
         <!-- placa 5 · no ar -->
         <div class="placa" data-placa="4">
           <span class="placa__aba mono mono--livre">{p.abas[4]}</span>
-          <PlacaJanela t={t} variante="noar" />
+          <div class="placa__tela" data-fase="solido">
+            <Navegador endereco={p.endereco}>
+              <div slot="barra" class="jan__status" data-g="status">
+                <i class="barrinha" data-pulso></i>
+                <span class="mono-placa">{p.noAr}</span>
+              </div>
+              <Mare t={t} tela="inicio" />
+            </Navegador>
+          </div>
           <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
         </div>
       </div>

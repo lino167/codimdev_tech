@@ -1,0 +1,82 @@
+---
+// O site de exemplo (fictício) que aparece dentro das placas da peça principal: um café, com texto de verdade, desenhado
+// em HTML e CSS (a xícara é um SVG nosso, sem foto de banco). Três telas: início, cardápio e contato. Todo texto vem de
+// pt.ts. É uma ilustração: a placa traz a etiqueta "Ilustração".
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+  tela?: 'inicio' | 'cardapio' | 'contato';
+}
+const { t, tela = 'inicio' } = Astro.props;
+const s = t.peca.site;
+---
+
+<div class="mare" data-tela={tela}>
+  <header class="mare__topo">
+    <b class="mare__marca">{s.marca}</b>
+    <nav class="mare__menu">
+      {s.menu.map((m) => (
+        <span>{m}</span>
+      ))}
+    </nav>
+    <span class="mare__btn mare__btn--pq">{s.botao}</span>
+  </header>
+
+  {tela === 'inicio' && (
+    <>
+      <div class="mare__hero">
+        <div class="mare__texto">
+          <h3 class="mare__titulo">
+            {s.titulo[0]} {s.titulo[1]}
+          </h3>
+          <p class="mare__sub">{s.sub}</p>
+          <span class="mare__btn">{s.botao}</span>
+        </div>
+        <div class="mare__arte">
+          <svg viewBox="0 0 220 180" aria-hidden="true" focusable="false">
+            <path
+              class="mare__vapor"
+              d="M80 44c-10-14 10-22 0-38M110 48c-10-14 10-22 0-38M140 44c-10-14 10-22 0-38"
+            ></path>
+            <path class="mare__xicara" d="M44 70h128v34c0 30-24 52-64 52s-64-22-64-52Z"></path>
+            <path class="mare__xicara" d="M172 80h14c14 0 14 32 0 32h-20"></path>
+            <ellipse class="mare__pires" cx="108" cy="166" rx="86" ry="9"></ellipse>
+          </svg>
+        </div>
+      </div>
+      <div class="mare__cartoes">
+        {s.cartoes.map(([titulo, texto]) => (
+          <div class="mare__cartao">
+            <i class="mare__ico"></i>
+            <b>{titulo}</b>
+            <p>{texto}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+
+  {tela === 'cardapio' && (
+    <div class="mare__grade">
+      {s.cardapio.map((item) => (
+        <div class="mare__cartao">
+          <i class="mare__foto"></i>
+          <b>{item}</b>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {tela === 'contato' && (
+    <div class="mare__form">
+      <h3 class="mare__titulo">{s.contato.titulo}</h3>
+      {s.contato.campos.map((c, i) => (
+        <div class={i === 2 ? 'mare__campo mare__campo--alto' : 'mare__campo'}>{c}</div>
+      ))}
+      <span class="mare__btn">{s.contato.botao}</span>
+    </div>
+  )}
+
+  <footer class="mare__pe">{s.rodape}</footer>
+</div>

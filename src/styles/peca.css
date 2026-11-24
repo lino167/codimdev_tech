@@ -47,12 +47,7 @@
   background: var(--color-algodao);
   border: 1px solid var(--color-linha);
   border-radius: var(--r);
-}
-.placa__svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: var(--color-grafite);
+  container-type: inline-size;
 }
 .placa__aba {
   position: absolute;
@@ -179,134 +174,6 @@
   padding: 0;
   overflow: hidden;
   clip-path: inset(50%);
-}
-
-/* a janela: traço fino, superfícies planas, a única sombra do site na janela do produto */
-.placa__svg .moldura {
-  fill: var(--color-algodao);
-  stroke: currentColor;
-  stroke-width: 2;
-}
-.placa__svg .traco {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-}
-.placa__svg .traco.fino {
-  stroke-width: 1.5;
-}
-.placa__svg .risco {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-.placa__svg .bloco {
-  fill: transparent;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-dasharray: 6 6;
-  transition:
-    fill 0.4s,
-    stroke-dasharray 0.4s;
-}
-.placa__svg[data-fase='solido'] .bloco,
-.placa__svg .bloco.cheio {
-  fill: var(--color-trama);
-  stroke-dasharray: none;
-}
-.placa__svg .barra-esb {
-  fill: currentColor;
-  opacity: 0.3;
-}
-.placa__svg .barra-txt {
-  fill: currentColor;
-  opacity: 0.22;
-}
-.placa__svg .esb,
-.placa__svg .txt {
-  transition: opacity 0.4s;
-}
-.placa__svg[data-fase='solido'] .esb {
-  opacity: 0;
-}
-.placa__svg .txt {
-  opacity: 0;
-}
-.placa__svg[data-fase='solido'] .txt {
-  opacity: 1;
-}
-/* o botão da página de exemplo é o único ponto carmim da janela */
-.placa__svg[data-fase='solido'] .botao-mock {
-  fill: var(--color-carmim);
-  stroke: none;
-}
-.placa__svg .balao {
-  fill: var(--color-algodao);
-  stroke: currentColor;
-  stroke-width: 2;
-}
-.placa__svg .folha {
-  fill: var(--color-trama);
-  stroke: currentColor;
-  stroke-width: 2;
-}
-.placa__svg .painel {
-  fill: var(--color-algodao);
-  stroke: currentColor;
-  stroke-width: 2;
-  filter: drop-shadow(0 8px 24px rgb(24 25 29 / 0.08));
-}
-.placa__svg .aba {
-  fill: transparent;
-  stroke: currentColor;
-  stroke-width: 2;
-}
-.placa__svg .barrinha-svg {
-  fill: var(--color-carmim);
-}
-.placa__svg .mono-svg {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  fill: currentColor;
-}
-.placa__svg .mono-svg.centro {
-  text-anchor: middle;
-}
-.placa__svg .mono-svg.sub {
-  fill: var(--color-grafite-suave);
-}
-.placa__svg .codigo-linha {
-  font-size: 18px;
-  letter-spacing: 0;
-  white-space: pre;
-}
-.placa__svg .svg-titulo {
-  font-family: var(--font-titulo);
-  font-weight: 600;
-  font-size: 38px;
-  letter-spacing: -0.02em;
-  fill: currentColor;
-}
-.placa__svg .svg-botao {
-  font-family: var(--font-texto);
-  font-weight: 500;
-  font-size: 17px;
-  fill: var(--color-no-carmim);
-}
-.placa__svg .svg-lista {
-  font-family: var(--font-mono);
-  font-size: 22px;
-  fill: currentColor;
-}
-
-/* estado de repouso: as telas e o cursor do protótipo só aparecem quando o movimento os chama; a aba apagada fica a 35% */
-.placa__svg [data-g='telaB'],
-.placa__svg [data-g='telaC'],
-.placa__svg [data-g='cursor'] {
-  opacity: 0;
-}
-.placa__svg .apagado {
-  opacity: 0.35;
 }
 
 @media (max-width: 700px) {
