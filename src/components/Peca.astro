@@ -1,9 +1,11 @@
 ---
-// Cena 03, a peça principal: uma janela de navegador desenhada em SVG (viewBox 1200 × 720) que a rolagem leva por
-// cinco etapas: conversa, protótipo, código, testes e no ar (movimento/peca.ts). O palco fica preso por 5 telas.
-// Sem JS ou com movimento reduzido: a janela aparece pronta e as cinco etapas viram uma lista (estática).
+// Cena 03, a peça principal: cinco PLACAS de uma janela de navegador empilhadas em 3D (CSS: perspective + preserve-3d).
+// O palco fica preso por 5 telas e a rolagem dirige só a câmera (a rotação e a distância entre as placas); cada etapa
+// traz uma placa nova, que desce e se encaixa por cima das anteriores (movimento/peca.ts). Na virada as placas descem
+// e se achatam numa janela só. Sem JS ou com movimento reduzido: só a última placa, achatada, e a lista de etapas.
 // Todo texto vem de pt.ts; o JS lê as etapas, o código e o resto pelos atributos data-*.
 import type { Textos } from '../i18n/pt';
+import PlacaJanela from './PlacaJanela.astro';
 
 interface Props {
   t: Textos;
@@ -30,203 +32,110 @@ const dados = {
   </div>
 
   <div class="peca__palco" data-palco data-tema="claro">
-    <div class="peca__cena" data-cena>
-      <div class="peca__janela" data-janela>
-        <svg class="peca__svg" viewBox="0 0 1200 720" data-fase="solido" aria-hidden="true" focusable="false">
-          <!-- a janela de navegador e tudo o que aparece dentro dela -->
-          <g data-g="site">
-            <g data-g="janela">
-              <rect class="moldura risco" x="40" y="20" width="1120" height="680" rx="4" pathLength="1"></rect>
-              <line class="traco" x1="40" y1="76" x2="1160" y2="76"></line>
-              <rect class="traco" x="120" y="34" width="760" height="28" rx="4"></rect>
-              <text class="mono-svg" x="136" y="53" data-endereco>
-                {p.endereco}
-              </text>
-            </g>
-
-            <!-- tela A: a página inicial do exemplo. No esboço, blocos tracejados; no código, preenchida e com texto -->
-            <g data-g="telaA">
-              <rect class="bloco" x="80" y="108" width="1040" height="250" rx="4"></rect>
-              <g class="esb">
-                <rect class="barra-esb" x="120" y="150" width="420" height="22" rx="2"></rect>
-                <rect class="barra-esb" x="120" y="186" width="340" height="22" rx="2"></rect>
-                <rect class="barra-esb" x="120" y="236" width="460" height="10" rx="2"></rect>
-                <rect class="barra-esb" x="120" y="256" width="420" height="10" rx="2"></rect>
-              </g>
-              <g class="txt">
-                <text class="svg-titulo" x="120" y="176">
-                  {p.mock.titulo[0]}
-                </text>
-                <text class="svg-titulo" x="120" y="218">
-                  {p.mock.titulo[1]}
-                </text>
-                <rect class="barra-txt" x="120" y="246" width="420" height="10" rx="2"></rect>
-                <rect class="barra-txt" x="120" y="266" width="360" height="10" rx="2"></rect>
-              </g>
-              <rect class="bloco botao-mock" x="120" y="296" width="190" height="44" rx="4"></rect>
-              <text class="svg-botao txt" x="140" y="324">
-                {p.mock.botao}
-              </text>
-              <rect class="bloco" x="640" y="130" width="440" height="200" rx="4"></rect>
-              <line class="traco fino" x1="640" y1="130" x2="1080" y2="330"></line>
-              <line class="traco fino" x1="1080" y1="130" x2="640" y2="330"></line>
-              {[80, 435, 790].map((x) => (
+    <div class="peca__cena" data-cena aria-hidden="true">
+      <div class="peca__conjunto" data-conjunto>
+        <!-- placa 1 · conversa -->
+        <div class="placa" data-placa="0">
+          <span class="placa__aba mono mono--livre">{p.abas[0]}</span>
+          <svg class="placa__svg" viewBox="0 0 1200 720" data-fase="solido" focusable="false">
+            <g data-g="e1">
+              {[
+                { x: 110, y: 150, w: 420, h: 124 },
+                { x: 190, y: 304, w: 420, h: 100 },
+                { x: 110, y: 434, w: 300, h: 84 },
+              ].map((b) => (
                 <g>
-                  <rect class="bloco" x={x} y="400" width="330" height="190" rx="4" />
-                  <rect class="bloco" x={x + 24} y="424" width="40" height="40" rx="4" />
-                  <rect class="barra-esb" x={x + 24} y="490" width="220" height="12" rx="2" />
-                  <rect class="barra-esb" x={x + 24} y="514" width="270" height="10" rx="2" />
-                  <rect class="barra-esb" x={x + 24} y="534" width="200" height="10" rx="2" />
+                  <rect class="balao" x={b.x} y={b.y} width={b.w} height={b.h} rx="4" />
+                  <line
+                    class="traco risco"
+                    x1={b.x + 24}
+                    y1={b.y + 34}
+                    x2={b.x + b.w - 40}
+                    y2={b.y + 34}
+                    pathLength="1"
+                  />
+                  <line
+                    class="traco risco"
+                    x1={b.x + 24}
+                    y1={b.y + 60}
+                    x2={b.x + b.w - 90}
+                    y2={b.y + 60}
+                    pathLength="1"
+                  />
+                  {b.h > 100 && (
+                    <line
+                      class="traco risco"
+                      x1={b.x + 24}
+                      y1={b.y + 86}
+                      x2={b.x + b.w - 150}
+                      y2={b.y + 86}
+                      pathLength="1"
+                    />
+                  )}
                 </g>
               ))}
-              <rect class="bloco" x="80" y="620" width="1040" height="56" rx="4"></rect>
+              <rect class="folha" x="690" y="116" width="368" height="520" rx="4"></rect>
+              <text class="mono-svg" x="724" y="166" data-proposta-titulo>
+                {p.proposta.titulo}
+              </text>
+              {p.proposta.linhas.map((_, i) => (
+                <g>
+                  <text class="mono-svg" x="724" y={246 + i * 100} data-proposta-linha={i} />
+                  <line class="traco risco" x1="724" y1={272 + i * 100} x2="1022" y2={272 + i * 100} pathLength="1" />
+                  <line class="traco risco" x1="724" y1={294 + i * 100} x2="940" y2={294 + i * 100} pathLength="1" />
+                </g>
+              ))}
             </g>
-
-            <!-- tela B: uma grade de cartões (aparece só quando o cursor clica na aba 2) -->
-            <g data-g="telaB">
-              {[108, 385].flatMap((y) =>
-                [80, 435, 790].map((x) => (
-                  <g>
-                    <rect class="bloco" x={x} y={y} width="330" height="250" rx="4" />
-                    <rect class="bloco" x={x + 20} y={y + 20} width="290" height="120" rx="4" />
-                    <rect class="barra-esb" x={x + 20} y={y + 166} width="200" height="12" rx="2" />
-                    <rect class="barra-esb" x={x + 20} y={y + 190} width="250" height="10" rx="2" />
-                  </g>
-                )),
-              )}
+          </svg>
+          <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
+        </div>
+        <!-- placa 2 · protótipo -->
+        <div class="placa" data-placa="1">
+          <span class="placa__aba mono mono--livre">{p.abas[1]}</span>
+          <PlacaJanela t={t} variante="prototipo" />
+          <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
+        </div>
+        <!-- placa 3 · código -->
+        <div class="placa" data-placa="2">
+          <span class="placa__aba mono mono--livre">{p.abas[2]}</span>
+          <PlacaJanela t={t} variante="codigo" />
+          <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
+        </div>
+        <!-- placa 4 · testes: o mesmo site, num celular, e a lista de testes -->
+        <div class="placa" data-placa="3">
+          <span class="placa__aba mono mono--livre">{p.abas[3]}</span>
+          <svg class="placa__svg" viewBox="0 0 1200 720" data-fase="solido" focusable="false">
+            <!-- etapa 4: o mesmo site, agora num celular, e a lista de testes -->
+            <g data-g="celular">
+              <rect class="moldura risco" x="260" y="60" width="300" height="620" rx="4" pathLength="1"></rect>
+              <rect class="bloco cheio" x="280" y="100" width="260" height="170" rx="4"></rect>
+              <rect class="barra-esb" x="296" y="124" width="150" height="16" rx="2"></rect>
+              <rect class="barra-esb" x="296" y="150" width="120" height="16" rx="2"></rect>
+              <rect class="bloco cheio" x="296" y="214" width="110" height="36" rx="4"></rect>
+              <rect class="bloco cheio" x="280" y="290" width="260" height="120" rx="4"></rect>
+              <rect class="bloco cheio" x="280" y="430" width="260" height="120" rx="4"></rect>
+              <rect class="bloco cheio" x="280" y="590" width="260" height="60" rx="4"></rect>
             </g>
-
-            <!-- tela C: um formulário (aparece só quando o cursor clica na aba 3) -->
-            <g data-g="telaC">
-              <rect class="barra-esb" x="120" y="140" width="400" height="26" rx="2"></rect>
-              <rect class="barra-esb" x="120" y="184" width="320" height="26" rx="2"></rect>
-              <rect class="barra-esb" x="120" y="240" width="420" height="10" rx="2"></rect>
-              <rect class="barra-esb" x="120" y="260" width="380" height="10" rx="2"></rect>
-              <rect class="bloco" x="660" y="130" width="440" height="52" rx="4"></rect>
-              <rect class="bloco" x="660" y="206" width="440" height="52" rx="4"></rect>
-              <rect class="bloco" x="660" y="282" width="440" height="150" rx="4"></rect>
-              <rect class="bloco" x="660" y="460" width="190" height="52" rx="4"></rect>
-            </g>
-
-            <!-- as três abas do protótipo -->
-            <g data-g="tabs">
-              {[0, 1, 2].map((i) => (
-                <g data-aba={i}>
-                  <rect class="aba" x={1010 + i * 44} y="34" width="36" height="28" rx="4" />
-                  <text class="mono-svg centro" x={1028 + i * 44} y="53">
-                    {i + 1}
+            <g data-g="check">
+              {p.checklist.map((rotulo, i) => (
+                <g transform={`translate(660 ${236 + i * 76})`} data-check={i}>
+                  <rect class="traco" x="0" y="0" width="36" height="36" rx="4" />
+                  <path class="traco risco" d="M 9 19 L 16 26 L 28 10" pathLength="1" />
+                  <text class="svg-lista" x="60" y="26">
+                    {rotulo}
                   </text>
                 </g>
               ))}
             </g>
-
-            <!-- o código sendo escrito, ao lado da página -->
-            <g data-g="codigo">
-              <rect class="painel" x="700" y="76" width="460" height="624" rx="0"></rect>
-              {p.codigo.map((_, i) => (
-                <text class="mono-svg codigo-linha" x="728" y={126 + i * 36} data-linha={i} />
-              ))}
-            </g>
-
-            <!-- a luz de status: a barrinha da marca acende quando o site vai ao ar -->
-            <g data-g="status">
-              <g data-pulso>
-                <rect
-                  class="barrinha-svg"
-                  width="18"
-                  height="12"
-                  rx="2"
-                  transform="translate(912 41) skewX(-36)"
-                ></rect>
-              </g>
-              <text class="mono-svg" x="944" y="53">
-                {p.noAr}
-              </text>
-            </g>
-
-            <text class="mono-svg sub" x="1148" y="688" text-anchor="end">
-              {p.ilustracao}
-            </text>
-
-            <!-- o cursor do protótipo: a barrinha -->
-            <g data-g="cursor">
-              <rect class="barrinha-svg" width="18" height="12" rx="2" transform="skewX(-36)"></rect>
-            </g>
-          </g>
-
-          <!-- etapa 1: a conversa e a proposta -->
-          <g data-g="e1">
-            {[
-              { x: 110, y: 150, w: 420, h: 124 },
-              { x: 190, y: 304, w: 420, h: 100 },
-              { x: 110, y: 434, w: 300, h: 84 },
-            ].map((b) => (
-              <g>
-                <rect class="balao" x={b.x} y={b.y} width={b.w} height={b.h} rx="4" />
-                <line
-                  class="traco risco"
-                  x1={b.x + 24}
-                  y1={b.y + 34}
-                  x2={b.x + b.w - 40}
-                  y2={b.y + 34}
-                  pathLength="1"
-                />
-                <line
-                  class="traco risco"
-                  x1={b.x + 24}
-                  y1={b.y + 60}
-                  x2={b.x + b.w - 90}
-                  y2={b.y + 60}
-                  pathLength="1"
-                />
-                {b.h > 100 && (
-                  <line
-                    class="traco risco"
-                    x1={b.x + 24}
-                    y1={b.y + 86}
-                    x2={b.x + b.w - 150}
-                    y2={b.y + 86}
-                    pathLength="1"
-                  />
-                )}
-              </g>
-            ))}
-            <rect class="folha" x="690" y="116" width="368" height="520" rx="4"></rect>
-            <text class="mono-svg" x="724" y="166" data-proposta-titulo>
-              {p.proposta.titulo}
-            </text>
-            {p.proposta.linhas.map((_, i) => (
-              <g>
-                <text class="mono-svg" x="724" y={246 + i * 100} data-proposta-linha={i} />
-                <line class="traco risco" x1="724" y1={272 + i * 100} x2="1022" y2={272 + i * 100} pathLength="1" />
-                <line class="traco risco" x1="724" y1={294 + i * 100} x2="940" y2={294 + i * 100} pathLength="1" />
-              </g>
-            ))}
-          </g>
-
-          <!-- etapa 4: o mesmo site, agora num celular, e a lista de testes -->
-          <g data-g="celular">
-            <rect class="moldura risco" x="260" y="60" width="300" height="620" rx="4" pathLength="1"></rect>
-            <rect class="bloco cheio" x="280" y="100" width="260" height="170" rx="4"></rect>
-            <rect class="barra-esb" x="296" y="124" width="150" height="16" rx="2"></rect>
-            <rect class="barra-esb" x="296" y="150" width="120" height="16" rx="2"></rect>
-            <rect class="bloco cheio" x="296" y="214" width="110" height="36" rx="4"></rect>
-            <rect class="bloco cheio" x="280" y="290" width="260" height="120" rx="4"></rect>
-            <rect class="bloco cheio" x="280" y="430" width="260" height="120" rx="4"></rect>
-            <rect class="bloco cheio" x="280" y="590" width="260" height="60" rx="4"></rect>
-          </g>
-          <g data-g="check">
-            {p.checklist.map((rotulo, i) => (
-              <g transform={`translate(660 ${236 + i * 76})`} data-check={i}>
-                <rect class="traco" x="0" y="0" width="36" height="36" rx="4" />
-                <path class="traco risco" d="M 9 19 L 16 26 L 28 10" pathLength="1" />
-                <text class="svg-lista" x="60" y="26">
-                  {rotulo}
-                </text>
-              </g>
-            ))}
-          </g>
-        </svg>
+          </svg>
+          <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
+        </div>
+        <!-- placa 5 · no ar -->
+        <div class="placa" data-placa="4">
+          <span class="placa__aba mono mono--livre">{p.abas[4]}</span>
+          <PlacaJanela t={t} variante="noar" />
+          <span class="placa__aviso mono mono--livre">{p.ilustracao}</span>
+        </div>
       </div>
     </div>
 

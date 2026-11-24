@@ -1,13 +1,13 @@
-// Cena 03, a peça principal. O palco fica preso por 5 telas (4 no celular) e a rolagem leva uma janela de navegador,
-// desenhada em SVG, por cinco etapas: conversa, protótipo, código, testes e no ar.
+// Cena 03, a peça principal: a PILHA DE PLACAS. O palco fica preso por 5 telas (4 no celular) e a rolagem leva a câmera
+// por cinco placas de uma janela de navegador, empilhadas em 3D: conversa, protótipo, código, testes e no ar.
 //
-// - A ROLAGEM dirige só o que é contínuo: a leve perspectiva da janela (que se acalma até 0), a barra de etapa e,
-//   nos últimos 4%, o palco escurecendo e a janela recuando.
-// - O que é POR TEMPO (a escrita, o cursor clicando, as marcas de teste, o pulso da luz) dispara uma vez quando a
-//   etapa muda e roda sozinho; o texto da etapa sai e entra palavra por palavra, saindo do desfoque.
-// - Os primeiros 6% do pin são a abertura (a janela se firma) e os últimos 4%, o respiro final.
+// - A ROLAGEM dirige só o que é contínuo: a órbita da câmera (a rotação do conjunto), a barra de etapa e, nos últimos
+//   8%, a virada: as placas descem e se achatam numa janela só, a câmera fica de frente e o palco escurece.
+// - O que é POR TEMPO (a placa nova que desce e se encaixa, a escrita, o cursor clicando, as marcas de teste, o pulso
+//   da luz) dispara uma vez quando a etapa muda e roda sozinho; o texto da etapa sai e entra palavra por palavra.
+// - Os primeiros 6% do pin são a abertura (a primeira placa se firma) e os últimos 8%, a virada.
 // Todo texto vem de pt.ts, pelos atributos data-* que o Peca.astro escreve. Movimento reduzido ou sem JS: nada disto
-// roda e o CSS mostra a janela pronta e a lista de etapas.
+// roda e o CSS mostra só a última placa, achatada, e a lista de etapas.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -27,7 +27,9 @@ interface Dados {
 }
 
 const ABERTURA = 0.06; // fatia do pin antes da primeira etapa
-const RESPIRO = 0.04; // fatia do pin depois da última
+const VIRADA = 0.08; // fatia do pin depois da última: as placas se achatam e o palco escurece
+const SP = 120; // distância entre as placas, em px, ao longo do eixo Z
+const QUEDA = 300; // de quanto acima a placa nova começa a descer
 const CPS_CODIGO = 40; // caracteres por segundo ao escrever o código
 const CPS_ENDERECO = 30;
 const ESCURO = '#18191D';
@@ -40,35 +42,54 @@ export function peca({ reduzido }: { reduzido: boolean }) {
   const sec = document.querySelector<HTMLElement>('[data-peca]');
   if (!sec || reduzido) return;
   const palco = sec.querySelector<HTMLElement>('[data-palco]');
-  const janela = sec.querySelector<HTMLElement>('[data-janela]');
-  const svg = sec.querySelector<SVGSVGElement>('.peca__svg');
+  const conjunto = sec.querySelector<HTMLElement>('[data-conjunto]');
+  const placas = Array.from(sec.querySelectorAll<HTMLElement>('[data-placa]'));
   const rotulo = sec.querySelector<HTMLElement>('[data-rotulo]');
   const frase = sec.querySelector<HTMLElement>('[data-frase]');
   const fato = sec.querySelector<HTMLElement>('[data-fato]');
   const trilha = sec.querySelector<HTMLElement>('[data-trilha]');
-  if (!palco || !janela || !svg || !rotulo || !frase || !fato || !trilha) return;
+  if (!palco || !conjunto || placas.length !== 5 || !rotulo || !frase || !fato || !trilha) return;
   const dados = JSON.parse(sec.dataset.dados ?? '{}') as Dados;
   if (!dados.etapas?.length) return;
   sec.classList.add('peca--animada');
 
-  const G = (nome: string) => svg.querySelector<SVGGElement>(`[data-g="${nome}"]`) as SVGGElement;
-  const todos = <T extends Element>(sel: string) => Array.from(svg.querySelectorAll<T>(sel));
-  const site = G('site');
-  const celular = G('celular');
-  const linhasCodigo = todos<SVGTextElement>('[data-linha]');
-  const propostaTitulo = svg.querySelector<SVGTextElement>('[data-proposta-titulo]') as SVGTextElement;
-  const propostaLinhas = todos<SVGTextElement>('[data-proposta-linha]');
-  const endereco = svg.querySelector<SVGTextElement>('[data-endereco]') as SVGTextElement;
-  const abas = todos<SVGGElement>('[data-aba]');
-  const checks = todos<SVGGElement>('[data-check]');
-  const pulso = svg.querySelector<SVGGElement>('[data-pulso]') as SVGGElement;
-  const cursor = G('cursor');
-
-  // pivôs das escalas (em unidades do viewBox)
-  gsap.set(site, { svgOrigin: '600 360' });
-  gsap.set(celular, { svgOrigin: '410 370' });
+  // dentro de cada placa
+  const q = <T extends Element>(i: number, sel: string) => placas[i].querySelector<T>(sel) as T;
+  const qa = <T extends Element>(i: number, sel: string) => Array.from(placas[i].querySelectorAll<T>(sel));
+  const riscos = (i: number, raiz = '.placa__svg') => qa<SVGElement>(i, `${raiz} .risco`);
+  const propostaTitulo = q<SVGTextElement>(0, '[data-proposta-titulo]');
+  const propostaLinhas = qa<SVGTextElement>(0, '[data-proposta-linha]');
+  const abas = qa<SVGGElement>(1, '[data-aba]');
+  const cursor = q<SVGGElement>(1, '[data-g="cursor"]');
+  const telas = {
+    telaA: q<SVGGElement>(1, '[data-g="telaA"]'),
+    telaB: q<SVGGElement>(1, '[data-g="telaB"]'),
+    telaC: q<SVGGElement>(1, '[data-g="telaC"]'),
+  };
+  const linhasCodigo = qa<SVGTextElement>(2, '[data-linha]');
+  const checks = qa<SVGGElement>(3, '[data-check]');
+  const endereco = q<SVGTextElement>(4, '[data-endereco]');
+  const pulso = q<SVGGElement>(4, '[data-pulso]');
   gsap.set(pulso, { svgOrigin: '916 47' });
   gsap.set(cursor, { x: 860, y: 220 });
+
+  // a câmera: `cam` é o índice (contínuo) da placa em foco; `sp` é a distância entre as placas (vai a 0 na virada)
+  const S = { cam: 0, sp: SP };
+  const render = () => {
+    const achata = 1 - S.sp / SP; // 0 = pilha aberta, 1 = tudo achatado
+    placas.forEach((placa, i) => {
+      const chega = limitar(S.cam - i + 1, 0, 1); // 0 = ainda não chegou, 1 = no lugar
+      const d = Math.max(0, S.cam - i); // quantas placas atrás da que está em foco
+      // a anterior fica a 35%, a antepenúltima some devagar: o texto de baixo continua legível
+      const rastro = d < 1 ? 1 - 0.65 * d : d < 2 ? 0.35 - 0.23 * (d - 1) : Math.max(0, 0.12 * (3 - d));
+      const base = chega * (rastro + (1 - rastro) * achata);
+      gsap.set(placa, {
+        z: (i - S.cam) * S.sp + (1 - chega) * QUEDA * (1 - achata),
+        opacity: base,
+        zIndex: i,
+      });
+    });
+  };
 
   const digitar = (el: Element, texto: string, cps: number, tl: gsap.core.Timeline, em: number) => {
     const o = { n: 0 };
@@ -86,7 +107,6 @@ export function peca({ reduzido }: { reduzido: boolean }) {
     );
     return texto.length / cps;
   };
-  const riscos = (raiz: Element | null) => (raiz ? Array.from(raiz.querySelectorAll<SVGElement>('.risco')) : []);
   const desenhar = (tl: gsap.core.Timeline, alvos: SVGElement[], em: number, duracao = 0.5, passo = 0.08) =>
     tl.fromTo(
       alvos,
@@ -95,96 +115,25 @@ export function peca({ reduzido }: { reduzido: boolean }) {
       em,
     );
 
-  // o estado de cada etapa: o que fica visível e onde
-  const aplicar = (i: number, instante = false) => {
-    const duracao = instante ? 0 : 0.6;
-    const para = (g: SVGGElement, vars: gsap.TweenVars) =>
-      gsap.to(g, { ...vars, duration: duracao, ease: 'power2.out', overwrite: 'auto' });
-    svg.dataset.fase = i >= 2 ? 'solido' : 'esboco';
-    const oculto = { opacity: 0 };
-    switch (i) {
-      case 0: // conversa: a janela, apagada, atrás da proposta
-        para(site, { opacity: 0.35, scale: 0.97 });
-        para(G('telaA'), oculto);
-        para(G('telaB'), oculto);
-        para(G('telaC'), oculto);
-        para(G('tabs'), oculto);
-        para(G('codigo'), { opacity: 0, x: 40 });
-        para(G('status'), oculto);
-        para(cursor, oculto);
-        para(G('e1'), { opacity: 1 });
-        para(celular, { opacity: 0, scale: 0.9, x: 0, y: 0 });
-        para(G('check'), oculto);
-        break;
-      case 1: // protótipo: a página em blocos tracejados e o cursor clicando nas abas
-        para(site, { opacity: 1, scale: 1 });
-        para(G('telaA'), { opacity: 1 });
-        para(G('tabs'), { opacity: 1 });
-        para(G('codigo'), { opacity: 0, x: 40 });
-        para(G('status'), oculto);
-        para(cursor, { opacity: 1 });
-        para(G('e1'), oculto);
-        para(celular, { opacity: 0, scale: 0.9, x: 0, y: 0 });
-        para(G('check'), oculto);
-        break;
-      case 2: // código: a página ganha corpo e o código se escreve ao lado
-        para(site, { opacity: 1, scale: 1 });
-        para(G('telaA'), { opacity: 1 });
-        para(G('telaB'), oculto);
-        para(G('telaC'), oculto);
-        para(G('tabs'), { opacity: 0.35 });
-        para(G('codigo'), { opacity: 1, x: 0 });
-        para(G('status'), oculto);
-        para(cursor, oculto);
-        para(G('e1'), oculto);
-        para(celular, { opacity: 0, scale: 0.9, x: 0, y: 0 });
-        para(G('check'), oculto);
-        break;
-      case 3: // testes: a janela vira celular e os testes passam
-        para(site, { opacity: 0.12, scale: 0.92 });
-        para(G('telaA'), { opacity: 1 });
-        para(G('telaB'), oculto);
-        para(G('telaC'), oculto);
-        para(G('codigo'), { opacity: 0, x: 40 });
-        para(G('status'), oculto);
-        para(cursor, oculto);
-        para(G('e1'), oculto);
-        para(celular, { opacity: 1, scale: 1, x: 0, y: 0 });
-        para(G('check'), { opacity: 1 });
-        break;
-      default: // no ar: a janela volta, o celular recua e a luz de status acende
-        para(site, { opacity: 1, scale: 1 });
-        para(G('telaA'), { opacity: 1 });
-        para(G('telaB'), oculto);
-        para(G('telaC'), oculto);
-        para(G('tabs'), { opacity: 0.35 });
-        para(G('codigo'), { opacity: 0, x: 40 });
-        para(G('status'), { opacity: 1 });
-        para(cursor, oculto);
-        para(G('e1'), oculto);
-        para(celular, { opacity: 0, scale: 0.5, x: -110, y: 210 }); // o celular sai de cena: o site final fica limpo
-        para(G('check'), oculto);
-    }
-  };
-
-  // o que roda por tempo em cada etapa (uma vez, quando ela começa)
+  // o que roda por tempo em cada etapa (uma vez, quando a placa chega)
   let seq: gsap.core.Timeline | null = null;
+  const ATRASO = 0.55; // a placa desce primeiro; o conteúdo começa quando ela está quase no lugar
   const sequencia = (i: number) => {
     seq?.kill();
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({ delay: ATRASO });
     seq = tl;
     switch (i) {
       case 0: {
         propostaTitulo.textContent = '';
         propostaLinhas.forEach((t) => (t.textContent = ''));
-        gsap.set(riscos(G('e1')), { strokeDashoffset: 1 });
-        desenhar(tl, riscos(G('e1')).slice(0, 7), 0.15, 0.45, 0.07);
+        const r = riscos(0);
+        gsap.set(r, { strokeDashoffset: 1 });
+        desenhar(tl, r.slice(0, 7), 0.15, 0.45, 0.07);
         digitar(propostaTitulo, dados.proposta.titulo, 24, tl, 0.2);
         dados.proposta.linhas.forEach((texto, k) => {
           const base = 0.8 + k * 0.7;
           digitar(propostaLinhas[k], texto, 20, tl, base);
-          const dois = riscos(G('e1')).slice(7 + k * 2, 9 + k * 2);
-          desenhar(tl, dois, base + 0.15, 0.4, 0.1);
+          desenhar(tl, r.slice(7 + k * 2, 9 + k * 2), base + 0.15, 0.4, 0.1);
         });
         break;
       }
@@ -195,15 +144,14 @@ export function peca({ reduzido }: { reduzido: boolean }) {
             gsap.to(a.querySelector('.aba'), { fill: n === k ? TRAMA : 'rgba(0,0,0,0)', duration: 0.15 });
           });
         };
-        const tela = (qual: 'telaA' | 'telaB' | 'telaC') => {
-          (['telaA', 'telaB', 'telaC'] as const).forEach((n) =>
-            gsap.to(G(n), { opacity: n === qual ? 1 : 0, duration: 0.15, ease: 'none', overwrite: 'auto' }),
+        const tela = (qual: keyof typeof telas) => {
+          (Object.keys(telas) as (keyof typeof telas)[]).forEach((n) =>
+            gsap.to(telas[n], { opacity: n === qual ? 1 : 0, duration: 0.15, ease: 'none', overwrite: 'auto' }),
           );
         };
         const clique = () => tl.to(cursor, { scale: 0.8, duration: 0.07, yoyo: true, repeat: 1, ease: 'none' });
         gsap.set(cursor, { x: 860, y: 230, opacity: 0 });
-        gsap.set(G('telaB'), { opacity: 0 });
-        gsap.set(G('telaC'), { opacity: 0 });
+        gsap.set([telas.telaB, telas.telaC], { opacity: 0 });
         tl.to(cursor, { opacity: 1, duration: 0.2 }, 0.1).to(
           cursor,
           { ...centro(0), duration: 0.7, ease: 'power3.inOut' },
@@ -229,7 +177,7 @@ export function peca({ reduzido }: { reduzido: boolean }) {
       }
       case 2: {
         linhasCodigo.forEach((t) => (t.textContent = ''));
-        let t = 0.35;
+        let t = 0.1;
         dados.codigo.forEach((linha, k) => {
           t += digitar(linhasCodigo[k], linha, CPS_CODIGO, tl, t) + 0.05;
         });
@@ -237,9 +185,10 @@ export function peca({ reduzido }: { reduzido: boolean }) {
       }
       case 3: {
         const caminhos = checks.map((c) => c.querySelector<SVGElement>('path.risco') as SVGElement);
+        const celular = riscos(3, '[data-g="celular"]');
         gsap.set(caminhos, { strokeDashoffset: 1 });
-        gsap.set(riscos(celular), { strokeDashoffset: 1 });
-        desenhar(tl, riscos(celular), 0, 0.9, 0);
+        gsap.set(celular, { strokeDashoffset: 1 });
+        desenhar(tl, celular, 0, 0.9, 0);
         caminhos.forEach((c, k) =>
           tl.fromTo(
             c,
@@ -252,8 +201,8 @@ export function peca({ reduzido }: { reduzido: boolean }) {
       }
       default: {
         endereco.textContent = '';
-        digitar(endereco, dados.endereco, CPS_ENDERECO, tl, 0.3);
-        tl.fromTo(pulso, { scale: 1 }, { scale: 1.7, duration: 0.4, yoyo: true, repeat: 1, ease: 'power2.out' }, 0.9);
+        digitar(endereco, dados.endereco, CPS_ENDERECO, tl, 0.1);
+        tl.fromTo(pulso, { scale: 1 }, { scale: 1.7, duration: 0.4, yoyo: true, repeat: 1, ease: 'power2.out' }, 0.7);
       }
     }
   };
@@ -297,26 +246,38 @@ export function peca({ reduzido }: { reduzido: boolean }) {
   const ir = (i: number, primeira = false) => {
     if (i === atual) return;
     atual = i;
-    aplicar(i, primeira);
+    if (primeira) {
+      S.cam = i;
+      render();
+    } else {
+      gsap.to(S, { cam: i, duration: 0.9, ease: 'power3.inOut', onUpdate: render, overwrite: 'auto' });
+    }
     sequencia(i);
     trocarTexto(i, primeira);
   };
 
-  // as marcas do que é contínuo: a perspectiva se acalma, a barra de etapa anda e, no fim, o palco escurece
+  // o que é contínuo: a câmera dá a volta, a barra de etapa anda e, no fim, tudo se achata e o palco escurece
   const rolagem = gsap.timeline({ defaults: { ease: 'none' } });
   rolagem
-    .fromTo(janela, { rotateX: 8, rotateY: -10 }, { rotateX: 0, rotateY: 0, duration: 0.9 }, 0)
-    .fromTo(trilha, { '--p': 0 }, { '--p': 1, duration: 1 - ABERTURA - RESPIRO }, ABERTURA)
-    .to(palco, { backgroundColor: ESCURO, color: CLARO, duration: RESPIRO, ease: 'power1.inOut' }, 1 - RESPIRO)
-    .to(janela, { scale: 0.62, y: -40, duration: RESPIRO, ease: 'power1.inOut' }, 1 - RESPIRO);
+    .fromTo(
+      conjunto,
+      { rotationX: 56, rotationZ: -30, scale: 0.86, y: -50 },
+      { rotationX: 46, rotationZ: -20, duration: 1 - VIRADA },
+      0,
+    )
+    .fromTo(trilha, { '--p': 0 }, { '--p': 1, duration: 1 - ABERTURA - VIRADA }, ABERTURA)
+    .to(S, { sp: 0, duration: VIRADA, ease: 'power2.inOut', onUpdate: render }, 1 - VIRADA)
+    .to(conjunto, { rotationX: 0, rotationZ: 0, scale: 0.82, y: 0, duration: VIRADA, ease: 'power2.inOut' }, 1 - VIRADA)
+    .to(
+      palco,
+      { backgroundColor: ESCURO, color: CLARO, duration: VIRADA * 0.6, ease: 'power1.inOut' },
+      1 - VIRADA * 0.6,
+    );
 
-  aplicar(0, true);
-  gsap.set(
-    abas.map((a) => a.querySelector('.aba')),
-    { fill: 'rgba(0,0,0,0)' },
-  );
-  gsap.set(riscos(G('e1')), { strokeDashoffset: 1 });
+  gsap.set(qa<SVGGElement>(1, '.aba'), { fill: 'rgba(0,0,0,0)' });
+  gsap.set(riscos(0), { strokeDashoffset: 1 });
   [...linhasCodigo, ...propostaLinhas, propostaTitulo, endereco].forEach((t) => (t.textContent = ''));
+  render();
 
   ScrollTrigger.create({
     trigger: palco,
@@ -329,10 +290,10 @@ export function peca({ reduzido }: { reduzido: boolean }) {
     animation: rolagem,
     onUpdate: (self) => {
       const p = self.progress;
-      const q = limitar((p - ABERTURA) / (1 - ABERTURA - RESPIRO), 0, 1);
-      ir(Math.min(dados.etapas.length - 1, Math.floor(q * dados.etapas.length)));
+      const f = limitar((p - ABERTURA) / (1 - ABERTURA - VIRADA), 0, 1);
+      ir(Math.min(dados.etapas.length - 1, Math.floor(f * dados.etapas.length)));
       // a nav lê este atributo: no fim do pin o palco é escuro
-      palco.dataset.tema = p > 1 - RESPIRO * 0.5 ? 'escuro' : 'claro';
+      palco.dataset.tema = p > 1 - VIRADA * 0.5 ? 'escuro' : 'claro';
     },
   });
   ir(0, true);

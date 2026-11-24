@@ -1,6 +1,8 @@
-/* PEÇA PRINCIPAL (cena 03): uma janela de navegador riscada em SVG, presa por 5 telas, com o texto de cada etapa
-   embaixo e a barra de etapa que anda com a rolagem. Sem JS ou com movimento reduzido: a janela aparece pronta e as
-   cinco etapas viram uma lista (.peca__lista). Com JS, a classe .peca--animada liga o palco. */
+/* PEÇA PRINCIPAL (cena 03): cinco placas de uma janela de navegador empilhadas em 3D (CSS), presas por 5 telas, com o
+   texto de cada etapa embaixo e a barra de etapa que anda com a rolagem. Sem JS ou com movimento reduzido: só a última
+   placa, achatada, e as cinco etapas em lista (.peca__lista). Com JS, a classe .peca--animada liga o palco.
+   Nenhum ancestral das placas usa overflow, filter ou will-change (achatariam o preserve-3d); o corte do palco fica
+   no .peca__palco, que não é um contexto 3D. */
 .peca {
   position: relative;
   padding-top: clamp(64px, 10vh, 120px);
@@ -30,23 +32,52 @@
   display: grid;
   place-items: center;
   min-height: 0;
-  perspective: 1600px;
+  perspective: 2200px;
 }
-.peca__janela {
-  width: min(100%, calc((100svh - 330px) * 1.6667), 1040px);
+.peca__conjunto {
+  position: relative;
+  width: min(100%, calc((100svh - 360px) * 1.9), 900px);
+  aspect-ratio: 1200 / 720;
   transform-style: preserve-3d;
-  will-change: transform;
 }
-.peca__svg {
+.placa {
+  position: absolute;
+  inset: 0;
+  color: var(--color-grafite);
+  background: var(--color-algodao);
+  border: 1px solid var(--color-linha);
+  border-radius: var(--r);
+}
+.placa__svg {
   display: block;
   width: 100%;
-  height: auto;
-  overflow: visible;
+  height: 100%;
   color: var(--color-grafite);
+}
+.placa__aba {
+  position: absolute;
+  left: -1px;
+  top: -26px;
+  padding: 5px 10px 4px;
+  background: var(--color-algodao);
+  border: 1px solid var(--color-linha);
+  border-bottom: 0;
+  border-radius: var(--r) var(--r) 0 0;
+  color: var(--color-grafite);
+  white-space: nowrap;
+}
+.placa__aviso {
+  position: absolute;
+  right: 12px;
+  bottom: 1px;
+  font-size: 11px;
+  line-height: 14px;
 }
 
 /* o texto da etapa e a barra de etapa */
 .peca__texto {
+  position: relative;
+  z-index: 5;
   display: grid;
   gap: 8px;
   width: 100%;
@@ -76,6 +107,7 @@
 }
 .peca__trilha {
   position: relative;
+  z-index: 5;
   width: 100%;
   max-width: 880px;
   height: 12px;
@@ -107,7 +139,10 @@
   left: calc(var(--p) * (100% - var(--barra-w)));
 }
 
-/* modo estático: sem JS ou com movimento reduzido */
+/* modo estático: sem JS ou com movimento reduzido: só a última placa, achatada */
+.peca:not(.peca--animada) .placa:not([data-placa='4']) {
+  display: none;
+}
 .peca:not(.peca--animada) .peca__palco {
   min-height: 0;
   padding-bottom: 0;
@@ -147,24 +182,24 @@
 }
 
 /* a janela: traço fino, superfícies planas, a única sombra do site na janela do produto */
-.peca__svg .moldura {
+.placa__svg .moldura {
   fill: var(--color-algodao);
   stroke: currentColor;
   stroke-width: 2;
 }
-.peca__svg .traco {
+.placa__svg .traco {
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
 }
-.peca__svg .traco.fino {
+.placa__svg .traco.fino {
   stroke-width: 1.5;
 }
-.peca__svg .risco {
+.placa__svg .risco {
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
 }
-.peca__svg .bloco {
+.placa__svg .bloco {
   fill: transparent;
   stroke: currentColor;
   stroke-width: 2;
@@ -173,107 +208,105 @@
     fill 0.4s,
     stroke-dasharray 0.4s;
 }
-.peca__svg[data-fase='solido'] .bloco,
-.peca__svg .bloco.cheio {
+.placa__svg[data-fase='solido'] .bloco,
+.placa__svg .bloco.cheio {
   fill: var(--color-trama);
   stroke-dasharray: none;
 }
-.peca__svg .barra-esb {
+.placa__svg .barra-esb {
   fill: currentColor;
   opacity: 0.3;
 }
-.peca__svg .barra-txt {
+.placa__svg .barra-txt {
   fill: currentColor;
   opacity: 0.22;
 }
-.peca__svg .esb,
-.peca__svg .txt {
+.placa__svg .esb,
+.placa__svg .txt {
   transition: opacity 0.4s;
 }
-.peca__svg[data-fase='solido'] .esb {
+.placa__svg[data-fase='solido'] .esb {
   opacity: 0;
 }
-.peca__svg .txt {
+.placa__svg .txt {
   opacity: 0;
 }
-.peca__svg[data-fase='solido'] .txt {
+.placa__svg[data-fase='solido'] .txt {
   opacity: 1;
 }
 /* o botão da página de exemplo é o único ponto carmim da janela */
-.peca__svg[data-fase='solido'] .botao-mock {
+.placa__svg[data-fase='solido'] .botao-mock {
   fill: var(--color-carmim);
   stroke: none;
 }
-.peca__svg .balao {
+.placa__svg .balao {
   fill: var(--color-algodao);
   stroke: currentColor;
   stroke-width: 2;
 }
-.peca__svg .folha {
+.placa__svg .folha {
   fill: var(--color-trama);
   stroke: currentColor;
   stroke-width: 2;
 }
-.peca__svg .painel {
+.placa__svg .painel {
   fill: var(--color-algodao);
   stroke: currentColor;
   stroke-width: 2;
   filter: drop-shadow(0 8px 24px rgb(24 25 29 / 0.08));
 }
-.peca__svg .aba {
+.placa__svg .aba {
   fill: transparent;
   stroke: currentColor;
   stroke-width: 2;
 }
-.peca__svg .barrinha-svg {
+.placa__svg .barrinha-svg {
   fill: var(--color-carmim);
 }
-.peca__svg .mono-svg {
+.placa__svg .mono-svg {
   font-family: var(--font-mono);
   font-size: 15px;
   letter-spacing: 0.04em;
   fill: currentColor;
 }
-.peca__svg .mono-svg.centro {
+.placa__svg .mono-svg.centro {
   text-anchor: middle;
 }
-.peca__svg .mono-svg.sub {
+.placa__svg .mono-svg.sub {
   fill: var(--color-grafite-suave);
 }
-.peca__svg .codigo-linha {
+.placa__svg .codigo-linha {
   font-size: 18px;
   letter-spacing: 0;
   white-space: pre;
 }
-.peca__svg .svg-titulo {
+.placa__svg .svg-titulo {
   font-family: var(--font-titulo);
   font-weight: 600;
   font-size: 38px;
   letter-spacing: -0.02em;
   fill: currentColor;
 }
-.peca__svg .svg-botao {
+.placa__svg .svg-botao {
   font-family: var(--font-texto);
   font-weight: 500;
   font-size: 17px;
   fill: var(--color-no-carmim);
 }
-.peca__svg .svg-lista {
+.placa__svg .svg-lista {
   font-family: var(--font-mono);
   font-size: 22px;
   fill: currentColor;
 }
 
-/* estado de repouso (sem JS, ou antes de o movimento começar): a janela pronta, no ar */
-.peca__svg [data-g='telaB'],
-.peca__svg [data-g='telaC'],
-.peca__svg [data-g='tabs'],
-.peca__svg [data-g='codigo'],
-.peca__svg [data-g='e1'],
-.peca__svg [data-g='celular'],
-.peca__svg [data-g='check'],
-.peca__svg [data-g='cursor'] {
+/* estado de repouso: as telas e o cursor do protótipo só aparecem quando o movimento os chama; a aba apagada fica a 35% */
+.placa__svg [data-g='telaB'],
+.placa__svg [data-g='telaC'],
+.placa__svg [data-g='cursor'] {
   opacity: 0;
+}
+.placa__svg .apagado {
+  opacity: 0.35;
 }
 
 @media (max-width: 700px) {
@@ -282,10 +315,9 @@
     grid-template-rows: auto auto auto;
     align-content: center;
   }
-  /* no celular a janela vai de borda a borda: é o que dá tamanho ao desenho */
-  .peca__janela {
-    width: calc(100% + var(--gutter) * 2);
-    margin-inline: calc(var(--gutter) * -1);
+  /* no celular as placas vão de borda a borda: é o que dá tamanho ao desenho */
+  .peca__conjunto {
+    width: calc(100% + 64px);
   }
   .peca__texto {
     min-height: 168px;

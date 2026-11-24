@@ -92,6 +92,7 @@ export const pt = {
     rotulo: 'Como funciona',
     titulo: { antes: 'Uma conversa vira protótipo, vira código e vai ao ', destaque: 'ar', depois: '.' },
     ilustracao: 'Ilustração',
+    abas: ['01 · conversa', '02 · protótipo', '03 · código', '04 · testes', '05 · no ar'],
     etapas: [
       {
         rotulo: 'Etapa 1 · Conversa',
