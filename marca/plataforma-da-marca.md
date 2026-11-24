@@ -70,19 +70,19 @@ Um projeto típico de landing page leva cerca de 2 semanas e segue seis etapas, 
 
 ## Público e personas
 
-O cliente da codimdev é o pequeno negócio de qualquer lugar do Brasil, com 1 a 10 pessoas, que vende ou atende pela internet e hoje se vira com Instagram, WhatsApp e planilha. As três personas abaixo são modelos para guiar textos e ofertas, não clientes reais.
+O cliente da codimdev é a empresa que vende, capta ou opera pela internet e precisa de uma peça digital que funcione: de pequenas e médias empresas e prestadores de serviço a startups e times de tecnologia. O tamanho muda, o problema é parecido: o digital não está rendendo o que deveria, e quem decide não tem tempo para virar especialista. As cinco personas abaixo são modelos para guiar textos e ofertas, uma para cada serviço do catálogo. Não são clientes reais.
 
-| | Lojista do direct | Prestador de serviço | Gestor da planilha |
-| --- | --- | --- | --- |
-| Exemplo | Loja de roupa, cosméticos, perfumes por encomenda | Clínica de estética, consultório, escritório contábil | Distribuidora, delivery, pequena empresa com equipe |
-| Hoje | Vende pelo Instagram e responde preço um a um | Indicado no boca a boca, sem site ou com site velho | Pedidos, clientes e contas em planilha e caderno |
-| Dor | Perde venda por demorar a responder | Parece amador para quem pesquisa no Google | Erros, retrabalho e falta de visão do negócio |
-| O que quer | Vender mais sem ficar preso no celular | Passar confiança e ser encontrado | Organizar tudo num lugar só |
-| Serviço de entrada | Landing page | Site institucional ou auditoria de UX | Sistema web, começando pelo protótipo |
-| Objeção comum | "Site é caro e eu já tenho Instagram" | "Não sei se vale a pena" | "Já tentei sistema pronto e não serviu" |
-| Resposta | A página responde preço e tamanho antes do cliente perguntar | A auditoria mostra o que está custando cliente, antes de investir | Sistema sob medida, desenhado com ele no protótipo |
+| | Anunciante | Prestador e empresa B2B | Dono do site que não rende | Fundador de produto | Time de tecnologia |
+| --- | --- | --- | --- | --- | --- |
+| Exemplo | Loja, curso, clínica ou agência que investe em Google Ads e Meta Ads | Clínica, escritório, indústria, empresa B2B | Empresa com site ou sistema antigo, com checkout ou formulário | Startup validando um produto, empresa com área de membros ou portal de clientes | Empresa com devs e designers, mas telas sem padrão |
+| Hoje | Manda o tráfego pago para a home ou para uma página lenta | É indicada no boca a boca, com site velho ou sem site | Vê visita sobrando e venda faltando | Tem a ideia e o negócio, mas não tem a interface | Cada squad desenha a sua tela |
+| Dor | Paga o clique e perde o lead no caminho | Parece amadora para quem pesquisa e compara | Site lento, ruim no celular, formulário e checkout que perdem gente | Gasta meses antes de testar com usuário real | Retrabalho, telas inconsistentes e entrega lenta |
+| O que quer | Medir o retorno em leads e vendas | Passar confiança, ser encontrada e receber contato por WhatsApp ou formulário | Recuperar a venda que está escapando | Validar rápido, com algo que dê para clicar e usar | Padronizar e acelerar sem parar o time |
+| Serviço de entrada | Landing page focada em conversão | Site institucional | Redesign e otimização de conversão (CRO/UX) | Interface de sistema, dashboard ou MVP | Design system e componentização |
+| Objeção comum | "Já tenho uma página e o anúncio funciona mais ou menos" | "Site não traz cliente para o meu tipo de negócio" | "Refazer tudo é caro e arriscado" | "Posso contratar uma agência ou um time interno" | "Já temos designer e dev, para que mais um?" |
+| Resposta | A página é feita para a campanha e mostra o caminho do clique ao contato | O site responde o que o cliente pesquisa e leva direto ao WhatsApp | O redesign começa pelo que está custando venda, e só mexe no que importa | Protótipo navegável aprovado antes do código, e o MVP sai sob medida | Entra como reforço pontual, com componentes que o time continua usando |
 
-**Quem decide:** o próprio dono, que tem pouco tempo e pouca paciência para termos técnicos. Falar com ele é falar de resultado: mais venda, menos trabalho, mais confiança.
+**Quem decide:** muda com o porte. Em empresa pequena, o próprio dono. Em empresa maior, quem responde por marketing, vendas ou produto: o gestor de marketing, o fundador, o líder de tecnologia. Os três têm pouco tempo e cobram resultado. Falar com eles é falar de retorno (mais lead, mais venda, menos retrabalho, entrega mais rápida), com número e prazo por escrito, e deixar o termo técnico para quem perguntar.
 
 ## Posicionamento e diferenciais
 
