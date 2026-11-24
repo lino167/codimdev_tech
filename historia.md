@@ -105,7 +105,7 @@
 ### 10 — Rodapé · ato 4
 
 - **Gesto:** a logo horizontal em escala grande e proporcional, sobre algodão; a linha carmim com a barrinha fecha a página, como nos modelos de Instagram. "Voltar ao topo" leva a barrinha de volta ao cursor da cena 1.
-- **Texto:** links (Serviços, Projetos, O combinado), Instagram `[preencher]`, "codimdev · desenvolvimento web · feito por um piauiense em Blumenau, SC · 2026" e links para todas as páginas (Serviços, Projetos, Como funciona, Sobre, Orçamento, Privacidade).
+- **Texto:** links (Serviços, Projetos, O combinado), Instagram `[preencher]`, "codimdev · desenvolvimento web · 2026" e, sozinha numa linha abaixo, "feito por um piauiense" (nada mais) e links para todas as páginas (Serviços, Projetos, Como funciona, Sobre, Orçamento, Privacidade).
 
 ### 404 — extra
 
@@ -174,6 +174,11 @@ A página inicial é o **trailer**: conta a história e leva a cada página. Cad
 - **Texto:** título "Protótipo antes do código." · apoio "Você vê e clica nas telas antes de pagar a segunda parte." · link "Ver como funciona" leva a `/como-funciona`.
 - **Passagem:** a linha de ferramentas vira o fio da faixa final.
 
+### S5b — Fora do código
+
+- **Gesto:** faixa em trama com duas etiquetas em mono, cada uma com a barrinha: `TIME · Corinthians` e `ORIGEM · Nordeste, com orgulho`.
+- **Texto:** "Sou corinthiano e nordestino com orgulho." Só texto: nenhum escudo, cor de time ou logo do clube.
+
 ### S6 — Convite
 
 - **Gesto:** faixa grafite com o botão carmim, igual à da página inicial.
@@ -228,3 +233,12 @@ A página inicial é o **trailer**: conta a história e leva a cada página. Cad
 - Quais projetos autorais entram nas três primeiras páginas de projeto (Kraflo CMMS, Kraflo OS Bot e Tenua têm GitHub; VARN, Bio Bichos e R.S. Soluções têm prévia) e as capturas de tela de cada um.
 - Para o Sobre: uma ou duas coisas pessoais verdadeiras, se você quiser (um prato do Piauí, um time, o que fazia em Guadalupe), porque eu não invento.
 - Nome exato do curso técnico em mecânica, se for citado.
+
+## Decisões confirmadas
+
+- Todas as páginas do mapa entram na primeira versão, exceto Notas (versão 2).
+- WhatsApp: o número do currículo; e-mail `contato@codimdev.com.br`; Instagram `@codimdev`.
+- Projetos: Kraflo CMMS, Kraflo OS Bot e Tenua.
+- Sobre: com "corinthiano e nordestino com orgulho".
+- "Ainda sem clientes pagantes" pode ir ao ar. Segue o Astro.
+- Rodapé: só "feito por um piauiense".
