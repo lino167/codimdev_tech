@@ -6,7 +6,7 @@
 
 ## Quem é a codimdev
 
-A codimdev é o estúdio de desenvolvimento web do Zacarias: sites, landing pages, sistemas web e UI/UX para pequenos negócios de todo o Brasil, com atendimento online. Uma pessoa só faz o design e o código, do protótipo ao site no ar.
+A codimdev é o estúdio de desenvolvimento web do Zacarias: landing pages de conversão, sites institucionais, redesign de sites e sistemas, interfaces de sistemas web e design systems, para empresas de todo o Brasil, com atendimento online. Uma pessoa só faz o design e o código, do protótipo ao site no ar.
 
 **Em uma frase:** sites que vendem e sistemas que organizam, feitos pela mesma pessoa, do design ao código.
 
@@ -18,10 +18,10 @@ A codimdev é o estúdio de desenvolvimento web do Zacarias: sites, landing page
 
 ## Propósito, missão, visão e valores
 
-O propósito da codimdev é fazer a internet trabalhar a favor do pequeno negócio, e não dar mais trabalho a ele.
+O propósito da codimdev é fazer a internet trabalhar a favor da empresa, e não dar mais trabalho a ela.
 
 - **Missão:** entregar sites e sistemas que trazem cliente e poupam tempo, com escopo, prazo e preço claros desde o primeiro contato.
-- **Visão:** ser a primeira lembrança de pequenos negócios do Brasil quando precisam de um site ou sistema bem feito, sem o preço e a demora de uma agência.
+- **Visão:** ser a primeira lembrança de empresas do Brasil, de PMEs a startups e times de tecnologia, quando precisam de um site, um sistema ou uma interface bem feitos, sem o preço e a demora de uma agência.
 - **Estado atual:** estúdio aberto em novembro de 2026, ainda sem clientes pagantes; os projetos mostrados são autorais.
 
 | Valor | Na prática |
@@ -86,13 +86,14 @@ O cliente da codimdev é a empresa que vende, capta ou opera pela internet e pre
 
 ## Posicionamento e diferenciais
 
-Para o pequeno negócio que precisa de um site ou sistema que dê resultado, a codimdev é o desenvolvedor que desenha e programa a mesma peça, com escopo e preço por escrito, sem o custo de uma agência nem o resultado genérico de um construtor de sites.
+Para a empresa que precisa de um site, um sistema ou uma interface que dê resultado, a codimdev é o desenvolvedor que desenha e programa a mesma peça, com escopo e preço por escrito, sem o custo de uma agência nem o resultado genérico de um construtor de sites.
 
 | Alternativa do cliente | Onde falha | O que a codimdev faz diferente |
 | --- | --- | --- |
 | Construtor de sites pronto (modelo) | Fica genérico, igual a todos e difícil de adaptar | Site sob medida, desenhado para o negócio |
 | Designer que só entrega o Figma | O cliente ainda precisa achar quem programe | Design e código pela mesma pessoa, entregue no ar |
 | Agência | Caro, lento e com várias pessoas no meio | Fala direto com quem faz; preço de freelancer |
+| Contratar um time interno ou freelancers soltos | Caro e demorado para montar, e difícil de manter padrão | Reforço pontual, com entrega fechada e padrão que o time continua usando |
 | Sobrinho que "mexe com computador" | Sem prazo, sem escopo e sem suporte | Proposta por escrito, prazo e garantia de ajustes |
 
 **Diferenciais para repetir em todo lugar** (site, Instagram, propostas):
@@ -155,7 +156,7 @@ O Instagram é o canal principal de captação, e o WhatsApp é onde a venda fec
 
 | Canal | Papel | Frequência sugerida |
 | --- | --- | --- |
-| Instagram (feed) | Atrair e educar o pequeno negócio | 3 posts por semana |
+| Instagram (feed) | Atrair e educar quem decide na empresa | 3 posts por semana |
 | Instagram (stories) | Bastidores, agenda e perguntas | 3 a 5 por semana |
 | WhatsApp | Atendimento, proposta e fechamento | Resposta em até [N] horas |
 | Site da codimdev | Vitrine, projetos e formulário de orçamento | Atualizado a cada projeto |
@@ -164,7 +165,7 @@ O Instagram é o canal principal de captação, e o WhatsApp é onde a venda fec
 
 | Pilar | O que mostra | Exemplo de post |
 | --- | --- | --- |
-| Ensinar | Erros e boas práticas de site para pequeno negócio | "3 sinais de que sua marca já precisa de um site" |
+| Ensinar | Erros e boas práticas de site, conversão e interface para empresas "3 sinais de que sua marca já precisa de um site" ou "3 motivos de sua landing page não converter" |
 | Mostrar | Projetos, antes e depois, protótipos | Mockup de um projeto autoral, como a VARN |
 | Bastidores | Como um projeto sai do papel | "Do briefing ao site no ar" |
 | Ofertas | Serviços, agenda e auditoria | "Seu site perde clientes. Eu mostro onde." |
@@ -187,7 +188,7 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam sete decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
 - [ ] Fechar os preços de cada serviço e do plano mensal.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
@@ -196,3 +197,4 @@ Faltam sete decisões para a plataforma ficar completa. Os preços marcados como
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
+- [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.

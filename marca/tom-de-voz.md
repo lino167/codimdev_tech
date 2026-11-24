@@ -20,9 +20,9 @@ A codimdev fala como um desenvolvedor e designer que resolve problemas: direto, 
 ## Instagram
 
 **Bio (escolha uma):**
-1. Sites e sistemas para marcas e pequenos negócios. Design e código pela mesma pessoa. Blumenau, SC.
+1. Landing pages que convertem, sites e sistemas para empresas. Design e código pela mesma pessoa. Blumenau, SC.
 2. Dev e designer. Sites que vendem, sistemas que organizam o seu negócio.
-3. Design e código pela mesma pessoa. Sites, sistemas web e UI/UX para pequenos negócios.
+3. Design e código pela mesma pessoa. Landing pages, sites, redesign, sistemas web e design systems para empresas.
 
 Última linha da bio: "Orçamento pelo WhatsApp ↓" e o link.
 
@@ -37,6 +37,9 @@ A codimdev fala como um desenvolvedor e designer que resolve problemas: direto, 
 - "Planilha não é sistema de gestão."
 - "O cliente não compra um site. Compra menos trabalho."
 - "Seu site perde clientes. Eu mostro onde."
+- "Seu anúncio paga o clique. Sua página perde o lead."
+- "Seu formulário está espantando cliente."
+- "Seu time desenha a mesma tela de três jeitos."
 
 ## WhatsApp
 

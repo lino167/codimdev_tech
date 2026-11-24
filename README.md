@@ -1,6 +1,6 @@
 # codimdev
 
-Estúdio de desenvolvimento web do Zacarias: sites, landing pages, sistemas web e UI/UX para pequenos negócios. Design e código pela mesma pessoa.
+Estúdio de desenvolvimento web do Zacarias: landing pages, sites, redesign, sistemas web e design systems para empresas. Design e código pela mesma pessoa.
 
 Este repositório reúne tudo o que existe sobre a marca nos artefatos do claude.ai, copiado em 24/11/2026. O site antigo (Astro, com o símbolo dos dois C) foi removido; continua no histórico do git, nos commits anteriores a esta limpeza.
 
