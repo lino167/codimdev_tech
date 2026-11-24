@@ -1,0 +1,110 @@
+/* A TRAVESSIA (túnel): uma linha fina se abre ao meio e o fundo escurece; palavras e molduras de janela voam em 3D (CSS) ao
+   redor da câmera; a última moldura cresce e vira a cena seguinte (algodão). Sem JS ou com movimento reduzido, não aparece.
+   Nenhum filter nem will-change no ancestral da cena 3D (achataria o preserve-3d). */
+.tunel {
+  position: relative;
+  display: none;
+  height: 100svh;
+  overflow: clip;
+  background: var(--color-algodao);
+}
+.tunel--animado {
+  display: block;
+}
+.tunel__fundo {
+  position: absolute;
+  inset: 0;
+  background: var(--color-grafite);
+  clip-path: inset(49.8% 0);
+}
+.tunel__linha {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-grafite);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.tunel__grade i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-algodao) 9%, transparent);
+}
+.tunel__cena {
+  position: absolute;
+  inset: 0;
+  perspective: 700px;
+  perspective-origin: 50% 50%;
+}
+.tunel__mundo {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.tunel__item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  white-space: nowrap;
+  color: var(--color-algodao);
+  font-family: var(--font-titulo);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.tunel__moldura {
+  border: 1px solid color-mix(in srgb, var(--color-algodao) 38%, transparent);
+  border-radius: var(--r);
+}
+.tunel__moldura::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 7%;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-algodao) 38%, transparent);
+}
+.tunel__frase {
+  position: absolute;
+  right: 12.5%;
+  top: 50%;
+  display: grid;
+  gap: 0.1em;
+  margin: 0;
+  transform: translateY(-50%);
+  text-align: right;
+  color: var(--color-algodao);
+  font-family: var(--font-titulo);
+  font-size: clamp(1.75rem, 1.1rem + 3vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  opacity: 0;
+}
+.tunel__marca {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -6px 0 0 -9px;
+}
+.tunel__portal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(170vw, 280svh);
+  aspect-ratio: 16 / 10;
+  background: var(--color-algodao);
+  border-radius: var(--r);
+  transform: translate(-50%, -50%) scale(0);
+}
+@media (max-width: 700px) {
+  .tunel__cena {
+    perspective: 500px;
+  }
+  .tunel__frase {
+    right: var(--gutter);
+  }
+}
