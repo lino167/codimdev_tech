@@ -11,6 +11,7 @@ import { revelar } from './revelar';
 import { prepararNav } from './nav';
 import { prepararAbertura } from './abertura';
 import { escapa } from './escapa';
+import { tunel } from './tunel';
 import { peca } from './peca';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +34,7 @@ export async function iniciar() {
   const rolagem = suave({ reduzido });
   nav.ligar(rolagem);
   // ordem: a peça (que prende o palco) vem primeiro, para os gatilhos de baixo contarem com o espaço do pin
+  tunel({ reduzido });
   peca({ reduzido });
   revelar({ reduzido });
   escapa(reduzido);

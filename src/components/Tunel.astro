@@ -1,0 +1,33 @@
+---
+// A travessia entre o hero e o resto da página (inspirada nas transições de "santalarch.com", reescrita para a marca): uma
+// linha fina se abre ao meio e o fundo escurece; a câmera voa por um túnel de palavras e molduras de janela (CSS 3D, sem
+// WebGL), e uma última moldura cresce até cobrir a tela e vira a cena seguinte. A rolagem dirige a câmera (movimento/tunel.ts).
+// Decorativo: fica escondido de leitores de tela e some sem JS ou com movimento reduzido. Todo texto vem de pt.ts.
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+---
+
+<section class="tunel" data-tunel data-dados={JSON.stringify(t.tunel.palavras)} aria-hidden="true">
+  <div class="tunel__fundo" data-fundo>
+    <div class="tunel__grade">
+      {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+        <i style={`left:${n * 12.5}%`} />
+      ))}
+    </div>
+    <div class="tunel__cena" data-cena>
+      <div class="tunel__mundo" data-mundo></div>
+    </div>
+    <p class="tunel__frase" data-frase>
+      {t.tunel.frase.map((linha) => (
+        <span>{linha}</span>
+      ))}
+    </p>
+    <i class="barrinha tunel__marca"></i>
+  </div>
+  <i class="tunel__linha" data-linha></i>
+  <div class="tunel__portal" data-portal></div>
+</section>

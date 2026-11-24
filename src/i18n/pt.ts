@@ -78,6 +78,32 @@ export const pt = {
   },
   // os dois cursores que montam a página (motor/cursores.ts)
   motor: { design: 'design', codigo: 'código' },
+  // a travessia entre o hero e o resto: a câmera voa por um túnel de palavras e molduras (movimento/tunel.ts)
+  tunel: {
+    frase: ['Eu desenho.', 'Eu programo.', 'Eu publico.'],
+    palavras: [
+      'desenho',
+      'código',
+      'protótipo',
+      'teste',
+      'página',
+      'venda',
+      'clique',
+      'formulário',
+      'celular',
+      'velocidade',
+      'conversa',
+      'proposta',
+      'layout',
+      'botão',
+      'título',
+      'cartão',
+      'menu',
+      'rodapé',
+      'link',
+      'no ar',
+    ],
+  },
   // cena 02: a barrinha risca a parte que falha em cada frase
   escapa: {
     frases: [
