@@ -92,7 +92,6 @@ export const pt = {
     rotulo: 'Como funciona',
     titulo: { antes: 'Uma conversa vira protótipo, vira código e vai ao ', destaque: 'ar', depois: '.' },
     ilustracao: 'Ilustração',
-    abas: ['01 · conversa', '02 · protótipo', '03 · código', '04 · testes', '05 · no ar'],
     etapas: [
       {
         rotulo: 'Etapa 1 · Conversa',
@@ -120,50 +119,6 @@ export const pt = {
         fato: 'Site no ar, um guia curto de uso e 15 dias para pequenos ajustes.', // confirmar os 15 dias
       },
     ],
-    // o que aparece dentro das placas: um negócio de exemplo (fictício), com texto de verdade. É uma ilustração.
-    conversa: [
-      { de: 'cliente', texto: 'Oi! Preciso de uma página para vender meu café especial pela internet.' },
-      { de: 'eu', texto: 'Fechado. Me conta quem compra e como o pedido chega até você. Hoje mando a proposta.' },
-      { de: 'cliente', texto: 'Quase todo mundo vem pelo Instagram. Quero que peçam pelo WhatsApp.' },
-    ],
-    proposta: {
-      titulo: 'Proposta',
-      itens: [
-        ['Escopo', 'Landing page com cardápio e pedido pelo WhatsApp'],
-        ['Prazo', 'Combinado por escrito, antes de começar'],
-        ['Preço', 'Fechado por escrito, sem surpresa'],
-        ['Não incluso', 'O que não estiver nesta lista'],
-      ],
-    },
-    site: {
-      marca: 'Café Maré',
-      menu: ['Cardápio', 'Sobre', 'Contato'],
-      titulo: ['Café especial,', 'direto do produtor.'],
-      sub: 'Grãos torrados toda semana e entregues na sua porta.',
-      botao: 'Pedir pelo WhatsApp',
-      cartoes: [
-        ['Torra fresca', 'Torrado na semana do pedido.'],
-        ['Entrega rápida', 'Sai no mesmo dia, em todo o bairro.'],
-        ['Assinatura', 'Receba todo mês e pause quando quiser.'],
-      ],
-      rodape: 'Café Maré · feito com carinho',
-      cardapio: ['Espresso', 'Coado', 'Cappuccino', 'Pão de queijo', 'Bolo do dia', 'Grão 250 g'],
-      contato: { titulo: 'Fale com a gente', campos: ['Nome', 'WhatsApp', 'Mensagem'], botao: 'Enviar' },
-    },
-    codigo: [
-      '<section class="hero">',
-      '  <h1>Café especial,',
-      '  direto do produtor.</h1>',
-      '  <a href="/pedir">',
-      '    Pedir pelo WhatsApp',
-      '  </a>',
-      '</section>',
-      '.hero { display: grid;',
-      '  gap: 24px; }',
-    ],
-    endereco: 'suaempresa.com.br',
-    noAr: 'NO AR',
-    checklist: ['celular', 'velocidade', 'formulário'],
   },
   // cena 04: a única cena escura
   noAr: {

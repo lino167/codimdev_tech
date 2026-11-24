@@ -15,7 +15,7 @@ A direção está em `briefing.md` (fatos), `historia.md` (a história e as pág
 ### O que importa
 
 - **Grafia:** `codimdev`, tudo junto e minúsculo, em qualquer lugar (também em título e começo de frase). Nunca "CodimDev", "Codim Dev" ou "CODIMDEV" (cuidado com `text-transform: uppercase`: use `.mono--livre`).
-- **A ideia:** uma prancheta de projeto em que um site é riscado em traço fino e a barrinha carmim o põe no ar. Tudo é desenhado em código (SVG, CSS, GSAP). **Sem WebGL, sem foto de banco de imagem.**
+- **A ideia:** uma prancheta de projeto em que um site é riscado em traço fino e a barrinha carmim o põe no ar. Tudo é desenhado em código (SVG, CSS, GSAP). **Sem WebGL, sem foto de banco de imagem.** Exceção, a peça principal (cena 03): cinco clipes de vídeo gerados no Higgsfield a partir de quadros reais desenhados em código (`public/video/`, `public/img/peca/`); o site do vídeo é fictício e leva a etiqueta "Ilustração".
 - **Serviços (os cinco):** landing pages de conversão, sites institucionais, redesign/CRO, interfaces/dashboards/MVPs, design system. **Não se fala** de vídeo, motion, identidade visual, redes sociais, tráfego pago, app nativo nem de **automação**. **Sem preço** no site.
 - **O logo é o do Livro da marca** (`src/lib/marca/logo.ts`): não redesenhe, não recolora, não estique.
 

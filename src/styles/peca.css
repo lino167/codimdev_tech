@@ -1,8 +1,7 @@
-/* PEÇA PRINCIPAL (cena 03): cinco placas de uma janela de navegador empilhadas em 3D (CSS), presas por 5 telas, com o
-   texto de cada etapa embaixo e a barra de etapa que anda com a rolagem. Sem JS ou com movimento reduzido: só a última
-   placa, achatada, e as cinco etapas em lista (.peca__lista). Com JS, a classe .peca--animada liga o palco.
-   Nenhum ancestral das placas usa overflow, filter ou will-change (achatariam o preserve-3d); o corte do palco fica
-   no .peca__palco, que não é um contexto 3D. */
+/* PEÇA PRINCIPAL (cena 03): um site fictício sendo construído em cinco etapas, em vídeo (cinco clipes empilhados, um por
+   etapa), preso por 5 telas, com o texto de cada etapa embaixo e a barra de etapa que anda com a rolagem. Sem JS ou com
+   movimento reduzido: só o quadro final e as cinco etapas em lista (.peca__lista). Com JS, a classe .peca--animada liga
+   o palco. */
 .peca {
   position: relative;
   padding-top: clamp(64px, 10vh, 120px);
@@ -32,39 +31,44 @@
   display: grid;
   place-items: center;
   min-height: 0;
-  perspective: 2200px;
 }
-.peca__conjunto {
+.peca__tela {
   position: relative;
-  width: min(100%, calc((100svh - 360px) * 1.9), 900px);
-  aspect-ratio: 1200 / 720;
-  transform-style: preserve-3d;
-}
-.placa {
-  position: absolute;
-  inset: 0;
-  color: var(--color-grafite);
+  width: min(100%, calc((100svh - 330px) * 1.7778), 1100px);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   background: var(--color-algodao);
   border: 1px solid var(--color-linha);
   border-radius: var(--r);
-  container-type: inline-size;
 }
-.placa__aba {
+.peca__clipe,
+.peca__fim {
   position: absolute;
-  left: -1px;
-  top: -26px;
-  padding: 5px 10px 4px;
-  background: var(--color-algodao);
-  border: 1px solid var(--color-linha);
-  border-bottom: 0;
-  border-radius: var(--r) var(--r) 0 0;
-  color: var(--color-grafite);
-  white-space: nowrap;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.placa__aviso {
+/* os clipes ficam empilhados; só o da etapa atual aparece (fusão de 0,5 s) */
+.peca__clipe {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.peca__clipe--ativo {
+  opacity: 1;
+}
+.peca--animada .peca__fim {
+  display: none;
+}
+.peca__aviso {
   position: absolute;
   right: 12px;
-  bottom: 1px;
+  bottom: 8px;
+  z-index: 2;
+  padding: 2px 6px;
+  background: var(--color-algodao);
+  color: var(--color-grafite-suave);
+  border-radius: var(--r);
   font-size: 11px;
   line-height: 14px;
 }
@@ -134,8 +138,8 @@
   left: calc(var(--p) * (100% - var(--barra-w)));
 }
 
-/* modo estático: sem JS ou com movimento reduzido: só a última placa, achatada */
-.peca:not(.peca--animada) .placa:not([data-placa='4']) {
+/* modo estático: sem JS ou com movimento reduzido: só o quadro final (os clipes não aparecem) */
+.peca:not(.peca--animada) .peca__clipe {
   display: none;
 }
 .peca:not(.peca--animada) .peca__palco {
@@ -182,9 +186,12 @@
     grid-template-rows: auto auto auto;
     align-content: center;
   }
-  /* no celular as placas vão de borda a borda: é o que dá tamanho ao desenho */
-  .peca__conjunto {
-    width: calc(100% + 64px);
+  /* no celular o quadro vai de borda a borda */
+  .peca__tela {
+    width: calc(100% + var(--gutter) * 2);
+    margin-inline: calc(var(--gutter) * -1);
+    border-inline: 0;
+    border-radius: 0;
   }
   .peca__texto {
     min-height: 168px;
