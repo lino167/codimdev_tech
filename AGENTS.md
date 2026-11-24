@@ -8,62 +8,54 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
-## Guia do projeto: site da CodimDev (identidade antiga, a ser substituído)
+## Guia do projeto: site da codimdev
 
-> **Atenção:** os tokens, as fontes e o gesto descritos nesta seção são da identidade antiga e **não valem**. A marca é `codimdev` (tudo minúsculo), com algodão `#F5F4EF`, grafite `#18191D`, carmim `#C42A1F`, IBM Plex Sans, Inter e IBM Plex Mono. Siga `briefing.md` e `historia.md`; esta seção será reescrita depois da aprovação da história.
-
-O roteiro completo está em `PROMPT-SITE.md`. Leia antes de construir qualquer seção nova.
+A direção está em `briefing.md` (fatos), `historia.md` (a história e as páginas) e `prompt-site.md` (a especificação completa). Leia antes de construir qualquer página. Fonte da marca: Livro da marca v1.0 e Design System "Codimdev" (24/11/2026).
 
 ### O que importa
 
-- **Uma peça principal:** o mundo. Um único `<canvas>` WebGL fixo atrás da página (`src/lib/mundo/`), onde o símbolo e o título são pontilhado de tinta e os elos são vermelhos e sólidos. Ele vem primeiro e precisa estar perfeito antes das seções.
-- **O gesto é ligar.** Pontos soltos viram uma coisa só quando um elo vermelho trava. Um fio vermelho desce a página e cada cena acende quando o fio chega.
-- **Tudo é desenhado em código:** pontos de tinta, elos vermelhos e interfaces em HTML vivo. Sem foto de banco de imagem.
-- **Nada surge pronto.** Todo objeto novo se condensa de pontos e só firma quando um elo fecha.
-- O hero (T1 a T4) e o loader já existem. Não reescreva: acrescente em volta.
+- **Grafia:** `codimdev`, tudo junto e minúsculo, em qualquer lugar (também em título e começo de frase). Nunca "CodimDev", "Codim Dev" ou "CODIMDEV" (cuidado com `text-transform: uppercase`: use `.mono--livre`).
+- **A ideia:** uma prancheta de projeto em que um site é riscado em traço fino e a barrinha carmim o põe no ar. Tudo é desenhado em código (SVG, CSS, GSAP). **Sem WebGL, sem foto de banco de imagem.**
+- **Serviços (os cinco):** landing pages de conversão, sites institucionais, redesign/CRO, interfaces/dashboards/MVPs, design system. **Não se fala** de vídeo, motion, identidade visual, redes sociais, tráfego pago, app nativo nem de **automação**. **Sem preço** no site.
+- **O logo é o do Livro da marca** (`src/lib/marca/logo.ts`): não redesenhe, não recolora, não estique.
 
 ### Design system
 
-Tokens em `src/styles/global.css`, sempre por variável. Nunca escreva cor ou tamanho solto.
+Tokens em `src/styles/global.css` (bloco `@theme`). Sempre por variável, nunca valor solto.
 
-| Token              | Valor                  | Uso                                            |
-| ------------------ | ---------------------- | ---------------------------------------------- |
-| `--color-branco`   | `#ffffff`              | fundo                                          |
-| `--color-tinta`    | `#0a0a0b`              | texto e pontos                                 |
-| `--color-vermelho` | `#e8132e`              | **só o elo**: botão principal, foco ativo, fio |
-| `--color-cinza`    | `#6b6b70`              | apoio e notas                                  |
-| `--font-titulo`    | Archivo Condensada 800 | títulos                                        |
-| `--font-texto`     | Inter                  | texto corrido                                  |
-| `--font-mono`      | JetBrains Mono         | números, rótulos, contadores                   |
+| Token                   | Valor                 | Uso                                                           |
+| ----------------------- | --------------------- | ------------------------------------------------------------- |
+| `--color-algodao`       | `#F5F4EF`             | fundo da página                                               |
+| `--color-trama`         | `#E9E7E0`             | cartões e janelas                                             |
+| `--color-cru`           | `#DEDCD4`             | hover do botão secundário                                     |
+| `--color-linha`         | `#D6D4CC`             | fios de 1 px e a grade                                        |
+| `--color-grafite`       | `#18191D`             | texto e a cena escura                                         |
+| `--color-grafite-suave` | `#5C5D63`             | legendas                                                      |
+| `--color-carmim`        | `#C42A1F`             | botão principal, link, **uma palavra por título**, a barrinha |
+| `--font-titulo`         | IBM Plex Sans 600/400 | títulos                                                       |
+| `--font-texto`          | Inter 400/500         | texto e botões                                                |
+| `--font-mono`           | IBM Plex Mono 400     | rótulos, contadores, ferramentas                              |
 
-- **Vermelho nunca é decoração.** Se uma tela tem vermelho demais, está errada. Texto pequeno em vermelho não é permitido; só texto grande e botões passam no contraste.
-- Uma palavra em vermelho por título, no máximo (como "conectado." no hero).
-- Fundo branco. A **única** inversão para tinta é a cena das 22 h do "dia do Marcos".
-- Nav com rótulos em mono entre colchetes (`[ Serviços ]`); o botão troca de cor conforme o fundo.
+- Cantos de **4 px**, nada de pílula, gradiente ou brilho. Nada de branco puro nem preto puro nos fundos.
+- Carmim **nunca** como fundo de seção, em vários botões juntos ou para indicar erro (erro tem a cor `--color-erro`, com texto e ícone).
+- A barrinha (`.barrinha`): 18 × 12 px, `skewX(-36deg)`, carmim. É o cursor, o marcador, o "visto" e a luz de status.
+- Um botão principal (carmim) e um secundário por grupo. Hover só com mouse (`@media (hover: hover)`). Alvos de 44 px.
 
-### Motion
+### Voz
 
-- GSAP 3.15 + ScrollTrigger e Lenis (`lerp 0.09`) como **única** suavização.
-- **O scroll dirige só o mundo** (cabeça do fio, a cena presa do Ato 2, o relógio). **O texto entra por tempo**, uma vez. Nada de scrub em texto.
-- Nenhuma `transition` CSS em propriedade que o GSAP anima.
-- Pulso dos elos a cada 3,8 s, só enquanto a seção está na tela.
-- `prefers-reduced-motion`: tudo já formado, sem Lenis e sem animação CSS. Sem WebGL: título e símbolo em HTML/SVG. Sem JS: tudo legível e o formulário funciona.
+O artesão: direto, calmo, cumpre o que combinou. Primeira pessoa ("eu desenho"); o visitante é "você". Sem exclamação, sem caixa alta, sem emoji. Proibido: inovador, disruptivo, solução completa, alavancar, "transforme seu negócio", "presença digital".
+**Sotaque do Piauí, sutil:** só no ritmo e no vocabulário, no máximo um por cena, e nunca em serviço, combinado, formulário, erro ou privacidade. As linhas marcadas `// sotaque` em `pt.ts` são a lista completa.
 
 ### Regras de qualidade
 
-- Textos **só** em `src/i18n/pt.ts` (e `en.ts`, ainda a criar). Nenhum texto visível fora deles.
-- Fontes **só** pelo `carga.ts`: nada de `@font-face` nem preload fora do `<noscript>`.
+- Textos **só** em `src/i18n/pt.ts`; contatos e links em `src/lib/dados.ts`. Nada de texto visível fora deles.
+- Fontes **só** pelo `carga.ts` (`FontFace`); `npm run fontes` copia os arquivos. Nada de `@font-face` solto nem preload (só no `<noscript>`).
 - O `<html class="is-loading">` e o guarda de 10 s do `Base.astro` não se removem.
-- **Fatos reais ou `[preencher]`.** Nunca invente preço, número, cliente, depoimento, telefone ou endereço. `[preencher]` nunca vai em título.
-- Celular conferido em 390 px; nenhuma letra cortada em repouso (acentos e descendentes).
-- Todo texto novo que o fio não pode atravessar entra na lista de seletores a evitar do mundo.
-- `npm run check:fast` passa antes de cada commit. Nenhum teste desligado para ficar verde.
-
-### Como checar
-
-1. Recarregue: loader "Conectando" e entrada do hero sem quadro em branco entre os dois.
-2. Role devagar até o fim: o fio desce sem pular e nenhum ponto cai por cima de texto.
-3. Repita em 390, 768, 1280 e 1456 px, com movimento reduzido, sem WebGL e com a rede limitada.
+- **Fatos reais ou `[preencher]`.** Nunca invente preço, número, cliente ou depoimento. Os projetos são **autorais** e o site diz isso.
+- **Fora do site:** o emprego atual, "CLT", "Lino Estúdio" e telefone/e-mail/endereço pessoais do currículo.
+- Rodapé: só "feito por um piauiense" na linha final (sem cidade).
+- O scroll dirige só a peça principal; o texto entra por tempo. Movimento reduzido: tudo já formado.
+- Celular conferido em 390 px; nenhuma letra cortada; `npm run check:fast` passa antes de cada commit.
 
 ## Documentation
 

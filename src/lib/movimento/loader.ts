@@ -1,63 +1,54 @@
-// Loader "conectando" (técnica estudada na template Sinal; código próprio).
-// No mesmo canvas, os dois C do símbolo (já sólidos) entram de lados opostos conforme os bytes chegam de verdade
-// (carga.ts); embaixo, o contador "CONECTANDO 64%". Em 100% os C estão encostados e a entrada (entrada.ts)
-// continua dali: os elos fecham e os pontos voam. Sem corte, sem quadro em branco. Rolagem bloqueada até lá.
-// Movimento reduzido ou sem WebGL: tela branca própria com o contador, que some por fusão.
-// ?hd: segura até todas as imagens baixarem (para gravar vídeo), com limite de 60 s.
+// Carregador da codimdev. O símbolo da logo é DESENHADO em traço fino conforme o progresso REAL (carga.ts: bytes das
+// fontes e do JS e do CSS que já chegaram), nunca um timer; o número nunca volta. Tempo mínimo de 1,1 s; limite de
+// 9 s em rede lenta (60 s no ?hd). Em 100%: o corpo se preenche, a barrinha carmim risca o símbolo e TRAVA no lugar
+// (o clique), o contador sai e a tela se abre para cima sobre a página já pronta, sem quadro em branco no meio.
+// Rolagem travada durante a carga, sem esconder a barra. Movimento reduzido: sem carregador, só espera as fontes.
 import { gsap } from 'gsap';
-import type { Mundo } from '../mundo/mundo';
 import type { Carga } from './carga';
 import { ARQUIVOS_FONTES } from './carga';
 
-const TEMPO_MIN = 0.8; // com cache, os C ainda se aproximam sem piscar
+const TEMPO_MIN = 1.1; // com cache, o símbolo ainda se desenha sem piscar
 const ESPERA_MAX = 9; // rede lenta: depois disso segue com o que tiver
 const ESPERA_MAX_HD = 60;
 
 declare global {
   interface Window {
-    /** id do setTimeout de segurança do <head> (Base.astro): o loader o cancela ao começar */
+    /** id do setTimeout de segurança do <head> (Base.astro): o carregador o cancela ao começar */
     __seguranca?: number;
-    /** registro do progresso, para os testes de rede lenta */
-    __carga?: { log: { t: number; mostrado: number; real: number }[]; entradaEm: number | null; pronto?: boolean };
   }
 }
 
 export function loader({
-  mundo,
   carga,
   hd = false,
   reduzido = false,
 }: {
-  mundo: Mundo | null;
   carga: Carga;
   hd?: boolean;
   reduzido?: boolean;
 }): Promise<void> {
+  const raiz = document.documentElement;
   if (window.__seguranca) clearTimeout(window.__seguranca);
   const el = document.querySelector<HTMLElement>('[data-loader]');
-  if (!el) return Promise.resolve();
+
+  // movimento reduzido (ou sem o bloco): nada de carregador; a página aparece depois das fontes (no máximo 3 s)
+  if (!el || reduzido) {
+    return Promise.race([carga.pronta, new Promise<void>((r) => setTimeout(r, 3000))]).then(() => {
+      raiz.classList.remove('is-loading');
+      el?.remove();
+    });
+  }
+
   const numero = el.querySelector<HTMLElement>('[data-loader-n]');
-  const rotulo = el.querySelector<HTMLElement>('[data-loader-rotulo]');
+  const corpo = el.querySelector<SVGPathElement>('.loader__corpo');
+  const barra = el.querySelector<SVGPathElement>('.loader__barra');
   const etiqueta = el.querySelector<HTMLElement>('.loader__etiqueta');
   const destravar = bloquearRolagem();
-  const fusao = reduzido || !mundo;
-  if (fusao) el.classList.add('loader--fusao');
-  if (hd && rotulo) rotulo.textContent = el.dataset.rotuloHd ?? rotulo.textContent;
 
-  // o contador fica embaixo do símbolo, onde o mundo o desenha
-  const posicionar = () => {
-    if (!mundo || fusao) return;
-    const n = mundo.nucleo();
-    el.style.setProperty('--lx', `${n.x}px`);
-    el.style.setProperty('--ly', `${n.y + n.r * 2.9 - window.scrollY}px`);
-  };
-  posicionar();
-  window.addEventListener('resize', posicionar);
-  // a marca de antes do JS sai; o canvas assume
-  const boot = document.querySelector<HTMLElement>('.loader__boot');
-  if (boot) gsap.to(boot, { opacity: 0, duration: 0.3, ease: 'power1.out', onComplete: () => boot.remove() });
-  // o contador aparece já com a própria fonte (a JetBrains Mono é a primeira a descer)
+  // o contador aparece já na fonte dele (a IBM Plex Mono é a primeira a descer)
   void carga.arquivo(ARQUIVOS_FONTES[0]).then(() => el.classList.add('is-on'));
+  gsap.set(corpo, { strokeDashoffset: 1 });
+  gsap.set(barra, { opacity: 0 });
 
   let pronto = false;
   void carga.pronta.then(() => {
@@ -67,7 +58,6 @@ export function loader({
   const t0 = performance.now();
   const mostrado = { v: 0 };
   let ultimo = -1;
-  window.__carga = { log: [], entradaEm: null };
 
   return new Promise((resolver) => {
     const passo = () => {
@@ -84,42 +74,46 @@ export function loader({
         ultimo = k;
         if (numero) numero.textContent = String(k);
         el.setAttribute('aria-valuenow', String(k));
-        window.__carga?.log.push({ t: +t.toFixed(3), mostrado: k, real: +pr.p.toFixed(3) });
       }
-      if (mundo && !reduzido) {
-        // os C sólidos entram de lados opostos com a carga (a entrada continua desse mesmo valor)
-        mundo.estado.abre = 1 - easeInOut(mostrado.v);
-      }
+      // o traço do símbolo acompanha o número
+      if (corpo) corpo.style.strokeDashoffset = String(1 - easeSaida(mostrado.v));
       if (mostrado.v >= 1 && (pronto || limite)) {
         gsap.ticker.remove(passo);
-        if (window.__carga) {
-          window.__carga.entradaEm = +t.toFixed(3);
-          window.__carga.pronto = pronto;
-        }
         sair();
       }
     };
     gsap.ticker.add(passo);
 
     function sair() {
-      window.removeEventListener('resize', posicionar);
       destravar();
-      const fim = () => el?.remove();
-      if (fusao) {
-        resolver();
-        gsap.to(el, { opacity: 0, duration: 0.6, ease: 'power1.inOut', onComplete: fim });
-        return;
-      }
-      // o contador sai e a entrada começa logo depois, dos valores em que o loader parou
+      // o bloco continua visível enquanto a tela sobe, mesmo depois de is-loading sair do <html>
+      el?.classList.add('loader--saindo');
       gsap
-        .timeline({ onComplete: fim })
-        .to(etiqueta, { opacity: 0, y: -6, duration: 0.28, ease: 'power3.in' }, 0)
-        .add(resolver, 0.1);
+        .timeline({
+          onComplete: () => {
+            el?.remove();
+          },
+        })
+        // o corpo se preenche e a barrinha risca o símbolo na diagonal e trava (o clique, 120 ms)
+        .to(corpo, { fill: 'currentColor', duration: 0.18, ease: 'power1.out' }, 0)
+        .fromTo(
+          barra,
+          { opacity: 0, x: -160, y: 160 },
+          { opacity: 1, x: 0, y: 0, duration: 0.12, ease: 'power4.out' },
+          0.12,
+        )
+        .to(etiqueta, { opacity: 0, y: -6, duration: 0.25, ease: 'power3.in' }, 0.2)
+        // a página (já pronta embaixo) aparece e a tela se abre para cima em 0,7 s
+        .add(() => {
+          raiz.classList.remove('is-loading');
+        }, 0.42)
+        .add(() => resolver(), 0.5)
+        .to(el, { yPercent: -100, duration: 0.7, ease: 'power3.inOut' }, 0.42);
     }
   });
 }
 
-const easeInOut = (x: number) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+const easeSaida = (x: number) => 1 - Math.pow(1 - x, 2);
 
 /** Bloqueia a rolagem sem esconder a barra (esconder muda a largura da tela e o layout pula ao liberar). */
 function bloquearRolagem() {

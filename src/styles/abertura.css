@@ -1,0 +1,40 @@
+/* ABERTURA da página inicial (cena 01): a barra de quatro colunas, o título e os botões. A escrita do título pela
+   barrinha e a janela esboçada em traços entram na Parte 2. */
+.abertura {
+  min-height: 100svh;
+  padding-top: 96px;
+  padding-bottom: 64px;
+  display: grid;
+  align-content: start;
+  gap: 48px;
+}
+.abertura__corpo {
+  display: grid;
+  gap: 24px;
+  max-width: 880px;
+  padding-top: clamp(24px, 8vh, 96px);
+}
+.abertura__titulo {
+  font-size: var(--t-titulo);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+.abertura__apoio {
+  max-width: 56ch;
+  font-size: var(--t-sub);
+  line-height: 1.4;
+  color: var(--color-grafite-suave);
+}
+.abertura__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.abertura__nota {
+  max-width: 60ch;
+}
+@media (max-width: 520px) {
+  .abertura__botoes .btn {
+    width: 100%;
+  }
+}

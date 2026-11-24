@@ -1,0 +1,27 @@
+---
+// A logo oficial da codimdev (src/lib/marca/logo.ts). O traço grafite segue `currentColor` e o carmim segue o token,
+// para a logo acompanhar o tema. Não recolorir fora dos tokens, não esticar, sem sombra nem gradiente.
+import { LOGO, SIMBOLO } from '../lib/marca/logo';
+
+interface Props {
+  /** "completa" = símbolo + "codimdev"; "simbolo" = só o símbolo */
+  forma?: 'completa' | 'simbolo';
+  /** texto alternativo; sem ele a logo é decorativa (aria-hidden) */
+  rotulo?: string;
+  class?: string;
+}
+const { forma = 'completa', rotulo, class: classe } = Astro.props;
+const marca = forma === 'simbolo' ? SIMBOLO : LOGO;
+---
+
+<svg
+  class={classe}
+  viewBox={marca.viewBox}
+  role={rotulo ? 'img' : undefined}
+  aria-label={rotulo}
+  aria-hidden={rotulo ? undefined : 'true'}
+  focusable="false"
+>
+  <path d={marca.cinza} fill="currentColor" fill-rule="evenodd"></path>
+  <path d={marca.carmim} fill="var(--color-carmim)" fill-rule="evenodd"></path>
+</svg>

@@ -1,116 +1,202 @@
 @import 'tailwindcss';
 
-/* Tokens da marca (CLAUDE.md, "Design system"). As fontes NÃO têm @font-face: o carga.ts registra cada uma
-   como FontFace a partir dos bytes que mediu (o @font-face fica só no <noscript>, em /fonts/fontes.css). */
+/* Tokens da marca codimdev (Design System "Codimdev", Livro da marca v1.0, 24/11/2026). Tema claro: o tema escuro
+   do Design System fica fora da primeira versão. As fontes NÃO têm @font-face: o carga.ts registra cada uma como
+   FontFace a partir dos bytes que mediu (o @font-face fica só no <noscript>, em /fonts/fontes.css).
+   Nada de branco puro nem de preto puro nos fundos. O carmim marca só o que importa. */
 @theme {
-  --color-branco: #ffffff;
-  --color-tinta: #0a0a0b;
-  --color-vermelho: #e8132e;
-  --color-vermelho-escuro: #c90f27;
-  --color-cinza: #6b6b70;
-  --color-linha: #e4e4e7;
-  --color-superficie: #f5f5f6;
+  --color-algodao: #f5f4ef; /* fundo da página inteira */
+  --color-trama: #e9e7e0; /* cartões e janelas */
+  --color-cru: #dedcd4; /* hover do botão secundário, selos */
+  --color-linha: #d6d4cc; /* fios de 1 px, divisórias, a grade */
+  --color-grafite: #18191d; /* texto principal e a cena escura */
+  --color-grafite-suave: #5c5d63; /* legendas e etiquetas */
+  --color-carmim: #c42a1f; /* a cor da marca */
+  --color-no-carmim: #ffffff; /* texto sobre carmim */
+  --color-floresta: #2f6e54; /* confirmação, só em telas de produto desenhadas */
+  --color-erro: #8e1b12; /* erro, sempre com texto e ícone */
 
-  --font-titulo: 'Archivo Condensada', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif;
-  --font-texto: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-titulo: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-texto: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --ease-saida: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --t-hero: min(10.4vw, 22vh);
-  --t-h2: clamp(2.75rem, 1rem + 6vw, 7.5rem);
-  --r-btn: 10px;
-  --r-card: 20px;
-  --gutter: clamp(20px, 4vw, 64px);
+  --t-titulo: clamp(2.5rem, 1.1rem + 5.2vw, 4rem); /* 64 px no desktop */
+  --t-secao: clamp(1.75rem, 1.2rem + 1.8vw, 2.25rem); /* 36 px */
+  --t-sub: clamp(1.125rem, 1rem + 0.5vw, 1.375rem); /* 22 px */
+  --r: 4px; /* único raio do sistema: nada de pílula */
+  --gutter: 24px;
   --maxw: 1200px;
-  --fw-m: max(8px, 2vw);
+  --sombra-suave: 0 8px 24px rgb(24 25 29 / 0.08); /* só na janela do produto */
+  --barra-w: 18px; /* a barrinha da marca */
+  --barra-h: 12px;
 }
 
-html,
-body {
-  background: var(--color-branco);
-  color: var(--color-tinta);
+html {
+  background: var(--color-algodao);
+  color: var(--color-grafite);
   overflow-x: clip;
 }
 body {
+  margin: 0;
+  overflow-x: clip;
+  background-color: var(--color-algodao);
+  /* a grade fina de 24 px, atrás de tudo */
+  background-image:
+    linear-gradient(to right, rgb(214 212 204 / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(214 212 204 / 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
   font-family: var(--font-texto);
-  font-size: 18px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 24px;
   -webkit-font-smoothing: antialiased;
 }
-@media (max-width: 760px) {
-  body {
-    font-size: 16px;
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-weight: 600;
+  text-wrap: balance;
+}
+p {
+  margin: 0;
+}
+a {
+  color: var(--color-carmim);
+  text-decoration: none;
+}
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+  }
+}
+:focus-visible {
+  outline: 2px solid var(--color-grafite);
+  outline-offset: 2px;
+}
+
+main {
+  position: relative;
+  min-height: 100svh;
+}
+.pagina {
+  width: 100%;
+  max-width: calc(var(--maxw) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* a barrinha da marca: no ângulo do traço da logo e do pingo do "i". Sempre pequena, sempre carmim.
+   É o cursor, o marcador de lista, o "visto" e a luz de status. */
+.barrinha {
+  display: inline-block;
+  flex: none;
+  width: var(--barra-w);
+  height: var(--barra-h);
+  background: var(--color-carmim);
+  border-radius: 2px;
+  transform: skewX(-36deg);
+}
+
+/* a palavra em destaque do título: uma por título, no máximo */
+[data-destaque] {
+  color: var(--color-carmim);
+}
+
+/* rótulos em mono: etiquetas, contadores, ferramentas */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-grafite-suave);
+}
+
+/* mono sem caixa alta: onde aparece o nome da marca ("codimdev" nunca vira "CODIMDEV") ou uma frase que deve
+   ficar como foi escrita */
+.mono--livre {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* a barra de quatro colunas em mono, no topo de cada página (modelos de Instagram da marca) */
+.barra {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 12px 0 0;
+  border-top: 2px solid var(--color-grafite);
+  list-style: none;
+}
+.barra li:last-child {
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .barra {
+    grid-template-columns: 1fr 1fr;
+  }
+  .barra li:nth-child(2n) {
+    text-align: right;
   }
 }
 
-/* o canvas do mundo fica atrás de tudo; o conteúdo, por cima e sem fundo */
-canvas.mundo {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100lvh;
-  z-index: 0;
-  pointer-events: none;
-}
-main,
-.rodape {
-  position: relative;
-  z-index: 2;
-}
-
-/* botões da marca: vermelho chapado e contorno em tinta (sem degradê e sem brilho) */
+/* botões: principal em carmim e secundário com contorno de 1 px. 44 px no mínimo. Hover só com mouse. */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  height: 56px;
-  padding: 0 26px;
-  border-radius: var(--r-btn);
-  font-family: var(--font-titulo);
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 1;
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  font-family: var(--font-texto);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
   transition:
-    transform 0.2s var(--ease-saida),
-    background-color 0.2s var(--ease-saida),
-    color 0.2s var(--ease-saida);
+    background-color 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    opacity 0.15s,
+    transform 0.08s;
 }
-.btn:focus-visible {
-  outline: 3px solid var(--color-vermelho);
-  outline-offset: 4px;
+.btn:active {
+  transform: translateY(1px);
 }
 .btn--principal {
-  background: var(--color-vermelho);
-  color: var(--color-branco);
-}
-.btn--principal:hover {
-  background: var(--color-vermelho-escuro);
-  transform: translateY(-2px);
+  background: var(--color-carmim);
+  color: var(--color-no-carmim);
 }
 .btn--contorno {
-  border: 2px solid var(--color-tinta);
-  color: var(--color-tinta);
+  border-color: var(--color-grafite);
+  background: transparent;
+  color: var(--color-grafite);
 }
-.btn--contorno:hover {
-  background: var(--color-tinta);
-  color: var(--color-branco);
+.btn svg {
+  width: 20px;
+  height: 20px;
 }
-.btn__ico {
-  width: 16px;
-  height: 16px;
-  flex: none;
-}
-@media (max-width: 760px) {
-  .btn {
-    height: 48px;
-    font-size: 18px;
-    padding: 0 18px;
+@media (hover: hover) {
+  .btn:hover {
+    text-decoration: none;
+  }
+  .btn--principal:hover {
+    opacity: 0.9;
+  }
+  .btn--contorno:hover {
+    background: var(--color-cru);
   }
 }
 
@@ -126,11 +212,32 @@ main,
   display: block;
 }
 
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* cross-document view transition: um corte curto entre páginas (navegadores sem suporte navegam normal) */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+  @view-transition {
+    navigation: none;
   }
 }

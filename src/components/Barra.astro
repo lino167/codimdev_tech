@@ -1,0 +1,16 @@
+---
+// A barra de quatro colunas em mono, com fio grafite de 2 px em cima, no topo de cada página.
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+---
+
+<ul class="barra mono" aria-hidden="true">
+  {t.barra.map((c, i) => (
+    // a primeira coluna é o nome da marca: "codimdev" nunca vira "CODIMDEV"
+    <li class={i === 0 ? 'mono--livre' : undefined}>{c}</li>
+  ))}
+</ul>
