@@ -1,0 +1,23 @@
+---
+// Cena 04: a única cena escura. A peça principal já escureceu o palco; aqui o texto da virada.
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const n = t.noAr;
+---
+
+<section class="noar" data-tema="escuro" aria-labelledby="noar-titulo">
+  <div class="pagina noar__corpo">
+    <h2 id="noar-titulo" class="noar__titulo" data-revelar>
+      {n.titulo.antes}
+      <span data-destaque>{n.titulo.destaque}</span>
+      {n.titulo.depois}
+    </h2>
+    <p class="noar__apoio" data-revelar data-delay="0.15">
+      {n.apoio}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+// Cena 01: a barra de quatro colunas, o título (que a barrinha-cursor escreve, movimento/abertura.ts), os botões e,
+// ao lado, uma janela de navegador esboçada em traços tracejados, esperando. Sem JS o título é o texto comum.
+import type { Textos } from '../i18n/pt';
+import Barra from './Barra.astro';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const a = t.abertura;
+---
+
+<section class="abertura pagina" id="inicio">
+  <Barra t={t} />
+  <div class="abertura__grade">
+    <div class="abertura__corpo">
+      <h1 class="abertura__titulo" data-digita>
+        {a.titulo.antes}
+        <span data-destaque>{a.titulo.destaque}</span>
+        {a.titulo.depois}
+      </h1>
+      <p class="abertura__apoio">{a.apoio}</p>
+      <div class="abertura__botoes">
+        <a class="btn btn--principal" href="/orcamento">
+          {a.botaoPrincipal}
+        </a>
+        <a class="btn btn--contorno" href="/projetos">
+          {a.botaoSecundario}
+        </a>
+      </div>
+      <p class="abertura__nota mono">{a.nota}</p>
+    </div>
+    <svg class="abertura__esboco" viewBox="0 0 600 380" aria-hidden="true" focusable="false" data-esboco>
+      <rect class="e" x="2" y="2" width="596" height="376" rx="4"></rect>
+      <line class="e" x1="2" y1="40" x2="598" y2="40"></line>
+      <rect class="e" x="60" y="10" width="380" height="20" rx="4"></rect>
+      <rect class="e" x="24" y="60" width="552" height="130" rx="4"></rect>
+      <line class="e" x1="330" y1="76" x2="560" y2="174"></line>
+      <line class="e" x1="560" y1="76" x2="330" y2="174"></line>
+      <rect class="e" x="44" y="84" width="200" height="12" rx="2"></rect>
+      <rect class="e" x="44" y="108" width="160" height="12" rx="2"></rect>
+      <rect class="e" x="44" y="144" width="86" height="28" rx="4"></rect>
+      <rect class="e" x="24" y="214" width="172" height="116" rx="4"></rect>
+      <rect class="e" x="214" y="214" width="172" height="116" rx="4"></rect>
+      <rect class="e" x="404" y="214" width="172" height="116" rx="4"></rect>
+      <rect class="e" x="24" y="346" width="552" height="24" rx="4"></rect>
+    </svg>
+  </div>
+</section>

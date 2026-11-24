@@ -59,7 +59,8 @@ export function prepararNav(): Nav {
 
       let ultimo = window.scrollY;
       let acumulado = 0;
-      const escuras = Array.from(document.querySelectorAll<HTMLElement>('[data-tema="escuro"]'));
+      // [data-tema] pode mudar em tempo de execução (a peça principal escurece no fim do pin): lê a cada quadro
+      const temas = Array.from(document.querySelectorAll<HTMLElement>('[data-tema]'));
       gsap.ticker.add(() => {
         const y = window.scrollY;
         barra.classList.toggle('is-scrolled', y > TOPO);
@@ -74,7 +75,8 @@ export function prepararNav(): Nav {
         }
 
         // a cor da nav acompanha o fundo que está embaixo dela
-        const sobreEscura = escuras.some((s) => {
+        const sobreEscura = temas.some((s) => {
+          if (s.dataset.tema !== 'escuro') return false;
           const r = s.getBoundingClientRect();
           return r.top <= 30 && r.bottom >= 30;
         });

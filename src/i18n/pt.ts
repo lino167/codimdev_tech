@@ -67,7 +67,7 @@ export const pt = {
     piaui: 'feito por um piauiense', // sotaque: a origem, sem palavra
     topo: 'Voltar ao topo',
   },
-  // abertura da página inicial (cena 01): a animação de escrita entra na Parte 2
+  // cena 01: a barrinha-cursor escreve o título (movimento/abertura.ts)
   abertura: {
     titulo: { antes: 'Seu site deveria ', destaque: 'vender', depois: '. Não só existir.' },
     apoio:
@@ -75,6 +75,70 @@ export const pt = {
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
     nota: 'Orçamento pelo WhatsApp · resposta em até 24 horas úteis',
+  },
+  // cena 02: a barrinha risca a parte que falha em cada frase
+  escapa: {
+    frases: [
+      { antes: 'Seu anúncio paga o clique. Sua página ', falha: 'perde o lead', depois: '.' },
+      { antes: 'Seu formulário está ', falha: 'espantando cliente', depois: '.' },
+      { antes: 'Planilha ', falha: 'não é sistema de gestão', depois: '.' },
+    ],
+    apoio: 'Eu começo pelo que está custando venda, não pelo que é bonito.',
+  },
+  // cena 03, a peça principal: uma janela de navegador riscada em cinco etapas
+  peca: {
+    rotulo: 'Como funciona',
+    titulo: { antes: 'Uma conversa vira protótipo, vira código e vai ao ', destaque: 'ar', depois: '.' },
+    ilustracao: 'Ilustração',
+    etapas: [
+      {
+        rotulo: 'Etapa 1 · Conversa',
+        frase: 'Uma conversa…',
+        fato: 'Proposta por escrito antes de começar: escopo, prazo, preço e o que não está incluso. Nada começa sem aceite.',
+      },
+      {
+        rotulo: 'Etapa 2 · Protótipo',
+        frase: '…vira protótipo…',
+        fato: 'Você clica nas telas antes de qualquer código. São 2 rodadas de ajuste.',
+      },
+      {
+        rotulo: 'Etapa 3 · Código',
+        frase: '…vira código…',
+        fato: 'Design e código pela mesma pessoa, sem ruído entre etapas.',
+      },
+      {
+        rotulo: 'Etapa 4 · Testes',
+        frase: '…passa nos testes…',
+        fato: 'Versão de celular, velocidade e formulários testados.',
+      },
+      {
+        rotulo: 'Etapa 5 · No ar',
+        frase: '…e vai ao ar.',
+        fato: 'Site no ar, um guia curto de uso e 15 dias para pequenos ajustes.', // confirmar os 15 dias
+      },
+    ],
+    // o que aparece desenhado dentro da janela (é uma ilustração, não um site de verdade)
+    proposta: { titulo: 'PROPOSTA', linhas: ['Escopo', 'Prazo', 'Preço'] },
+    codigo: [
+      '<section class="hero">',
+      '  <h1>Uma página',
+      '  que vende.</h1>',
+      '  <a href="/orcamento">',
+      '    Pedir orçamento',
+      '  </a>',
+      '</section>',
+      '.hero { display: grid;',
+      '  gap: 24px; }',
+    ],
+    mock: { titulo: ['Uma página', 'que vende.'], botao: 'Pedir orçamento' },
+    endereco: 'suaempresa.com.br',
+    noAr: 'NO AR',
+    checklist: ['celular', 'velocidade', 'formulário'],
+  },
+  // cena 04: a única cena escura
+  noAr: {
+    titulo: { antes: 'Pronto. Agora o site ', destaque: 'trabalha', depois: ' para você.' }, // sotaque: pronto
+    apoio: 'Cada tela existe para vender, informar ou poupar tempo.',
   },
 } as const;
 

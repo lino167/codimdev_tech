@@ -1,0 +1,27 @@
+---
+// Cena 02: três frases do dono; a barrinha carmim risca, na diagonal, a parte que falha (movimento/escapa.ts).
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const e = t.escapa;
+---
+
+<section class="escapa pagina" aria-label="O que escapa">
+  <div class="escapa__frases">
+    {e.frases.map((f, i) => (
+      <p class="escapa__frase" data-frase-risca data-revelar data-delay={i * 0.1}>
+        {f.antes}
+        <span class="escapa__falha" data-falha>
+          {f.falha}
+        </span>
+        {f.depois}
+      </p>
+    ))}
+  </div>
+  <p class="escapa__apoio" data-revelar data-delay="0.2">
+    {e.apoio}
+  </p>
+</section>
