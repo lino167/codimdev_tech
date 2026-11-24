@@ -309,7 +309,7 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
 - **Celular:** `document.documentElement.scrollWidth` igual à largura da tela; alvos de 44 px.
 - **Movimento reduzido** (emulado) e **sem JavaScript:** tudo legível; o formulário comum continua visível.
 - **Subpasta:** copiar o build para `_teste/codimdev/`, servir com `python3 -m http.server` e conferir que não há nenhum 404.
-- **Texto:** procurar no site inteiro por "CodimDev", "Codim Dev", "CODIMDEV", "!", "automação", "vídeo" e por qualquer preço; nenhum pode existir. Procurar também por "Karsten", "CLT" e "Lino Estúdio" (nenhum pode existir).
+- **Texto:** procurar no site inteiro por "CodimDev", "Codim Dev", "CODIMDEV", "!", "automação", "vídeo" e por qualquer preço; nenhum pode existir. Procurar também por "CLT" e "Lino Estúdio", e pelo nome de qualquer empregador atual (nenhum pode existir).
 - O que não puder ser visto num navegador (por exemplo, o envio real pelo WhatsApp), **dizer com todas as letras** que ficou sem conferir.
 
 ## Personalizar
