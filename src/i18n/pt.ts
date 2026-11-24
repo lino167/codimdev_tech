@@ -119,23 +119,6 @@ export const pt = {
         fato: 'Site no ar, um guia curto de uso e 15 dias para pequenos ajustes.', // confirmar os 15 dias
       },
     ],
-    // o que aparece desenhado dentro da janela (é uma ilustração, não um site de verdade)
-    proposta: { titulo: 'PROPOSTA', linhas: ['Escopo', 'Prazo', 'Preço'] },
-    codigo: [
-      '<section class="hero">',
-      '  <h1>Uma página',
-      '  que vende.</h1>',
-      '  <a href="/orcamento">',
-      '    Pedir orçamento',
-      '  </a>',
-      '</section>',
-      '.hero { display: grid;',
-      '  gap: 24px; }',
-    ],
-    mock: { titulo: ['Uma página', 'que vende.'], botao: 'Pedir orçamento' },
-    endereco: 'suaempresa.com.br',
-    noAr: 'NO AR',
-    checklist: ['celular', 'velocidade', 'formulário'],
   },
   // cena 04: a única cena escura
   noAr: {
