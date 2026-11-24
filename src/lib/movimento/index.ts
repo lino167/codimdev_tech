@@ -22,11 +22,11 @@ export async function iniciar() {
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hd = new URLSearchParams(location.search).has('hd');
   const nav = prepararNav();
-  // as partículas (imagens e pontos) se preparam atrás do carregador; a história começa quando a tela se abre
+  // os primeiros quadros do hero baixam atrás do carregador; o texto entra quando a tela se abre
   const hero = prepararHero({ reduzido });
 
   const c = carga(ARQUIVOS_FONTES);
-  // a tela só abre com o hero pronto (ou depois de 4,5 s: o hero cai para a foto)
+  // a tela só abre com os primeiros quadros do hero prontos (ou depois de 4,5 s)
   const espera = hero ? Promise.race([hero.pronto, new Promise((r) => setTimeout(r, 4500))]) : undefined;
   await loader({ carga: c, hd, reduzido, espera });
 

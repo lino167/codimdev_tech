@@ -64,15 +64,38 @@ export const pt = {
     piaui: 'feito por um piauiense', // sotaque: a origem, sem palavra
     topo: 'Voltar ao topo',
   },
-  // o hero: partículas que escrevem o nome e viram o retrato (lib/hero)
+  // o hero: o Zacarias de capuz e cabeça baixa; ao rolar ele ergue a cabeça e tira o capuz, e os projetos sobem pelos lados
   hero: {
     titulo: { antes: 'Seu site deveria ', destaque: 'vender', depois: '. Não só existir.' },
     apoio:
       'Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar.',
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
-    rolar: 'Role para ver o que eu fiz',
-    foto: 'Zacarias, de braços cruzados, de frente para você',
+    rolar: 'Role para ver quem faz',
+    foto: 'Zacarias de moletom bege, de pé num estúdio escuro, com as mãos no bolso',
+    aviso: 'Imagem criada com IA a partir de fotos minhas',
+    autoral: 'Projeto autoral',
+    casos: [
+      {
+        slug: 'kraflo-cmms',
+        nome: 'Kraflo CMMS',
+        tipo: 'Sistema web',
+        texto: 'Sistema de manutenção industrial.',
+      },
+      {
+        slug: 'kraflo-os-bot',
+        nome: 'Kraflo OS Bot',
+        tipo: 'Sistema web',
+        texto: 'Bot de ordens de serviço.',
+      },
+      {
+        slug: 'tenua',
+        nome: 'Tenua',
+        tipo: 'Site',
+        texto: 'Site de portfólio para um ateliê fictício.',
+      },
+    ],
+    convite: { titulo: 'O próximo é o seu', texto: 'Me conta o que você precisa.', botao: 'Pedir orçamento' },
   },
 } as const;
 

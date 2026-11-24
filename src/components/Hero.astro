@@ -1,6 +1,7 @@
 ---
-// O hero (sala Início): partículas que escrevem `codimdev` e viram o retrato do Zacarias (lib/hero). Sobre o canvas,
-// o texto em HTML. A foto do recorte é o plano B: sem WebGL, com movimento reduzido ou aparelho fraco, é ela que aparece.
+// O hero (sala Início): o Zacarias de braços cruzados, de capuz e cabeça baixa, num estúdio escuro. Ao rolar, ele ergue a
+// cabeça e o capuz escorrega; depois os projetos sobem pelos dois lados, sem cobrir a pessoa (lib/hero). O vídeo é uma
+// sequência de quadros em canvas (public/hero). Sem JS ou com movimento reduzido: o quadro final e os projetos em lista.
 import type { Textos } from '../i18n/pt';
 
 interface Props {
@@ -8,38 +9,76 @@ interface Props {
 }
 const { t } = Astro.props;
 const h = t.hero;
+const esquerda = [h.casos[0], h.casos[2]];
+const direita = [h.casos[1]];
 ---
 
 <section class="hero" id="inicio" data-hero data-tema="escuro">
-  <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
-  <img
-    class="hero__foto"
-    src="/img/zacarias.webp"
-    srcset="/img/zacarias-m.webp 420w, /img/zacarias.webp 840w"
-    sizes="(max-width: 959px) 270px, 37vw"
-    width="840"
-    height="1050"
-    alt={h.foto}
-  />
-  <div class="pagina hero__corpo">
-    <h1 class="hero__titulo" data-entra>
-      {h.titulo.antes}
-      <span data-destaque>{h.titulo.destaque}</span>
-      {h.titulo.depois}
-    </h1>
-    <p class="hero__apoio" data-entra>
-      {h.apoio}
-    </p>
-    <div class="hero__botoes" data-entra>
-      <a class="btn btn--principal" href="/contato">
-        {h.botaoPrincipal}
-      </a>
-      <a class="btn btn--contorno" href="/projetos">
-        {h.botaoSecundario}
+  <div class="hero__palco" data-palco>
+    <div class="hero__quadro">
+      <img
+        class="hero__fim"
+        src="/hero/k-7.webp"
+        width="1920"
+        height="1071"
+        alt={h.foto}
+        fetchpriority="high"
+        data-fim
+      />
+      <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
+      <span class="hero__rolar mono mono--livre" data-rolar>
+        {h.rolar}
+      </span>
+      <p class="hero__aviso mono mono--livre">{h.aviso}</p>
+    </div>
+
+    <div class="pagina hero__texto" data-texto>
+      <h1 class="hero__titulo" data-entra>
+        {h.titulo.antes}
+        <span data-destaque>{h.titulo.destaque}</span>
+        {h.titulo.depois}
+      </h1>
+      <div class="hero__apoio-grupo" data-entra>
+        <p class="hero__apoio">{h.apoio}</p>
+        <div class="hero__botoes">
+          <a class="btn btn--principal" href="/contato">
+            {h.botaoPrincipal}
+          </a>
+          <a class="btn btn--contorno" href="/projetos">
+            {h.botaoSecundario}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__lado hero__lado--e" data-lado="e">
+      {esquerda.map((c) => (
+        <a class="caso" href={`/projetos/${c.slug}`} data-caso>
+          <span class="caso__tipo mono mono--livre">
+            {c.tipo} · {h.autoral}
+          </span>
+          <b class="caso__nome">{c.nome}</b>
+          <span class="caso__texto">{c.texto}</span>
+          <i class="barrinha caso__marca" aria-hidden="true"></i>
+        </a>
+      ))}
+    </div>
+    <div class="hero__lado hero__lado--d" data-lado="d">
+      {direita.map((c) => (
+        <a class="caso" href={`/projetos/${c.slug}`} data-caso>
+          <span class="caso__tipo mono mono--livre">
+            {c.tipo} · {h.autoral}
+          </span>
+          <b class="caso__nome">{c.nome}</b>
+          <span class="caso__texto">{c.texto}</span>
+          <i class="barrinha caso__marca" aria-hidden="true"></i>
+        </a>
+      ))}
+      <a class="caso caso--convite" href="/contato" data-caso>
+        <b class="caso__nome">{h.convite.titulo}</b>
+        <span class="caso__texto">{h.convite.texto}</span>
+        <span class="btn btn--principal">{h.convite.botao}</span>
       </a>
     </div>
   </div>
-  <a class="hero__rolar mono mono--livre" href="/projetos" data-entra>
-    {h.rolar}
-  </a>
 </section>

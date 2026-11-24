@@ -1,112 +1,138 @@
-// O hero: prepara as partículas (imagens e pontos) enquanto o carregador roda e, quando a tela se abre, conta a história:
-// o nome se escreve, desmancha e vira o retrato. Sem WebGL2, com movimento reduzido, economia de dados ou aparelho fraco,
-// o hero fica com a foto parada (nunca uma tela vazia). `?pronto` pula direto para o retrato montado.
+// O hero: sete imagens (nada de vídeo, que pesa) trocadas em fusão num canvas, dirigidas pela rolagem, simulam o movimento:
+// o Zacarias, de capuz e braços cruzados, descruza, tira o capuz, revela o rosto e põe as mãos no bolso. Depois, os projetos
+// sobem pelos dois lados da tela.
+// - Computador: o palco fica preso (5 telas); 0-45% é a sequência de imagens, 6-12% o texto some (antes de os braços abrirem), 45-100% as colunas laterais sobem.
+// - Celular: o quadro fica preso por 1,2 tela e os projetos vêm depois, em coluna, no fluxo normal.
+// As imagens baixam em ordem (as duas primeiras liberam o carregador); são cerca de 100 KB cada.
+// Movimento reduzido ou sem JS: o quadro final e os projetos em lista (CSS).
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { alvoLogo, alvoRetrato } from './alvos';
-import { criarParticulas, type Particulas } from './particulas';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const TOTAL = 7;
+const L = 1920;
+const A = 1071;
+const limitar = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+
 export interface Hero {
-  /** resolve quando as partículas estão prontas (ou quando se sabe que ficou a foto) */
+  /** resolve quando os primeiros quadros estão prontos */
   pronto: Promise<void>;
-  /** começa a história (chamado quando a tela do carregador se abre) */
+  /** o texto entra por tempo (chamado quando a tela do carregador se abre) */
   entrar(): void;
 }
 
 export function prepararHero({ reduzido }: { reduzido: boolean }): Hero | null {
   const sec = document.querySelector<HTMLElement>('[data-hero]');
   const canvas = sec?.querySelector<HTMLCanvasElement>('[data-canvas]');
-  const textos = sec ? Array.from(sec.querySelectorAll<HTMLElement>('[data-entra]')) : [];
-  if (!sec || !canvas) return null;
+  const palco = sec?.querySelector<HTMLElement>('[data-palco]');
+  if (!sec || !canvas || !palco) return null;
+  if (reduzido) return { pronto: Promise.resolve(), entrar: () => void 0 };
 
-  const pronto$ = new URLSearchParams(location.search).has('pronto');
-  const conexao = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  const fraco = Boolean(conexao?.saveData) || (navigator.hardwareConcurrency ?? 8) <= 2;
-  const celular = window.innerWidth <= 700;
-  // `?particulas` mantém a nuvem mesmo com FPS baixo (para testar em máquina sem GPU)
-  const forcar = new URLSearchParams(location.search).has('particulas');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return { pronto: Promise.resolve(), entrar: () => void 0 };
+  canvas.width = L;
+  canvas.height = A;
+  sec.classList.add('hero--anima');
 
-  // o texto entra por tempo (por baixo da história das partículas); sem partículas, entra logo
-  const mostrarTexto = (atraso: number) => {
-    gsap.fromTo(
-      textos,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, delay: atraso, ease: 'expo.out' },
-    );
+  const textos = Array.from(sec.querySelectorAll<HTMLElement>('[data-entra]'));
+  const lados = Array.from(sec.querySelectorAll<HTMLElement>('[data-lado]'));
+  const rolar = sec.querySelector<HTMLElement>('[data-rolar]');
+  const quadro = sec.querySelector<HTMLElement>('.hero__quadro') as HTMLElement;
+  const desktop = window.matchMedia('(min-width: 960px)').matches;
+  gsap.set(textos, { opacity: 0 });
+
+  // as imagens baixam em ordem; o desenho usa as duas vizinhas que já chegaram
+  const quadros: (HTMLImageElement | undefined)[] = new Array(TOTAL);
+  const carregar = (i: number) =>
+    new Promise<void>((resolver) => {
+      const im = new Image();
+      im.decoding = 'async';
+      im.onload = () => {
+        quadros[i] = im;
+        resolver();
+      };
+      im.onerror = () => resolver();
+      im.src = `/hero/k-${i + 1}.webp`;
+    });
+  const proximo = (i: number, passo: number) => {
+    let k = i;
+    while (k >= 0 && k < TOTAL && !quadros[k]) k += passo;
+    return k >= 0 && k < TOTAL ? k : -1;
   };
-  const semParticulas = () => {
-    sec.classList.add('hero--foto');
-    canvas.remove();
+  let ultimo = '';
+  // p vai de 0 a 1 pelas sete imagens; cada pose segura um pouco e troca em fusão suave
+  const desenhar = (p: number) => {
+    const pos = limitar(p) * (TOTAL - 1);
+    const i = Math.min(TOTAL - 2, Math.floor(pos));
+    const t = pos - i;
+    const f = limitar((t - 0.3) / 0.4);
+    const mistura = f * f * (3 - 2 * f);
+    const a = proximo(i, -1);
+    const b = proximo(i + 1, 1);
+    const chave = `${a}|${b}|${mistura.toFixed(3)}`;
+    if (chave === ultimo || (a < 0 && b < 0)) return;
+    ultimo = chave;
+    ctx.globalAlpha = 1;
+    const base = quadros[a] ?? quadros[b];
+    if (base) ctx.drawImage(base, 0, 0, L, A);
+    if (a >= 0 && b >= 0 && a !== b && mistura > 0) {
+      ctx.globalAlpha = mistura;
+      ctx.drawImage(quadros[b] as HTMLImageElement, 0, 0, L, A);
+      ctx.globalAlpha = 1;
+    }
   };
-  if (reduzido || fraco) {
-    semParticulas();
-    return { pronto: Promise.resolve(), entrar: () => void 0 };
+
+  const primeiros = Promise.all([carregar(0), carregar(1)]).then(() => {
+    desenhar(0);
+    sec.classList.add('hero--pronto');
+  });
+  // o resto vem logo depois (uma por vez, para não brigar com o carregador)
+  void primeiros.then(async () => {
+    for (let i = 2; i < TOTAL; i++) await carregar(i);
+    ultimo = '';
+    ScrollTrigger.refresh();
+  });
+
+  if (desktop) {
+    const tl = gsap.timeline({ defaults: { ease: 'none' } });
+    // 0-45%: o vídeo; 38-50%: o texto some; 45-100%: as colunas laterais sobem sem cobrir a pessoa
+    tl.to({}, { duration: 0.45 }, 0);
+    tl.to(textos, { opacity: 0, y: -24, duration: 0.06 }, 0.06);
+    if (rolar) tl.to(rolar, { opacity: 0, duration: 0.04 }, 0.02);
+    lados.forEach((lado) => {
+      tl.fromTo(lado, { y: 0 }, { y: () => -0.86 * window.innerHeight, duration: 0.55 }, 0.45);
+    });
+    ScrollTrigger.create({
+      trigger: palco,
+      start: 'top top',
+      end: '+=520%',
+      pin: true,
+      scrub: 0.5,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      animation: tl,
+      onUpdate: (self) => desenhar(self.progress / 0.45),
+    });
+  } else {
+    ScrollTrigger.create({
+      trigger: quadro,
+      start: 'top top',
+      end: '+=120%',
+      pin: true,
+      scrub: 0.4,
+      onUpdate: (self) => desenhar(self.progress),
+    });
   }
 
-  gsap.set(textos, { opacity: 0 });
-  let particulas: Particulas | null = null;
-  let tela: Promise<void>;
-  const preparar = async () => {
-    const aspecto = sec.clientWidth / sec.clientHeight || 1.6;
-    let n = celular ? 120_000 : 300_000;
-    const [logo, retrato] = await Promise.all([
-      Promise.resolve(alvoLogo(n, aspecto)),
-      alvoRetrato(n, aspecto, '/img/zacarias.webp'),
-    ]);
-    particulas = criarParticulas(canvas, logo, retrato, n);
-    if (!particulas) throw new Error('webgl');
-    sec.classList.add('hero--webgl');
-    // mouse e toque
-    const mexer = (e: PointerEvent) => particulas?.mouse(e.clientX, e.clientY, true);
-    sec.addEventListener('pointermove', mexer, { passive: true });
-    sec.addEventListener('pointerleave', () => particulas?.mouse(0, 0, false));
-    window.addEventListener('resize', () => particulas?.redimensionar());
-    // ao rolar, a nuvem recua
-    ScrollTrigger.create({
-      trigger: sec,
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-      onUpdate: (self) => {
-        if (particulas) particulas.estado.recuo = self.progress;
-      },
-    });
-    n = 0;
-  };
-  tela = preparar().catch(() => semParticulas());
-
   return {
-    pronto: tela,
+    pronto: primeiros,
     entrar() {
-      void tela.then(() => {
-        if (!particulas) {
-          mostrarTexto(0.1);
-          return;
-        }
-        const e = particulas.estado;
-        if (pronto$) {
-          e.chegada = 1;
-          e.morfismo = 1;
-          mostrarTexto(0);
-          return;
-        }
-        const tl = gsap.timeline();
-        tl.to(e, { chegada: 1, duration: 1.6, ease: 'none' }, 0.2);
-        tl.to(e, { morfismo: 1, duration: 1.8, ease: 'none' }, 2.1); // 0,3 s de pausa depois de escrever o nome
-        mostrarTexto(3.2);
-        // plano B: se o FPS médio ficar abaixo de 40 nos primeiros 2 s, a nuvem cai para a foto
-        window.setTimeout(() => {
-          if (!forcar && particulas && particulas.fps() < 28) {
-            particulas.destruir();
-            particulas = null;
-            tl.kill();
-            semParticulas();
-            gsap.set(textos, { opacity: 1, y: 0 });
-          }
-        }, 2600);
-      });
+      gsap.fromTo(
+        textos,
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.14, delay: 0.2, ease: 'expo.out' },
+      );
     },
   };
 }
