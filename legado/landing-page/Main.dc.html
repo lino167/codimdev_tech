@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>CodimDev — Tudo conectado</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,800&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+a{color:#0a0a0b}a:hover{color:#e8132e}
+.btn{transition:transform .2s cubic-bezier(0.16,1,0.3,1),background-color .2s cubic-bezier(0.16,1,0.3,1),color .2s cubic-bezier(0.16,1,0.3,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn-p:hover{background:#c90f27;color:#ffffff}
+.btn-o:hover{background:#0a0a0b;color:#ffffff}
+.btn-n:hover{background:#ffffff;color:#0a0a0b}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e8132e;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</helmet>
+<div style="background: #ffffff; color: #0a0a0b; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: 18px; line-height: 1.55;">
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 10; background: #ffffff; border-bottom: 1px solid #e4e4e7;">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 4vw, 64px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<a href="#topo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0a0a0b;">
+<svg viewBox="0 0 468 288" style="height: 26px; width: auto;" aria-hidden="true"><path d="M216.8 64.3 A104 104 0 1 0 216.8 223.7" fill="none" stroke="#0a0a0b" stroke-width="52"></path><path d="M251.2 64.3 A104 104 0 1 1 251.2 223.7" fill="none" stroke="#0a0a0b" stroke-width="52"></path><path d="M204 100 L264 40" stroke="#e8132e" stroke-width="30"></path><path d="M204 188 L264 248" stroke="#e8132e" stroke-width="30"></path></svg>
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 24px; letter-spacing: -0.01em;">CodimDev</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 600;">
+<a href="#servicos" style="text-decoration: none;">Serviços</a>
+<a href="#projetos" style="text-decoration: none;">Projetos</a>
+<a href="#processo" style="text-decoration: none;">Como funciona</a>
+<a href="#contato" class="btn btn-p" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; border-radius: 10px; background: #e8132e; color: #ffffff; text-decoration: none; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 18px;">Falar comigo</a>
+</div>
+</nav>
+</header>
+
+<!-- CENA 01 — HERO -->
+<section id="topo" style="position: relative; min-height: 880px; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 72px clamp(20px, 4vw, 64px) 72px; display: flex; flex-direction: column; justify-content: space-between; gap: 64px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6b70; font-variant-numeric: tabular-nums;">
+<span>Cena 01 — Abertura</span>
+<span>Sites · Sistemas · Automação</span>
+<span>Brasil · 2026</span>
+</div>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(64px, 10.4vw, 150px); line-height: 0.92; letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.18em;">
+<span>Tudo</span>
+<svg viewBox="0 0 468 288" style="height: 1.18em; width: auto;" role="img" aria-label="Símbolo CodimDev"><path d="M216.8 64.3 A104 104 0 1 0 216.8 223.7" fill="none" stroke="#0a0a0b" stroke-width="52"></path><path d="M251.2 64.3 A104 104 0 1 1 251.2 223.7" fill="none" stroke="#0a0a0b" stroke-width="52"></path><path d="M204 100 L264 40" stroke="#e8132e" stroke-width="30"></path><path d="M204 188 L264 248" stroke="#e8132e" stroke-width="30"></path></svg>
+<span style="color: #e8132e;">conectado.</span>
+</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px;">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 20px;">
+<h1 style="margin: 0; max-width: 31ch; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(28px, 3vw, 48px); line-height: 0.95; letter-spacing: -0.01em;">Site, sistema e automação para a sua empresa parar de depender de você.</h1>
+<p style="margin: 0; max-width: 46ch; font-size: clamp(16px, 1.25vw, 20px); line-height: 1.45; color: #6b6b70;">Cliente que te encontra no Google, pedido que cai sozinho na planilha, WhatsApp que responde e agenda 24&nbsp;h por dia.</p>
+</div>
+<div style="flex: 0 1 auto; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="#contato" class="btn btn-p" style="display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 26px; border-radius: 10px; background: #e8132e; color: #ffffff; text-decoration: none; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 20px;">Mapear minha empresa<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></a>
+<a href="#projetos" class="btn btn-o" style="display: inline-flex; align-items: center; height: 56px; padding: 0 26px; box-sizing: border-box; border-radius: 10px; border: 2px solid #0a0a0b; color: #0a0a0b; text-decoration: none; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 20px;">Ver projetos</a>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; color: #6b6b70;">Diagnóstico grátis · 2&nbsp;minutos · resposta em até 24&nbsp;h úteis</p>
+</div>
+</div>
+</section>
+
+<!-- CENA 02 — O PROBLEMA -->
+<section style="background: #f5f5f6; border-top: 1px solid #e4e4e7; border-bottom: 1px solid #e4e4e7;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(20px, 4vw, 64px); display: flex; flex-direction: column; gap: 56px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6b70;">Cena 02 — Um dia comum</span>
+<h2 style="margin: 0; max-width: 16ch; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(44px, 1rem + 6vw, 120px); line-height: 0.95; letter-spacing: -0.01em;">São 23&nbsp;h e você ainda está respondendo cliente.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 2px solid #0a0a0b; padding-top: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">08:00</span>
+<p style="margin: 0;">O cliente procura no Google, não acha a sua empresa e fecha com o concorrente.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 2px solid #0a0a0b; padding-top: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">14:00</span>
+<p style="margin: 0;">Pedido anotado no papel, copiado na planilha, conferido de novo à noite.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 2px solid #0a0a0b; padding-top: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">23:00</span>
+<p style="margin: 0;">O WhatsApp não para. Se você não responde, ninguém responde.</p>
+</div>
+</div>
+<p style="margin: 0; max-width: 46ch; font-size: 20px; line-height: 1.45;"><strong style="font-weight: 600;">Não é falta de esforço. É falta de conexão.</strong> <span style="color: #6b6b70;">Eu ligo as partes para que a empresa trabalhe enquanto você vive.</span></p>
+</div>
+</section>
+
+<!-- CENA 03 — SERVIÇOS -->
+<section id="servicos" style="max-width: 1200px; margin: 0 auto; padding: 140px clamp(20px, 4vw, 64px); display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6b70;">Cena 03 — A virada</span>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(44px, 1rem + 6vw, 120px); line-height: 0.95; letter-spacing: -0.01em;">Três peças. Um <span style="color: #e8132e;">sistema.</span></h2>
+</div>
+<p style="margin: 0; max-width: 34ch; color: #6b6b70;">Cada peça funciona sozinha. Juntas, viram uma empresa que roda sem você no meio de tudo.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+<article style="background: #f5f5f6; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 380px; box-sizing: border-box;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">01 / SITE</span>
+<h3 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.01em;">Ser encontrado.</h3>
+<p style="margin: 0; color: #6b6b70; flex-grow: 1;">O cliente busca no Google às 7&nbsp;h, acha você, entende o que você faz e chama no WhatsApp antes do café.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; border-top: 1px solid #e4e4e7; padding-top: 16px;">Site rápido · aparece no Google · feito para celular</p>
+</article>
+<article style="background: #f5f5f6; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 380px; box-sizing: border-box;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">02 / SISTEMA</span>
+<h3 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.01em;">Ter controle.</h3>
+<p style="margin: 0; color: #6b6b70; flex-grow: 1;">Pedidos, estoque e clientes num só lugar. Você abre o celular e sabe como a empresa está, sem ligar para ninguém.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; border-top: 1px solid #e4e4e7; padding-top: 16px;">Feito sob medida · sem mensalidade de software pronto</p>
+</article>
+<article style="background: #f5f5f6; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 380px; box-sizing: border-box;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">03 / AUTOMAÇÃO</span>
+<h3 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.01em;">Parar de repetir.</h3>
+<p style="margin: 0; color: #6b6b70; flex-grow: 1;">O WhatsApp responde e agenda sozinho, o pedido cai na planilha, a nota sai. O trabalho repetido deixa de ser seu.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; border-top: 1px solid #e4e4e7; padding-top: 16px;">WhatsApp · planilhas · integrações 24&nbsp;h</p>
+</article>
+</div>
+</section>
+
+<!-- CENA 04 — PROJETOS -->
+<section id="projetos" style="background: #0a0a0b; color: #ffffff;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 140px clamp(20px, 4vw, 64px); display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a1a1a6;">Cena 04 — Em cartaz</span>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(44px, 1rem + 6vw, 120px); line-height: 0.95; letter-spacing: -0.01em;">Projetos.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+<article style="display: flex; flex-direction: column; gap: 18px;">
+<div style="aspect-ratio: 16 / 10; border-radius: 20px; border: 1px solid #2a2a2e; background: #141416; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #a1a1a6;">[IMAGEM DO PROJETO 1]</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px;">
+<h3 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 36px; line-height: 0.95;">[Nome do cliente]</h3>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #a1a1a6;">SITE + AUTOMAÇÃO</span>
+</div>
+<p style="margin: 0; color: #c4c4c8;">[O que mudou no dia a dia do cliente depois do projeto, em uma frase.]</p>
+</article>
+<article style="display: flex; flex-direction: column; gap: 18px;">
+<div style="aspect-ratio: 16 / 10; border-radius: 20px; border: 1px solid #2a2a2e; background: #141416; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #a1a1a6;">[IMAGEM DO PROJETO 2]</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px;">
+<h3 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 36px; line-height: 0.95;">[Nome do cliente]</h3>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #a1a1a6;">SISTEMA</span>
+</div>
+<p style="margin: 0; color: #c4c4c8;">[O que mudou no dia a dia do cliente depois do projeto, em uma frase.]</p>
+</article>
+</div>
+<blockquote style="margin: 24px 0 0; padding: 40px 0 0; border-top: 1px solid #2a2a2e; display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; max-width: 28ch; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(28px, 3vw, 48px); line-height: 0.95; letter-spacing: -0.01em;">“[Depoimento real de um cliente sobre o resultado.]”</p>
+<footer style="font-size: 14px; color: #a1a1a6;">[Nome], [empresa e cidade]</footer>
+</blockquote>
+</div>
+</section>
+
+<!-- CENA 05 — PROCESSO -->
+<section id="processo" style="max-width: 1200px; margin: 0 auto; padding: 140px clamp(20px, 4vw, 64px); display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6b70;">Cena 05 — Roteiro</span>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(44px, 1rem + 6vw, 120px); line-height: 0.95; letter-spacing: -0.01em;">Do primeiro oi ao sistema rodando.</h2>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0;">
+<li style="padding: 28px 28px 28px 0; border-top: 2px solid #0a0a0b; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 72px; line-height: 0.9; color: #e8132e;">01</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Diagnóstico</h3>
+<p style="margin: 0; color: #6b6b70; font-size: 16px;">Você conta como a empresa funciona hoje. Eu mapeio onde está o retrabalho.</p>
+</li>
+<li style="padding: 28px 28px 28px 0; border-top: 2px solid #0a0a0b; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 72px; line-height: 0.9;">02</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Proposta</h3>
+<p style="margin: 0; color: #6b6b70; font-size: 16px;">Um plano claro: o que será feito, quanto custa e quando fica pronto.</p>
+</li>
+<li style="padding: 28px 28px 28px 0; border-top: 2px solid #0a0a0b; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 72px; line-height: 0.9;">03</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Construção</h3>
+<p style="margin: 0; color: #6b6b70; font-size: 16px;">Eu construo e mostro o andamento. Você testa antes de entrar no ar.</p>
+</li>
+<li style="padding: 28px 28px 28px 0; border-top: 2px solid #0a0a0b; display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 72px; line-height: 0.9;">04</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Entrega e suporte</h3>
+<p style="margin: 0; color: #6b6b70; font-size: 16px;">Tudo no ar, sua equipe treinada e eu por perto quando precisar.</p>
+</li>
+</ol>
+</section>
+
+<!-- CENA 06 — QUEM FAZ -->
+<section style="background: #f5f5f6; border-top: 1px solid #e4e4e7; border-bottom: 1px solid #e4e4e7;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(20px, 4vw, 64px); display: flex; flex-wrap: wrap; align-items: center; gap: 64px;">
+<div style="flex: 1 1 340px; aspect-ratio: 4 / 5; max-width: 440px; border-radius: 20px; background: #e4e4e7; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #6b6b70;">[FOTO DO ZACARIAS]</div>
+<div style="flex: 999 1 440px; display: flex; flex-direction: column; gap: 24px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6b70;">Cena 06 — Quem faz</span>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(40px, 1rem + 4.5vw, 96px); line-height: 0.95; letter-spacing: -0.01em;">Direto com quem faz: <span style="color: #e8132e;">eu.</span></h2>
+<p style="margin: 0; max-width: 46ch; font-size: 20px; line-height: 1.45; color: #6b6b70;">Sou o Zacarias. Sem agência, sem atendente, sem telefone sem fio. Quem ouve o seu problema é quem escreve o código que resolve.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+<li style="display: flex; gap: 12px; align-items: center;"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#e8132e" stroke-width="2" aria-hidden="true"><path d="M3 13L13 3"></path></svg>Você fala sempre com a mesma pessoa.</li>
+<li style="display: flex; gap: 12px; align-items: center;"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#e8132e" stroke-width="2" aria-hidden="true"><path d="M3 13L13 3"></path></svg>Preço fechado antes de começar.</li>
+<li style="display: flex; gap: 12px; align-items: center;"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#e8132e" stroke-width="2" aria-hidden="true"><path d="M3 13L13 3"></path></svg>O código e os acessos são seus.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- CENA 07 — CONTATO -->
+<section id="contato" style="background: #0a0a0b; color: #ffffff;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 140px clamp(20px, 4vw, 64px) 120px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start;">
+<div style="flex: 999 1 460px; display: flex; flex-direction: column; gap: 28px;">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a1a1a6;">Cena 07 — Sua vez</span>
+<h2 style="margin: 0; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: clamp(52px, 1rem + 7vw, 140px); line-height: 0.92; letter-spacing: -0.01em;">Vamos conectar a sua <span style="color: #e8132e;">empresa.</span></h2>
+<p style="margin: 0; max-width: 40ch; font-size: 20px; line-height: 1.45; color: #c4c4c8;">Me conte em dois minutos como funciona o seu dia. Eu volto com um mapa do que dá para conectar primeiro, sem compromisso.</p>
+<svg viewBox="0 0 468 288" style="width: 160px; height: auto;" aria-hidden="true"><path d="M216.8 64.3 A104 104 0 1 0 216.8 223.7" fill="none" stroke="#ffffff" stroke-width="52"></path><path d="M251.2 64.3 A104 104 0 1 1 251.2 223.7" fill="none" stroke="#ffffff" stroke-width="52"></path><path d="M204 100 L264 40" stroke="#e8132e" stroke-width="30"></path><path d="M204 188 L264 248" stroke="#e8132e" stroke-width="30"></path></svg>
+</div>
+<form style="flex: 1 1 380px; background: #ffffff; color: #0a0a0b; border-radius: 20px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="f-nome" style="font-size: 14px; font-weight: 600;">Seu nome</label>
+<input id="f-nome" type="text" autocomplete="name" placeholder="Como posso te chamar" style="height: 52px; padding: 0 16px; border: 2px solid #0a0a0b; border-radius: 10px; font: inherit; font-size: 16px; box-sizing: border-box;">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="f-whats" style="font-size: 14px; font-weight: 600;">WhatsApp</label>
+<input id="f-whats" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" style="height: 52px; padding: 0 16px; border: 2px solid #0a0a0b; border-radius: 10px; font: inherit; font-size: 16px; box-sizing: border-box;">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="f-precisa" style="font-size: 14px; font-weight: 600;">O que mais toma o seu tempo hoje?</label>
+<textarea id="f-precisa" rows="4" placeholder="Ex.: respondo o WhatsApp o dia todo e anoto pedido no caderno" style="padding: 14px 16px; border: 2px solid #0a0a0b; border-radius: 10px; font: inherit; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
+</div>
+<button type="submit" class="btn btn-p" style="height: 56px; border: 0; border-radius: 10px; background: #e8132e; color: #ffffff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 20px;">Mapear minha empresa<svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></button>
+<a href="https://wa.me/[SEU_NUMERO]" class="btn btn-o" style="height: 56px; box-sizing: border-box; border: 2px solid #0a0a0b; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: #0a0a0b; font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 20px;">Prefiro chamar no WhatsApp</a>
+<p style="margin: 0; text-align: center; font-size: 14px; line-height: 1.4; color: #6b6b70;">Diagnóstico grátis · 2&nbsp;minutos · resposta em até 24&nbsp;h úteis</p>
+</form>
+</div>
+<footer style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(20px, 4vw, 64px) 40px; border-top: 1px solid #2a2a2e; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: #a1a1a6;">
+<span style="font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62.5%; font-weight: 800; font-size: 20px; color: #ffffff;">CodimDev — Tudo conectado.</span>
+<span>[seu@email.com] · [cidade, UF] · © 2026</span>
+</footer>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6200}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

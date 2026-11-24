@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Capas dos destaques</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1640px; height: 520px; box-sizing: border-box; padding: 64px 80px; background: #FFFFFF; font-family: Inter, sans-serif; color: #18191D; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px; align-items: center">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 24px">
+<div style="width: 240px; height: 240px; border-radius: 50%; background: #F5F4EF; border: 2px solid #D6D4CC; display: flex; align-items: center; justify-content: center"><img src="{{it.src}}" alt="" aria-hidden="true" style="width: 112px; height: 112px"></div>
+<div style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 30px">{{it.label}}</div>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1640,"height":520}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { items: [
+      { label: 'Serviços', src: '/_blob/3428998d1549445e59e63cb1f014424c' },
+      { label: 'Projetos', src: '/_blob/b6979e5bcbbc5354aa1346b0b97078f5' },
+      { label: 'Processo', src: '/_blob/ce4b86313c39483dba618b7867170150' },
+      { label: 'Preços', src: '/_blob/d16be1146481ff8f3aa7299b63f38777' },
+      { label: 'Contato', src: '/_blob/f06446e547a1654ee1de6bc171fcabb2' }
+    ] };
+  }
+}
+</script>
+</body>
+</html>

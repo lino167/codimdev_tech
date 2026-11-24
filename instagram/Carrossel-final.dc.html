@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Carrossel: página final</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #C42A1F; color: #FFFFFF; font-family: Inter, sans-serif">
+
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 135px)"></div>
+
+<div style="position: absolute; left: 64px; right: 64px; top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid #FFFFFF; padding-top: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 22px; text-transform: uppercase; letter-spacing: 0.06em">
+<div>codimdev</div><div>Próximo passo</div><div>Contato</div><div style="text-align: right">5 / 5</div>
+</div>
+
+<h2 style="position: absolute; left: 64px; top: 170px; width: 960px; margin: 0; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 150px; line-height: 134px; letter-spacing: -6px">Viu sua marca aqui? Vamos conversar.</h2>
+
+<div style="position: absolute; left: 64px; top: 760px; width: 620px; background: #FFFFFF; color: #18191D; border-radius: 22px; padding: 22px 22px 22px 30px; display: flex; align-items: center; gap: 20px; box-shadow: 0 30px 60px rgba(24,25,29,0.3); transform: rotate(-2deg)">
+<div style="flex: 1; font-size: 28px; line-height: 38px">Oi, vi o post sobre o site. Pode me passar um orçamento?</div>
+<div style="width: 76px; height: 76px; border-radius: 50%; background: #18191D; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 600">→</div>
+</div>
+
+<div style="position: absolute; left: 740px; top: 730px; width: 280px; display: flex; flex-direction: column; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 22px; line-height: 30px; text-transform: uppercase; letter-spacing: 0.04em">
+<div style="border-top: 2px solid #FFFFFF; padding-top: 12px">Escopo por escrito</div>
+<div style="border-top: 2px solid #FFFFFF; padding-top: 12px">Preço antes de começar</div>
+<div style="border-top: 2px solid #FFFFFF; padding-top: 12px">Um projeto por vez</div>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 1150px; height: 4px; background: #FFFFFF"></div>
+<div aria-hidden="true" style="position: absolute; left: 880px; top: 1132px; width: 54px; height: 40px; background: #18191D; transform: skewX(-36deg); border-radius: 4px"></div>
+<div style="position: absolute; left: 860px; top: 1196px; font-family: 'IBM Plex Mono', monospace; font-size: 22px; text-transform: uppercase; letter-spacing: 0.06em">Fim</div>
+
+<div style="position: absolute; left: 64px; top: 1196px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 34px">Chame no WhatsApp: link na bio</div>
+<div style="font-size: 24px">Salve o post ou envie para quem vende pelo direct.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

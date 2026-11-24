@@ -1,0 +1,33 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:var(--algodao)}
+svg{display:block;width:960px;height:288px}
+.ground{fill:var(--algodao)}
+.b-grafite{fill:var(--grafite)}
+.b-trama{fill:var(--trama)}
+.b-cru{fill:var(--cru)}
+.b-linha{fill:var(--linha)}
+.b-carmim{fill:var(--carmim)}
+.rule{stroke:var(--linha);stroke-width:1}
+.thread{stroke:var(--carmim);stroke-width:2}
+.name{font:600 88px/1 var(--font-display);letter-spacing:-2.4px;fill:var(--grafite)}
+.tag{font:400 13px var(--font-sans);fill:var(--grafite-suave)}
+</style></head>
+<body>
+<!-- blocos em grafite, trama, cru e linha; uma linha carmim atravessa tudo -->
+<svg viewBox="0 0 960 288" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="codimdev">
+  <rect class="ground" width="960" height="288"/>
+  <rect class="b-grafite" x="560" y="-4" width="200" height="196" rx="4"/>
+  <rect class="b-trama" x="760" y="-4" width="200" height="100" rx="4"/>
+  <rect class="b-cru" x="760" y="96" width="200" height="96" rx="4"/>
+  <rect class="b-linha" x="560" y="192" width="400" height="48" rx="4"/>
+  <line class="rule" x1="560" y1="252" x2="960" y2="252"/>
+  <line class="rule" x1="560" y1="264" x2="960" y2="264"/>
+  <line class="rule" x1="560" y1="276" x2="960" y2="276"/>
+  <line class="thread" x1="520" y1="144" x2="960" y2="144"/>
+  <rect class="b-carmim" x="508" y="132" width="24" height="24" rx="4"/>
+  <text class="name" x="32" y="236">codimdev</text>
+  <text class="tag" x="32" y="278">Design e código pela mesma pessoa.</text>
+</svg>
+</body></html>

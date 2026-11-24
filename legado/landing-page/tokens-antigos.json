@@ -1,0 +1,89 @@
+{
+  "name": "CodimDev",
+  "version": 1,
+  "meta": {
+    "source": "github",
+    "repo": "lino167/codimdev_tech",
+    "ref": "main@7b20e01",
+    "paths": {
+      "tokens": ["src/styles/global.css", "src/styles/hero.css", "src/styles/loader.css"],
+      "fonts": ["public/fonts/fontes.css", "public/fonts/"],
+      "assets": ["src/lib/mundo/simbolo.ts", "public/favicon.svg"],
+      "docs": ["src/i18n/pt.ts", "src/components/secoes/Hero.astro"]
+    },
+    "components": { "Button": "src/styles/global.css (.btn)", "Etiqueta": "src/styles/loader.css (.loader__etiqueta)", "Titulo": "src/styles/hero.css (.hero__titulo)" },
+    "synced": "2026-11-03"
+  },
+  "color": {
+    "themes": [{ "id": "light", "name": "Light" }],
+    "tokens": [
+      { "name": "color-branco", "value": "#ffffff", "usage": "Page background (html, body) and text on color-vermelho or color-tinta fills. The site is white-first: there is no dark theme." },
+      { "name": "color-tinta", "value": "#0a0a0b", "usage": "Ink. All primary text and the two C's of the symbol, on color-branco (19.8:1) and color-superficie. Also the outline button's border and its hover fill." },
+      { "name": "color-vermelho", "value": "#e8132e", "usage": "The brand red: the two links of the symbol, the second word of the headline, the primary button fill and the focus ring. On color-branco it is 4.6:1 (passes for text); on color-superficie it is 4.22:1, so use it there only at 24px+ or for marks." },
+      { "name": "color-vermelho-escuro", "value": "#c90f27", "usage": "Hover state of the primary button (color-branco text on it: 5.9:1). Never a resting color." },
+      { "name": "color-cinza", "value": "#6b6b70", "usage": "Secondary text: supporting paragraph, the note under the buttons, the loader label. 5.3:1 on color-branco, 4.86:1 on color-superficie." },
+      { "name": "color-linha", "value": "#e4e4e7", "usage": "Hairlines and dividers only (1.27:1 on white): never a control border or anything that must be seen to be used." },
+      { "name": "color-superficie", "value": "#f5f5f6", "usage": "A raised or set-apart surface (cards, panels) on the white page. Text on it: color-tinta or color-cinza." }
+    ]
+  },
+  "type": {
+    "fonts": [
+      { "family": "Archivo Condensada", "file": "fonts/archivo-condensada-800.woff2", "weight": "800", "style": "normal" },
+      { "family": "Inter", "file": "fonts/inter-400.woff2", "weight": "400", "style": "normal" },
+      { "family": "Inter", "file": "fonts/inter-600.woff2", "weight": "600", "style": "normal" },
+      { "family": "JetBrains Mono", "file": "fonts/jetbrains-mono-500.woff2", "weight": "500", "style": "normal" }
+    ],
+    "families": {
+      "titulo": "'Archivo Condensada', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+      "texto": "'Inter', ui-sans-serif, system-ui, sans-serif",
+      "mono": "'JetBrains Mono', ui-monospace, monospace"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "titulo",
+        "styles": [
+          { "name": "hero", "fontSize": "150px", "lineHeight": 0.92, "fontWeight": 800, "letterSpacing": "-0.01em", "sample": "Tudo conectado.", "usage": "The one-line hero headline. Fluid in code: min(10.4vw, 22vh), shown here at a 1440px viewport; min(20vw, 12vh) at line-height 0.9 on phones." },
+          { "name": "h2", "fontSize": "120px", "lineHeight": 0.95, "fontWeight": 800, "letterSpacing": "-0.01em", "sample": "Projetos", "usage": "Section titles. Fluid in code: clamp(2.75rem, 1rem + 6vw, 7.5rem); this is the cap." },
+          { "name": "promessa", "fontSize": "48px", "lineHeight": 0.95, "fontWeight": 800, "letterSpacing": "-0.01em", "sample": "Site, sistema e automação para a sua empresa parar de depender de você.", "usage": "The h1 promise under the hero, max-width 31ch. Fluid: clamp(1.75rem, 3vw, 3rem)." },
+          { "name": "botao", "fontSize": "20px", "lineHeight": 1, "fontWeight": 800, "sample": "Mapear minha empresa", "usage": "Button labels (18px under 760px)." }
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "texto",
+        "styles": [
+          { "name": "apoio", "fontSize": "20px", "lineHeight": 1.45, "fontWeight": 400, "sample": "Cliente que te encontra no Google, pedido que cai sozinho na planilha.", "usage": "Supporting paragraph under a promise, in color-cinza, max-width 46ch. Fluid: clamp(1rem, 1.25vw, 1.25rem)." },
+          { "name": "body", "fontSize": "18px", "lineHeight": 1.55, "fontWeight": 400, "sample": "Direto com quem faz: eu, Zacarias.", "usage": "Default body copy on desktop." },
+          { "name": "body-mobile", "fontSize": "16px", "lineHeight": 1.55, "fontWeight": 400, "sample": "Direto com quem faz: eu, Zacarias.", "usage": "Body copy at 760px and below." },
+          { "name": "body-strong", "fontSize": "18px", "lineHeight": 1.55, "fontWeight": 600, "sample": "Diagnóstico grátis", "usage": "Emphasis inside body copy (Inter 600)." },
+          { "name": "nota", "fontSize": "14px", "lineHeight": 1.4, "fontWeight": 400, "sample": "Diagnóstico grátis · 2 minutos · resposta em até 24 h úteis", "usage": "The info line under a call to action: cost, time, response. In color-cinza." }
+        ]
+      },
+      {
+        "name": "Mono",
+        "family": "mono",
+        "styles": [
+          { "name": "etiqueta", "fontSize": "12px", "lineHeight": 1, "fontWeight": 500, "letterSpacing": "0.08em", "sample": "CONECTANDO 42%", "usage": "Uppercase technical labels (the loader counter). Numbers use tabular figures." }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "tokens": [
+      { "name": "maxw", "value": "1200px", "usage": "Maximum content width." },
+      { "name": "btn-gap", "value": "10px", "usage": "Gap between a button label and its icon; also between the loader's link mark and its text." },
+      { "name": "botoes-gap", "value": "12px", "usage": "Gap between side-by-side buttons, and between the buttons and the note line (8px when stacked on phones)." },
+      { "name": "btn-pad-x", "value": "26px", "usage": "Horizontal button padding (18px under 760px)." },
+      { "name": "btn-height", "value": "56px", "usage": "Button height (48px under 760px)." },
+      { "name": "gutter-min", "value": "20px", "usage": "Page side gutter on small screens. The code's --gutter is clamp(20px, 4vw, 64px)." },
+      { "name": "gutter-max", "value": "64px", "usage": "Page side gutter on wide screens (upper bound of --gutter)." }
+    ]
+  },
+  "radius": {
+    "tokens": [
+      { "name": "r-btn", "value": "10px", "usage": "Buttons." },
+      { "name": "r-card", "value": "20px", "usage": "Cards and panels." }
+    ]
+  }
+}

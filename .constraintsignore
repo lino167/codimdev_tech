@@ -1,3 +1,0 @@
-# Caminhos que o floor-guard não verifica (um por linha).
-# O próprio guarda: a lista de padrões proibidos dele contém os padrões.
-scripts/floor-guard.mjs

@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+# codimdev
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Estúdio de desenvolvimento web do Zacarias: sites, landing pages, sistemas web e UI/UX para pequenos negócios. Design e código pela mesma pessoa.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Este repositório reúne tudo o que existe sobre a marca nos artefatos do claude.ai, copiado em 24/11/2026. O site antigo (Astro, com o símbolo dos dois C) foi removido; continua no histórico do git, nos commits anteriores a esta limpeza.
 
-## 🚀 Project Structure
+## Estrutura
 
-Inside of your Astro project, you'll see the following folders and files:
+| Pasta | O que tem | Artefato de origem |
+| --- | --- | --- |
+| [`marca/`](marca) | Plataforma da marca, tom de voz, regras visuais, tokens, logos (6 SVGs) e ícones (23 SVGs) | "codimdev — Plataforma da marca" e Design System "Codimdev" |
+| [`componentes/`](componentes) | Folha de estilo e componentes do site (Button, Card, Hero, Header, Footer, ServiceCard, ProjectCard, Testimonial, CtaWhatsapp, Field), cada um com README e preview | Design System "Codimdev" |
+| [`instagram/`](instagram) | Modelos de Instagram: post, carrossel, Reels, story, destaques e post de auditoria de UX | "codimdev — Modelos de Instagram" |
+| [`identidade-exploracao/`](identidade-exploracao) | Comparação entre a identidade antiga e a proposta (carmim, IBM Plex) e quatro opções de fonte | "codimdev — Paleta e fonte próprias" |
+| [`guia-codimdev-sites/`](guia-codimdev-sites) | Guia de uso do plugin codimdev-sites | "Como usar o codimdev-sites" |
+| [`legado/`](legado) | Landing page e painel da fase anterior, com o símbolo e a paleta antigos. Guardados só como referência | "CodimDev Landing Page" e "Codim Painel" |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Marca em uma linha
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Grafia **codimdev**, tudo minúsculo. Fundo algodão `#F5F4EF`, texto grafite `#18191D`, carmim `#C42A1F` só no ponto que importa. Títulos em IBM Plex Sans 600, texto em Inter, etiquetas em IBM Plex Mono. Cantos de 4 px.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Os arquivos `*.dc.html` são artboards do editor Design do claude.ai e dependem do `support.js` dele; para ver renderizados, abra os artefatos originais. As imagens `/_blob/...` dentro deles não foram baixadas.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Pendências da marca
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Estão no fim de [`marca/plataforma-da-marca.md`](marca/plataforma-da-marca.md): preços, prazo de ajustes e de resposta, domínio e e-mail, pesquisa no INPI, nome do SaaS e MEI.
