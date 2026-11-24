@@ -44,7 +44,7 @@ Largura máxima 1200 px, margem `var(--gutter)`. Títulos de seção em Archivo 
 
 **Ato 1: Hero** (pronto: "Tudo ⊂⊃ conectado."). Ajustes pendentes: a nav; os botões já apontam para `#diagnostico` e `#projetos`, e esses destinos precisam existir.
 
-**Nav** (fixa): símbolo e "CodimDev" à esquerda; Serviços, Projetos, Como funciona e o botão "Mapear minha empresa" à direita. Transparente no topo; depois de 40 px vira barra branca a 92% com fio embaixo; some ao descer e volta ao subir. No celular, folha branca de links grandes.
+**Nav** (fixa): símbolo e "CodimDev" à esquerda; rótulos em JetBrains Mono entre colchetes (`[ Serviços ]`, `[ Projetos ]`, `[ Como funciona ]`) e o botão "Mapear minha empresa" à direita, que troca de cor conforme o fundo (tinta sobre branco, branco sobre a cena escura). Transparente no topo; depois de 40 px vira barra branca a 92% com fio embaixo; some ao descer e volta ao subir. No celular, folha branca de links grandes.
 
 **Ato 2: O dia do Marcos** (`#servicos`). A peça mais memorável do site, em uma **cena presa de cerca de 4 telas**. Um relógio em JetBrains Mono (07:00 → 22:00) gira com a rolagem, e o dia do dono vira três cenas, uma por serviço. Em cada uma, **duas coisas soltas em pontos se ligam por um elo vermelho**, e depois a cena fica sólida, em HTML vivo (não imagem):
 - **08:10 · O site.** Uma barra de busca digita "barbearia perto de mim". O resultado do Marcos nasce em pontos no topo e se firma como um cartão (nome, nota e botão "Chamar no WhatsApp", tudo `[preencher]`). O elo liga a busca ao cartão.
@@ -53,11 +53,11 @@ Largura máxima 1200 px, margem `var(--gutter)`. Títulos de seção em Archivo 
 
 Ao final, o relógio volta e a página volta ao branco. Cada cena traz um título de uma linha, a frase de uma linha e o preço de partida (`[preencher]`).
 
-**Ato 3: Projetos** (`#projetos`). Uma fila horizontal de cartões brancos (rola de lado com setas, arrasto e toque). Cada cartão: o **problema do dono** em uma frase, **o que mudou**, **um número verdadeiro** em mono e o tipo (site, sistema, automação). No hover, o vermelho entra pelo ponto onde o cursor entrou e sai por onde saiu. Sem projetos reais, mostre os cartões como `[preencher]`, nunca clientes inventados.
+**Ato 3: Projetos** (`#projetos`). Uma fila horizontal de cartões brancos (rola de lado com setas, arrasto e toque). Cada cartão: o **problema do dono** em uma frase, **o que mudou**, **um número verdadeiro** em mono e o tipo (site, sistema, automação). No hover, o vermelho entra pelo ponto onde o cursor entrou e sai por onde saiu. Acima da fila, um **índice numerado** em mono (`[01] Nome do projeto`): passar o mouse num nome acende a prévia ao lado. No celular, só os cartões. Sem projetos reais, mostre os cartões como `[preencher]`, nunca clientes inventados.
 
 **Ato 4: Como funciona** (`#processo`). Três passos em escada, cada um com um pedaço de interface que se mexe sozinho: 01 Diagnóstico grátis (2 min), 02 Proposta com preço e prazo, 03 Entrega e acompanhamento. Uma linha em mono dá o prazo de cada um (`[preencher]` até haver prazo real). O Zacarias aparece aqui, com o rosto, se houver foto.
 
-**Ato 5: O diagnóstico** (`#diagnostico`). **É a conversão e o último truque do site.** Um mapa interativo de três perguntas (que negócio é, onde você perde cliente hoje, o que você faz na mão todo dia). A cada resposta, pontos do mundo se organizam e **um elo novo se liga** no desenho. No fim, "Seu mapa" mostra a lista dos serviços que ligam o que a pessoa disse, e o envio vai para o WhatsApp do Zacarias, com e-mail como alternativa. Se o JS falhar, vira um formulário comum de três campos que funciona sem script.
+**Ato 5: O diagnóstico** (`#diagnostico`). **É a conversão e o último truque do site.** Um mapa interativo de três perguntas (que negócio é, onde você perde cliente hoje, o que você faz na mão todo dia). A cada resposta, pontos do mundo se organizam e **um elo novo se liga** no desenho. No fim, "Seu mapa" mostra a lista dos serviços que ligam o que a pessoa disse, e o envio vai para o WhatsApp do Zacarias, com e-mail como alternativa. Se o JS falhar, vira um formulário comum de três campos que funciona sem script. Ao lado do mapa, o **WhatsApp e o e-mail aparecem em texto**, com uma frase direta do Zacarias (provisória: "Pode chamar."), para quem não quer responder perguntas.
 
 **Rodapé.** Quatro colunas de links, a linha de contato e o **wordmark monumental** "CODIMDEV" na largura da tela, cortado rente ao fim da página. Quando entra na tela, os pontos **chovem do alto** e pousam formando o nome; as letras ficam sólidas e a base continua em pontilhado.
 
@@ -108,12 +108,32 @@ Astro 7.4, Tailwind 4.3, React 19 (**só em ilhas**, para o diagnóstico e a fil
 - **Trami:** o produto desenhado em HTML vivo em vez de captura de tela, com o fluxo rodando sozinho. Base das três cenas.
 - **Proa:** o dia contado por um relógio que gira. Base do 07:00 → 22:00.
 
-**Awwwards** (Sites of the Day de novembro de 2026, lidos pela descrição e pelas tags públicas, sem visitar os sites):
-- **Grids (Obys):** o **loader** e o **footer** tratados como momentos de design, com WebGL e GSAP. Reforça que o nosso loader "Conectando" e o rodapé em pontos não são detalhe.
-- **PSP Production:** **preloader, hero, mouse interaction e página 404** destacados como elementos. Base do nosso 404 "Sem conexão".
-- **Cyera AI Guardian (Active Theory):** o visitante **joga** (pilota por planetas com minijogos) em vez de só rolar. Base do diagnóstico como mapa interativo.
-- **La boite à slides:** "story-driven", entrada do hero e scroll narrativo em GSAP, Three.js e Nuxt. Reforça a história por cenas.
-- **Night Drive Racing Game:** Three.js e WebGPU com interação rica. Lembrete de que o orçamento de desempenho existe: só o hero e o fio podem ser pesados.
+**Awwwards** (Sites of the Day de novembro de 2026). Abri **La boite à slides** e **PSP Production** num navegador de verdade (1440 × 810, rolando a página e capturando quadros). O que está abaixo desses dois é observação própria, mas de **quadros parados**: não avaliei a suavidade do movimento nem o hover. **Grids** caiu numa verificação de segurança e **Cyera** respondeu "Not Supported" ao navegador automatizado, então esses dois e o Night Drive continuam só pela descrição pública da Awwwards.
+
+*La boite à slides* (agência, Sparkk; GSAP, Three.js, Nuxt):
+- **Loader:** tela inteira num roxo chapado e **um único símbolo minúsculo** (dois triângulos) mudando de posição, sem porcentagem e sem texto. Depois só aparece a pílula "Menu".
+- **Um objeto 3D que evolui:** uma placa de vidro (o "slide") atravessa a página e muda de forma em cada seção.
+- **A cor do mundo inteiro muda por seção:** branco com a placa translúcida, depois ciano com a placa em triângulo, depois preto com uma máscara de VR em aberração cromática (RGB separado) e por fim uma nuvem de slides flutuando no escuro. O texto grande no meio **acende palavra por palavra**.
+- **A nav é constante e se adapta:** logo à esquerda, pílula de menu no centro e botão de contato à direita, que **troca de cor conforme o fundo** (escuro sobre claro, branco sobre preto).
+- **A passagem do roxo para o branco** é uma borda curva que sobe, como uma casca.
+
+*PSP Production* (produtora; GSAP, Webflow):
+- **Loader como manifesto:** fundo magenta desfocado, uma lista enorme dos trabalhos em letra minúscula nas duas bordas e uma frase de promessa no centro (verde, depois preta). O loader já é o portfólio.
+- **Hero é um índice:** vídeo em tela cheia e, em cima, duas listas numeradas de projetos; passar o mouse num nome troca o vídeo, e um cartão no canto traz o nome, a direção e "BACK / NEXT".
+- **Tipografia:** manchetes gigantes em caixa alta condensada e **uma única palavra em serifa itálica** ("PARTNER", "SAY HI"). Os rótulos da nav ficam entre colchetes: `[ WORK ]`, `[ ABOUT ]`.
+- **Blocos de cor** (magenta, preto com vídeo em pontilhado cinza, branco) separados por **cortes laterais** em vez de rolagem contínua.
+- **Fechamento humano e visível:** "SKIP THE HESITATION. COME SAY HI", vídeo à esquerda e endereço e telefone **à vista**, sem formulário na frente.
+
+**O que adotamos, traduzido para a marca da CodimDev (sem copiar visual):**
+1. **Loader com um só gesto.** O nosso "Conectando" já é isso. Mantenha-o enxuto: nada de texto além do contador.
+2. **A cor do mundo muda por ato, mas o vermelho continua sendo só o elo.** No nosso caso, a inversão para tinta às 22 h é a única mudança; os outros atos mudam o objeto (a cena), não o fundo.
+3. **A nav se adapta ao fundo**, inclusive o botão "Mapear minha empresa" (tinta sobre branco, branco sobre tinta). Os rótulos da nav em JetBrains Mono, entre colchetes: `[ Serviços ]`, `[ Projetos ]`.
+4. **Uma palavra de destaque por título.** Em vez da serifa itálica (a marca não tem serifa), a palavra de destaque fica **em vermelho**, como "conectado." já está no hero. Só uma por título.
+5. **Projetos como índice.** Além da fila de cartões, uma lista numerada de projetos em mono: passar o mouse num nome acende a prévia ao lado. No celular, cartões.
+6. **Fechamento com contato à vista.** Ao lado do diagnóstico, o WhatsApp e o e-mail aparecem em texto, com uma frase direta do Zacarias (provisório: "Pode chamar.").
+7. **Pontilhado cinza é uma linguagem legítima de premiado**, como o PSP mostra com o vídeo em halftone. Confirma o caminho do mundo do hero.
+8. **Interação de jogo** (Cyera, só pela descrição): o diagnóstico em três perguntas é o nosso minijogo.
+9. **Orçamento de desempenho** (Night Drive, só pela descrição): só o hero e o fio podem ser pesados.
 
 ### Regras de qualidade
 - **Mobile em primeiro lugar**, conferido em 390, 768, 1280 e 1456 px; nenhuma letra cortada em repouso (acentos de "ação", descendentes de "g" e "p").
