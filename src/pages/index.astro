@@ -1,9 +1,31 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/secoes/Hero.astro';
+import Barra from '../components/Barra.astro';
+import '../styles/abertura.css';
 import { pt } from '../i18n/pt';
+
+const a = pt.abertura;
 ---
 
 <Base t={pt}>
-  <Hero t={pt} />
+  <section class="abertura pagina">
+    <Barra t={pt} />
+    <div class="abertura__corpo">
+      <h1 class="abertura__titulo">
+        {a.titulo.antes}
+        <span data-destaque>{a.titulo.destaque}</span>
+        {a.titulo.depois}
+      </h1>
+      <p class="abertura__apoio">{a.apoio}</p>
+      <div class="abertura__botoes">
+        <a class="btn btn--principal" href="/orcamento">
+          {a.botaoPrincipal}
+        </a>
+        <a class="btn btn--contorno" href="/projetos">
+          {a.botaoSecundario}
+        </a>
+      </div>
+      <p class="abertura__nota mono">{a.nota}</p>
+    </div>
+  </section>
 </Base>

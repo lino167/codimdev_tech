@@ -1,0 +1,31 @@
+# Publica o site na Hostinger: a cada push na main, faz o build e envia só a pasta dist/ para a branch `hostinger`,
+# que a Hostinger lê por deploy Git (site estático, sem build do lado dela). Não usa ações de terceiros.
+name: Publicar na Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hostinger
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Enviar dist/ para a branch hostinger
+        env:
+          REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        run: bash scripts/publicar-hostinger.sh dist

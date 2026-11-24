@@ -1,88 +1,60 @@
-/* LOADER "conectando": os C se aproximando ficam no canvas (mundo); aqui só o contador e a marca de antes do JS.
-   O contador fica embaixo do símbolo: o loader.ts escreve --lx/--ly a partir de mundo.nucleo(). Sem posição
-   duplicada no CSS: antes do JS o contador nem aparece (só com .is-on, depois que a fonte dele chegou). */
+/* CARREGADOR: o símbolo da logo é desenhado em traço fino conforme o progresso REAL (bytes das fontes, do JS e do
+   CSS). Em 100% a barrinha carmim risca o símbolo e trava no lugar; a tela se abre para cima. O contador fica em
+   mono e só aparece depois que a fonte dele chegou (.is-on). Antes do JS o símbolo já aparece, apagado. */
 .loader {
   display: none;
 }
-.is-loading .loader {
-  display: block;
+.is-loading .loader,
+.loader--saindo {
   position: fixed;
   inset: 0;
   z-index: 60;
-  pointer-events: auto; /* nada clicável até a entrada */
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 24px;
+  background-color: var(--color-algodao);
+  background-image:
+    linear-gradient(to right, rgb(214 212 204 / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(214 212 204 / 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: auto; /* nada clicável até a abertura */
+}
+.loader__simbolo {
+  width: 128px;
+  height: auto;
+  overflow: visible;
+  color: var(--color-grafite);
+}
+/* o corpo é desenhado: pathLength="1" faz o tracejado valer de 0 a 1 */
+.loader__corpo {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 14; /* unidades do viewBox: cerca de 1,5 px com 128 px de largura */
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.25; /* antes do JS: o símbolo inteiro, apagado */
+}
+.loader.is-on .loader__corpo {
+  opacity: 1;
+}
+.loader__barra {
+  fill: var(--color-carmim);
+  opacity: 0; /* só aparece no fim: o clique */
 }
 .loader__etiqueta {
-  position: absolute;
-  left: var(--lx, 50%);
-  top: var(--ly, 60%);
-  translate: -50% 0;
   margin: 0;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 6px;
   white-space: nowrap;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--color-cinza);
   opacity: 0;
 }
 .loader.is-on .loader__etiqueta {
   opacity: 1;
-  animation: loader-aparece 0.4s var(--ease-saida);
 }
 .loader__n {
-  min-width: 4.2ch;
+  min-width: 3ch;
   text-align: right;
-  color: var(--color-tinta);
-  font-variant-numeric: tabular-nums;
-}
-/* o traço do elo a 45°: o ícone do contador */
-.loader__elo {
-  width: 10px;
-  height: 3px;
-  background: var(--color-vermelho);
-  rotate: 45deg;
-}
-/* antes do JS (rede lenta): o elo pisca no centro do símbolo; com cache ele nem chega a aparecer */
-.loader__boot {
-  display: none;
-}
-.is-loading .loader__boot {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0.14em;
-  height: 0.04em;
-  translate: -50% -50%;
-  rotate: 45deg;
-  background: var(--color-vermelho);
-  opacity: 0;
-  animation: loader-pisca 1.2s 0.4s steps(2, jump-none) infinite;
-}
-@keyframes loader-pisca {
-  0% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes loader-aparece {
-  from {
-    opacity: 0;
-  }
-}
-/* sem WebGL ou com movimento reduzido: tela branca própria, com o contador no meio, que some por fusão */
-.loader--fusao {
-  background: var(--color-branco);
-}
-.loader--fusao .loader__etiqueta {
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
+  color: var(--color-grafite);
 }

@@ -1,28 +1,59 @@
 ---
-// Base de todas as páginas: <head>, o canvas do mundo, o loader e o script de inicialização (src/lib/movimento).
-// Sem @font-face e sem preload de fonte: quem carrega é o carga.ts. Só sem JavaScript o <noscript> traz as fontes.
+// Base de todas as páginas: <head>, o carregador, o cabeçalho, o rodapé e o script de inicialização
+// (src/lib/movimento). Sem @font-face e sem preload de fonte: quem carrega é o carga.ts. Só sem JavaScript o
+// <noscript> traz as fontes.
 import '../styles/global.css';
-import '../styles/hero.css';
 import '../styles/loader.css';
+import '../styles/nav.css';
+import '../styles/rodape.css';
 import type { Textos } from '../i18n/pt';
+import Cabecalho from '../components/Cabecalho.astro';
+import Rodape from '../components/Rodape.astro';
+import { SIMBOLO } from '../lib/marca/logo';
+import { SITE } from '../lib/dados';
 
 interface Props {
   t: Textos;
+  /** título e descrição da página (sem eles, valem os da marca) */
+  titulo?: string;
+  descricao?: string;
+  /** rota da página, para o canonical */
+  rota?: string;
+  /** páginas que não devem ser indexadas (404) */
+  semIndice?: boolean;
 }
-const { t } = Astro.props;
+const { t, titulo = t.meta.titulo, descricao = t.meta.descricao, rota = '/', semIndice = false } = Astro.props;
 ---
 
 <html lang={t.meta.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{t.meta.titulo}</title>
-    <meta name="description" content={t.meta.descricao} />
-    <meta name="theme-color" content="#ffffff" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <meta name="theme-color" content="#F5F4EF" />
+    <link rel="canonical" href={`${SITE}${rota}`} />
+    {semIndice && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="codimdev" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descricao} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Com JS, a página começa no loader (is-loading; sai em movimento/entrada.ts). Sem JS, a classe nunca existe
-         e tudo aparece. Segurança: se o JS morrer antes de o loader começar, a página se mostra sozinha em 10 s
-         (o loader cancela este timer assim que começa, porque ele mesmo pode levar até 9 s em rede lenta). -->
+    <!-- Com JS, a página começa no carregador (is-loading; sai em movimento/loader.ts). Sem JS, a classe nunca existe
+         e tudo aparece. Segurança: se o JS morrer antes de o carregador começar, a página se mostra sozinha em 10 s
+         (o carregador cancela este temporizador assim que começa, porque ele mesmo pode levar até 9 s em rede lenta).
+         O CSS crítico do carregador fica inline para a página não aparecer crua por um instante. -->
+    <style is:inline>
+      .is-loading .loader {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: grid;
+        place-content: center;
+        background: #f5f4ef;
+      }
+    </style>
     <script is:inline>
       document.documentElement.classList.add('is-loading');
       window.__seguranca = setTimeout(function () {
@@ -34,28 +65,32 @@ const { t } = Astro.props;
     </noscript>
   </head>
   <body>
-    <canvas class="mundo" aria-hidden="true"></canvas>
     <div
       class="loader"
       data-loader
-      data-rotulo-hd={t.loader.rotuloHd}
       role="progressbar"
-      aria-label={t.loader.aria}
+      aria-label={t.carregador.aria}
       aria-valuemin="0"
       aria-valuemax="100"
       aria-valuenow="0"
     >
-      <p class="loader__etiqueta">
-        <i class="loader__elo" aria-hidden="true"></i>
-        <span data-loader-rotulo>{t.loader.rotulo}</span>
+      <svg class="loader__simbolo" viewBox={SIMBOLO.viewBox} aria-hidden="true" focusable="false">
+        <path class="loader__corpo" d={SIMBOLO.cinza} pathLength="1"></path>
+        <path class="loader__barra" d={SIMBOLO.carmim}></path>
+      </svg>
+      <p class="loader__etiqueta mono">
+        <span data-loader-rotulo>{t.carregador.rotulo}</span>
+        <span aria-hidden="true">·</span>
         <span class="loader__n">
           <span data-loader-n>0</span>%
         </span>
       </p>
     </div>
-    <main id="topo">
+    <Cabecalho t={t} />
+    <main id="topo" tabindex="-1">
       <slot />
     </main>
+    <Rodape t={t} />
     <script>
       import { iniciar } from '../lib/movimento';
       void iniciar();

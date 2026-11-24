@@ -1,31 +1,80 @@
-// Textos do site em português. Nenhum texto visível fica fora deste arquivo (e do en.ts).
-// Fonte: Livro da Marca (seção 8) e PROMPT-SITE.md. Preços e contatos ainda provisórios (SPEC, decisão 1).
+// Textos do site em português. Nenhum texto visível fica fora deste arquivo (e do en.ts, que vem depois).
+// Fonte: Livro da marca v1.0 (24/11/2026) e prompt-site.md. Grafia: "codimdev", tudo junto e minúsculo, sempre.
+// Linhas marcadas com `// sotaque` carregam uma expressão do Piauí (regras em historia.md): no máximo uma por cena,
+// e nunca em serviço, combinado, formulário, erro ou privacidade.
 
 export const pt = {
   meta: {
     lang: 'pt-BR',
-    titulo: 'CodimDev · Site, sistema e automação para pequenas empresas',
+    titulo: 'codimdev · Landing pages, sites e sistemas web para empresas',
     descricao:
-      'Site, sistema e automação para pequenas e médias empresas. Diagnóstico grátis, direto com quem faz. Blumenau, SC, atendimento remoto.',
+      'Landing pages, sites e sistemas web para empresas, com design e código pela mesma pessoa. Do protótipo ao site no ar. Orçamento pelo WhatsApp.',
   },
-  loader: {
-    rotulo: 'Conectando',
-    rotuloHd: 'Conectando em HD',
+  carregador: {
+    rotulo: 'Já já', // sotaque
     aria: 'Carregando a página',
   },
-  hero: {
-    titulo1: 'Tudo',
-    titulo2: 'conectado.',
-    // h1: diz de cara o que o site vende (serviços) e o resultado para o dono (escolhido em 02/11/2026)
-    promessa: 'Site, sistema e automação para a sua empresa parar de depender de você.',
-    // apoio: cada serviço vira uma cena do dia a dia do Marcos; fecha com "direto com quem faz"
+  pular: 'Pular para o conteúdo',
+  cabecalho: {
+    marca: 'codimdev',
+    aria: 'Principal',
+    links: [
+      { rotulo: 'Serviços', href: '/servicos' },
+      { rotulo: 'Projetos', href: '/projetos' },
+      { rotulo: 'Como funciona', href: '/como-funciona' },
+      { rotulo: 'Sobre', href: '/sobre' },
+    ],
+    cta: 'Pedir orçamento',
+    ctaHref: '/orcamento',
+    menu: 'Menu',
+    fechar: 'Fechar',
+  },
+  // a barra de quatro colunas em mono, no topo de cada página
+  barra: ['codimdev', 'Desenvolvimento web', 'Blumenau, SC', '2026'],
+  rodape: {
+    aria: 'Rodapé',
+    colunas: [
+      {
+        titulo: 'Serviços',
+        links: [
+          { rotulo: 'Landing pages', href: '/servicos/landing-page' },
+          { rotulo: 'Sites institucionais', href: '/servicos/site-institucional' },
+          { rotulo: 'Redesign e conversão', href: '/servicos/redesign-e-conversao' },
+          { rotulo: 'Interfaces e sistemas', href: '/servicos/interfaces-e-sistemas' },
+          { rotulo: 'Design system', href: '/servicos/design-system' },
+        ],
+      },
+      {
+        titulo: 'Conheça',
+        links: [
+          { rotulo: 'Projetos', href: '/projetos' },
+          { rotulo: 'Como funciona', href: '/como-funciona' },
+          { rotulo: 'Sobre', href: '/sobre' },
+        ],
+      },
+      {
+        titulo: 'Fale comigo',
+        links: [
+          { rotulo: 'Pedir orçamento', href: '/orcamento' },
+          { rotulo: 'Privacidade', href: '/privacidade' },
+        ],
+      },
+    ],
+    contato: 'Contato',
+    instagram: 'Instagram',
+    email: 'E-mail',
+    legal: 'codimdev · desenvolvimento web · 2026',
+    piaui: 'feito por um piauiense', // sotaque: a origem, sem palavra
+    topo: 'Voltar ao topo',
+  },
+  // abertura da página inicial (cena 01): a animação de escrita entra na Parte 2
+  abertura: {
+    titulo: { antes: 'Seu site deveria ', destaque: 'vender', depois: '. Não só existir.' },
     apoio:
-      'Cliente que te encontra no Google, pedido que cai sozinho na planilha, WhatsApp que responde e agenda 24 h por dia. Direto com quem faz: eu, Zacarias.',
-    // botão em primeira pessoa (Livro da Marca, microtextos) + a linha de informação embaixo (nada de "sem spam")
-    botaoPrincipal: 'Mapear minha empresa',
+      'Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar.',
+    botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
-    // espaços que não quebram: "24 h úteis" nunca fica órfão no fim da linha
-    nota: 'Diagnóstico grátis · 2 minutos · resposta em até 24 h úteis',
+    nota: 'Orçamento pelo WhatsApp · resposta em até 24 horas úteis',
   },
 } as const;
 

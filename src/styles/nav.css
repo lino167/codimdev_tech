@@ -1,0 +1,209 @@
+/* CABEÇALHO: transparente no topo; depois de 40 px vira barra algodão a 92% com fio embaixo; some ao descer e
+   volta ao subir. Sobre uma seção escura ([data-tema="escuro"]) troca de cor (.nav--escura). Links em mono entre
+   colchetes. A entrada é por tempo (nav--espera sai no fim da entrada). Cantos de 4 px, nada de pílula. */
+.pular {
+  position: fixed;
+  left: 16px;
+  top: -80px;
+  z-index: 70;
+  padding: 10px 14px;
+  background: var(--color-grafite);
+  color: var(--color-algodao);
+  border-radius: var(--r);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.pular:focus-visible {
+  top: 16px;
+}
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 40;
+  height: 72px;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  color: var(--color-grafite);
+  border-bottom: 1px solid transparent;
+  transition:
+    transform 0.5s var(--ease-saida),
+    height 0.4s var(--ease-saida),
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s,
+    opacity 0.8s var(--ease-saida);
+}
+.nav.is-scrolled {
+  height: 56px;
+  background: rgb(245 244 239 / 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--color-linha);
+}
+.nav.is-hidden {
+  transform: translateY(-100%);
+}
+/* o cabeçalho fica fora de cena durante o carregador e até a entrada acabar */
+.is-loading .nav,
+.nav--espera {
+  opacity: 0;
+  pointer-events: none;
+}
+.menu-aberto .nav {
+  background: var(--color-algodao);
+  backdrop-filter: none;
+}
+
+.nav__marca {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+.nav__logo {
+  height: 24px;
+  width: auto;
+}
+.nav__links {
+  display: flex;
+  gap: 24px;
+}
+.nav__links a {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: inherit;
+  white-space: nowrap;
+}
+.nav__links a span {
+  color: var(--color-grafite-suave);
+  transition: color 0.15s;
+}
+@media (hover: hover) {
+  .nav__links a:hover {
+    text-decoration: none;
+  }
+  .nav__links a:hover span {
+    color: var(--color-carmim);
+  }
+}
+.nav a:focus-visible,
+.nav__menu:focus-visible,
+.folha a:focus-visible {
+  outline: 2px solid var(--color-grafite);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.nav .nav__cta {
+  justify-self: end;
+}
+
+/* sobre uma seção escura */
+.nav--escura {
+  color: var(--color-algodao);
+}
+.nav--escura.is-scrolled {
+  background: rgb(24 25 29 / 0.92);
+  border-bottom-color: rgb(245 244 239 / 0.16);
+}
+.nav--escura .nav__links a span {
+  color: #a3a4aa;
+}
+.nav--escura a:focus-visible,
+.nav--escura .nav__menu:focus-visible {
+  outline-color: var(--color-algodao);
+}
+.nav--escura .nav__cta {
+  background: var(--color-algodao);
+  color: var(--color-grafite);
+}
+
+/* botão do menu e folha de links: só no celular */
+.nav__menu {
+  display: none;
+  justify-self: end;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.nav__menu span::before {
+  content: '[ ';
+  color: var(--color-grafite-suave);
+}
+.nav__menu span::after {
+  content: ' ]';
+  color: var(--color-grafite-suave);
+}
+.nav__menu-fechar,
+.nav__menu[aria-expanded='true'] .nav__menu-abrir {
+  display: none;
+}
+.nav__menu[aria-expanded='true'] .nav__menu-fechar {
+  display: inline;
+}
+.folha {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    height: 64px;
+  }
+  .nav.is-scrolled {
+    height: 56px;
+  }
+  .nav__links,
+  .nav .nav__cta {
+    display: none;
+  }
+  .nav__menu {
+    display: block;
+  }
+  .folha {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 96px var(--gutter) 28px;
+    background: var(--color-algodao);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.3s var(--ease-saida),
+      visibility 0s linear 0.3s;
+  }
+  .folha[data-aberta] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s var(--ease-saida);
+  }
+  .folha nav {
+    display: grid;
+  }
+  .folha nav a {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-linha);
+    font-family: var(--font-titulo);
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.02em;
+    color: var(--color-grafite);
+  }
+  .folha .nav__cta {
+    width: 100%;
+  }
+}

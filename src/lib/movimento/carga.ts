@@ -2,24 +2,26 @@
 // Cada arquivo vem por fetch em stream e conta byte a byte; o tamanho sai do Content-Length (sem ele, uma
 // estimativa até o arquivo terminar). O JS e o CSS que já chegaram entram pela Resource Timing, então o
 // contador abre onde a carga está. Fontes viram FontFace a partir dos bytes e imagens viram URL de Blob:
-// nada é baixado duas vezes. (O mostrador do loader que lê este progresso é a fatia T4.)
+// nada é baixado duas vezes. O carregador (loader.ts) lê este progresso.
 
 const ESTIMATIVA = 40000;
 
-/** A família, o peso e o estilo de cada arquivo: a face registrada aqui é a que o CSS e o canvas usam. */
+/** A família, o peso e o estilo de cada arquivo: a face registrada aqui é a que o CSS usa. */
 const FONTES: Record<string, [string, FontFaceDescriptors]> = {
-  'jetbrains-mono-500': ['JetBrains Mono', { weight: '500' }],
-  'archivo-condensada-800': ['Archivo Condensada', { weight: '800' }],
+  'ibm-plex-mono-400': ['IBM Plex Mono', { weight: '400' }],
+  'ibm-plex-sans-600': ['IBM Plex Sans', { weight: '600' }],
+  'ibm-plex-sans-400': ['IBM Plex Sans', { weight: '400' }],
   'inter-400': ['Inter', { weight: '400' }],
-  'inter-600': ['Inter', { weight: '600' }],
+  'inter-500': ['Inter', { weight: '500' }],
 };
 
-/** A ordem importa: a primeira desce sozinha (é a do contador do loader). */
+/** A ordem importa: a primeira desce sozinha (é a do contador do carregador, em mono). */
 export const ARQUIVOS_FONTES = [
-  '/fonts/jetbrains-mono-500.woff2',
-  '/fonts/archivo-condensada-800.woff2',
+  '/fonts/ibm-plex-mono-400.woff2',
+  '/fonts/ibm-plex-sans-600.woff2',
+  '/fonts/ibm-plex-sans-400.woff2',
   '/fonts/inter-400.woff2',
-  '/fonts/inter-600.woff2',
+  '/fonts/inter-500.woff2',
 ];
 
 interface Item {

@@ -1,0 +1,58 @@
+---
+// Rodapé: a logo em escala grande e proporcional, as colunas de links, o contato e, sozinha na última linha,
+// "feito por um piauiense" (nada mais). A linha carmim com a barrinha fecha a página.
+import type { Textos } from '../i18n/pt';
+import { CONTATO } from '../lib/dados';
+import Logo from './Logo.astro';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const r = t.rodape;
+---
+
+<footer class="rodape" aria-label={r.aria}>
+  <div class="pagina">
+    <a class="rodape__logo" href="/" aria-label={t.cabecalho.marca}>
+      <Logo class="rodape__svg" />
+    </a>
+    <div class="rodape__colunas">
+      {r.colunas.map((col) => (
+        <nav class="rodape__col" aria-label={col.titulo}>
+          <p class="mono">{col.titulo}</p>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href}>{l.rotulo}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+      <div class="rodape__col">
+        <p class="mono">{r.contato}</p>
+        <ul>
+          <li>
+            <a href={CONTATO.instagramLink} rel="noopener">
+              {r.instagram} · {CONTATO.instagram}
+            </a>
+          </li>
+          <li>
+            <a href={CONTATO.emailLink}>{CONTATO.email}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape__fim">
+      <p class="mono mono--livre">{r.legal}</p>
+      <a class="mono rodape__topo" href="#topo">
+        {r.topo} ↑
+      </a>
+    </div>
+    <p class="mono mono--livre rodape__piaui">{r.piaui}</p>
+    <div class="rodape__linha" aria-hidden="true">
+      <span class="barrinha"></span>
+    </div>
+  </div>
+</footer>
