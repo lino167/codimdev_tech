@@ -72,8 +72,8 @@ export const pt = {
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
     rolar: 'Role para ver quem faz',
-    foto: 'Zacarias de moletom bege, de pé num estúdio escuro, com as mãos no bolso',
-    aviso: 'Imagem criada com IA a partir de fotos minhas',
+    foto: 'Zacarias, de braços cruzados, de moletom bege, olhando para você',
+    aviso: 'Foto minha, com fundo e luz tratados',
     autoral: 'Projeto autoral',
     casos: [
       {
