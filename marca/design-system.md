@@ -1,6 +1,6 @@
 Algodão claro, grafite no texto, um vermelho carmim que marca o que importa e títulos em IBM Plex Sans: um estúdio de dev e design direto ao ponto.
 
-A codimdev é o estúdio de Zacarias: desenvolvimento web e UI/UX para empresas, de PMEs a startups e times de tecnologia: landing pages de conversão, sites institucionais, redesign e CRO, interfaces de sistemas web, dashboards e MVPs, e design systems. Design e código feitos pela mesma pessoa: todo site passa por um protótipo aprovado antes do código. Outros serviços (vídeo, identidade visual) podem entrar depois; até lá, a marca não fala deles. Siga este arquivo em todas as telas, posts e documentos da marca.
+A codimdev é o estúdio de Zacarias: desenvolvimento web e UI/UX para empresas, de PMEs e prestadores de serviço a startups e times de tecnologia. Os serviços são landing pages focadas em conversão, sites institucionais, redesign e otimização de conversão (CRO/UX), interfaces de sistemas web, dashboards e MVPs, e design system com componentização. Design e código feitos pela mesma pessoa: todo site e sistema passa por um protótipo navegável aprovado antes do código. Outros serviços (vídeo, identidade visual) podem entrar depois; até lá, a marca não fala deles. Contato: codimdev.com.br e contato@codimdev.com.br. Público, serviços e processo estão em `publico-e-servicos`; o tom de voz, em `voz`. Siga este arquivo em todas as telas, posts e documentos da marca.
 
 ## Fundamentos visuais
 
