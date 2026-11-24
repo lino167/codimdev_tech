@@ -38,15 +38,31 @@ O catálogo tem cinco serviços de desenvolvimento web e UI/UX (lista atualizada
 
 | Serviço | O que entrega | Para quem | Preço de entrada |
 | --- | --- | --- | --- |
-| Landing pages focadas em conversão | Páginas rápidas para campanhas de tráfego pago (Google Ads e Meta Ads), onde o cliente mede o retorno direto em leads e vendas | Quem anuncia e precisa que cada clique vire contato ou venda | [PREÇO] |
-| Sites institucionais para PMEs e prestadores de serviço | Posicionamento profissional, SEO básico e captação por WhatsApp e formulário | Clínicas, escritórios, indústrias e empresas B2B | [PREÇO] |
-| Redesign e otimização de conversão (CRO/UX) | Reformulação de sites ou sistemas antigos que estão lentos, ruins no celular ou perdendo vendas no checkout ou no formulário | Quem já tem site ou sistema e ele não rende | [PREÇO] |
-| Interfaces de sistemas web, dashboards e MVPs | Área de membros, portais de clientes, painéis administrativos sob medida e produtos digitais para validar | Startups e empresas que precisam validar um produto digital | [PREÇO] |
-| Design system e componentização | Padronização de telas e componentes para acelerar entregas | Empresas que já têm time de tecnologia | [PREÇO] |
+| Landing pages focadas em conversão | Páginas rápidas para campanhas de tráfego pago (Google Ads e Meta Ads), onde o cliente mede o retorno direto em leads e vendas | Quem anuncia e precisa que cada clique vire contato ou venda | R$ 1.500 a 2.100 (sugestão) |
+| Sites institucionais para PMEs e prestadores de serviço | Posicionamento profissional, SEO básico e captação por WhatsApp e formulário | Clínicas, escritórios, indústrias e empresas B2B | R$ 3.000 a 4.800 (sugestão) |
+| Redesign e otimização de conversão (CRO/UX) | Reformulação de sites ou sistemas antigos que estão lentos, ruins no celular ou perdendo vendas no checkout ou no formulário | Quem já tem site ou sistema e ele não rende | R$ 2.400 a 6.000 (sugestão) |
+| Interfaces de sistemas web, dashboards e MVPs | Área de membros, portais de clientes, painéis administrativos sob medida e produtos digitais para validar | Startups e empresas que precisam validar um produto digital | A partir de R$ 9.600 por fase (sugestão) |
+| Design system e componentização | Padronização de telas e componentes para acelerar entregas | Empresas que já têm time de tecnologia | R$ 3.600 a 7.200 (sugestão) |
 
-Os preços "sugestão" da lista anterior (landing page R$ 900 a 1.500, sistema web a partir de R$ 2.000, auditoria de UX R$ 300 a 600, protótipo R$ 600 a 1.200) ficaram de fora porque os serviços mudaram. Estão no histórico do git.
+### Como os preços foram calculados
 
-**Depois da entrega:** plano mensal de evolução e manutenção, com pequenos ajustes e melhorias. Valor a definir.
+A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por escopo, não por hora. As horas abaixo são estimativas para começar, incluindo as 2 rodadas de ajuste por etapa, e devem ser refeitas depois dos primeiros projetos. Os valores de mercado vêm da [pesquisa de preços](pesquisa-de-preco.md).
+
+| Serviço | Horas estimadas | Preço (R$ 60 por hora) | Mercado, freelancer ou estúdio enxuto |
+| --- | --- | --- | --- |
+| Landing pages focadas em conversão | 25 a 35 h | R$ 1.500 a 2.100 | R$ 1.500 a 3.500 |
+| Sites institucionais | 50 a 80 h | R$ 3.000 a 4.800 | R$ 2.500 a 7.000 |
+| Redesign e CRO/UX | 40 a 100 h, conforme o tamanho | R$ 2.400 a 6.000 | Sem referência direta; UI/UX completo: R$ 3.000 a 8.000 |
+| Sistemas web, dashboards e MVPs | 160 a 300 h | R$ 9.600 a 18.000 | R$ 10.000 a 25.000 |
+| Design system e componentização | 60 a 120 h | R$ 3.600 a 7.200 | Sem referência na pesquisa |
+
+Todos ficam na parte de baixo da faixa de mercado, o que combina com uma marca nova e ainda sem clientes pagantes. O preço só sobe quando a conta de horas subir.
+
+**Plano mensal depois da entrega:** R$ 300 por mês com 5 horas de ajustes ou R$ 600 por mês com 10 horas (sugestão). O mercado cobra de R$ 300 a R$ 1.500 por mês para sites. Hospedagem e domínio ficam no nome do cliente e não entram no plano.
+
+**Capacidade e prazo:** com cerca de 10 horas por semana, o prazo de cada serviço é as horas estimadas divididas por 10. Uma landing page, por exemplo, leva de 2,5 a 3,5 semanas, e não as cerca de 2 semanas que a plataforma dizia antes. Se as horas semanais subirem, os prazos caem na mesma proporção.
+
+**Depois da entrega:** plano mensal de evolução e manutenção, com pequenos ajustes e melhorias. Sugestão no quadro acima.
 
 **Fora do catálogo (por enquanto):** vídeo, motion, identidade visual, gestão de redes sociais, gestão de campanhas de tráfego pago (a landing page é feita para elas, mas a campanha não) e aplicativo nativo para loja de apps.
 
@@ -74,15 +90,15 @@ Todo projeto segue o mesmo caminho, da conversa ao código, com aprovação do c
 6. **Desenvolvimento e testes:** código responsivo, integrações, SEO técnico básico, velocidade (Core Web Vitals) e formulários testados.
 7. **Entrega e 50% restante:** projeto no ar, guia curto de uso e um prazo de [N] dias para pequenos ajustes.
 
-**O que muda em cada serviço:**
+**O que muda em cada serviço** (prazos calculados com 10 horas por semana):
 
 | Serviço | Ponto de partida | O que pesa mais | Prazo típico |
 | --- | --- | --- | --- |
-| Landing pages focadas em conversão | Briefing curto e a oferta da campanha | Página rápida e feita para medir leads e vendas; descoberta enxuta | Cerca de 2 semanas |
-| Sites institucionais | Mapa de páginas e o que o cliente pesquisa | Arquitetura da informação, SEO básico e captação por WhatsApp e formulário | [PRAZO] |
-| Redesign e CRO/UX | Diagnóstico do que está custando venda, com o site ou sistema atual | Mexer só no que importa: velocidade, celular, checkout e formulário | [PRAZO] |
-| Sistemas web, dashboards e MVPs | Fluxos e protótipo navegável, antes de qualquer código | Validar com usuário e entregar em fases, começando pelo essencial | [PRAZO] |
-| Design system e componentização | Levantamento das telas e dos componentes que o time já usa | Componentes no Figma e em código, documentados para o time continuar | [PRAZO] |
+| Landing pages focadas em conversão | Briefing curto e a oferta da campanha | Página rápida e feita para medir leads e vendas; descoberta enxuta | 2,5 a 3,5 semanas |
+| Sites institucionais | Mapa de páginas e o que o cliente pesquisa | Arquitetura da informação, SEO básico e captação por WhatsApp e formulário | 5 a 8 semanas |
+| Redesign e CRO/UX | Diagnóstico do que está custando venda, com o site ou sistema atual | Mexer só no que importa: velocidade, celular, checkout e formulário | 4 a 10 semanas |
+| Sistemas web, dashboards e MVPs | Fluxos e protótipo navegável, antes de qualquer código | Validar com usuário e entregar em fases, começando pelo essencial | 16 a 30 semanas, em fases |
+| Design system e componentização | Levantamento das telas e dos componentes que o time já usa | Componentes no Figma e em código, documentados para o time continuar | 6 a 12 semanas |
 
 **Regras do processo:**
 
@@ -214,12 +230,12 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 Faltam nove decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
 
-- [ ] Fechar os preços de cada serviço e do plano mensal.
+- [ ] Confirmar os preços sugeridos de cada serviço e do plano mensal, a partir da hora de R$ 60.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
 - [ ] Definir o prazo de resposta no WhatsApp.
 - [ ] Escolher o domínio e o e-mail da marca.
 - [ ] Pesquisar o nome codimdev no INPI, na classe 42, antes de registrar.
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
-- [ ] Definir o prazo típico de cada serviço e se os projetos maiores (sistemas, MVPs, design systems) são pagos em 50% e 50% ou por fases.
+- [ ] Confirmar os prazos calculados e definir se os projetos maiores (sistemas, MVPs, design systems) são pagos em 50% e 50% ou por fases.
 - [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.
