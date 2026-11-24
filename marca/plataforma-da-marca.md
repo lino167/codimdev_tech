@@ -165,7 +165,7 @@ O Instagram é o canal principal de captação, e o WhatsApp é onde a venda fec
 
 | Pilar | O que mostra | Exemplo de post |
 | --- | --- | --- |
-| Ensinar | Erros e boas práticas de site, conversão e interface para empresas "3 sinais de que sua marca já precisa de um site" ou "3 motivos de sua landing page não converter" |
+| Ensinar | Erros e boas práticas de site, conversão e interface para empresas | "3 sinais de que sua marca já precisa de um site" ou "3 motivos para a sua landing page não converter" |
 | Mostrar | Projetos, antes e depois, protótipos | Mockup de um projeto autoral, como a VARN |
 | Bastidores | Como um projeto sai do papel | "Do briefing ao site no ar" |
 | Ofertas | Serviços, agenda e auditoria | "Seu site perde clientes. Eu mostro onde." |
