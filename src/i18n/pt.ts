@@ -19,17 +19,15 @@ export const pt = {
     marca: 'codimdev',
     aria: 'Principal',
     links: [
-      { rotulo: 'Serviços', href: '/servicos' },
       { rotulo: 'Projetos', href: '/projetos' },
-      { rotulo: 'Como funciona', href: '/como-funciona' },
       { rotulo: 'Sobre', href: '/sobre' },
+      { rotulo: 'Contato', href: '/contato' },
     ],
     cta: 'Pedir orçamento',
-    ctaHref: '/orcamento',
+    ctaHref: '/contato',
     menu: 'Menu',
     fechar: 'Fechar',
   },
-  // a barra de quatro colunas em mono, no topo de cada página
   rodape: {
     aria: 'Rodapé',
     colunas: [
@@ -66,90 +64,38 @@ export const pt = {
     piaui: 'feito por um piauiense', // sotaque: a origem, sem palavra
     topo: 'Voltar ao topo',
   },
-  // cena 01: a barrinha-cursor escreve o título (movimento/abertura.ts)
-  abertura: {
+  // o hero: o Zacarias de capuz e cabeça baixa; ao rolar ele ergue a cabeça e tira o capuz, e os projetos sobem pelos lados
+  hero: {
     titulo: { antes: 'Seu site deveria ', destaque: 'vender', depois: '. Não só existir.' },
     apoio:
       'Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar.',
     botaoPrincipal: 'Pedir orçamento',
     botaoSecundario: 'Ver projetos',
-    nota: 'Orçamento pelo WhatsApp · resposta em até 24 horas úteis',
-    foto: 'Zacarias, de braços cruzados, de frente para você',
-  },
-  // os dois cursores que montam a página (motor/cursores.ts)
-  motor: { design: 'design', codigo: 'código' },
-  // a travessia entre o hero e o resto: a câmera voa por um túnel de palavras e molduras (movimento/tunel.ts)
-  tunel: {
-    frase: ['Eu desenho.', 'Eu programo.', 'Eu publico.'],
-    palavras: [
-      'desenho',
-      'código',
-      'protótipo',
-      'teste',
-      'página',
-      'venda',
-      'clique',
-      'formulário',
-      'celular',
-      'velocidade',
-      'conversa',
-      'proposta',
-      'layout',
-      'botão',
-      'título',
-      'cartão',
-      'menu',
-      'rodapé',
-      'link',
-      'no ar',
-    ],
-  },
-  // cena 02: a barrinha risca a parte que falha em cada frase
-  escapa: {
-    frases: [
-      { antes: 'Seu anúncio paga o clique. Sua página ', falha: 'perde o lead', depois: '.' },
-      { antes: 'Seu formulário está ', falha: 'espantando cliente', depois: '.' },
-      { antes: 'Planilha ', falha: 'não é sistema de gestão', depois: '.' },
-    ],
-    apoio: 'Eu começo pelo que está custando venda, não pelo que é bonito.',
-  },
-  // cena 03, a peça principal: uma janela de navegador riscada em cinco etapas
-  peca: {
-    rotulo: 'Como funciona',
-    titulo: { antes: 'Uma conversa vira protótipo, vira código e vai ao ', destaque: 'ar', depois: '.' },
-    ilustracao: 'Ilustração',
-    etapas: [
+    rolar: 'Role para ver quem faz',
+    foto: 'Zacarias de moletom bege, de pé num estúdio escuro, com as mãos no bolso',
+    aviso: 'Imagem criada com IA a partir de fotos minhas',
+    autoral: 'Projeto autoral',
+    casos: [
       {
-        rotulo: 'Etapa 1 · Conversa',
-        frase: 'Uma conversa…',
-        fato: 'Proposta por escrito antes de começar: escopo, prazo, preço e o que não está incluso. Nada começa sem aceite.',
+        slug: 'kraflo-cmms',
+        nome: 'Kraflo CMMS',
+        tipo: 'Sistema web',
+        texto: 'Sistema de manutenção industrial.',
       },
       {
-        rotulo: 'Etapa 2 · Protótipo',
-        frase: '…vira protótipo…',
-        fato: 'Você clica nas telas antes de qualquer código. São 2 rodadas de ajuste.',
+        slug: 'kraflo-os-bot',
+        nome: 'Kraflo OS Bot',
+        tipo: 'Sistema web',
+        texto: 'Bot de ordens de serviço.',
       },
       {
-        rotulo: 'Etapa 3 · Código',
-        frase: '…vira código…',
-        fato: 'Design e código pela mesma pessoa, sem ruído entre etapas.',
-      },
-      {
-        rotulo: 'Etapa 4 · Testes',
-        frase: '…passa nos testes…',
-        fato: 'Versão de celular, velocidade e formulários testados.',
-      },
-      {
-        rotulo: 'Etapa 5 · No ar',
-        frase: '…e vai ao ar.',
-        fato: 'Site no ar, um guia curto de uso e 15 dias para pequenos ajustes.', // confirmar os 15 dias
+        slug: 'tenua',
+        nome: 'Tenua',
+        tipo: 'Site',
+        texto: 'Site de portfólio para um ateliê fictício.',
       },
     ],
-  },
-  // cena 04: a única cena escura
-  noAr: {
-    titulo: { antes: 'Pronto. Agora o site ', destaque: 'trabalha', depois: ' para você.' }, // sotaque: pronto
-    apoio: 'Cada tela existe para vender, informar ou poupar tempo.',
+    convite: { titulo: 'O próximo é o seu', texto: 'Me conta o que você precisa.', botao: 'Pedir orçamento' },
   },
 } as const;
 
