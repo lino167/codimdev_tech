@@ -1,0 +1,45 @@
+---
+// O hero (sala Início): partículas que escrevem `codimdev` e viram o retrato do Zacarias (lib/hero). Sobre o canvas,
+// o texto em HTML. A foto do recorte é o plano B: sem WebGL, com movimento reduzido ou aparelho fraco, é ela que aparece.
+import type { Textos } from '../i18n/pt';
+
+interface Props {
+  t: Textos;
+}
+const { t } = Astro.props;
+const h = t.hero;
+---
+
+<section class="hero" id="inicio" data-hero data-tema="escuro">
+  <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
+  <img
+    class="hero__foto"
+    src="/img/zacarias.webp"
+    srcset="/img/zacarias-m.webp 420w, /img/zacarias.webp 840w"
+    sizes="(max-width: 959px) 270px, 37vw"
+    width="840"
+    height="1050"
+    alt={h.foto}
+  />
+  <div class="pagina hero__corpo">
+    <h1 class="hero__titulo" data-entra>
+      {h.titulo.antes}
+      <span data-destaque>{h.titulo.destaque}</span>
+      {h.titulo.depois}
+    </h1>
+    <p class="hero__apoio" data-entra>
+      {h.apoio}
+    </p>
+    <div class="hero__botoes" data-entra>
+      <a class="btn btn--principal" href="/contato">
+        {h.botaoPrincipal}
+      </a>
+      <a class="btn btn--contorno" href="/projetos">
+        {h.botaoSecundario}
+      </a>
+    </div>
+  </div>
+  <a class="hero__rolar mono mono--livre" href="/projetos" data-entra>
+    {h.rolar}
+  </a>
+</section>

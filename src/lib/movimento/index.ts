@@ -8,11 +8,8 @@ import { carga, ARQUIVOS_FONTES } from './carga';
 import { loader } from './loader';
 import { suave } from './suave';
 import { revelar } from './revelar';
+import { prepararHero } from '../hero';
 import { prepararNav } from './nav';
-import { prepararAbertura } from './abertura';
-import { escapa } from './escapa';
-import { tunel } from './tunel';
-import { peca } from './peca';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,20 +22,18 @@ export async function iniciar() {
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hd = new URLSearchParams(location.search).has('hd');
   const nav = prepararNav();
-  // as letras do título esperam escondidas atrás do carregador; a barrinha começa a escrever quando a tela se abre
-  const abertura = prepararAbertura(reduzido);
+  // as partículas (imagens e pontos) se preparam atrás do carregador; a história começa quando a tela se abre
+  const hero = prepararHero({ reduzido });
 
   const c = carga(ARQUIVOS_FONTES);
-  await loader({ carga: c, hd, reduzido });
+  // a tela só abre com o hero pronto (ou depois de 4,5 s: o hero cai para a foto)
+  const espera = hero ? Promise.race([hero.pronto, new Promise((r) => setTimeout(r, 4500))]) : undefined;
+  await loader({ carga: c, hd, reduzido, espera });
 
   const rolagem = suave({ reduzido });
   nav.ligar(rolagem);
-  // ordem: a peça (que prende o palco) vem primeiro, para os gatilhos de baixo contarem com o espaço do pin
-  tunel({ reduzido });
-  peca({ reduzido });
   revelar({ reduzido });
-  escapa(reduzido);
-  abertura?.entrar();
+  hero?.entrar();
   if (reduzido) nav.mostrar();
   else gsap.delayedCall(CABECALHO_APARECE, () => nav.mostrar());
 

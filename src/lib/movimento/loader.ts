@@ -22,10 +22,13 @@ export function loader({
   carga,
   hd = false,
   reduzido = false,
+  espera = Promise.resolve(),
 }: {
   carga: Carga;
   hd?: boolean;
   reduzido?: boolean;
+  /** algo mais que a tela espera para abrir (o hero pronto), com o próprio limite de tempo */
+  espera?: Promise<unknown>;
 }): Promise<void> {
   const raiz = document.documentElement;
   if (window.__seguranca) clearTimeout(window.__seguranca);
@@ -51,7 +54,7 @@ export function loader({
   gsap.set(barra, { opacity: 0 });
 
   let pronto = false;
-  void carga.pronta.then(() => {
+  void Promise.all([carga.pronta, espera]).then(() => {
     pronto = true;
   });
 

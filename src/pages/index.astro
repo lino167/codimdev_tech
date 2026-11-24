@@ -1,23 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
-import Abertura from '../components/Abertura.astro';
-import Tunel from '../components/Tunel.astro';
-import Escapa from '../components/Escapa.astro';
-import Peca from '../components/Peca.astro';
-import NoAr from '../components/NoAr.astro';
-import '../styles/motor.css';
-import '../styles/abertura.css';
-import '../styles/tunel.css';
-import '../styles/escapa.css';
-import '../styles/peca.css';
-import '../styles/noar.css';
+import Hero from '../components/Hero.astro';
+import '../styles/hero.css';
 import { pt } from '../i18n/pt';
 ---
 
 <Base t={pt}>
-  <Abertura t={pt} />
-  <Tunel t={pt} />
-  <Escapa t={pt} />
-  <Peca t={pt} />
-  <NoAr t={pt} />
+  <Hero t={pt} />
 </Base>
