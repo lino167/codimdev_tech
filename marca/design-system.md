@@ -63,7 +63,7 @@ A página tem largura máxima de 1200 px (`container`) com 24 px de margem later
 
 - **Header**: logo, até 4 links e o botão de orçamento.
 - **Hero**: título com uma palavra em `carmim`, texto curto, dois botões e um visual.
-- **ServiceCard**: ícone de serviço, título, uma frase e preço inicial.
+- **ServiceCard**: ícone de serviço, título e uma frase, sem preço. O valor sai por escrito na proposta, pelo WhatsApp.
 - **ProjectCard**: imagem em preto e branco que ganha cor no hover, etiqueta `Autoral` ou `Cliente`.
 - **Testimonial**: citação com aspas em `carmim`. Nunca com texto inventado.
 - **CtaWhatsapp**: faixa `grafite` com o botão `carmim`, uma vez por página.
