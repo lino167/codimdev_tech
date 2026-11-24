@@ -1,16 +1,16 @@
-// O hero: sete imagens (nada de vídeo, que pesa) trocadas em fusão num canvas, dirigidas pela rolagem, simulam o movimento:
+// O hero: onze imagens (nada de vídeo, que pesa) trocadas em fusão num canvas, dirigidas pela rolagem, simulam o movimento:
 // o Zacarias, de capuz e braços cruzados, descruza, tira o capuz, revela o rosto e põe as mãos no bolso. Depois, os projetos
 // sobem pelos dois lados da tela.
 // - Computador: o palco fica preso (5 telas); 0-45% é a sequência de imagens, 6-12% o texto some (antes de os braços abrirem), 45-100% as colunas laterais sobem.
 // - Celular: o quadro fica preso por 1,2 tela e os projetos vêm depois, em coluna, no fluxo normal.
-// As imagens baixam em ordem (as duas primeiras liberam o carregador); são cerca de 100 KB cada.
+// As imagens baixam em ordem (as duas primeiras liberam o carregador); são cerca de 70 KB cada.
 // Movimento reduzido ou sem JS: o quadro final e os projetos em lista (CSS).
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TOTAL = 7;
+const TOTAL = 11;
 const L = 1920;
 const A = 1071;
 const limitar = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -61,12 +61,12 @@ export function prepararHero({ reduzido }: { reduzido: boolean }): Hero | null {
     return k >= 0 && k < TOTAL ? k : -1;
   };
   let ultimo = '';
-  // p vai de 0 a 1 pelas sete imagens; cada pose segura um pouco e troca em fusão suave
+  // p vai de 0 a 1 pelas onze imagens; cada pose segura um pouco e troca em fusão suave
   const desenhar = (p: number) => {
     const pos = limitar(p) * (TOTAL - 1);
     const i = Math.min(TOTAL - 2, Math.floor(pos));
     const t = pos - i;
-    const f = limitar((t - 0.3) / 0.4);
+    const f = limitar((t - 0.2) / 0.6);
     const mistura = f * f * (3 - 2 * f);
     const a = proximo(i, -1);
     const b = proximo(i + 1, 1);
