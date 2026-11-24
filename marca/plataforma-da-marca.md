@@ -46,7 +46,7 @@ O catálogo tem cinco serviços de desenvolvimento web e UI/UX (lista atualizada
 
 ### Como os preços foram calculados
 
-A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por escopo, não por hora. Os preços foram confirmados. As horas abaixo são estimativas e incluindo as 2 rodadas de ajuste por etapa, devem ser refeitas depois dos primeiros projetos. Os valores de mercado vêm da [pesquisa de preços](pesquisa-de-preco.md).
+A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por escopo, não por hora. Os preços foram confirmados. As horas abaixo são estimativas, incluem as 2 rodadas de ajuste por etapa e devem ser refeitas depois dos primeiros projetos. Os valores de mercado vêm da [pesquisa de preços](pesquisa-de-preco.md).
 
 | Serviço | Horas estimadas | Preço (R$ 60 por hora) | Mercado, freelancer ou estúdio enxuto |
 | --- | --- | --- | --- |
