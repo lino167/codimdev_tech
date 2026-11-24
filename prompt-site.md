@@ -1,27 +1,28 @@
-# codimdev: uma prancheta de projeto em que o site é riscado em traço fino e a barrinha carmim o põe no ar
+# codimdev: uma página que dois cursores constroem na sua frente, e que termina numa pessoa só
 
-Este arquivo é a especificação completa do site da codimdev. Funciona sozinho: quem ler só ele consegue construir o site sem a conversa que o originou. Tudo o que não está aqui não existe no site. Quando um fato não estiver escrito, ele fica `[preencher]` e **nunca** é inventado.
+Este arquivo é a especificação completa do site da codimdev (**versão 2, cinematográfica**). Funciona sozinho: quem ler só ele consegue construir o site sem a conversa que o originou. Tudo o que não está aqui não existe no site. Quando um fato não estiver escrito, ele fica `[preencher]` e **nunca** é inventado.
 
 ## Antes de começar: pergunte
 
 Antes de escrever código, leia `AGENTS.md`, `src/` e `git log` (o projeto já existe em Astro). Depois pergunte, uma coisa por vez e em linguagem simples:
 
 1. O que a pessoa quer agora: **construir o site inteiro**, construir só uma página ou parte, ou só rever um texto.
-2. Se faltar algo da lista `[preencher]` no fim, peça agora.
-3. O material de cada cena (a resposta curta é: **quase nada depende de arquivo externo**):
-   - Peça principal, miniaturas de serviço, carregador, 404, transições: **feitos em código** (SVG, CSS, GSAP). Não pedem material.
-   - Logo (SVG) e 23 ícones: **já existem** no Design System da codimdev (artefato "Codimdev"). O SVG original da logo manda; se faltar, não redesenhe: pare e peça.
-   - Recorte do Zacarias (moletom bege, fundo transparente, 840 × 1050 px): **já existe** no Livro da marca. Sem ele, a cena "Quem faz" fica só com as cotas em traço e a legenda, marcada como provisória.
-   - Projetos: cada um aparece com uma **miniatura desenhada em traço** do que entrega. Capturas de tela reais são opcionais (`[preencher]`); sem elas, a miniatura em traço fica.
-   - Fotografia de banco de imagem, vídeo e imagem gerada por IA: **não entram** em nenhuma cena.
+2. **Qual motor dos cursores:** escrito do zero (**recomendado**: dois cursores, o repositório pode ficar público) ou o motor do modelo Kairo da Profitize adaptado (exige repositório **privado**, porque a licença proíbe publicar o código). Sem resposta, escreva do zero.
+3. Se faltar algo da lista `[preencher]` no fim, peça agora.
+4. O material de cada cena. A resposta curta: **o que dá impacto vem de código; as fotos e os prints dão o resto**.
+   - Cursores, motor de construção, HUD, ⌘K, tema, placas em 3D, roda, carregador, 404 e transições: **feitos em código** (SVG, CSS 3D, GSAP). Não pedem material.
+   - Logo (SVG) e 23 ícones: **já existem** no Design System da codimdev. O SVG original da logo manda; se faltar, não redesenhe: pare e peça.
+   - **Recorte do Zacarias** (moletom bege, fundo transparente, 840 × 1050): já existe em `public/img/zacarias.webp`. **Mais 4 fotos** dele existem no repositório da marca (`imagens/zacarias/`): peça-as para o Sobre. Sem elas, o mesmo recorte serve.
+   - **Prints do Kraflo CMMS, do Kraflo OS Bot e do Tenua**, em modo escuro, 16:10: peça-os para a roda de projetos. Sem eles, cada cartão mostra a miniatura em traço do produto.
+   - Fotografia de banco de imagem, vídeo e imagem gerada por IA: **não entram**.
 
 ## A ideia
 
-- A página é uma **prancheta de projeto**: fundo algodão com grade fina; um site é riscado em traço fino de grafite, etapa por etapa, e a **barrinha inclinada carmim** (a assinatura da logo) é o cursor que desenha e, no fim, acende a luz de "no ar". O site de quem faz sites não explica o processo: ele **é** o processo.
-- **A régua:** cada seção tem um gesto; seção que vira bloco parado ainda não está pronta.
-- **Eixo:** o processo (do bruto ao pronto). **A frase da peça:** "Uma conversa… vira protótipo… vira código… passa nos testes… e vai ao ar."
-- **Os quatro atos:** o antes (prancheta em branco e o problema do dono) → o processo (a peça principal, presa por cinco telas) → a virada (a luz acende e a página escurece, uma única vez) → o depois (serviços, projetos, combinado, o rosto de quem faz e o convite).
-- **O site tem várias páginas.** A página inicial é o trailer; cada página tem uma função e o mesmo traço.
+- A página **se constrói na frente de quem a visita**. Dois cursores de editor multiplayer, **`design`** e **`código`**, desenham e preenchem cada bloco. No fim eles **se fundem numa barrinha carmim**, com a etiqueta "uma pessoa só": é o diferencial da codimdev virando imagem. O site de quem faz sites não conta o processo: ele acontece na tela.
+- **A régua:** cada seção tem um gesto; seção parada ainda não está pronta. **O cursor é parte da cena:** o mouse do visitante também reage (profundidade no hero, seleção do editor no hover).
+- **Eixo:** o processo. **A frase da peça:** "Uma conversa… vira protótipo… vira código… passa nos testes… e vai ao ar."
+- **Os quatro atos:** o antes (a prancheta vazia que dois cursores começam a desenhar) → o processo (a peça de cinco placas em 3D) → a virada (a luz acende, os cursores se fundem, o palco escurece) → o depois (serviços, projetos numa roda 3D, combinado, o rosto, o convite).
+- **De onde vem cada mecânica** (estudo de 31 Sites of the Day da Awwwards e dos modelos da Profitize): o motor dos dois cursores, do **Kairo**; a pilha de placas em 3D, do **Bilda**; a roda de projetos, do **Works Wheel** e do **Margem**; o nome gigante que se desenha em contorno e enche, do **Traço**; o HUD com dados reais, do **Carter Ogunsola**; o rosto na frente do nome, do **Linno**. É a mecânica, escrita para a marca; nenhum código ou texto é copiado.
 
 ---
 
@@ -67,7 +68,7 @@ Antes de escrever código, leia `AGENTS.md`, `src/` e `git log` (o projeto já e
 | `--floresta`      | `#2F6E54` | só confirmação dentro de telas de produto desenhadas                                    |
 | `--erro`          | `#8E1B12` | mensagem de erro, sempre com texto e ícone                                              |
 
-Nada de branco puro nem de preto puro nos fundos. Carmim **nunca** como fundo de seção, em vários botões juntos ou para indicar erro. Contraste: carmim sobre algodão 5,2:1; carmim sobre trama 4,6:1; carmim sobre grafite só em texto de 24 px ou mais e na barrinha. A paleta inteira troca num lugar só (`styles/tokens.css`); o tema escuro do Design System existe, mas **fica fora da primeira versão**.
+Nada de branco puro nem de preto puro nos fundos. Carmim **nunca** como fundo de seção, em vários botões juntos ou para indicar erro. Contraste: carmim sobre algodão 5,2:1; carmim sobre trama 4,6:1; carmim sobre grafite só em texto de 24 px ou mais e na barrinha. A paleta inteira troca num lugar só (`styles/tokens.css`); o tema escuro do Design System entra pelo botão de tema do cabeçalho e pela paleta de comandos.
 
 #### Tipos (arquivo local, todos livres para uso comercial)
 
@@ -94,7 +95,7 @@ Os arquivos `.woff2` (latim) vão em `public/fonts/`, gerados por `scripts/fonte
 
 #### Cabeçalho e rodapé (todas as páginas)
 
-- **Cabeçalho** (fixo, 72 px; 56 px depois de 40 px de rolagem, com fundo algodão a 92% e fio embaixo; some ao descer passada meia tela e volta ao subir): logo horizontal à esquerda; `[ Serviços ]  [ Projetos ]  [ Como funciona ]  [ Sobre ]` em mono 13 px, entre colchetes (os colchetes em `--grafite-suave`); botão "Pedir orçamento" (carmim) à direita. Sobre a cena escura, o cabeçalho e o botão trocam de cor (texto algodão; botão algodão com texto grafite). Até 960 px, os links viram um botão `[ Menu ]` que abre uma folha algodão de tela cheia com os links em IBM Plex Sans 600, 48 px, e o botão de orçamento em largura total (Esc fecha; a rolagem trava).
+- **Cabeçalho** (fixo, 72 px; 56 px depois de 40 px de rolagem, com fundo algodão a 92% e fio embaixo; some ao descer passada meia tela e volta ao subir): logo horizontal à esquerda; `[ Serviços ]  [ Projetos ]  [ Como funciona ]  [ Sobre ]` em mono 13 px, entre colchetes (os colchetes em `--grafite-suave`); à direita, o **botão de tema** (sol e lua, 44 px), o atalho `⌘K` (só no computador, em mono) e o botão "Pedir orçamento" (carmim). Sobre a cena escura, o cabeçalho e o botão trocam de cor (texto algodão; botão algodão com texto grafite). Até 960 px, os links viram um botão `[ Menu ]` que abre uma folha algodão de tela cheia com os links em IBM Plex Sans 600, 48 px, e o botão de orçamento em largura total (Esc fecha; a rolagem trava).
 - **Rodapé:** a logo horizontal em escala grande e proporcional (altura mínima igual à do "o" de respiro em todos os lados), quatro colunas de links (Serviços, Projetos, Como funciona, Sobre, Orçamento, Privacidade; Instagram `@codimdev`; e-mail), a linha em mono "codimdev · desenvolvimento web · 2026" e, **sozinha numa linha abaixo, "feito por um piauiense"** (nada mais: sem cidade, sem bandeira, sem detalhe). A linha carmim com a barrinha fecha a página. "Voltar ao topo" leva a barrinha de volta ao cursor da abertura.
 
 ### 00 — Carregador
@@ -103,63 +104,98 @@ Os arquivos `.woff2` (latim) vão em `public/fonts/`, gerados por `scripts/fonte
 - Embaixo do símbolo, o contador em mono 12 px caixa alta: "JÁ JÁ · 64%" (atributo `aria-label` "Carregando a página", `role="progressbar"`).
 - Em 100%, a barrinha carmim risca o símbolo na diagonal e **trava no lugar** (clique de 120 ms); a tela se abre para cima em 0,7 s (`power3.inOut`) sobre o primeiro quadro da abertura, sem quadro em branco no meio. Rolagem travada durante a carga, sem esconder a barra.
 - Antes do JS, o símbolo já aparece em CSS (traço completo e apagado, depois de 0,4 s; com cache nem aparece). O `<html>` começa com a classe `is-loading` e um temporizador de segurança de 10 s a remove sozinho.
-- Movimento reduzido ou sem WebGL/JS: a página aparece direto, sem carregador.
+- Movimento reduzido ou sem JavaScript: a página aparece direto, sem carregador e sem cursores.
+
+### O motor: dois cursores
+
+- **Quem são:** dois cursores de editor multiplayer, em SVG, com etiqueta em mono de 11 px (`design` em `--grafite-suave`, `código` em `--grafite`; fundo `--trama`, fio de 1 px, cantos de 4 px). **Nenhuma cor extra:** o carmim fica só para a linha-guia e para a fusão final.
+- **O que `design` faz:** desenha a **caixa de seleção** (fio de 1 px, quatro alças quadradas de 6 px, a medida ao vivo em mono, "420 × 24") e depois o **esboço** do bloco (tracejado cinza, o mesmo `6 6` das placas).
+- **O que `código` faz:** **digita** o texto (um caractere a cada 28 ms), **acende** o título letra a letra (de `--grafite-suave` para `--grafite`, 34 ms por letra), **revela** a foto (preto e branco para a cor, 0,9 s), **desenha** o contorno do nome gigante e o **enche** de baixo para cima (1,6 s), e liga as interações.
+- **A dupla:** em cada bloco `design` vai primeiro e `código` depois; quem termina segue para o próximo. Eles nunca ocupam o mesmo bloco ao mesmo tempo.
+- **Atributos no HTML** (o conteúdo é HTML de verdade desde o começo; o motor só lê):
+  - `data-camada="quadro|titulo|texto|bloco|foto|nome"` marca cada bloco que será construído;
+  - `data-montagem` agrupa as camadas de uma montagem, que começa quando o topo da seção passa de **62%** da tela;
+  - `data-duplica` numa lista: o primeiro filho nasce do zero; cada um dos outros sai de uma **cópia que `código` arrasta**, com o cursor de copiar, até a vaga, e o conteúdo é trocado;
+  - `data-ajusta="dx,dy"`: o bloco nasce deslocado (metade no celular) e `design` o arrasta de volta, com a **linha-guia carmim** (1 px, 80 px de comprimento, aparece por 0,4 s);
+  - `data-teste="1,0"` num grupo de botões: depois de montado, `código` clica no botão 1 e volta ao 0. `data-tocado` (posto quando a pessoa mexe) cancela o teste.
+- **Rolou no meio:** a montagem acelera 5× e o que sai da tela fecha na hora; nenhum cursor volta para cima atrás do que ninguém vê.
+- **Entradas e saídas:** os dois cursores entram pelas bordas depois do carregador, rodeiam o símbolo (1,2 s) e se espalham. Entre seções, ficam na borda do bloco em que terminaram.
+- **O fim:** com o convite na tela (ou com a página toda montada), os dois **caminham até o centro e se fundem** numa barrinha carmim (0,8 s, `power3.inOut`); a etiqueta vira "uma pessoa só". Em computador, essa barrinha passa a **seguir o mouse** (mola suave, 0,18 s de atraso), discreta, como cursor da página; em celular, fica como luz de status no convite.
+- **Segurança e fallback:** `?pronto` na URL, `prefers-reduced-motion`, ausência de JavaScript ou o motor não subir em 5 s: a página abre **já montada**, sem cursores. Nada fica escondido esperando animação.
+- **Celular:** os dois cursores continuam, com a metade da velocidade de cursor e sem a barrinha seguindo o dedo.
+
+### O HUD, o Tour e os extras
+
+- **HUD fixo no pé da página** (faixa de 40 px, `--trama`, fio em cima, mono 12 px). **Só dados reais**:
+  - `carregou em 0,9 s`: o LCP, lido com `PerformanceObserver`;
+  - `60 fps`: a média dos últimos 2 s medida por `requestAnimationFrame`;
+  - `JS 38 KB`: a soma de `transferSize` dos scripts da Resource Timing;
+  - `2 cursores · 1 pessoa`;
+  - `37/37 camadas`, com uma barra de progresso fina.
+    Se o navegador não mede algo, mostra "—". **Nunca** mostre número de visitantes online ou qualquer dado que o site não meça.
+- **Controles do HUD (à direita):** **Tour** (a página rola sozinha e para em cada seção até ela ficar construída; qualquer toque ou tecla do visitante interrompe), `1×` `2×` (velocidade do motor) e **montar de novo** (limpa e refaz a construção). No fim do Tour: "Montada por 2 cursores em 38 s", com o tempo medido.
+- **Seleção ao passar o mouse:** todo clicável ganha a seleção do editor (fio grafite de 1 px com as quatro alças) no hover (só com mouse) e no foco.
+- **Tema claro e escuro:** botão no cabeçalho; troca os tokens (os escuros do Design System) com um **círculo que se abre do ponto do clique** (`document.startViewTransition` e `clip-path`; sem suporte, troca direta). Respeita `prefers-color-scheme` na primeira visita e lembra a escolha.
+- **Paleta de comandos (⌘K ou Ctrl K):** diálogo acessível (`role="dialog"`, foco preso, Esc fecha) com o campo "Ir para…". Itens: as páginas, "Mudar tema", "Fazer o tour", "Montar de novo", "Chamar no WhatsApp". Navegação por setas e Enter.
+- **Transição entre páginas:** uma máscara que corta a tela (200 ms, `@view-transition`).
 
 ### Páginas e cenas
 
 #### Página inicial (`/`)
 
-**01 · Abertura** (ato 1, 100 svh)
+**01 · Abertura, o hero** (ato 1, 100 svh)
 
-- **Gesto:** barra mono de quatro colunas no topo: "codimdev · Desenvolvimento web · Blumenau, SC · 2026". Grade fina ao fundo. A barrinha-cursor **escreve o título** letra a letra (32 ms por letra) e pousa; à direita, uma janela de navegador em traços tracejados fica **esboçada, esperando** (opacidade 35%).
-- **Texto:** título "Seu site deveria vender. Não só existir." (**vender** em carmim) · apoio "Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar." · botões "Pedir orçamento" (carmim) e "Ver projetos" (secundário) · nota em mono 12 px "Orçamento pelo WhatsApp · resposta em até 24 horas úteis".
-- **Passagem:** a barrinha desce riscando a grade até a primeira frase da cena 02.
-- **Celular:** título em 3 linhas, a janela em traços vira uma faixa de 160 px abaixo dos botões; botões em largura total.
+- **Composição:** barra mono de quatro colunas no topo ("codimdev · Desenvolvimento web · Blumenau, SC · 2026"), grade fina ao fundo. **O nome gigante**: a logo horizontal oficial, **de borda a borda** no pé do hero (largura 100% menos as margens, proporcional, nunca esticada). **O Zacarias recortado** em primeiro plano, grande (altura de cerca de 78% da tela no computador), **na frente do nome**, cortando-o. O título à esquerda; os botões e a nota abaixo.
+- **Gesto (por tempo, depois do carregador):** os dois cursores entram; `design` desenha o **contorno** do nome gigante (traço de 2 px, 1,4 s) e `código` o **enche de baixo para cima** (1,6 s). O Zacarias **sobe de um desfoque** (`filter: blur(18px)` para 0, 1,1 s, `expo.out`). `código` **escreve o título** (34 ms por letra), com um cursor-barrinha piscando no fim do texto, e depois o apoio e os botões sobem.
+- **Reação ao mouse (só computador):** o Zacarias se desloca até 14 px na direção oposta ao mouse e o nome gigante, até 6 px (profundidade); o conjunto tem mola de 0,35 s. Sem mouse, nada se mexe.
+- **Texto:** título "Seu site deveria vender. Não só existir." (**vender** em carmim) · apoio "Landing pages, sites e sistemas web para empresas. Eu desenho e programo a mesma peça, do protótipo ao site no ar." · botões "Pedir orçamento" (carmim) e "Ver projetos" (secundário) · nota em mono "Orçamento pelo WhatsApp · resposta em até 24 horas úteis" · legenda da foto "Zacarias, desenvolvedor e designer".
+- **Celular:** o título (em 3 linhas) vem primeiro; o Zacarias fica embaixo dele com 56% da altura, sobre o nome gigante; os botões em largura total; sem reação ao mouse.
+- **Passagem:** os cursores descem com a rolagem até a primeira frase da cena 02.
 
 **02 · O que escapa** (ato 1)
 
-- **Gesto:** três frases do dono em `--grafite-suave`, uma por vez, entrando por tempo; a barrinha carmim **risca na diagonal** a parte que falha ("perde o lead", "espantando cliente", "não é sistema de gestão") e a frase escurece para grafite.
+- **Gesto:** três frases do dono em `--grafite-suave`; `design` **risca** a parte que falha com o traço carmim (3 px, na diagonal, 0,9 s) e `código` escurece a frase. Texto, abaixo.
 - **Texto:** "Seu anúncio paga o clique. Sua página perde o lead." · "Seu formulário está espantando cliente." · "Planilha não é sistema de gestão." · apoio "Eu começo pelo que está custando venda, não pelo que é bonito."
-- **Passagem:** a última barrinha vira cursor e desce até a janela em traços, que **sobe ao centro** (escala 0,6 → 1).
 
-**03 · Do briefing ao site no ar** (ato 2, **a peça principal**, presa por 5 telas)
+**03 · Do briefing ao site no ar** (ato 2, **a peça principal: a pilha de camadas**, presa por 5 telas)
 
-- **O que se vê:** uma janela de navegador desenhada em SVG (viewBox 1200 × 720) no centro da tela, com leve perspectiva (`perspective: 1600px`, `rotateX(8deg) rotateY(-10deg)` que **acalma para 0** a cada etapa). Traço de 1,5 px em grafite; sem sombra até a etapa 3. A etapa atual fica em 100% de opacidade; as anteriores em 35%.
-- **Estrutura da cena:** `<section data-peca>` fixada com ScrollTrigger (`pin: true`, `end: "+=500%"`, `scrub: 0.6`, `anticipatePin: 1`). Abertura nos primeiros 6% do pin (a janela sobe e se firma) e respiro final nos últimos 4%. Cinco marcos a 20% da rolagem cada, depois de descontados os 10%.
-- **Etapas:**
+- **O que se vê:** cinco **placas** de uma janela de navegador (cada uma um SVG de 1200 × 720 com moldura, barra de endereço e o conteúdo da etapa), empilhadas em **3D por CSS** (`perspective: 2200px`, `transform-style: preserve-3d`), em vista isométrica (`rotateX(58deg) rotateZ(-32deg)`), separadas em 140 px ao longo do eixo Z. A placa da etapa atual fica a 100% de opacidade; as outras a 35%. Cada placa tem uma **aba** no canto com o rótulo em mono ("01 · conversa").
+- **Estrutura:** palco fixado com ScrollTrigger (`pin: true`, `end: "+=500%"`, `scrub: 0.6`, `anticipatePin: 1`); abertura nos primeiros 6% (a primeira placa se firma) e respiro final nos últimos 4%. A rolagem dirige só a câmera (a rotação e a altura do conjunto) e a barra de etapa; o resto roda por tempo.
+- **Etapas** (cada uma traz uma placa nova, que sobe e se encaixa por cima das anteriores, 0,7 s, `power3.out`):
 
-| Etapa | Rótulo              | Parte da frase       | O que se vê                                                                                                                                                                                                                                                 | Fato                                                                                                            |
-| ----- | ------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| 1     | Etapa 1 · Conversa  | "Uma conversa…"      | Dois balões em traço (retângulos de 4 px com 3 linhas cada) e, ao lado, uma folha em proporção A4 com o cabeçalho "PROPOSTA" em mono. Três linhas se escrevem por tempo: "Escopo", "Prazo", "Preço".                                                        | "Proposta por escrito antes de começar: escopo, prazo, preço e o que não está incluso. Nada começa sem aceite." |
-| 2     | Etapa 2 · Protótipo | "…vira protótipo…"   | A janela se desenha (moldura, barra de endereço) e ganha o wireframe: bloco de herói, três cartões e rodapé, com `X` nos espaços de imagem. A barrinha-cursor clica nas abas "01 02 03" e as três telas trocam em 150 ms.                                   | "Você clica nas telas antes de qualquer código. São 2 rodadas de ajuste."                                       |
-| 3     | Etapa 3 · Código    | "…vira código…"      | Os blocos ganham preenchimento `--trama` e texto real (Plex Sans e Inter). À direita, um painel (38% da largura) com 9 linhas de código em mono se escreve a 40 caracteres por segundo, com a barrinha como cursor de texto. A `sombra-suave` aparece aqui. | "Design e código pela mesma pessoa, sem ruído entre etapas."                                                    |
-| 4     | Etapa 4 · Testes    | "…passa nos testes…" | A janela encolhe de 100% para 38% de largura até virar um celular em traço (cantos de 4 px). Três linhas em mono ganham um `check` de 20 px, uma a cada 0,25 s: "celular", "velocidade", "formulário".                                                      | "Versão de celular, velocidade e formulários testados."                                                         |
-| 5     | Etapa 5 · No ar     | "…e vai ao ar."      | A barra de endereço escreve um domínio ilustrativo ("suaempresa.com.br") a 30 caracteres por segundo. A **luz de status** (a barrinha carmim, 18 × 12 px) acende com um pulso (escala 1 → 1,6 → 1 em 0,8 s) ao lado do rótulo "NO AR" em mono.              | "Site no ar, um guia curto de uso e 15 dias para pequenos ajustes." `[confirmar os 15 dias]`                    |
+| Etapa | Rótulo         | Parte da frase       | O que se vê                                                                                                                                                             | Fato                                                                                                            |
+| ----- | -------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 1     | 01 · conversa  | "Uma conversa…"      | Placa 1: balões em traço e a folha de proposta em proporção A4. `código` escreve "PROPOSTA", "Escopo", "Prazo", "Preço" (24 e 20 caracteres por segundo).               | "Proposta por escrito antes de começar: escopo, prazo, preço e o que não está incluso. Nada começa sem aceite." |
+| 2     | 02 · protótipo | "…vira protótipo…"   | Placa 2: a página em blocos tracejados e três abas "1 2 3". `design` clica nas abas e as telas trocam em 150 ms (página, grade de cartões, formulário).                 | "Você clica nas telas antes de qualquer código. São 2 rodadas de ajuste."                                       |
+| 3     | 03 · código    | "…vira código…"      | Placa 3: os blocos ganham preenchimento `--trama` e texto real; ao lado, um painel de código se escreve a 40 caracteres por segundo, com `código` como cursor de texto. | "Design e código pela mesma pessoa, sem ruído entre etapas."                                                    |
+| 4     | 04 · testes    | "…passa nos testes…" | Placa 4: a janela vira celular (cantos de 4 px) e três marcas ganham um `check` de 20 px, uma a cada 0,25 s: "celular", "velocidade", "formulário".                     | "Versão de celular, velocidade e formulários testados."                                                         |
+| 5     | 05 · no ar     | "…e vai ao ar."      | Placa 5: a barra de endereço escreve "suaempresa.com.br" (30 caracteres por segundo) e a luz de status (a barrinha) pulsa (escala 1 → 1,7 → 1, 0,8 s).                  | "Site no ar, um guia curto de uso e 15 dias para pequenos ajustes." `[confirmar os 15 dias]`                    |
 
-- **Texto:** título da cena "Uma conversa vira protótipo, vira código e vai ao ar." (**ar** em carmim), no alto e fora do pin. Dentro do pin, abaixo da janela, uma barra mono "ETAPA 3 · CÓDIGO" (barra flutuante, também mostrada no celular) e a parte da frase da etapa em Plex Sans 600, 36 px: **entra palavra por palavra** saindo do desfoque (`filter: blur(6px)` → 0, 0,5 s, stagger 0,06 s) depois da troca e **sai antes da próxima**. Um fato real de 1 a 2 linhas em Inter 16 px, em `--grafite-suave`.
-- **Aviso:** no canto inferior direito da janela, a etiqueta em mono "Ilustração".
-- **Celular (390 px):** o pin vira 400% (4 marcos úteis); a janela ocupa 100% da largura menos 40 px; o painel de código da etapa 3 desce para baixo da janela; a etapa 4 vira o próprio celular centralizado a 60%.
-- **Movimento reduzido:** sem pin; as cinco etapas viram cinco cartões em coluna, já formados, cada um com a janela no estado final daquela etapa.
-- **Passagem:** a janela firma, a luz acende e a página escurece (cena 04).
+- **O texto:** título da cena "Uma conversa vira protótipo, vira código e vai ao ar." (**ar** em carmim), no alto, fora do pin. Dentro do pin, abaixo da pilha: o rótulo da etapa em mono, a parte da frase em IBM Plex Sans 600 (36 px; **entra palavra por palavra** saindo do desfoque, 0,5 s, stagger 0,06, e sai antes da próxima) e o fato em Inter 16 px. Uma **barra de etapa** com cinco marcas e a barrinha andando.
+- **A virada (últimos 4%):** as placas **descem e se achatam** numa janela só (distância Z 140 px → 0, 0,6 s); a câmera fica de frente (`rotateX/Z` → 0); o palco vai de algodão para `--grafite`; a janela recua (escala 0,62). Os cursores se fundem (cena 04).
+- **Aviso:** a etiqueta em mono "Ilustração" no canto de cada placa.
+- **Celular (390 px):** pin de 400%; a pilha fica menor e o texto da etapa, logo abaixo, é o que se lê; a janela ocupa a largura toda.
+- **Movimento reduzido ou sem JS:** sem pin e sem 3D; uma janela pronta e as cinco etapas em lista.
 
 **04 · No ar** (ato 3, fundo `--grafite`, a única cena escura)
 
-- **Gesto:** o fundo vai de algodão para grafite em 600 ms ao final do pin (`scrub` nos últimos 4%). A luz de status pulsa uma vez; a janela, já site, **recua de escala** (1 → 0,55) e sobe para o canto. As cores de texto trocam para `--algodao` e `#A3A4AA`. Ao rolar adiante, o fundo **volta** a algodão.
+- **Gesto:** o palco escurece (600 ms); **os dois cursores se fundem** numa barrinha carmim, e a etiqueta troca para "uma pessoa só". Ao rolar adiante, o fundo **volta** a algodão.
 - **Texto:** título "Pronto. Agora o site trabalha para você." (IBM Plex Sans 600, 64 px, algodão; carmim claro `#EC5A4D` só em **trabalha**) · apoio "Cada tela existe para vender, informar ou poupar tempo." · sem botão.
 - **Passagem:** a janela encolhe e vira o ícone do primeiro cartão de serviço.
 
 **05 · Serviços** (ato 4)
 
-- **Gesto:** cinco cartões em `--trama` (grade de 3 + 2 colunas no desktop; 1 coluna no celular), cada um com o ícone de serviço (detalhe carmim). Ao entrar (gatilho a 85% da altura da tela), cada cartão **desenha em traço uma miniatura** do que entrega (1,0 s, stagger 0,12 s) e firma: funil e botão; árvore de páginas; antes e depois com uma alça; painel com gráfico; componentes em grade.
+- **Gesto:** cinco cartões em `--trama` (grade de 3 + 2 colunas no desktop; 1 coluna no celular), cada um com o ícone de serviço (detalhe carmim), **construídos pelos cursores** (o primeiro nasce do zero; os outros saem de cópias arrastadas por `código`). Ao entrar (gatilho a 85% da altura da tela), cada cartão **desenha em traço uma miniatura** do que entrega (1,0 s, stagger 0,12 s) e firma: funil e botão; árvore de páginas; antes e depois com uma alça; painel com gráfico; componentes em grade.
 - **Texto:** eyebrow "Serviços" · título "Cinco serviços. Uma pessoa só." (**só** em carmim) · apoio "Escopo, prazo e preço por escrito antes de começar." · cartões: "Landing pages focadas em conversão" ("Páginas rápidas para campanhas de tráfego pago, onde você mede o retorno em leads e vendas."), "Sites institucionais" ("Posicionamento profissional, SEO básico e contato por WhatsApp e formulário."), "Redesign e otimização de conversão" ("Eu refaço o site ou sistema que está lento, ruim no celular ou perdendo venda."), "Interfaces, dashboards e MVPs" ("Área de membros, portais de clientes e painéis administrativos sob medida."), "Design system" ("Padronização de telas e componentes para acelerar as entregas do seu time.") · link "Ver os cinco serviços" para `/servicos`; cada cartão leva à página do serviço.
 - **Números:** 5 serviços. Sem preço.
 - **Passagem:** o último traço vira a linha do índice de projetos.
 
 **06 · Projetos** (ato 4)
 
-- **Gesto:** **índice numerado em mono** (`[01] Kraflo CMMS`, `[02] Kraflo OS Bot`, `[03] Tenua`); passar o mouse num nome acende a prévia ao lado (a miniatura em traço troca em 150 ms e ganha cor, com o carmim só na barrinha). No celular, três cartões.
-- **Texto:** título "Projetos autorais, chamados de autorais." · apoio "Fiz estes projetos para mostrar como eu trabalho. O primeiro cliente entra aqui." · etiqueta "Autoral" em cada um · link "Ver todos os projetos" para `/projetos`.
-- **Passagem:** a prévia some e a barrinha vira o marcador da lista de regras.
+- **Gesto:** os três projetos autorais numa **roda 3D**: um tambor de cartões (CSS 3D, `rotateY` por cartão num raio de 520 px) que **gira com a rolagem**; cada giro traz o próximo projeto para a frente, ampliado, e os outros se afastam e escurecem. Passar o mouse num cartão mostra a seleção do editor e o nome; clicar abre a página do projeto. Cada cartão é uma **tela do projeto em modo escuro (16:10)** com a etiqueta "Autoral" em mono. Sem os prints, o cartão mostra a miniatura em traço do produto (painel, bot, vitrine).
+- **No celular:** a roda vira um trilho lateral com encaixe (`scroll-snap`), um cartão por vez.
+- **Texto:** título "Projetos autorais, chamados de autorais." · apoio "Fiz estes projetos para mostrar como eu trabalho. O primeiro cliente entra aqui." `[confirmar o tom]` · cartões "Kraflo CMMS", "Kraflo OS Bot", "Tenua" · link "Ver todos os projetos" para `/projetos`.
+- **Passagem:** a roda para no último cartão e a barrinha vira o marcador da lista de regras.
 
 **07 · O combinado** (ato 4)
 
@@ -180,7 +216,7 @@ Os arquivos `.woff2` (latim) vão em `public/fonts/`, gerados por `scripts/fonte
 - **Texto:** título "Vamos ver o que um site resolve no seu caso?" · apoio "Escopo, prazo e preço por escrito antes de começar. Pode chamar sem se avexar." · botão "Chamar no WhatsApp" · alternativa "ou escreva para contato@codimdev.com.br" · nota "Resposta em até 24 horas úteis".
 - **Passagem:** a linha carmim com a barrinha corre até o rodapé.
 
-**10 · Rodapé:** como descrito acima.
+**10 · Rodapé:** como descrito acima, com o **nome gigante** de borda a borda: ele se **desenha em contorno e enche de baixo para cima, ligado à rolagem** (fecha o que o hero abriu). O resto do rodapé fica embaixo dele.
 
 #### Serviços (`/servicos`)
 
@@ -247,7 +283,7 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
 
 ### Interações, movimento reduzido e celular
 
-- **Cada clicável** tem repouso, hover (**só com mouse**, `@media (hover: hover)`), foco e clique:
+- **Cada clicável** tem repouso, hover (**só com mouse**, `@media (hover: hover)`), foco e clique. **No hover e no foco aparece a seleção do editor** (fio grafite de 1 px com quatro alças de 6 px em volta do elemento, 120 ms):
   - **Botão principal:** carmim com texto `--no-carmim`, 44 px mínimos; hover `opacity: 0.9`; foco com contorno de 2 px em grafite e 2 px de folga; clique desloca 1 px para baixo por 80 ms.
   - **Botão secundário:** transparente, contorno de 1 px grafite; hover fundo `--cru`; foco igual.
   - **Link:** carmim; sublinhado só no hover; foco igual.
@@ -262,21 +298,22 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
 
 ## Parte 2: Como construir
 
-- **Stack (já instalada):** Astro 7 em **modo estático** (várias páginas, `output: 'static'`), Tailwind 4, **ilhas de React 19 só onde houver estado** (formulário, peça principal), GSAP 3.15.0 (ScrollTrigger, SplitText), Lenis 1.3.26. **Sem WebGL e sem three.js**: a marca é plana e de traço fino; a peça principal é SVG + CSS. Versões travadas (`npm install -E`). Hospedagem estática (Hostinger, Netlify ou Cloudflare Pages).
-- **Remover da base atual** (era da identidade antiga e **não vale**): `src/lib/mundo/` inteiro (símbolo dos dois C, título em pontos), `Hero.astro`, os tokens e as fontes de Archivo Condensada e JetBrains Mono, os textos "CodimDev"/"Tudo conectado" e qualquer menção a "automação".
-- **Reaproveitar** (a lógica serve; troque tokens e textos): `src/lib/movimento/carga.ts` (registro de fontes por `FontFace`), `loader.ts` (progresso real, mínimo 1,1 s, limite de 9 s), `suave.ts` (Lenis no ticker do GSAP), `revelar.ts` (entradas por tempo) e `nav.ts` (barra que some e volta).
-- **Estrutura:** `src/pages/` com uma rota por página listada; `src/components/` com `Cabecalho`, `Rodape`, `FaixaConvite`, `Cartao`, `Miniatura` (as miniaturas em SVG, uma por serviço e projeto), `Janela` (a janela em traços); `src/lib/dados.ts` (**todo o conteúdo que muda**: contatos, serviços, projetos, perguntas, etapas); `src/i18n/pt.ts` (todos os textos visíveis; nenhum texto fora dele; `en.ts` fica para depois); `src/styles/` com `tokens.css` e um CSS por seção, em `@layer components`.
-- **Personalização por `data-*`** (para trocar sem mexer no JavaScript): `data-linhas` (título que sobe de máscara), `data-revelar` e `data-delay` (bloco que entra por tempo e com atraso), `data-tema="escuro"` (seção sobre fundo grafite: o cabeçalho troca de cor), `data-peca` e `data-etapa="1..5"` (peça principal), `data-miniatura="funil|paginas|antes-depois|painel|componentes"`, `data-destaque` (a palavra em carmim do título).
-- **Módulos (comportamento; o arquivo da base atual entre parênteses):**
-  - **Carregador:** símbolo desenhado por traço conforme o progresso real, contador mono, a barrinha trava, a tela se abre (`loader.ts`, `carga.ts`).
-  - **Rolagem suave:** Lenis com `lerp 0.09` movido pelo ticker do GSAP; links `#` rolam por ele (`suave.ts`).
-  - **Revelar:** linhas que sobem de máscara (1,1 s `expo.out`, stagger 0,085) e blocos por opacidade + 30 px, gatilho a 88% da tela, uma vez (`revelar.ts`).
-  - **Cabeçalho:** `is-scrolled` depois de 40 px, some ao descer passada meia tela, troca de cor sobre `data-tema="escuro"`, folha de menu no celular (`nav.ts`).
-  - **Peça principal:** ScrollTrigger com pin de 500% (400% no celular), `scrub: 0.6`, cinco marcos; cada etapa uma timeline curta; o texto de cada etapa por tempo.
-  - **Escrita:** efeito de digitação reutilizável (caracteres por segundo configurável, cursor = a barrinha).
-  - **Traço:** `desenharTraco(svg)` mede cada `<path>` (`getTotalLength`) e anima `stroke-dashoffset`.
-  - **Formulário:** valida, monta a mensagem e abre o WhatsApp ou o e-mail.
-- **Ordem de inicialização:** fontes carregadas (`FontFace`) → carregador → Lenis → ScrollTrigger → peça principal (pin) → revelar → cabeçalho → `ScrollTrigger.refresh()` dois quadros depois e de novo em `document.fonts.ready`.
+- **Stack (já instalada):** Astro 7 em **modo estático** (várias páginas, `output: 'static'`), Tailwind 4, **ilhas de React 19 só onde houver estado** (formulário e paleta de comandos), GSAP 3.15.0 (ScrollTrigger), Lenis 1.3.26. **Sem WebGL nem three.js na primeira versão**: as placas e a roda são **CSS 3D** e os cursores são SVG. Versões travadas (`npm install -E`). Hospedagem estática (Hostinger).
+- **A base que já existe e fica** (a lógica serve; troque só o que a cena pedir): `src/lib/movimento/carga.ts` (fontes por `FontFace`), `loader.ts` (o carregador), `suave.ts` (Lenis), `revelar.ts`, `nav.ts`; `src/components/Logo.astro`, `Cabecalho.astro`, `Rodape.astro`, `Barra.astro`; `src/lib/marca/logo.ts`; `src/styles/global.css` (tokens); `src/i18n/pt.ts`; `src/lib/dados.ts`.
+- **O que se reescreve:** `abertura.ts` (agora o hero com o nome gigante, a foto e a reação ao mouse), `peca.ts` (de janela plana para a **pilha de placas 3D**; cada etapa reaproveita o SVG que já existe como uma placa) e `escapa.ts` (passa a ser tarefa do motor).
+- **O motor** (`src/lib/motor/`, escrito do zero, vanilla TypeScript + GSAP; veja "O motor: dois cursores"):
+  - `cursores.ts`: os dois cursores em SVG (`design` e `código`), a etiqueta em mono, o movimento em curva (GSAP, `power3.inOut`), entrada e saída pelas bordas;
+  - `fila.ts`: a fila de tarefas por montagem, a ordem `design` → `código` em cada bloco, a aceleração 5× quando a pessoa rola, o fechamento imediato do que saiu da tela;
+  - `tarefas.ts`: uma função por tipo (`quadro`, `titulo`, `texto`, `bloco`, `foto`, `nome`, `duplica`, `ajusta`, `teste`);
+  - `caixa.ts`: a caixa de seleção com as quatro alças e a medida ao vivo (também usada no hover);
+  - `digita.ts`: escrita letra a letra com os caracteres em `<x-l>` (para nenhuma regra de `span` pegar);
+  - `fusao.ts`: a fusão dos dois cursores na barrinha carmim e a mola que a faz seguir o mouse (desktop);
+  - `hud.ts`: LCP, FPS, JS e camadas (dados reais), Tour, velocidade e "montar de novo";
+  - `paleta.ts`: o ⌘K (ilha de React); `tema.ts`: o tema com o círculo; `pilha.ts` (placas 3D) e `roda.ts` (roda de projetos).
+- **Estrutura de páginas e componentes:** `src/pages/` com uma rota por página listada; `src/components/` com `Hud`, `Paleta`, `Pilha`, `Roda`, `FaixaConvite`, `Cartao`, `Miniatura` (as miniaturas em SVG, uma por serviço e projeto), `Janela`; **todo o conteúdo que muda** em `src/lib/dados.ts`; todos os textos em `src/i18n/pt.ts`; um CSS por seção em `src/styles/`, em `@layer components`.
+- **Personalização por `data-*`** (o HTML manda, o motor lê): `data-camada`, `data-montagem`, `data-duplica`, `data-ajusta`, `data-teste`, `data-tocado` (veja o motor); `data-linhas`, `data-revelar`, `data-delay`; `data-tema="escuro"` (seção sobre fundo grafite: o cabeçalho troca de cor); `data-peca`, `data-etapa`; `data-miniatura`; `data-destaque` (a palavra em carmim do título).
+- **Ordem de inicialização:** fontes (`FontFace`) → carregador → (a tela se abre) → Lenis → pilha e roda (os pins) → `revelar` → o motor entra (cursores) → HUD, cabeçalho, tema e paleta → `ScrollTrigger.refresh()` dois quadros depois e de novo em `document.fonts.ready`.
+- **Desempenho (o HUD mostra, então precisa ser verdade):** só `transform` e `opacity` são animados; JS inicial **até 120 KB comprimido**; LCP **até 2,5 s** em Fast 4G; se a média de FPS ficar **abaixo de 40**, o motor termina a construção de uma vez e para de animar.
 - **Imagens:** só o recorte do Zacarias (WebP com versão de celular de 760 px, `fetchpriority="high"` se estiver acima da dobra) e, se existirem, capturas dos projetos. **Caminhos relativos** para abrir em subpasta. Tudo o mais é SVG inline.
 - **SEO e acessibilidade:** um `<h1>` por página; `lang="pt-BR"`; título e descrição por página; `<link rel="canonical">`; `robots`; mapa do site; **dados estruturados** `ProfessionalService` (nome "codimdev", fundador Zacarias Lino Ramos Filho, país Brasil, cidade Blumenau/SC, `sameAs` o Instagram); `aria-hidden` nos SVG decorativos e `role="img"` + `aria-label` nas miniaturas que informam; `Pular para o conteúdo` no topo; foco visível sempre; contraste AA.
 - **Erros conhecidos e a solução:**
@@ -288,6 +325,12 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
   - `backdrop-filter` no cabeçalho prende filhos `position: fixed` (a folha do menu) → a folha fica **fora** do `<header>`;
   - quebra de linha manual (`<br>`) escondida no celular cola palavras e quebra a máscara → `text-wrap: balance` e largura máxima;
   - `npm audit fix --force` troca versões → não rodar;
+  - elementos escondidos esperando a construção "piscam" antes do JS → o HTML nasce **visível** e o motor só o esconde depois de subir (classe `js-motor` posta no `<head>`, inline, e retirada em 5 s se o motor não subir);
+  - `overflow: hidden`, `filter` ou `will-change` num ancestral da cena 3D achatam o `preserve-3d` → nenhum desses nos ancestrais das placas e da roda;
+  - `position: fixed` dentro de um ancestral com `transform` deixa de ser fixo → cursores, HUD e paleta ficam direto no `<body>`;
+  - o LCP muda até o primeiro toque ou tecla → pare de ler no primeiro input; Safari não mede LCP → mostre "—", nunca um número inventado;
+  - `document.startViewTransition` não existe em todo navegador → troca direta de tema como fallback;
+  - o cursor SVG por cima do conteúdo rouba cliques → `pointer-events: none`, `z-index` abaixo do cabeçalho;
   - plano grátis da Vercel não permite uso comercial → exportação estática para Hostinger, Netlify ou Cloudflare Pages.
 
 ---
@@ -304,6 +347,13 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
   - **Sobre:** a linha do tempo acende parada a parada; **nenhuma menção** a emprego atual, CLT ou "Lino Estúdio".
   - **Formulário:** campos vazios mostram os três erros; com tudo certo, abre o WhatsApp com a mensagem.
   - **Rodapé:** só "feito por um piauiense" na linha final.
+- **O motor:** com o carregador acabando, os dois cursores entram, rodeiam o símbolo e começam o hero; `design` desenha a caixa com a medida e `código` preenche; o nome gigante se desenha em contorno e enche; os cartões de serviço saem de cópias arrastadas; a linha-guia carmim aparece só nos ajustes; ao fim os dois se fundem na barrinha carmim ("uma pessoa só") e ela passa a seguir o mouse (computador).
+- **Rolar rápido no meio da construção:** tudo fecha na hora e nenhum cursor volta atrás.
+- **HUD:** os números são **medidos** (LCP, FPS, JS) e batem com o DevTools; sem medida, "—". Nenhum número de visitantes. **Tour** chega ao fim e mostra "Montada por 2 cursores em N s"; "montar de novo" refaz. Qualquer toque interrompe o Tour.
+- **Pilha de placas:** as cinco placas entram em ordem, a câmera gira com a rolagem, o conjunto se achata na virada e a página escurece; nada fica cortado no 3D (Chrome e Safari).
+- **Roda de projetos:** gira com a rolagem; no celular vira trilho com encaixe; cada cartão leva à página do projeto.
+- **Tema, ⌘K e transição:** o círculo abre do ponto do clique; ⌘K abre com foco no campo, setas e Enter funcionam, Esc fecha; a máscara entre páginas dura cerca de 200 ms.
+- **Desempenho:** JS inicial até 120 KB comprimido; LCP até 2,5 s em Fast 4G; sem queda abaixo de 40 FPS rolando; `?pronto`, movimento reduzido e sem JavaScript abrem a página montada.
 - **Rolando devagar, depressa e de volta:** o pin não pula; os gatilhos de entrada disparam uma vez.
 - **Mouse e teclado:** hovers só com mouse; Tab percorre tudo com foco visível; Esc fecha o menu; Enter e Espaço abrem a sanfona.
 - **Celular:** `document.documentElement.scrollWidth` igual à largura da tela; alvos de 44 px.
@@ -325,6 +375,9 @@ Sem sotaque. Título "Privacidade" · "O que eu faço com os seus dados, em ling
 | Peça principal                       | `components/Peca` (uma timeline por etapa)                     | não                        |
 
 ## [preencher]
+
+- **Motor dos cursores:** do zero (padrão) ou o do Kairo adaptado (só com o repositório **privado**).
+- **As 4 fotos extras** do Zacarias (`imagens/zacarias/` do repositório da marca) e os **prints** do Kraflo CMMS, do Kraflo OS Bot e do Tenua, em modo escuro, 16:10.
 
 - **15 dias** de ajustes depois da entrega: confirmar (aparece nas mensagens-modelo, mas a Plataforma deixava em aberto).
 - **Domínio:** `codimdev.com.br` está no Design System; confirmar que está registrado e apontando para a hospedagem.
