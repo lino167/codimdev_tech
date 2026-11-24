@@ -1,5 +1,5 @@
-/* O HERO: um estúdio escuro, o Zacarias no centro e, ao rolar, os projetos sobem pelos dois lados. O quadro é uma sequência de
-   imagens em canvas; sem JS ou com movimento reduzido fica o quadro final e os projetos em lista. */
+/* O HERO: um estúdio escuro, o Zacarias no centro; ao rolar, a imagem faz um zoom suave e os projetos sobem pelos dois lados.
+   Sem JS ou com movimento reduzido fica a imagem parada e os projetos em lista. */
 .hero {
   position: relative;
   background: var(--color-grafite);
@@ -16,8 +16,12 @@
   display: grid;
   place-items: center;
 }
-.hero__canvas,
-.hero__fim {
+.hero__zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 28%;
+}
+.hero__imagem {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -25,21 +29,11 @@
   height: auto;
   aspect-ratio: 1920 / 1071;
   transform: translate(-50%, -50%);
-  /* as bordas do quadro se fundem com o fundo da página */
+  /* as bordas da imagem se fundem com o fundo da página */
   mask-image:
     linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
     linear-gradient(to bottom, #000 82%, transparent);
   mask-composite: intersect;
-}
-.hero__canvas {
-  opacity: 0;
-}
-.hero--anima.hero--pronto .hero__canvas {
-  opacity: 1;
-}
-/* com JS o quadro final não aparece antes da hora: quem mostra a cena é o canvas */
-.hero--anima .hero__fim {
-  display: none;
 }
 
 /* o texto: título à esquerda, apoio e botões à direita (no meio fica a pessoa) */
@@ -180,8 +174,7 @@
     height: 80svh;
     min-height: 480px;
   }
-  .hero__canvas,
-  .hero__fim {
+  .hero__imagem {
     width: auto;
     height: 100%;
     aspect-ratio: 1920 / 1071;

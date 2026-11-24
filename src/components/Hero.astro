@@ -1,7 +1,7 @@
 ---
-// O hero (sala Início): o Zacarias de braços cruzados, de capuz e cabeça baixa, num estúdio escuro. Ao rolar, ele ergue a
-// cabeça e o capuz escorrega; depois os projetos sobem pelos dois lados, sem cobrir a pessoa (lib/hero). O vídeo é uma
-// sequência de quadros em canvas (public/hero). Sem JS ou com movimento reduzido: o quadro final e os projetos em lista.
+// O hero (sala Início): um retrato do Zacarias num estúdio escuro. Ao rolar, a imagem faz um zoom suave em direção ao rosto;
+// depois os projetos sobem pelos dois lados, sem cobrir a pessoa (lib/hero). Sem JS ou com movimento reduzido: a imagem
+// parada e os projetos em lista.
 import type { Textos } from '../i18n/pt';
 
 interface Props {
@@ -16,16 +16,17 @@ const direita = [h.casos[1]];
 <section class="hero" id="inicio" data-hero data-tema="escuro">
   <div class="hero__palco" data-palco>
     <div class="hero__quadro">
-      <img
-        class="hero__fim"
-        src="/hero/k-11.webp"
-        width="1920"
-        height="1071"
-        alt={h.foto}
-        fetchpriority="high"
-        data-fim
-      />
-      <canvas class="hero__canvas" data-canvas aria-hidden="true"></canvas>
+      <div class="hero__zoom" data-zoom>
+        <img
+          class="hero__imagem"
+          src="/hero/retrato.webp"
+          width="1920"
+          height="1071"
+          alt={h.foto}
+          fetchpriority="high"
+          data-imagem
+        />
+      </div>
       <span class="hero__rolar mono mono--livre" data-rolar>
         {h.rolar}
       </span>
