@@ -90,6 +90,17 @@ def logo_swap(kind, cls='', alt='codimdev'):
             % (cls, L[suf[0]], alt, cls, L[suf[1]]))
 
 
+# fotos
+def b64img(path):
+    return 'data:image/webp;base64,' + base64.b64encode(open(path, 'rb').read()).decode()
+
+PH = {
+    'camiseta': b64img(R + '/imagens/zacarias/camiseta-preta-1-900x1013.webp'),
+    'moletom': b64img(R + '/imagens/zacarias/moletom-bege-2-840x1050.webp'),
+}
+ALT_C = 'Zacarias, de braços cruzados, de camiseta preta'
+ALT_M = 'Zacarias, de braços cruzados, de moletom bege'
+
 # ícones
 icon_order = ['site', 'sistema', 'automacao', 'design', 'video', 'etiqueta', 'mensagem', 'dados', 'ajustes', 'codigo',
               'seta', 'check', 'fechar', 'menu', 'mais', 'busca', 'email', 'celular', 'calendario', 'relogio',
@@ -210,6 +221,21 @@ code{font-size:.88em;background:var(--trama);padding:1px 6px;border-radius:var(-
 .indice a{display:flex;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--linha);color:var(--grafite);font-family:var(--f-display);font-weight:600;font-size:18px}
 .indice a:hover{color:var(--carmim);text-decoration:none}
 .indice .mono{min-width:2ch}
+
+/* foto na capa e capítulo de fotografia */
+.capa__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:end}
+.capa__foto{align-self:end}
+.capa__foto img{width:100%;height:auto;max-height:620px;object-fit:contain;object-position:bottom}
+.ph-l{display:block}.ph-d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ph-l{display:none}:root:not([data-theme="light"]) .ph-d{display:block}}
+:root[data-theme="dark"] .ph-l{display:none}:root[data-theme="dark"] .ph-d{display:block}
+@media(max-width:820px){.capa__grid{grid-template-columns:1fr}.capa__foto{max-width:360px}}
+.foto{border-radius:var(--r);border:1px solid var(--linha);overflow:hidden;aspect-ratio:4/5}
+.foto img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.g2.f4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.foto.a{background:#F5F4EF}.foto.t{background:#E9E7E0}.foto.g{background:#18191D;border-color:#18191D}
+.foto.nao{position:relative}
+.foto.nao::after{content:"";position:absolute;left:-10%;right:-10%;top:50%;height:2px;background:#C42A1F;rotate:-24deg}
 
 /* capítulos */
 .cap{padding-block:clamp(56px,9vw,112px) 0}
@@ -500,6 +526,21 @@ c9 = f'''<p class="suave" style="max-width:70ch">Cantos de 4 px, nada de pílula
 <div class="janela"><div class="tb"><i></i><i></i><i></i></div><div class="co"><span class="mono">painel / pedidos</span><h4>Pedidos de hoje</h4><p class="suave" style="font-size:14px">Única parte da marca com sombra suave.</p></div></div></div>
 <p class="suave" style="font-size:14px">O depoimento só entra com cliente real. Nunca com texto inventado.</p></div>'''
 
+# fotografia
+def foto(cls, key, alt, leg, sub, nao=False):
+    return (f'<div><div class="foto {cls}{" nao" if nao else ""}"><img src="{PH[key]}" alt="{alt}"></div>'
+            f'<div class="leg"><b>{leg}</b><span>{sub}</span></div></div>')
+
+cfoto = f'''<div class="g2 f4">
+{foto('a','camiseta',ALT_C,'Camiseta preta sobre algodão','Contraste alto: é a combinação principal')}
+{foto('t','moletom',ALT_M,'Moletom bege sobre trama','Tom quente que combina com a paleta')}
+{foto('g','moletom',ALT_M,'Moletom bege sobre grafite','Funciona em fundo escuro, na capa do tema escuro')}
+{foto('g','camiseta',ALT_C,'Camiseta preta sobre grafite','Evite: a roupa some no fundo',nao=True)}
+</div>
+<div class="bloco"><h3>Como usar</h3><div class="par-sn"><div class="sn sim"><span class="mono">Pode</span>{lista(['Mostrar o rosto e o processo: a codimdev é uma pessoa só, e isso é um diferencial','Usar o recorte com fundo transparente sobre algodão, trama ou grafite','Legendar com o nome e o papel reais: Zacarias, desenvolvedor e designer','Um destaque em carmim por peça, sem competir com o rosto'])}</div>
+<div class="sn nao"><span class="mono">Não pode</span>{lista(['Aplicar filtro de cor, gradiente, brilho ou sombra por cima da foto','Colocar a camiseta preta sobre grafite','Fingir ser uma agência com equipe, com fotos de banco de imagem','Inventar depoimento ou legenda'])}</div></div></div>
+<div class="bloco"><h3>Arquivos</h3><p class="suave" style="max-width:70ch">Cinco recortes em WebP com fundo transparente, na pasta <code>imagens/zacarias/</code> deste repositório: três da camiseta preta (900, 720 e 480 px de largura) e dois do moletom bege (840 e 560 px). Para telas grandes, use a maior; para cartões e avatares, a menor.</p></div>'''
+
 # 10 canais
 c10 = f'''<p class="suave" style="max-width:70ch">{inline(paras(canais)[0])}</p>{table_html(canais_t[0])}
 <div class="bloco"><h3>Pilares de conteúdo</h3>{table_html(canais_t[1])}<p class="suave" style="font-size:14px">Regra de equilíbrio: para cada post de oferta, três posts que ensinam, mostram ou contam bastidores.</p></div>
@@ -519,8 +560,9 @@ chapters = [
     ('07', 'tipografia', 'Tipografia', 'Três famílias, três papéis', 'IBM Plex Sans nos títulos, Inter no texto, IBM Plex Mono nas etiquetas.', c7),
     ('08', 'icones', 'Ícones', 'Vinte e três ícones próprios', 'Traço de 1,75 px, pontas arredondadas, grade de 24 × 24 px. O que os torna da marca é o detalhe: uma barra inclinada em carmim, no ângulo da logo.', c8),
     ('09', 'componentes', 'Componentes', 'Planos, retos e sem brilho', 'Botões, campos e cartões de cantos retos. Nada de pílula, gradiente ou brilho.', c9),
-    ('10', 'canais', 'Canais', 'Onde a marca aparece', 'O Instagram atrai, o WhatsApp fecha e o site serve de vitrine.', c10),
-    ('11', 'regras', 'Regras', 'Sempre e nunca', 'O que vale em qualquer peça com o nome codimdev.', c11),
+    ('10', 'fotografia', 'Fotografia', 'O rosto por trás da codimdev', 'Uma pessoa só faz o design e o código, e a marca mostra isso.', cfoto),
+    ('11', 'canais', 'Canais', 'Onde a marca aparece', 'O Instagram atrai, o WhatsApp fecha e o site serve de vitrine.', c10),
+    ('12', 'regras', 'Regras', 'Sempre e nunca', 'O que vale em qualquer peça com o nome codimdev.', c11),
 ]
 
 indice = '<ol class="indice">' + ''.join(f'<li><a href="#{s}"><span class="mono">{n}</span>{t}</a></li>' for n, s, t, *_ in chapters) + '</ol>'
@@ -538,8 +580,9 @@ HTML = f'''<title>Livro da marca codimdev</title>
 <header class="capa"><div class="wrap">
 {barra("codimdev", "Livro da marca", "Versão 1.0", "24/11/2026")}
 <div class="logo">{logo_swap("h", alt="codimdev")}</div>
-<h1>Design e código pela mesma <span class="destaque">pessoa.</span></h1>
-<p class="lead">Tudo o que a codimdev decidiu sobre quem é, como fala e como aparece: para quem escreve, desenha ou programa qualquer peça com o nome da marca.</p>
+<div class="capa__grid"><div><h1>Design e código pela mesma <span class="destaque">pessoa.</span></h1>
+<p class="lead">Tudo o que a codimdev decidiu sobre quem é, como fala e como aparece: para quem escreve, desenha ou programa qualquer peça com o nome da marca.</p></div>
+<div class="capa__foto"><img class="ph-l" src="{PH['camiseta']}" alt="{ALT_C}"><img class="ph-d" src="{PH['moletom']}" alt="{ALT_M}" aria-hidden="true"></div></div>
 <div class="fio"><i></i><span class="slash"></span></div>
 <nav aria-label="Capítulos">{indice}</nav>
 </div></header>
