@@ -114,6 +114,18 @@ main,
   }
 }
 
+/* máscara das linhas que sobem (movimento/revelar.ts): a folga de padding/margem negativa não corta acento
+   nem descendente */
+.linha-mascara {
+  display: block;
+  overflow: clip;
+  padding: 0.12em 0.04em 0.22em;
+  margin: -0.12em -0.04em -0.22em;
+}
+.linha-mascara > span {
+  display: block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -13,6 +13,20 @@ export const pt = {
     rotuloHd: 'Conectando em HD',
     aria: 'Carregando a página',
   },
+  nav: {
+    marca: 'CodimDev',
+    aria: 'Principal',
+    links: [
+      { rotulo: 'Serviços', href: '#servicos' },
+      { rotulo: 'Projetos', href: '#projetos' },
+      { rotulo: 'Como funciona', href: '#processo' },
+    ],
+    cta: 'Mapear minha empresa',
+    ctaHref: '#diagnostico',
+    menu: 'Menu',
+    fechar: 'Fechar',
+    pular: 'Pular para o conteúdo',
+  },
   hero: {
     titulo1: 'Tudo',
     titulo2: 'conectado.',

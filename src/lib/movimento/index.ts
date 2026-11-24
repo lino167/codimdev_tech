@@ -6,11 +6,19 @@ import { gsap } from 'gsap';
 import { criarMundo, type Mundo } from '../mundo/mundo';
 import { carga, ARQUIVOS_FONTES } from './carga';
 import { loader } from './loader';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { entrada } from './entrada';
+import { suave } from './suave';
+import { revelar } from './revelar';
+import { prepararNav } from './nav';
+
+/** Segundo da entrada em que a nav aparece (junto da promessa e dos botões do hero). */
+const NAV_APARECE = 2.6;
 
 export async function iniciar() {
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
+  const nav = prepararNav();
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hd = new URLSearchParams(location.search).has('hd');
 
@@ -36,7 +44,14 @@ export async function iniciar() {
   void c.pronta.then(() => mundo?.medir(true));
 
   await loader({ mundo, carga: c, hd, reduzido });
-  entrada({ mundo, reduzido });
+  // depois do loader: Lenis, nav e as entradas de texto por tempo; a nav aparece perto do fim da entrada do hero
+  const suaveRolagem = suave({ reduzido });
+  nav.ligar(suaveRolagem);
+  revelar({ reduzido });
+  const tl = entrada({ mundo, reduzido });
+  if (reduzido) nav.mostrar();
+  else tl.add(() => nav.mostrar(), NAV_APARECE);
+  ScrollTrigger.refresh();
 
   // só no `astro dev`: reprisar a entrada em câmera lenta para conferir quadro a quadro (fora do build)
   if (import.meta.env.DEV) {

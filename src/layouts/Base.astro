@@ -4,6 +4,8 @@
 import '../styles/global.css';
 import '../styles/hero.css';
 import '../styles/loader.css';
+import '../styles/nav.css';
+import Nav from '../components/Nav.astro';
 import type { Textos } from '../i18n/pt';
 
 interface Props {
@@ -53,7 +55,8 @@ const { t } = Astro.props;
         </span>
       </p>
     </div>
-    <main id="topo">
+    <Nav t={t} />
+    <main id="topo" tabindex="-1">
       <slot />
     </main>
     <script>
