@@ -34,19 +34,19 @@ O propósito da codimdev é fazer a internet trabalhar a favor da empresa, e nã
 
 ## Serviços
 
-O catálogo tem cinco serviços de desenvolvimento web e UI/UX (lista atualizada em 24/11/2026). Todo site e sistema passa por um protótipo navegável aprovado antes do código.
+O catálogo tem cinco serviços de desenvolvimento web e UI/UX (lista atualizada em 24/11/2026; preços confirmados na mesma data, a R$ 60 por hora). Todo site e sistema passa por um protótipo navegável aprovado antes do código.
 
 | Serviço | O que entrega | Para quem | Preço de entrada |
 | --- | --- | --- | --- |
-| Landing pages focadas em conversão | Páginas rápidas para campanhas de tráfego pago (Google Ads e Meta Ads), onde o cliente mede o retorno direto em leads e vendas | Quem anuncia e precisa que cada clique vire contato ou venda | R$ 1.500 a 2.100 (sugestão) |
-| Sites institucionais para PMEs e prestadores de serviço | Posicionamento profissional, SEO básico e captação por WhatsApp e formulário | Clínicas, escritórios, indústrias e empresas B2B | R$ 3.000 a 4.800 (sugestão) |
-| Redesign e otimização de conversão (CRO/UX) | Reformulação de sites ou sistemas antigos que estão lentos, ruins no celular ou perdendo vendas no checkout ou no formulário | Quem já tem site ou sistema e ele não rende | R$ 2.400 a 6.000 (sugestão) |
-| Interfaces de sistemas web, dashboards e MVPs | Área de membros, portais de clientes, painéis administrativos sob medida e produtos digitais para validar | Startups e empresas que precisam validar um produto digital | A partir de R$ 9.600 por fase (sugestão) |
-| Design system e componentização | Padronização de telas e componentes para acelerar entregas | Empresas que já têm time de tecnologia | R$ 3.600 a 7.200 (sugestão) |
+| Landing pages focadas em conversão | Páginas rápidas para campanhas de tráfego pago (Google Ads e Meta Ads), onde o cliente mede o retorno direto em leads e vendas | Quem anuncia e precisa que cada clique vire contato ou venda | R$ 1.500 a 2.100 |
+| Sites institucionais para PMEs e prestadores de serviço | Posicionamento profissional, SEO básico e captação por WhatsApp e formulário | Clínicas, escritórios, indústrias e empresas B2B | R$ 3.000 a 4.800 |
+| Redesign e otimização de conversão (CRO/UX) | Reformulação de sites ou sistemas antigos que estão lentos, ruins no celular ou perdendo vendas no checkout ou no formulário | Quem já tem site ou sistema e ele não rende | R$ 2.400 a 6.000 |
+| Interfaces de sistemas web, dashboards e MVPs | Área de membros, portais de clientes, painéis administrativos sob medida e produtos digitais para validar | Startups e empresas que precisam validar um produto digital | A partir de R$ 9.600 por fase |
+| Design system e componentização | Padronização de telas e componentes para acelerar entregas | Empresas que já têm time de tecnologia | R$ 3.600 a 7.200 |
 
 ### Como os preços foram calculados
 
-A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por escopo, não por hora. As horas abaixo são estimativas para começar, incluindo as 2 rodadas de ajuste por etapa, e devem ser refeitas depois dos primeiros projetos. Os valores de mercado vêm da [pesquisa de preços](pesquisa-de-preco.md).
+A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por escopo, não por hora. Os preços foram confirmados. As horas abaixo são estimativas e incluindo as 2 rodadas de ajuste por etapa, devem ser refeitas depois dos primeiros projetos. Os valores de mercado vêm da [pesquisa de preços](pesquisa-de-preco.md).
 
 | Serviço | Horas estimadas | Preço (R$ 60 por hora) | Mercado, freelancer ou estúdio enxuto |
 | --- | --- | --- | --- |
@@ -58,7 +58,7 @@ A hora da codimdev é de **R$ 60** e o preço de cada projeto é fechado por esc
 
 Todos ficam na parte de baixo da faixa de mercado, o que combina com uma marca nova e ainda sem clientes pagantes. O preço só sobe quando a conta de horas subir.
 
-**Plano mensal depois da entrega:** R$ 300 por mês com 5 horas de ajustes ou R$ 600 por mês com 10 horas (sugestão). O mercado cobra de R$ 300 a R$ 1.500 por mês para sites. Hospedagem e domínio ficam no nome do cliente e não entram no plano.
+**Plano mensal depois da entrega:** R$ 300 por mês com 5 horas de ajustes ou R$ 600 por mês com 10 horas (confirmado em 24/11/2026). O mercado cobra de R$ 300 a R$ 1.500 por mês para sites. Hospedagem e domínio ficam no nome do cliente e não entram no plano.
 
 **Capacidade e prazo:** com cerca de 10 horas por semana, o prazo de cada serviço é as horas estimadas divididas por 10. Uma landing page, por exemplo, leva de 2,5 a 3,5 semanas, e não as cerca de 2 semanas que a plataforma dizia antes. Se as horas semanais subirem, os prazos caem na mesma proporção.
 
@@ -228,9 +228,8 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam oito decisões para a plataforma ficar completa. Os preços marcados como sugestão são estimativas para começar, não valores fechados.
+Faltam sete decisões para a plataforma ficar completa.
 
-- [ ] Confirmar os preços sugeridos de cada serviço e do plano mensal, a partir da hora de R$ 60.
 - [ ] Definir em quantos dias depois da entrega o cliente pode pedir ajustes.
 - [ ] Definir o prazo de resposta no WhatsApp.
 - [ ] Escolher o domínio e o e-mail da marca.
