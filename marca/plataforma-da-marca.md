@@ -50,6 +50,18 @@ Os preços "sugestão" da lista anterior (landing page R$ 900 a 1.500, sistema w
 
 **Fora do catálogo (por enquanto):** vídeo, motion, identidade visual, gestão de redes sociais, gestão de campanhas de tráfego pago (a landing page é feita para elas, mas a campanha não) e aplicativo nativo para loja de apps.
 
+## O que entrego em cada projeto
+
+Todo projeto passa por três frentes, da descoberta ao código. O que entra em cada serviço depende do escopo combinado na proposta.
+
+| Frente | O que entrega |
+| --- | --- |
+| Descoberta e UX | Briefing estruturado, arquitetura da informação (mapa de páginas e fluxos) e wireframes. Em projetos maiores, pesquisa com usuários e testes de usabilidade |
+| UI design | Identidade visual aplicada à interface, guia de estilos ou design system básico (cores, tipografia, botões e componentes no Figma) e protótipo navegável em alta fidelidade, aprovado antes do código |
+| Desenvolvimento e performance | Código responsivo (mobile-first); integração com WhatsApp, formulários, CRM ou APIs; SEO técnico básico (meta tags, sitemap, semântica); otimização de velocidade (Core Web Vitals, LCP) |
+
+"Identidade visual aplicada à interface" quer dizer usar a identidade que o cliente já tem nas telas, e não criar logo ou marca do zero. Criar identidade visual continua fora do catálogo.
+
 ## Como trabalho
 
 Um projeto típico de landing page leva cerca de 2 semanas e segue seis etapas, com aprovação do cliente ao fim de cada uma.
