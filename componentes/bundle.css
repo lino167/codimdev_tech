@@ -72,7 +72,6 @@ body { margin: 0; background: var(--algodao); color: var(--grafite); font: 400 1
 .service-card img { width: 32px; height: 32px; }
 .service-card h3 { margin: 0; font: 600 20px/26px var(--font-display); }
 .service-card p { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--grafite-suave); }
-.service-card .preco { font: 400 12px/16px var(--font-mono); color: var(--grafite); margin-top: auto; }
 .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--space-4); }
 
 .project-card { display: flex; flex-direction: column; gap: var(--space-3); text-decoration: none; color: var(--grafite); }
