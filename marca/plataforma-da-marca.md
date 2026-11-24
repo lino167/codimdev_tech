@@ -232,10 +232,11 @@ Estas regras valem para tudo o que leva o nome codimdev: site, posts, propostas,
 
 ## Pontos em aberto
 
-Faltam cinco decisões para a plataforma ficar completa.
+Faltam seis decisões para a plataforma ficar completa.
 
 - [ ] Renovar o plano de e-mail da Hostinger, que vence em 01/12/2026, ou confirmar que a renovação automática está ligada.
 - [ ] Pesquisar o nome codimdev na base de marcas do INPI, na classe 42, antes de registrar. Em 24/11/2026 uma busca na web não achou nenhuma marca ou empresa chamada codimdev, mas isso não substitui a consulta à base oficial. O nome mais próximo achado foi o CodiMD, uma ferramenta de código aberto para anotações em Markdown, que também é software; pesquise também os radicais "codim" e "codimd".
 - [ ] Escolher o nome do SaaS para freelancers, que antes também se chamava Codimdev.
 - [ ] Abrir o MEI quando fechar o primeiro cliente pagante.
+- [ ] Criar o Instagram e escolher o @, seguindo `instagram-perfil.md`.
 - [ ] Decidir se o LinkedIn entra como canal, já que o público agora inclui empresas B2B e times de tecnologia.
