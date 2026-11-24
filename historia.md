@@ -4,6 +4,8 @@ Direção nova, escolhida em 24/11/2026: **recomeçar do zero** no caminho do `p
 
 > **O que eu estudei, e o que não vi.** Li o HTML, o `preset.json` do hero e o texto do `pivenilya.com/portfolio`. O site barra navegador automático (verificação de robô) e eu não contornei isso: **não vi as animações rodando**, só a estrutura e os parâmetros. O que está abaixo é a leitura do código, reescrita para a codimdev. Se você tiver uma gravação de tela dele, mande: ela vale mais que a minha leitura.
 
+> **Referência de design fixa (decisão de 24/11/2026):** `https://pivenilya.com/`. Todo layout, movimento e estrutura de sala parte dela.
+
 ## 1. A ideia, em uma frase
 
 **O site é um filme curto sobre o trabalho, e o Zacarias é o personagem.** Um enxame de partículas se junta e escreve `codimdev`, desmancha e vira o retrato dele; ao rolar, o retrato recua e os projetos passam como cenas, cada uma com a paleta do próprio projeto.
